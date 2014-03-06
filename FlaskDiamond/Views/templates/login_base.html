@@ -1,0 +1,30 @@
+{% extends 'admin/base.html' %}
+
+{% block access_control %}
+{% if current_user.is_authenticated() %}
+<div class="btn-group pull-right">
+    <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="icon-user"></i> {{ current_user.login }} <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        {#<li><a href="{{ url_for_security('change_password') }}"><i class="icon-lock"></i> Change password</a></li>#}
+        <li><a href="{{ url_for_security('logout') }}"><i class="icon-off"></i> Log out</a></li>
+    </ul>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block head_css %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+{% endblock %}
+
+{% block tail %}
+
+  <div id="footer">
+    {% block footer %}
+    {{ config["PROJECT_NAME"] }}
+    {% endblock %}
+  </div>
+
+{% endblock %}

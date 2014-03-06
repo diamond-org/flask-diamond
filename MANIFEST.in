@@ -1,0 +1,2 @@
+recursive-include FlaskDiamond/Views/templates *
+recursive-include FlaskDiamond/Views/static *

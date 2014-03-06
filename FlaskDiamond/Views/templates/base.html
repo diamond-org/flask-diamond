@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.ico') }}">
+    <title>{% block title %}{% endblock %} - {{ config['PROJECT_NAME'] }}</title>
+    {% block htmlhead %}{% endblock %}
+</head>
+<body {% block bodyclass %}{% endblock %}>
+  {% block navigation %}{% endblock %}
+  {% block heading %}{% endblock %}
+
+  <div id="content">
+    {% block content %}{% endblock %}
+  </div>
+
+  <div id="footer">
+    {% block footer %}
+    {{ config['PROJECT_NAME'] }}
+    {% endblock %}
+  </div>
+
+{% block scripts %}{% endblock %}
+</body>

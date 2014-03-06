@@ -1,0 +1,10 @@
+#footer {
+    text-align: center;
+    font-family: arial, helvetica, sans;
+    font-size: 0.7em;
+}
+
+#content {
+    width: 800px;
+    margin: 0px auto;
+}

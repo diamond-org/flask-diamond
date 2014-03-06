@@ -1,0 +1,78 @@
+{%- macro inline_field(field) %}
+{%- with required = "required" if kwargs['required'] or field.flags.required else "" -%}
+{{field(placeholder=field.label.text, required=required, **kwargs)}}
+{%- endwith %}
+{%- endmacro %}
+
+{%- macro horizontal_field(field, label_width=2, field_width=3) %}
+<div class="form-group control-group {% if field.errors %}has-error{% endif %}">
+  {{field.label(class="control-label col-lg-" ~ label_width)}}
+  <div class="col-lg-{{field_width}}">
+    {%- if field|is_boolean_field %}
+    <div class="checkbox">
+      <label>
+      {{field(**kwargs)|safe}}
+      </label>
+    </div>
+    {% else %}
+    {{field(class="form-control", **kwargs)|safe}}
+    {% endif %}
+  </div>
+
+  {%- if field.errors %}
+    {%- for error in field.errors %}
+      <span class="col-lg-{{12 - label_width - field_width }} help-block">{{error}}</span>
+    {%- endfor %}
+  {%- elif field.description -%}
+    <span class="help-block">{{field.description|safe}}</span>
+  {%- endif %}
+</div>
+{% endmacro %}
+
+
+{% macro form_errors(form, hiddens=True) %}
+{%- if form.errors %}
+{%- for fieldname, errors in form.errors.iteritems() %}
+{%- if (form[fieldname]|is_hidden_field and hiddens) or
+       (form[fieldname]|is_hidden_field and hiddens != 'only') %}
+{%- for error in errors %}
+<p class="error">{{error}}</p>
+{%- endfor %}
+{%- endif %}
+{%- endfor %}
+{%- endif %}
+{%- endmacro %}
+
+{% macro quick_form(form, action=".", method="post", class="form form-horizontal", buttons = [('submit', 'primary', 'Save')]) %}
+<form action="{{action}}" method="post" class="{{class}}">
+  {{ form.hidden_tag() }}
+  {{ form_errors(form, 'only') }}
+  {%- for field in form %}
+  {% if not field|is_hidden_field %}
+  {{ horizontal_field(field) }}
+  {%- endif %}
+  {%- endfor %}
+  <div class="form-actions">
+  {% for name, type, text in buttons %}
+    <button name="{{name}}" type="submit" class="btn btn-{{type}}">{{text}}</button>
+  {%- endfor %}
+  </div>
+</form>
+{%- endmacro %}
+
+{%- macro checkbox_field(field) %}
+<div class="control-group {% if field.errors %}error{% endif %}">
+    <div class="controls controls-checkbox">
+    {{field(**kwargs)|safe}}
+    {{field.label(class="control-label")}}
+
+    {%- if field.errors %}
+      {%- for error in field.errors %}
+        <p class="help-block">{{error}}</p>
+      {%- endfor %}
+    {%- elif field.description -%}
+      <p class="help-block">{{field.description|safe}}</p>
+    {%- endif %}
+</div>
+</div>
+{% endmacro %}
