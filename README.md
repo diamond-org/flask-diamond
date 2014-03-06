@@ -1,8 +1,8 @@
 # flask-diamond
 
-flask-diamond is a python Flask application platform that roughly approximates a django.  flask-diamond imports many other Flask libraries, and then glues them all together with sensible defaults.  The end result is a model administration view, accounts and high-level account operations (e.g. password reset), testing, documentation, project management (e.g. deployment), and more.
-
 flask-diamond provides a path that can guide your thought and development; flask-diamond is the road that leads to other ideas.
+
+flask-diamond is a python Flask application platform that roughly approximates a django.  flask-diamond imports many other Flask libraries, and then glues them all together with sensible defaults.  The end result is a model administration view, accounts and high-level account operations (e.g. password reset), testing, documentation, project management (e.g. deployment), and more.
 
 ## installation
 
@@ -59,5 +59,4 @@ runserver.py: spawn the daemon (usually not called directly)
 
 ## License
 
-MIT.
-
+MIT License.
