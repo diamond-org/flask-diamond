@@ -31,7 +31,3 @@ class ForceLoginView(AdminIndexView):
             return flask.redirect("/history")
 
         return self.render("/admin/index.html")
-
-def basic_admin(app):
-    admin = Admin(app, name=app.config["PROJECT_NAME"], base_template='login_base.html', index_view=ForceLoginView(name="Home"))
-    return admin

@@ -37,21 +37,3 @@ class User(db.Model, UserMixin, CRUDMixin):
         result = security.datastore.create_user(email=email, password=encrypt_password(password))
         db.session.commit()
         return result
-
-def add_system_users():
-    "Create a basic set of users and roles"
-    admin_user = User.create(email="admin", password="aaa")
-    guest_user = User.create(email="guest", password="guest")
-
-    # make roles
-    admin_role = security.datastore.find_or_create_role("Admin")
-    user_role = security.datastore.find_or_create_role("User")
-
-    # add roles to users
-    security.datastore.add_role_to_user(admin_user, admin_role)
-    security.datastore.add_role_to_user(guest_user, user_role)
-
-def rm_system_users():
-    "remove default system users"
-    User.delete(email="admin")
-    User.delete(email="guest")

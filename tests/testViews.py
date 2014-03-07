@@ -3,9 +3,6 @@
 from nose.plugins.attrib import attr
 import os, shutil, tempfile, sys
 
-sys.path.insert(0, '.')
-os.environ['SETTINGS'] = "../etc/testing.conf"
-
 from flask_diamond.Utils import TestHelpers
 
 class flask_diamondViewTestCase(TestHelpers.GeneralTestCase):
