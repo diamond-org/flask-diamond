@@ -6,10 +6,10 @@ import os, shutil, tempfile, sys
 sys.path.insert(0, '.')
 os.environ['SETTINGS'] = "../etc/testing.conf"
 
-from FlaskDiamond import Models
-from FlaskDiamond.Utils import TestHelpers
+from flask_diamond import Models
+from flask_diamond.Utils import TestHelpers
 
-class FlaskDiamondWorkflowTestCase(TestHelpers.GeneralTestCase):
+class flask_diamondWorkflowTestCase(TestHelpers.GeneralTestCase):
     @attr("single")
     def test_user(self):
         "user created in workflow"

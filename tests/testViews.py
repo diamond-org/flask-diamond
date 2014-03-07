@@ -6,9 +6,9 @@ import os, shutil, tempfile, sys
 sys.path.insert(0, '.')
 os.environ['SETTINGS'] = "../etc/testing.conf"
 
-from FlaskDiamond.Utils import TestHelpers
+from flask_diamond.Utils import TestHelpers
 
-class FlaskDiamondViewTestCase(TestHelpers.GeneralTestCase):
+class flask_diamondViewTestCase(TestHelpers.GeneralTestCase):
     def test_login(self):
         rv = self.client.get('/login')
         assert 'flask-diamond' in rv.data

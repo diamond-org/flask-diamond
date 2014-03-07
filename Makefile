@@ -3,7 +3,7 @@
 
 SHELL=/bin/bash
 PROJECT_NAME=flask-diamond
-MOD_NAME=FlaskDiamond
+MOD_NAME=flask_diamond
 WWWROOT=/var/www/$(PROJECT_NAME)
 TEST_CMD=SETTINGS=$$PWD/etc/testing.conf nosetests -c tests/nose/test.cfg
 TEST_SINGLE=SETTINGS=$$PWD/etc/testing.conf nosetests -c tests/nose/test-single.cfg
