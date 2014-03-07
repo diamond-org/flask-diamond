@@ -1,6 +1,6 @@
-.. flask-diamond documentation master file
+.. Flask-Diamond documentation master file
 
-Welcome to flask-diamond's documentation!
+Welcome to Flask-Diamond's documentation!
 =====================================
 
 Contents:

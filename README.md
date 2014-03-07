@@ -1,24 +1,24 @@
-# flask-diamond
+# Flask-Diamond
 
-flask-diamond provides a path that can guide your thought and development; flask-diamond is the road that leads to other ideas.
+Flask-Diamond provides a path that can guide your thought and development; Flask-Diamond is the road that leads to other ideas.
 
-flask-diamond is a python Flask application platform that roughly approximates a django.  flask-diamond imports many other Flask libraries, and then glues them all together with sensible defaults.  The end result is a model administration view, accounts and high-level account operations (e.g. password reset), testing, documentation, project management (e.g. deployment), and more.
+Flask-Diamond is a python Flask application platform that roughly approximates a django.  Flask-Diamond imports many other Flask libraries, and then glues them all together with sensible defaults.  The end result is a model administration view, accounts and high-level account operations (e.g. password reset), testing, documentation, project management (e.g. deployment), and more.
 
 ## installation
 
-1. First clone flask-diamond
+1. First clone Flask-Diamond
 
 ```
-git clone https://github.com:iandennismiller/flask-diamond.git
-cd flask-diamond
+git clone https://github.com:iandennismiller/Flask-Diamond.git
+cd Flask-Diamond
 ```
 
 2. Install libraries and dependencies
 
 ```
-sudo mkdir /var/lib/flask-diamond
-sudo chown $USER /var/lib/flask-diamond
-mkvirtualenv flask-diamond
+sudo mkdir /var/lib/Flask-Diamond
+sudo chown $USER /var/lib/Flask-Diamond
+mkvirtualenv Flask-Diamond
 make dep install doc test
 ```
 
@@ -34,7 +34,7 @@ make db
 make server
 ```
 
-## Developing with flask-diamond
+## Developing with Flask-Diamond
 
 fabfile.py: runs on dev machine, coordinates deployment
 Makefile: direct action on the working directory

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# flask-diamond documentation build configuration file, created by
+# Flask-Diamond documentation build configuration file, created by
 # sphinx-quickstart on Wed Nov 20 21:19:09 2013.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -40,7 +40,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'flask-diamond'
+project = u'Flask-Diamond'
 copyright = u'2014, Ian Dennis Miller'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -164,7 +164,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'flask-diamonddoc'
+htmlhelp_basename = 'Flask-Diamonddoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -183,7 +183,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'flask-diamond.tex', u'flask-diamond Documentation',
+  ('index', 'Flask-Diamond.tex', u'Flask-Diamond Documentation',
    u'Ian Dennis Miller', 'manual'),
 ]
 
@@ -213,7 +213,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'flask-diamond', u'flask-diamond Documentation',
+    ('index', 'Flask-Diamond', u'Flask-Diamond Documentation',
      [u'Ian Dennis Miller'], 1)
 ]
 
@@ -227,8 +227,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'flask-diamond', u'flask-diamond Documentation',
-   u'Ian Dennis Miller', 'flask-diamond', 'One line description of project.',
+  ('index', 'Flask-Diamond', u'Flask-Diamond Documentation',
+   u'Ian Dennis Miller', 'Flask-Diamond', 'One line description of project.',
    'Miscellaneous'),
 ]
 

@@ -4,8 +4,8 @@ import os, shutil
 version = '0.1'
 
 setup(version=version,
-      name='flask-diamond',
-      description = "flask-diamond provides a path that can guide your thought and development; flask-diamond is the road that leads to other ideas.",
+      name='Flask-Diamond',
+      description = "Flask-Diamond provides a path that can guide your thought and development; Flask-Diamond is the road that leads to other ideas.",
       packages = [
             "flask_diamond",
             "flask_diamond.Views",
@@ -15,7 +15,7 @@ setup(version=version,
       #      "bin/runserver.py",
       #      "bin/manage.py",
       ],
-      long_description="""flask-diamond is a python Flask application platform that roughly approximates a django.  flask-diamond imports many other Flask libraries, and then glues them all together with sensible defaults.  The end result is a model administration view, accounts and high-level account operations (e.g. password reset), testing, documentation, project management (e.g. deployment), and more.""",
+      long_description="""Flask-Diamond is a python Flask application platform that roughly approximates a django.  Flask-Diamond imports many other Flask libraries, and then glues them all together with sensible defaults.  The end result is a model administration view, accounts and high-level account operations (e.g. password reset), testing, documentation, project management (e.g. deployment), and more.""",
       classifiers=[], # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
       include_package_data = True,
       keywords='',

@@ -2,7 +2,7 @@
 # http://www.iandennismiller.com
 
 SHELL=/bin/bash
-PROJECT_NAME=flask-diamond
+PROJECT_NAME=Flask-Diamond
 MOD_NAME=flask_diamond
 WWWROOT=/var/www/$(PROJECT_NAME)
 TEST_CMD=SETTINGS=$$PWD/etc/testing.conf nosetests -c tests/nose/test.cfg
