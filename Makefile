@@ -1,4 +1,4 @@
-# (c) 2012 Ian Dennis Miller
+# Ian Dennis Miller
 # http://www.iandennismiller.com
 
 SHELL=/bin/bash

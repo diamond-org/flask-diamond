@@ -40,7 +40,7 @@ setup(version=version,
             ### Flask Framework
 
             "Werkzeug==0.9.4",
-            "Jinja2==2.6",
+            "Jinja2==2.7.2",
             "Flask==0.10.1",
             "Flask-Admin==1.0.7",
             "Flask-WTF==0.9.4",
