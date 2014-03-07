@@ -36,11 +36,6 @@ db:
 	SETTINGS=$$PWD/etc/dev.conf bin/manage.py init_db
 	SETTINGS=$$PWD/etc/dev.conf bin/manage.py populate_db
 
-dep:
-	mkdir -p lib
-	cd lib && git clone https://github.com/mrjoes/flask-admin.git
-	cd lib/flask-admin && python setup.py install
-
 doc:
 	rm -rf docs/source/auto
 	mkdir -p docs/source/auto/$(MOD_NAME)

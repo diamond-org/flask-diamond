@@ -22,6 +22,9 @@ setup(version=version,
       author='Ian Dennis Miller',
       author_email='ian@iandennismiller.com',
       url='http://www.iandennismiller.com',
+      dependency_links = [
+            'https://github.com/mrjoes/flask-admin/tarball/master#egg=flask_admin-1.0.7'
+            ],
       install_requires = [
             ### app
 

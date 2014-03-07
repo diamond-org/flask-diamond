@@ -19,7 +19,7 @@ cd Flask-Diamond
 sudo mkdir /var/lib/Flask-Diamond
 sudo chown $USER /var/lib/Flask-Diamond
 mkvirtualenv Flask-Diamond
-make dep install doc test
+make install doc test
 ```
 
 3. Set up the application database
