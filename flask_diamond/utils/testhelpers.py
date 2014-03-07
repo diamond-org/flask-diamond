@@ -13,8 +13,8 @@ class GeneralTestCase(TestCase):
         return self.app
 
     def setUp(self):
-        from flask_diamond import Models, security
-        from flask_diamond.Utils import add_system_users
+        from flask_diamond import security, models as Models
+        from flask_diamond.utils import add_system_users
         self.db.drop_all()
         self.db.create_all()
         add_system_users(security)

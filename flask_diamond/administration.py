@@ -5,7 +5,7 @@ import flask.ext.security as security
 from flask.ext.admin import Admin, BaseView, expose, AdminIndexView
 from flask.ext.admin.contrib.sqla import ModelView
 from flask.ext.admin.base import MenuLink
-from flask_diamond import Models, db
+from flask_diamond import db, models as Models
 
 class AdminView(ModelView):
     def is_accessible(self):

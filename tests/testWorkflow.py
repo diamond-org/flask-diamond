@@ -3,13 +3,10 @@
 from nose.plugins.attrib import attr
 import os, shutil, tempfile, sys
 
-sys.path.insert(0, '.')
-os.environ['SETTINGS'] = "../etc/testing.conf"
+from flask_diamond import models as Models
+from flask_diamond.utils.testhelpers import GeneralTestCase
 
-from flask_diamond import Models
-from flask_diamond.Utils import TestHelpers
-
-class flask_diamond_WorkflowTestCase(TestHelpers.GeneralTestCase):
+class flask_diamond_WorkflowTestCase(GeneralTestCase):
     @attr("single")
     def test_user(self):
         "user created in workflow"

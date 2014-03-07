@@ -8,8 +8,8 @@ setup(version=version,
       description = "Flask-Diamond provides a path that can guide your thought and development; Flask-Diamond is the road that leads to other ideas.",
       packages = [
             "flask_diamond",
-            "flask_diamond.Views",
-            "flask_diamond.Utils",
+            "flask_diamond.views",
+            "flask_diamond.utils",
             ],
       scripts = [
       #      "bin/runserver.py",

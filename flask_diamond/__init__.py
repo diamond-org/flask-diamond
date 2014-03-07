@@ -82,7 +82,7 @@ class Diamond(object):
         pass
 
     def administration(self, app, db):
-        from . import Administration, Models
+        from . import administration as Administration, models as Models
         #self.admin = Administration.basic_admin(app)
         admin = Administration.Admin(
             app,
@@ -96,7 +96,7 @@ class Diamond(object):
     def security(self, app, db, security_obj):
         "Setup Flask-Security"
         from flask.ext.security import SQLAlchemyUserDatastore
-        from . import Models
+        from . import models as Models
 
         app.config.update(
             SECURITY_POST_LOGIN_VIEW = "/admin",
@@ -128,7 +128,7 @@ class Diamond(object):
 
     def wtforms(self, app):
         "WTForms helpers"
-        from .Utils.WtfHelpers import add_helpers
+        from .utils.wtfhelpers import add_helpers
         add_helpers(app)
 
     def debugtoolbar(self, app, toolbar):

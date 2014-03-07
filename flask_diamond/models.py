@@ -5,8 +5,8 @@ from flask.ext.security import UserMixin, RoleMixin, login_required
 from flask.ext.security.utils import encrypt_password
 from sqlalchemy_utils import ChoiceType
 from . import db, security
-from .Utils.Mixins import CRUDMixin
-from .Utils import id_generator, flatten
+from .utils.mixins import CRUDMixin
+from .utils import id_generator, flatten
 
 roles_users = db.Table('roles_users',
     db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
