@@ -35,7 +35,7 @@ class Diamond(object):
 
     def init_app(self, app=None):
         if app is None:
-            self.app = flask.Flask(__name__, static_folder='Views/static', template_folder='Views/templates')
+            self.app = flask.Flask(__name__, static_folder='views/static', template_folder='views/templates')
         # configure the application
         self.config(self.app)
         self.logger(self.app)

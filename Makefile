@@ -15,7 +15,7 @@ clean:
 
 install:
 	python setup.py install
-	rsync -a $(MOD_NAME)/Views/static $(WWWROOT)
+	rsync -a $(MOD_NAME)/views/static $(WWWROOT)
 
 server:
 	SETTINGS=$$PWD/etc/dev.conf bin/manage.py runserver
