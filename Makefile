@@ -8,14 +8,14 @@ WWWROOT=/var/www/$(PROJECT_NAME)
 TEST_CMD=SETTINGS=$$PWD/etc/testing.conf nosetests -c tests/nose/test.cfg
 TEST_SINGLE=SETTINGS=$$PWD/etc/testing.conf nosetests -c tests/nose/test-single.cfg
 
+install:
+	python setup.py install
+	rsync -a $(MOD_NAME)/views/static $(WWWROOT)
+
 clean:
 	rm -rf build dist *.egg-info
 	rm -rf docs/source/auto docs/build
 	-rm `find . -name "*.pyc"`
-
-install:
-	python setup.py install
-	rsync -a $(MOD_NAME)/views/static $(WWWROOT)
 
 server:
 	SETTINGS=$$PWD/etc/dev.conf bin/manage.py runserver
