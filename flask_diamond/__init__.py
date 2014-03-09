@@ -101,6 +101,8 @@ class Diamond(object):
         app.config.update(
             SECURITY_POST_LOGIN_VIEW = "/admin",
             SECURITY_PASSWORD_HASH = 'sha256_crypt',
+            SECURITY_URL_PREFIX = '/user',
+            SECURITY_CHANGEABLE = True,
         )
 
         user_datastore = SQLAlchemyUserDatastore(db, Models.User, Models.Role)
@@ -109,6 +111,7 @@ class Diamond(object):
 
     def database(self, app, db):
         "set up the database"
+        db.app = app
         db.init_app(app)
 
     def email(self, app):
