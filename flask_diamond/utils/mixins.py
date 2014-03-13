@@ -30,9 +30,9 @@ class CRUDMixin(object):
         return None
 
     @classmethod
-    def create(cls, **kwargs):
+    def create(cls, _commit=True, **kwargs):
         instance = cls(**kwargs)
-        result = instance.save()
+        result = instance.save(_commit)
         logging.getLogger("flask-diamond").debug("create %r: %r" % (instance, result))
         return result
 

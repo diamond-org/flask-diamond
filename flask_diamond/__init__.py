@@ -83,14 +83,14 @@ class Diamond(object):
 
     def administration(self, app, db):
         from . import administration as Administration, models as Models
-        #self.admin = Administration.basic_admin(app)
         admin = Administration.Admin(
             app,
             name=app.config["PROJECT_NAME"],
             base_template='login_base.html',
             index_view=Administration.ForceLoginView(name="Home")
             )
-        admin.add_view(Administration.UserView(Models.User, db.session, category="Models"))
+        admin.add_view(Administration.UserView(Models.User, db.session, category="Admin"))
+        admin.add_view(Administration.AdminModelView(Models.Role, db.session, category="Admin"))
         return admin
 
     def security(self, app, db, security_obj):
