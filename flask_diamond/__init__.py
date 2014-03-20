@@ -51,7 +51,8 @@ class Diamond(object):
         self.blueprints(self.app)
         self.debugtoolbar(self.app, self.toolbar)
         self.signals(self.app, self.security)
-        self.handlers(self.app)
+        self.error_handlers(self.app)
+        self.request_handlers(self.app)
 
         if hasattr(self.app, 'teardown_appcontext'):
             self.app.teardown_appcontext(self.teardown)
@@ -98,13 +99,6 @@ class Diamond(object):
         from flask.ext.security import SQLAlchemyUserDatastore
         from . import models as Models
 
-        app.config.update(
-            SECURITY_POST_LOGIN_VIEW = "/admin",
-            SECURITY_PASSWORD_HASH = 'sha256_crypt',
-            SECURITY_URL_PREFIX = '/user',
-            SECURITY_CHANGEABLE = True,
-        )
-
         user_datastore = SQLAlchemyUserDatastore(db, Models.User, Models.Role)
         security_obj.init_app(app, user_datastore)
         security_obj.datastore = user_datastore
@@ -117,15 +111,6 @@ class Diamond(object):
     def email(self, app):
         "set up flask-mail"
         from flask_mail import Mail
-
-        app.config.update(
-            MAIL_SERVER = 'localhost',
-            MAIL_PORT = 25,
-            MAIL_USE_TLS = False,
-            MAIL_USERNAME = None,
-            MAIL_PASSWORD = None,
-        )
-
         mail = Mail(app)
         self.mail = mail
 
@@ -139,8 +124,7 @@ class Diamond(object):
         if 'DEBUG_TOOLBAR' in app.config and app.config['DEBUG_TOOLBAR']:
             toolbar.init_app(app)
 
-    def handlers(self, app):
-        import flask
+    def error_handlers(self, app):
         import flask.ext.security as security
 
         @app.errorhandler(403)
@@ -150,6 +134,7 @@ class Diamond(object):
             else:
                 return flask.redirect(security.url_for_security("login"))
 
+    def request_handlers(self, app):
         @app.route('/')
         def index():
             "set up the default handler for requests to /"

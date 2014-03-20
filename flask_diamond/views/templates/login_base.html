@@ -7,7 +7,9 @@
         <i class="icon-user"></i> {{ current_user.login }} <span class="caret"></span>
     </a>
     <ul class="dropdown-menu">
-        {#<li><a href="{{ url_for_security('change_password') }}"><i class="icon-lock"></i> Change password</a></li>#}
+        {% if security.changeable %}
+        <li><a href="{{ url_for_security('change_password') }}"><i class="icon-lock"></i> Change password</a></li>
+        {% endif %}
         <li><a href="{{ url_for_security('logout') }}"><i class="icon-off"></i> Log out</a></li>
     </ul>
 </div>

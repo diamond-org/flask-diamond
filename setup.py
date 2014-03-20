@@ -1,7 +1,7 @@
 from setuptools import setup
 import os, shutil
 
-version = '0.1'
+version = '0.1.1'
 
 setup(version=version,
       name='Flask-Diamond',
@@ -33,7 +33,7 @@ setup(version=version,
             "Sphinx==1.1.3",
             "Fabric==1.8.0",
             "nose==1.2.1",
-            "watchdog==0.6.0",
+            "watchdog==0.7.1",
             "alembic==0.6.0",
             "Flask-Migrate==0.1.4",
             "distribute>=0.6.35",
@@ -51,7 +51,6 @@ setup(version=version,
             "Flask-Security==1.7.1",
             "Flask-Script==0.6.2",
             "Flask-Mail==0.9.0",
-            "Flask-Misaka==0.2.0",
             "Flask-Testing==0.4",
             "Flask-DebugToolbar==0.9.0",
 
