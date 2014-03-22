@@ -46,3 +46,17 @@ def rm_system_users(security):
     security.datastore.delete_user(email="admin")
     security.datastore.delete_user(email="guest")
     db.session.commit()
+
+def _u(obj, default=None):
+    "ensure an object is Unicode"
+    if type(obj) == str:
+        try:
+            obj = unicode(obj)
+        except UnicodeDecodeError:
+            obj = unicode(obj.decode("latin1"))
+        return obj
+    elif type(obj) == unicode:
+        return obj
+    else:
+        return default
+

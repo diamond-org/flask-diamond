@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
 
-import logging
+import logging, os, json
 from .. import db
 
 # adapted from https://github.com/semirook/flask-kit/blob/master/base/models.py
 class CRUDMixin(object):
     __table_args__ = {'extend_existing': True}
-
-    id = db.Column(db.Integer, primary_key=True)
 
     @classmethod
     def find(cls, **kwargs):
@@ -51,3 +49,35 @@ class CRUDMixin(object):
         db.session.delete(self)
         return commit and db.session.commit()
 
+class ImportExportMixin(object):
+    @classmethod
+    def save_all(cls, dest_dir):
+        "save all objs as JSON files"
+        for obj in cls.query.all():
+            filename = os.path.join(dest_dir, "%s-%s.json" % (cls.__name__, obj.id))
+            obj.save_file(filename)
+
+    def save_file(self, filename):
+        "save an object as a file"
+        with open(filename, "w") as f:
+            json.dump(self.as_hash(), f, indent=4, sort_keys=True)
+        logging.info("exported %r" % self)
+
+    @classmethod
+    def load_all(cls, src_dir):
+        "import all files in a target path as model objects"
+        import operator
+        unsorted_filenames = glob.glob(os.path.join(src_dir, "*.json"))
+        sortable_pairs = [[int(os.path.splitext(os.path.basename(f))[0]), f] for f in unsorted_filenames]
+        sorted_filenames = sorted(sortable_pairs, key=operator.itemgetter(0))
+        for seq, filename in sorted_filenames:
+            cls.load_file(filename)
+
+    @classmethod
+    def load_file(cls, filename):
+        "load a JSON file as model object"
+        with open(filename, "r") as f:
+            obj_hash = json.load(f)
+            instance = cls.from_hash(obj_hash)
+            logging.info("imported %r" % instance)
+            return instance
