@@ -39,6 +39,7 @@ setup(version=version,
             "distribute>=0.6.35",
             "ipython>=1.2.1",
             "pylint==0.26.0",
+            "jsmin==2.0.9",
 
             ### Flask Framework
 
@@ -53,6 +54,7 @@ setup(version=version,
             "Flask-Mail==0.9.0",
             "Flask-Testing==0.4",
             "Flask-DebugToolbar==0.9.0",
+            "Flask-Assets==0.9",
 
             ### databases
 

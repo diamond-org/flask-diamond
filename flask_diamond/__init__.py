@@ -21,6 +21,9 @@ toolbar = DebugToolbarExtension()
 from flask.ext.security import Security
 security = Security()
 
+from flask.ext.assets import Environment
+assets = Environment()
+
 class Diamond(object):
     def __init__(self, _db, _security_obj, _toolbar, app=None):
         db = _db
@@ -34,8 +37,10 @@ class Diamond(object):
             self.init_app(app)
 
     def init_app(self, app=None):
-        if app is None:
+        if app is None and self.app is None:
             self.app = flask.Flask(__name__, static_folder='views/static', template_folder='views/templates')
+        elif app:
+            self.app = app
         # configure the application
         self.config(self.app)
         self.logger(self.app)
@@ -49,6 +54,7 @@ class Diamond(object):
         self.wtforms(self.app)
         self.email(self.app)
         self.blueprints(self.app)
+        self.webassets(self.app)
         self.debugtoolbar(self.app, self.toolbar)
         self.signals(self.app, self.security)
         self.error_handlers(self.app)
@@ -81,6 +87,10 @@ class Diamond(object):
     def blueprints(self, app):
         "Setup blueprints"
         pass
+
+    def webassets(self, app):
+        "setup web assets"
+        assets.init_app(app)
 
     def administration(self, app, db):
         from . import administration as Administration, models as Models
