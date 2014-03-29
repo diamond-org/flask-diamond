@@ -1,7 +1,7 @@
 from setuptools import setup
 import os, shutil
 
-version = '0.1.2'
+version = '0.1.3'
 
 setup(version=version,
       name='Flask-Diamond',
@@ -36,10 +36,10 @@ setup(version=version,
             "watchdog==0.7.1",
             "alembic==0.6.0",
             "Flask-Migrate==0.1.4",
-            "distribute>=0.6.35",
             "ipython>=1.2.1",
-            "pylint==0.26.0",
+            "pylint>=0.26.0",
             "jsmin==2.0.9",
+            "cssutils==1.0",
 
             ### Flask Framework
 
