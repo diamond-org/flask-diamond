@@ -41,8 +41,4 @@ class ForceLoginView(AdminIndexView):
 
     @expose('/')
     def index(self):
-        # if user has User role, redirect them to the tree builder
-        if security.current_user.has_role("User"):
-            return flask.redirect("/")
-
         return self.render("/admin/index.html")

@@ -26,8 +26,9 @@ manager.add_command('db', MigrateCommand)
 @manager.option('-p', '--password', help='password')
 def adduser(email, password):
     "add a user to the database"
-    from flask_diamond import Models
-    Models.User.create(email=email, password=password)
+    from flask.ext.security.utils import encrypt_password
+    u = security.datastore.create_user(email=email, password=encrypt_password(password))
+    db.session.commit()
 
 @manager.command
 def init_db():
