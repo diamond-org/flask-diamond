@@ -24,6 +24,9 @@ security = Security()
 from flask.ext.assets import Environment
 assets = Environment()
 
+from flask.ext.admin import Admin
+admin = Admin()
+
 class Diamond(object):
     def __init__(self, _db, _security_obj, _toolbar, app=None):
         db = _db
@@ -93,15 +96,15 @@ class Diamond(object):
         assets.init_app(app)
 
     def administration(self, app, db):
-        from . import administration as Administration, models as Models
-        admin = Administration.Admin(
-            app,
+        from . import administration as A, models as Models
+        admin = Admin(
             name=app.config["PROJECT_NAME"],
             base_template='login_base.html',
-            index_view=Administration.ForceLoginView(name="Home")
+            index_view=A.ForceLoginView(name="Home")
             )
-        admin.add_view(Administration.UserView(Models.User, db.session, category="Admin"))
-        admin.add_view(Administration.AdminModelView(Models.Role, db.session, category="Admin"))
+        admin.add_view(A.UserView(Models.User, db.session, category="Admin"))
+        admin.add_view(A.AdminModelView(Models.Role, db.session, category="Admin"))
+        admin.init_app(app)
         return admin
 
     def security(self, app, db, security_obj):
