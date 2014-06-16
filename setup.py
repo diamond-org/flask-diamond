@@ -1,7 +1,7 @@
 from setuptools import setup
 import os, shutil
 
-version = '0.1.3'
+version = '0.1.5'
 
 setup(version=version,
       name='Flask-Diamond',
@@ -23,7 +23,7 @@ setup(version=version,
       author_email='ian@iandennismiller.com',
       url='http://www.iandennismiller.com',
       dependency_links = [
-            'https://github.com/mrjoes/flask-admin/tarball/master#egg=flask_admin-1.0.7'
+      #      'https://github.com/mrjoes/flask-admin/tarball/master#egg=flask_admin-1.0.7'
             ],
       install_requires = [
             ### app
@@ -46,7 +46,7 @@ setup(version=version,
             "Werkzeug==0.9.4",
             "Jinja2==2.7.2",
             "Flask==0.10.1",
-            "Flask-Admin==1.0.7",
+            "Flask-Admin>=1.0.8",
             "Flask-WTF==0.9.4",
             "Flask-Login==0.2.9",
             "Flask-Security==1.7.1",
