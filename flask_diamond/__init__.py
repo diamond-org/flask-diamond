@@ -27,6 +27,9 @@ assets = Environment()
 from flask.ext.admin import Admin
 admin = Admin()
 
+from flask.ext.mail import Mail
+mail = Mail()
+
 class Diamond(object):
     def __init__(self, _db, _security_obj, _toolbar, app=None):
         db = _db
@@ -123,9 +126,7 @@ class Diamond(object):
 
     def email(self, app):
         "set up flask-mail"
-        from flask_mail import Mail
-        mail = Mail(app)
-        self.mail = mail
+        mail.init_app(app)
 
     def wtforms(self, app):
         "WTForms helpers"
