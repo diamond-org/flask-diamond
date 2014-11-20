@@ -1,7 +1,7 @@
 from setuptools import setup
 import os, shutil
 
-version = '0.1.7'
+version = '0.1.8'
 
 setup(version=version,
       name='Flask-Diamond',

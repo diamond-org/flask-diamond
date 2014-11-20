@@ -98,12 +98,12 @@ class Diamond(object):
         "setup web assets"
         assets.init_app(app)
 
-    def administration(self, app, db):
+    def administration(self, app, db, index_view=None):
         from . import administration as A, models as Models
         admin = Admin(
             name=app.config["PROJECT_NAME"],
             base_template='login_base.html',
-            index_view=A.ForceLoginView(name="Home")
+            index_view=index_view or A.ForceLoginView(name="Home")
             )
         admin.add_view(A.UserView(Models.User, db.session, category="Admin"))
         admin.add_view(A.AdminModelView(Models.Role, db.session, category="Admin"))
