@@ -1,6 +1,6 @@
 from setuptools import setup
 
-version = '0.1.9'
+version = '0.1.10'
 
 setup(version=version,
     name='Flask-Diamond',
@@ -47,6 +47,10 @@ setup(version=version,
         "jsmin==2.0.9",
         "cssutils==1.0",
         "wheel==0.24.0",
+        "lxml==3.4.1",
+        "cssselect==0.9.1",
+        "requests==2.5.1",
+        "argh==0.25.0",
 
         ### Flask Framework
 
