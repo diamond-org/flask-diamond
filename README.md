@@ -4,13 +4,26 @@ Flask-Diamond provides a path that can guide your thought and development; Flask
 
 Flask-Diamond is a python Flask application platform that roughly approximates a django.  Flask-Diamond imports many other Flask libraries, and then glues them all together with sensible defaults.  The end result is a model administration view, accounts and high-level account operations (e.g. password reset), testing, documentation, project management (e.g. deployment), and more.
 
+## Quick Start:
+
+To create a minimal runnable program using [mr.bob](https://github.com/iElectric/mr.bob):
+
+```
+git clone https://github.com/iandennismiller/diamond-scaffold /tmp
+git clone https://github.com/iandennismiller/diamond-app /tmp
+mrbob -w /tmp/diamond-scaffold/skel
+mrbob -w /tmp/diamond-app/skel
+```
+
+Now you have a starting point for developing your own app.
+
 ## installation
 
 1. First clone Flask-Diamond
 
 ```
-git clone https://github.com:iandennismiller/Flask-Diamond.git
-cd Flask-Diamond
+git clone https://github.com:iandennismiller/flask-diamond.git
+cd flask-diamond
 ```
 
 2. Install libraries and dependencies
