@@ -9,8 +9,8 @@ Flask-Diamond is a python Flask application platform that roughly approximates a
 To create a minimal runnable program using [mr.bob](https://github.com/iElectric/mr.bob):
 
 ```
-git clone https://github.com/iandennismiller/diamond-scaffold /tmp
-git clone https://github.com/iandennismiller/diamond-app /tmp
+git clone https://github.com/iandennismiller/diamond-scaffold /tmp/diamond-scaffold
+git clone https://github.com/iandennismiller/diamond-app /tmp/diamond-app
 mrbob -w /tmp/diamond-scaffold/skel
 mrbob -w /tmp/diamond-app/skel
 ```
