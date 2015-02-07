@@ -30,6 +30,7 @@ admin = Admin()
 from flask.ext.mail import Mail
 mail = Mail()
 
+
 class Diamond(object):
     def __init__(self, _db, _security_obj, _toolbar, app=None):
         db = _db
@@ -44,7 +45,11 @@ class Diamond(object):
 
     def init_app(self, app=None):
         if app is None and self.app is None:
-            self.app = flask.Flask(__name__, static_folder='views/static', template_folder='views/templates')
+            self.app = flask.Flask(
+                __name__,
+                static_folder='views/static',
+                template_folder='views/templates'
+            )
         elif app:
             self.app = app
         # configure the application
@@ -104,7 +109,7 @@ class Diamond(object):
             name=app.config["PROJECT_NAME"],
             base_template='login_base.html',
             index_view=index_view or A.ForceLoginView(name="Home")
-            )
+        )
         admin.add_view(A.UserView(Models.User, db.session, category="Admin"))
         admin.add_view(A.AdminModelView(Models.Role, db.session, category="Admin"))
         admin.init_app(app)
@@ -155,7 +160,7 @@ class Diamond(object):
             return flask.redirect(flask.url_for("admin.index"))
 
     def signals(self, app, security_obj):
-        import flask, logging
+        import logging
         from flask.ext.security.signals import user_registered
 
         @user_registered.connect_via(app)
@@ -172,6 +177,7 @@ class Diamond(object):
             if not hasattr(ctx, 'app'):
                 pass
             return ctx.app
+
 
 def create_app():
     diamond = Diamond(db, security, toolbar)
