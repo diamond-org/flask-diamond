@@ -64,88 +64,305 @@
 <dt id="flask_diamond.__init__.Diamond">
 <em class="property">class </em><tt class="descclassname">flask_diamond.__init__.</tt><tt class="descname">Diamond</tt><big>(</big><em>app=None</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/__init__.html#Diamond"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.__init__.Diamond" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>A Diamond application.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>app</strong> (<em>Flask</em>) &#8211; a Flask app that you created on your own</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="flask_diamond.__init__.Diamond.administration">
 <tt class="descname">administration</tt><big>(</big><em>index_view=None</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/__init__.html#Diamond.administration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.__init__.Diamond.administration" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Initialize the Administrative GUI.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>index_view</strong> (<em>AdminIndexView</em>) &#8211; the View that will act as the index page of the admin GUI.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p>The administration GUI is substantially derived from <a class="reference external" href="http://flask-admin.readthedocs.org/en/latest/">Flask-Admin</a>. When this function
+is called, it will instantiate blueprints so the application serves
+the admin GUI via the URL <a class="reference external" href="http://localhost/admin">http://localhost/admin</a>.</p>
+<p>Typically, you will want to call this function even if you override
+it.  The following example illustrates using super() to invoke this
+administration() function from within your own application.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">admin</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">MyApp</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">administration</span><span class="p">(</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">index_view</span><span class="o">=</span><span class="n">MyApp</span><span class="o">.</span><span class="n">modelviews</span><span class="o">.</span><span class="n">RedirectView</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s">&quot;Home&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="flask_diamond.__init__.Diamond.blueprints">
 <tt class="descname">blueprints</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/__init__.html#Diamond.blueprints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.__init__.Diamond.blueprints" title="Permalink to this definition">¶</a></dt>
-<dd><p>Setup blueprints</p>
+<dd><p>Initialize blueprints.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p>By default, this function does nothing.  Your application needs to
+overload this function in order to implement your View functionality.
+More information about blueprints can be found in the
+<a class="reference external" href="http://flask.pocoo.org/docs/0.10/blueprints/">Flask documentation</a>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="flask_diamond.__init__.Diamond.config">
 <tt class="descname">config</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/__init__.html#Diamond.config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.__init__.Diamond.config" title="Permalink to this definition">¶</a></dt>
-<dd><p>Establish configuration</p>
+<dd><p>Load the application configuration from the <tt class="docutils literal"><span class="pre">SETTINGS</span></tt> environment variable.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p><tt class="docutils literal"><span class="pre">SETTINGS</span></tt> must contain a filename that points to the configuration file.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="flask_diamond.__init__.Diamond.database">
 <tt class="descname">database</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/__init__.html#Diamond.database"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.__init__.Diamond.database" title="Permalink to this definition">¶</a></dt>
-<dd><p>set up the database</p>
+<dd><p>Initialize database</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p>Flask-Diamond assumes you are modelling your solution using an Entity-
+Relationship framework, and that the application will use a relational
+database (e.g. MySQL, Postgres, or SQlite3) for model persistence.
+Thus, <a class="reference external" href="http://docs.sqlalchemy.org/en/rel_0_9/contents.html">SQLAlchemy</a> and <a class="reference external" href="https://pythonhosted.org/Flask-SQLAlchemy/index.html">Flask-
+SQLalchemy</a>
+are used for database operations.</p>
+<p>Typically, this just works as long as <tt class="docutils literal"><span class="pre">SQLALCHEMY_DATABASE_URI</span></tt> is
+set correctly in the application configuration.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="flask_diamond.__init__.Diamond.debugtoolbar">
 <tt class="descname">debugtoolbar</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/__init__.html#Diamond.debugtoolbar"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.__init__.Diamond.debugtoolbar" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enable the DebugToolbar</p>
+<dd><p>Initialize the DebugToolbar</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p>The <a class="reference external" href="http://flask-debugtoolbar.readthedocs.org/en/latest/">DebugToolbar</a> is a handy utility for
+debugging your application during development.</p>
+<p>This function obeys the <tt class="docutils literal"><span class="pre">DEBUG_TOOLBAR</span></tt> configuration setting.  Only
+if this value is explicitly set to True will the Debug Toolbarr run.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="flask_diamond.__init__.Diamond.email">
 <tt class="descname">email</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/__init__.html#Diamond.email"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.__init__.Diamond.email" title="Permalink to this definition">¶</a></dt>
-<dd><p>set up flask-mail</p>
+<dd><p>Initialize email facilities.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference external" href="http://pythonhosted.org/Flask-Mail/">Flask-Mail</a> is a
+useful tool for creating and sending emails from within a Flask application.
+There are a number of configuration settings beginning with <tt class="docutils literal"><span class="pre">MAIL_</span></tt>
+that permit control over the SMTP credentials used to send email.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="flask_diamond.__init__.Diamond.error_handlers">
 <tt class="descname">error_handlers</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/__init__.html#Diamond.error_handlers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.__init__.Diamond.error_handlers" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Initialize handlers for HTTP error events</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p>Flask is able to respond to HTTP error codes with custom behaviours.
+By default, it will redirect error 403 (forbidden) to the login page.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="flask_diamond.__init__.Diamond.ext_security">
 <tt class="descname">ext_security</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/__init__.html#Diamond.ext_security"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.__init__.Diamond.ext_security" title="Permalink to this definition">¶</a></dt>
-<dd><p>Setup Flask-Security</p>
+<dd><p>Initialize Security for application.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kwargs</strong> (<em>dict</em>) &#8211; parameters that will be passed through to Flask-Security</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p>A number of common User account operations are provided by <a class="reference external" href="http://pythonhosted.org/Flask-Security/">Flask-
+Security</a>. This function is
+responsible for associating User models in the database with the
+Security object.</p>
+<p>In case you need to override a Flask-Security form (as is the case
+with implementing CAPTCHA) then you must use super() from within your
+application and provide any arguments destined for Flask-Security.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">ext_security</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="nb">super</span><span class="p">(</span><span class="n">MyApp</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">ext_security</span><span class="p">(</span><span class="n">confirm_register_form</span><span class="o">=</span><span class="n">CaptchaRegisterForm</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
 <dt id="flask_diamond.__init__.Diamond.init_app">
 <tt class="descname">init_app</tt><big>(</big><em>app=None</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/__init__.html#Diamond.init_app"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.__init__.Diamond.init_app" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Initialize a Diamond application.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>app</strong> (<em>Flask</em>) &#8211; a Flask app that you created on your own</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Flask &#8211; the initialized application object</td>
+</tr>
+</tbody>
+</table>
+<p>This function is the backbone of every Diamond application.  It will
+initialize every component of the application.  To control the
+behaviour of the initialization process, override these functions
+within your own application.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="flask_diamond.__init__.Diamond.logs">
 <tt class="descname">logs</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/__init__.html#Diamond.logs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.__init__.Diamond.logs" title="Permalink to this definition">¶</a></dt>
-<dd><p>init logging</p>
+<dd><p>Initialize a log file to collect messages.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p>This file may be written to using</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">flask</span><span class="o">.</span><span class="n">current_app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&quot;message&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
 <dt id="flask_diamond.__init__.Diamond.request_handlers">
 <tt class="descname">request_handlers</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/__init__.html#Diamond.request_handlers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.__init__.Diamond.request_handlers" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>request handlers</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p>Flask handles requests for URLs by scanning the URL path.  Typically,
+any serious functionality will be collected into Views.  However, this
+function is a chance to define a few simple utility URLs.</p>
+<p>If in your application you want to disable the default handlers in
+Flask-Diamond, you can override them like this.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">request_handlers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">pass</span>
+</pre></div>
+</div>
+</dd></dl>
 
 <dl class="method">
 <dt id="flask_diamond.__init__.Diamond.signals">
 <tt class="descname">signals</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/__init__.html#Diamond.signals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.__init__.Diamond.signals" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Initialize Flask signal handlers</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p>Flask provides a number of signals corresponding to things that happen
+during the operation of the application, which can also be thought of
+as events.  It is possible to create signal handlers that will respond
+to these events with some behaviour.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="flask_diamond.__init__.Diamond.teardown">
 <tt class="descname">teardown</tt><big>(</big><em>exception</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/__init__.html#Diamond.teardown"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.__init__.Diamond.teardown" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Remove any persistent connections during application context teardown.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="flask_diamond.__init__.Diamond.webassets">
 <tt class="descname">webassets</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/__init__.html#Diamond.webassets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.__init__.Diamond.webassets" title="Permalink to this definition">¶</a></dt>
-<dd><p>setup web assets</p>
+<dd><p>Initialize web assets.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference external" href="https://github.com/miracle2k/webassets">webassets</a> make it simpler
+to process and bundle CSS and Javascript assets.  This can be baked
+into a Flask application using
+<a class="reference external" href="http://flask-assets.readthedocs.org/en/latest/">Flask-Assets</a></p>
 </dd></dl>
 
 <dl class="method">
 <dt id="flask_diamond.__init__.Diamond.wtforms">
 <tt class="descname">wtforms</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/__init__.html#Diamond.wtforms"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.__init__.Diamond.wtforms" title="Permalink to this definition">¶</a></dt>
 <dd><p>WTForms helpers</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference external" href="http://wtforms.simplecodes.com/docs/">WTForms</a> is a great library
+for using forms and <a class="reference external" href="https://flask-wtf.readthedocs.org/en/latest/">Flask-WTF</a> provides good integration with it.
+WTForms helpers enable you to add custom filters and other custom
+behaviours.</p>
 </dd></dl>
 
 </dd></dl>
@@ -162,10 +379,12 @@
 <dt id="flask_diamond.administration.AdminMixin">
 <em class="property">class </em><tt class="descclassname">flask_diamond.administration.</tt><tt class="descname">AdminMixin</tt><a class="reference internal" href="../../_modules/flask_diamond/administration.html#AdminMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.administration.AdminMixin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Require admin Role to be accessible</p>
 <dl class="method">
 <dt id="flask_diamond.administration.AdminMixin.is_accessible">
 <tt class="descname">is_accessible</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/administration.html#AdminMixin.is_accessible"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.administration.AdminMixin.is_accessible" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>the View is accessible if the User has the Admin Role</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -173,6 +392,7 @@
 <dt id="flask_diamond.administration.AdminModelView">
 <em class="property">class </em><tt class="descclassname">flask_diamond.administration.</tt><tt class="descname">AdminModelView</tt><big>(</big><em>model</em>, <em>session</em>, <em>name=None</em>, <em>category=None</em>, <em>endpoint=None</em>, <em>url=None</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/administration.html#AdminModelView"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.administration.AdminModelView" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#flask_diamond.administration.AdminMixin" title="flask_diamond.administration.AdminMixin"><tt class="xref py py-class docutils literal"><span class="pre">flask_diamond.administration.AdminMixin</span></tt></a>, <tt class="xref py py-class docutils literal"><span class="pre">flask_admin.contrib.sqla.view.ModelView</span></tt></p>
+<p>A ModelView that requires the Admin Role</p>
 <dl class="method">
 <dt id="flask_diamond.administration.AdminModelView.action_view">
 <tt class="descname">action_view</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#flask_diamond.administration.AdminModelView.action_view" title="Permalink to this definition">¶</a></dt>
@@ -214,16 +434,19 @@
 <dt id="flask_diamond.administration.AdminView">
 <em class="property">class </em><tt class="descclassname">flask_diamond.administration.</tt><tt class="descname">AdminView</tt><big>(</big><em>name=None</em>, <em>category=None</em>, <em>endpoint=None</em>, <em>url=None</em>, <em>static_folder=None</em>, <em>static_url_path=None</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/administration.html#AdminView"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.administration.AdminView" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#flask_diamond.administration.AdminMixin" title="flask_diamond.administration.AdminMixin"><tt class="xref py py-class docutils literal"><span class="pre">flask_diamond.administration.AdminMixin</span></tt></a>, <tt class="xref py py-class docutils literal"><span class="pre">flask_admin.base.BaseView</span></tt></p>
+<p>A View that requires the Admin Role</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="flask_diamond.administration.AuthMixin">
 <em class="property">class </em><tt class="descclassname">flask_diamond.administration.</tt><tt class="descname">AuthMixin</tt><a class="reference internal" href="../../_modules/flask_diamond/administration.html#AuthMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.administration.AuthMixin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Require user authentication to be accessible</p>
 <dl class="method">
 <dt id="flask_diamond.administration.AuthMixin.is_accessible">
 <tt class="descname">is_accessible</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/administration.html#AuthMixin.is_accessible"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.administration.AuthMixin.is_accessible" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>the View is accessible if the User is authenticated</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -231,6 +454,7 @@
 <dt id="flask_diamond.administration.AuthModelView">
 <em class="property">class </em><tt class="descclassname">flask_diamond.administration.</tt><tt class="descname">AuthModelView</tt><big>(</big><em>model</em>, <em>session</em>, <em>name=None</em>, <em>category=None</em>, <em>endpoint=None</em>, <em>url=None</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/administration.html#AuthModelView"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.administration.AuthModelView" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#flask_diamond.administration.AuthMixin" title="flask_diamond.administration.AuthMixin"><tt class="xref py py-class docutils literal"><span class="pre">flask_diamond.administration.AuthMixin</span></tt></a>, <tt class="xref py py-class docutils literal"><span class="pre">flask_admin.contrib.sqla.view.ModelView</span></tt></p>
+<p>A ModelView that requires authentication</p>
 <dl class="method">
 <dt id="flask_diamond.administration.AuthModelView.action_view">
 <tt class="descname">action_view</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#flask_diamond.administration.AuthModelView.action_view" title="Permalink to this definition">¶</a></dt>
@@ -272,18 +496,21 @@
 <dt id="flask_diamond.administration.AuthView">
 <em class="property">class </em><tt class="descclassname">flask_diamond.administration.</tt><tt class="descname">AuthView</tt><big>(</big><em>name=None</em>, <em>category=None</em>, <em>endpoint=None</em>, <em>url=None</em>, <em>static_folder=None</em>, <em>static_url_path=None</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/administration.html#AuthView"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.administration.AuthView" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#flask_diamond.administration.AuthMixin" title="flask_diamond.administration.AuthMixin"><tt class="xref py py-class docutils literal"><span class="pre">flask_diamond.administration.AuthMixin</span></tt></a>, <tt class="xref py py-class docutils literal"><span class="pre">flask_admin.base.BaseView</span></tt></p>
+<p>A View that requires authentication</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="flask_diamond.administration.AuthenticatedMenuLink">
 <em class="property">class </em><tt class="descclassname">flask_diamond.administration.</tt><tt class="descname">AuthenticatedMenuLink</tt><big>(</big><em>name</em>, <em>url=None</em>, <em>endpoint=None</em>, <em>category=None</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/administration.html#AuthenticatedMenuLink"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.administration.AuthenticatedMenuLink" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#flask_diamond.administration.AuthMixin" title="flask_diamond.administration.AuthMixin"><tt class="xref py py-class docutils literal"><span class="pre">flask_diamond.administration.AuthMixin</span></tt></a>, <tt class="xref py py-class docutils literal"><span class="pre">flask_admin.menu.MenuLink</span></tt></p>
+<p>A MenuLink that requires authentication</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="flask_diamond.administration.ForceLoginView">
 <em class="property">class </em><tt class="descclassname">flask_diamond.administration.</tt><tt class="descname">ForceLoginView</tt><big>(</big><em>name=None</em>, <em>category=None</em>, <em>endpoint=None</em>, <em>url=None</em>, <em>template='admin/index.html'</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/administration.html#ForceLoginView"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.administration.ForceLoginView" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">flask_admin.base.AdminIndexView</span></tt></p>
+<p>Allocate the root URL and require authentication</p>
 <dl class="method">
 <dt id="flask_diamond.administration.ForceLoginView.index">
 <tt class="descname">index</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/administration.html#ForceLoginView.index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.administration.ForceLoginView.index" title="Permalink to this definition">¶</a></dt>
@@ -292,7 +519,8 @@
 <dl class="method">
 <dt id="flask_diamond.administration.ForceLoginView.is_accessible">
 <tt class="descname">is_accessible</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/administration.html#ForceLoginView.is_accessible"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.administration.ForceLoginView.is_accessible" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>the View is accessible if the User is authenticated</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -300,6 +528,7 @@
 <dt id="flask_diamond.administration.UserView">
 <em class="property">class </em><tt class="descclassname">flask_diamond.administration.</tt><tt class="descname">UserView</tt><big>(</big><em>model</em>, <em>session</em>, <em>name=None</em>, <em>category=None</em>, <em>endpoint=None</em>, <em>url=None</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/administration.html#UserView"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.administration.UserView" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#flask_diamond.administration.AdminModelView" title="flask_diamond.administration.AdminModelView"><tt class="xref py py-class docutils literal"><span class="pre">flask_diamond.administration.AdminModelView</span></tt></a></p>
+<p>Manage the User Model</p>
 <dl class="method">
 <dt id="flask_diamond.administration.UserView.action_view">
 <tt class="descname">action_view</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#flask_diamond.administration.UserView.action_view" title="Permalink to this definition">¶</a></dt>

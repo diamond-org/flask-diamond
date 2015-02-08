@@ -58,43 +58,86 @@
 
 
 <div class="viewcode-block" id="AuthMixin"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.administration.AuthMixin">[docs]</a><span class="k">class</span> <span class="nc">AuthMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Require user authentication to be accessible</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="AuthMixin.is_accessible"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.administration.AuthMixin.is_accessible">[docs]</a>    <span class="k">def</span> <span class="nf">is_accessible</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        the View is accessible if the User is authenticated</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">return</span> <span class="n">security</span><span class="o">.</span><span class="n">current_user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">()</span>
 
 </div></div>
 <div class="viewcode-block" id="AdminMixin"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.administration.AdminMixin">[docs]</a><span class="k">class</span> <span class="nc">AdminMixin</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Require admin Role to be accessible</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="AdminMixin.is_accessible"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.administration.AdminMixin.is_accessible">[docs]</a>    <span class="k">def</span> <span class="nf">is_accessible</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        the View is accessible if the User has the Admin Role</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">return</span> <span class="n">security</span><span class="o">.</span><span class="n">current_user</span><span class="o">.</span><span class="n">has_role</span><span class="p">(</span><span class="s">&quot;Admin&quot;</span><span class="p">)</span>
 
 </div></div>
 <div class="viewcode-block" id="AuthView"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.administration.AuthView">[docs]</a><span class="k">class</span> <span class="nc">AuthView</span><span class="p">(</span><span class="n">AuthMixin</span><span class="p">,</span> <span class="n">BaseView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A View that requires authentication</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">pass</span>
 
 </div>
 <div class="viewcode-block" id="AdminView"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.administration.AdminView">[docs]</a><span class="k">class</span> <span class="nc">AdminView</span><span class="p">(</span><span class="n">AdminMixin</span><span class="p">,</span> <span class="n">BaseView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A View that requires the Admin Role</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">pass</span>
 
 </div>
 <div class="viewcode-block" id="AuthModelView"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.administration.AuthModelView">[docs]</a><span class="k">class</span> <span class="nc">AuthModelView</span><span class="p">(</span><span class="n">AuthMixin</span><span class="p">,</span> <span class="n">ModelView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A ModelView that requires authentication</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">pass</span>
 
 </div>
 <div class="viewcode-block" id="AdminModelView"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.administration.AdminModelView">[docs]</a><span class="k">class</span> <span class="nc">AdminModelView</span><span class="p">(</span><span class="n">AdminMixin</span><span class="p">,</span> <span class="n">ModelView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A ModelView that requires the Admin Role</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">pass</span>
 
 </div>
 <div class="viewcode-block" id="AuthenticatedMenuLink"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.administration.AuthenticatedMenuLink">[docs]</a><span class="k">class</span> <span class="nc">AuthenticatedMenuLink</span><span class="p">(</span><span class="n">AuthMixin</span><span class="p">,</span> <span class="n">MenuLink</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A MenuLink that requires authentication</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">pass</span>
 
 </div>
 <div class="viewcode-block" id="UserView"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.administration.UserView">[docs]</a><span class="k">class</span> <span class="nc">UserView</span><span class="p">(</span><span class="n">AdminModelView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Manage the User Model</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">column_filters</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;email&#39;</span><span class="p">]</span>
     <span class="n">column_exclude_list</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;password&#39;</span><span class="p">,</span> <span class="s">&#39;active&#39;</span><span class="p">,</span> <span class="s">&#39;_password&#39;</span><span class="p">,</span> <span class="s">&#39;confirmed_at&#39;</span><span class="p">)</span>
     <span class="n">column_searchable_list</span> <span class="o">=</span> <span class="p">(</span><span class="s">&#39;email&#39;</span><span class="p">,</span> <span class="s">&#39;password&#39;</span><span class="p">)</span>
 
 </div>
 <div class="viewcode-block" id="ForceLoginView"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.administration.ForceLoginView">[docs]</a><span class="k">class</span> <span class="nc">ForceLoginView</span><span class="p">(</span><span class="n">AdminIndexView</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Allocate the root URL and require authentication</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="ForceLoginView.is_accessible"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.administration.ForceLoginView.is_accessible">[docs]</a>    <span class="k">def</span> <span class="nf">is_accessible</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        the View is accessible if the User is authenticated</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">return</span> <span class="n">security</span><span class="o">.</span><span class="n">current_user</span><span class="o">.</span><span class="n">is_authenticated</span><span class="p">()</span>
 </div>
     <span class="nd">@expose</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
