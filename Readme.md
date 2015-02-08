@@ -6,28 +6,28 @@ Flask-Diamond is a python Flask application platform that roughly approximates a
 
 ## Quick Start
 
-1. Make a directory to hold the application.
+### 1. Make a directory to hold the application.
 
 ```
 mkdir /tmp/my-diamond-app
 cd /tmp/my-diamond-app
 ```
 
-2. Install Flask-Diamond.
+### 2. Install Flask-Diamond.
 
 ```
 mkvirtualenv my-diamond-app
 pip install git+https://github.com/iandennismiller/Flask-Diamond.git#egg=Flask-Diamond
 ```
 
-3. Scaffold a new Diamond application with default options and start the server.
+### 3. Scaffold a new Diamond application with default options and start the server.
 
 ```
 diamond-scaffold.sh
 make db server
 ```
 
-4. That's it!
+### 4. Finished!
 
 You now have a server running at http://127.0.0.1:5000/admin
 
