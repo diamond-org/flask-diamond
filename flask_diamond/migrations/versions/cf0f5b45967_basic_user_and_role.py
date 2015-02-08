@@ -1,13 +1,13 @@
 """basic user and role
 
-Revision ID: 1eb0b5343889
+Revision ID: cf0f5b45967
 Revises: None
 Create Date: 2014-03-06 12:55:50.423498
 
 """
 
 # revision identifiers, used by Alembic.
-revision = '1eb0b5343889'
+revision = 'cf0f5b45967'
 down_revision = None
 
 from alembic import op

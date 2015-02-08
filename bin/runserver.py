@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# Flask-Diamond (c) Ian Dennis Miller
 
-import flask_diamond, logging
-app = flask_diamond.create_app()
-logging.getLogger("Flask-Diamond").info("runserver.py starting")
+from flask_diamond import create_app
+app = create_app()
 app.run(port=app.config['PORT'])
