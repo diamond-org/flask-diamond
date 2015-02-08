@@ -1,0 +1,43 @@
+tests Package
+=============
+
+:mod:`fixtures` Module
+----------------------
+
+.. automodule:: flask_diamond.tests.fixtures
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`test_basic` Module
+------------------------
+
+.. automodule:: flask_diamond.tests.test_basic
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`test_models` Module
+-------------------------
+
+.. automodule:: flask_diamond.tests.test_models
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`test_views` Module
+------------------------
+
+.. automodule:: flask_diamond.tests.test_views
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`test_workflow` Module
+---------------------------
+
+.. automodule:: flask_diamond.tests.test_workflow
+    :members:
+    :undoc-members:
+    :show-inheritance:
+

@@ -1,0 +1,35 @@
+utils Package
+=============
+
+:mod:`utils` Package
+--------------------
+
+.. automodule:: flask_diamond.utils
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`mixins` Module
+--------------------
+
+.. automodule:: flask_diamond.utils.mixins
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`testhelpers` Module
+-------------------------
+
+.. automodule:: flask_diamond.utils.testhelpers
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+:mod:`wtfhelpers` Module
+------------------------
+
+.. automodule:: flask_diamond.utils.wtfhelpers
+    :members:
+    :undoc-members:
+    :show-inheritance:
+

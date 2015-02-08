@@ -1,0 +1,253 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>utils Package &mdash; Flask-Diamond 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Flask-Diamond 0.1 documentation" href="../../index.html" />
+    <link rel="up" title="flask_diamond Package" href="flask_diamond.html" />
+    <link rel="next" title="views Package" href="flask_diamond.views.html" />
+    <link rel="prev" title="tests Package" href="flask_diamond.tests.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="flask_diamond.views.html" title="views Package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="flask_diamond.tests.html" title="tests Package"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Flask-Diamond 0.1 documentation</a> &raquo;</li>
+          <li><a href="modules.html" >flask_diamond</a> &raquo;</li>
+          <li><a href="flask_diamond.html" accesskey="U">flask_diamond Package</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="utils-package">
+<h1>utils Package<a class="headerlink" href="#utils-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><tt class="xref py py-mod docutils literal"><span class="pre">utils</span></tt> Package<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-flask_diamond.utils"></span><dl class="function">
+<dt id="flask_diamond.utils.flatten">
+<tt class="descclassname">flask_diamond.utils.</tt><tt class="descname">flatten</tt><big>(</big><em>d</em>, <em>parent_key=''</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils.html#flatten"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.flatten" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="flask_diamond.utils.id_generator">
+<tt class="descclassname">flask_diamond.utils.</tt><tt class="descname">id_generator</tt><big>(</big><em>size=8</em>, <em>chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils.html#id_generator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.id_generator" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-flask_diamond.utils.mixins">
+<span id="mixins-module"></span><h2><tt class="xref py py-mod docutils literal"><span class="pre">mixins</span></tt> Module<a class="headerlink" href="#module-flask_diamond.utils.mixins" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="flask_diamond.utils.mixins.CRUDMixin">
+<em class="property">class </em><tt class="descclassname">flask_diamond.utils.mixins.</tt><tt class="descname">CRUDMixin</tt><a class="reference internal" href="../../_modules/flask_diamond/utils/mixins.html#CRUDMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.mixins.CRUDMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dl class="classmethod">
+<dt id="flask_diamond.utils.mixins.CRUDMixin.create">
+<em class="property">classmethod </em><tt class="descname">create</tt><big>(</big><em>_commit=True</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/mixins.html#CRUDMixin.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.mixins.CRUDMixin.create" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="flask_diamond.utils.mixins.CRUDMixin.delete">
+<tt class="descname">delete</tt><big>(</big><em>commit=True</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/mixins.html#CRUDMixin.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.mixins.CRUDMixin.delete" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="flask_diamond.utils.mixins.CRUDMixin.find">
+<em class="property">classmethod </em><tt class="descname">find</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/mixins.html#CRUDMixin.find"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.mixins.CRUDMixin.find" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="flask_diamond.utils.mixins.CRUDMixin.find_or_create">
+<em class="property">classmethod </em><tt class="descname">find_or_create</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/mixins.html#CRUDMixin.find_or_create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.mixins.CRUDMixin.find_or_create" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="flask_diamond.utils.mixins.CRUDMixin.get_by_id">
+<em class="property">classmethod </em><tt class="descname">get_by_id</tt><big>(</big><em>id</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/mixins.html#CRUDMixin.get_by_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.mixins.CRUDMixin.get_by_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="flask_diamond.utils.mixins.CRUDMixin.save">
+<tt class="descname">save</tt><big>(</big><em>commit=True</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/mixins.html#CRUDMixin.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.mixins.CRUDMixin.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="flask_diamond.utils.mixins.CRUDMixin.update">
+<tt class="descname">update</tt><big>(</big><em>commit=True</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/mixins.html#CRUDMixin.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.mixins.CRUDMixin.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="flask_diamond.utils.mixins.ImportExportMixin">
+<em class="property">class </em><tt class="descclassname">flask_diamond.utils.mixins.</tt><tt class="descname">ImportExportMixin</tt><a class="reference internal" href="../../_modules/flask_diamond/utils/mixins.html#ImportExportMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.mixins.ImportExportMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<dl class="classmethod">
+<dt id="flask_diamond.utils.mixins.ImportExportMixin.load_all">
+<em class="property">classmethod </em><tt class="descname">load_all</tt><big>(</big><em>src_dir</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/mixins.html#ImportExportMixin.load_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.mixins.ImportExportMixin.load_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>import all files in a target path as model objects</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="flask_diamond.utils.mixins.ImportExportMixin.load_file">
+<em class="property">classmethod </em><tt class="descname">load_file</tt><big>(</big><em>filename</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/mixins.html#ImportExportMixin.load_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.mixins.ImportExportMixin.load_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>load a JSON file as model object</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="flask_diamond.utils.mixins.ImportExportMixin.save_all">
+<em class="property">classmethod </em><tt class="descname">save_all</tt><big>(</big><em>dest_dir</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/mixins.html#ImportExportMixin.save_all"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.mixins.ImportExportMixin.save_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>save all objs as JSON files</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="flask_diamond.utils.mixins.ImportExportMixin.save_file">
+<tt class="descname">save_file</tt><big>(</big><em>filename</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/mixins.html#ImportExportMixin.save_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.mixins.ImportExportMixin.save_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>save an object as a file</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-flask_diamond.utils.testhelpers">
+<span id="testhelpers-module"></span><h2><tt class="xref py py-mod docutils literal"><span class="pre">testhelpers</span></tt> Module<a class="headerlink" href="#module-flask_diamond.utils.testhelpers" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="flask_diamond.utils.testhelpers.GeneralTestCase">
+<em class="property">class </em><tt class="descclassname">flask_diamond.utils.testhelpers.</tt><tt class="descname">GeneralTestCase</tt><big>(</big><em>methodName='runTest'</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/testhelpers.html#GeneralTestCase"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.testhelpers.GeneralTestCase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">flask_testing.TestCase</span></tt></p>
+<dl class="method">
+<dt id="flask_diamond.utils.testhelpers.GeneralTestCase.create_app">
+<tt class="descname">create_app</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/testhelpers.html#GeneralTestCase.create_app"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.testhelpers.GeneralTestCase.create_app" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="flask_diamond.utils.testhelpers.GeneralTestCase.setUp">
+<tt class="descname">setUp</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/testhelpers.html#GeneralTestCase.setUp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.testhelpers.GeneralTestCase.setUp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="flask_diamond.utils.testhelpers.GeneralTestCase.tearDown">
+<tt class="descname">tearDown</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/testhelpers.html#GeneralTestCase.tearDown"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.testhelpers.GeneralTestCase.tearDown" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-flask_diamond.utils.wtfhelpers">
+<span id="wtfhelpers-module"></span><h2><tt class="xref py py-mod docutils literal"><span class="pre">wtfhelpers</span></tt> Module<a class="headerlink" href="#module-flask_diamond.utils.wtfhelpers" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="flask_diamond.utils.wtfhelpers.add_helpers">
+<tt class="descclassname">flask_diamond.utils.wtfhelpers.</tt><tt class="descname">add_helpers</tt><big>(</big><em>app</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/wtfhelpers.html#add_helpers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.wtfhelpers.add_helpers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">utils Package</a><ul>
+<li><a class="reference internal" href="#id1"><tt class="docutils literal"><span class="pre">utils</span></tt> Package</a></li>
+<li><a class="reference internal" href="#module-flask_diamond.utils.mixins"><tt class="docutils literal"><span class="pre">mixins</span></tt> Module</a></li>
+<li><a class="reference internal" href="#module-flask_diamond.utils.testhelpers"><tt class="docutils literal"><span class="pre">testhelpers</span></tt> Module</a></li>
+<li><a class="reference internal" href="#module-flask_diamond.utils.wtfhelpers"><tt class="docutils literal"><span class="pre">wtfhelpers</span></tt> Module</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="flask_diamond.tests.html"
+                        title="previous chapter">tests Package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="flask_diamond.views.html"
+                        title="next chapter">views Package</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/api/flask_diamond/flask_diamond.utils.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="flask_diamond.views.html" title="views Package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="flask_diamond.tests.html" title="tests Package"
+             >previous</a> |</li>
+        <li><a href="../../index.html">Flask-Diamond 0.1 documentation</a> &raquo;</li>
+          <li><a href="modules.html" >flask_diamond</a> &raquo;</li>
+          <li><a href="flask_diamond.html" >flask_diamond Package</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Ian Dennis Miller.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
