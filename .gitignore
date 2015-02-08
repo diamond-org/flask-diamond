@@ -1,7 +1,3 @@
-build
-dist
-*.egg-info
-lib
-docs/build/
-docs/source/auto/
-var/ipython/
+/build/
+/dist/
+/*.egg-info/

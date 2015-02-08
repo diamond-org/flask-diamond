@@ -4,26 +4,13 @@ Flask-Diamond provides a path that can guide your thought and development; Flask
 
 Flask-Diamond is a python Flask application platform that roughly approximates a django.  Flask-Diamond imports many other Flask libraries, and then glues them all together with sensible defaults.  The end result is a model administration view, accounts and high-level account operations (e.g. password reset), testing, documentation, project management (e.g. deployment), and more.
 
-## Quick Start:
-
-To create a minimal runnable program using [mr.bob](https://github.com/iElectric/mr.bob):
-
-```
-git clone https://github.com/iandennismiller/diamond-scaffold /tmp/diamond-scaffold
-git clone https://github.com/iandennismiller/diamond-app /tmp/diamond-app
-mrbob -w /tmp/diamond-scaffold/skel
-mrbob -w /tmp/diamond-app/skel
-```
-
-Now you have a starting point for developing your own app.
-
 ## installation
 
 1. First clone Flask-Diamond
 
 ```
-git clone https://github.com:iandennismiller/flask-diamond.git
-cd flask-diamond
+git clone https://github.com:iandennismiller/Flask-Diamond.git
+cd Flask-Diamond
 ```
 
 2. Install libraries and dependencies
@@ -46,6 +33,33 @@ make db
 ```
 make server
 ```
+
+## Production environment
+
+The application is controlled using a configuration file (examples are in ./etc).  This file determines the destination for logging events, which port to listen on, and other key options.
+
+For production, the application server may be run in single-process mode with the embedded sqlite database engine.  A bare-bones executable called `bin/runserver.py` can be used to launch the app server. An example `upstart.conf` is presented that will work with Debian-type systems.
+
+```
+#!upstart
+description "diamond-app daemon"
+
+env USER=diamond-app
+env SETTINGS=/etc/diamond-app.conf
+
+start on runlevel [2345]
+stop on runlevel [06]
+
+respawn
+
+exec start-stop-daemon --start --make-pidfile --pidfile /var/run/diamond-app.pid \
+    --chuid $USER --exec /var/lib/diamond-app/.virtualenvs/diamond-app/bin/runserver.py \
+    >> /var/log/diamond-app/daemon.log 2>&1
+```
+
+## Scaling production
+
+An application manager, such as gunicorn or uwsgi, may be used to launch several instances of the application server. The proxy must then be updated to load balance between these application servers.  It will be necessary to use a standalone database server (e.g. postgresql, mysql) to handle concurrency.
 
 ## Developing with Flask-Diamond
 

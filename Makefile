@@ -1,20 +1,15 @@
-# Ian Dennis Miller
-# http://www.iandennismiller.com
+# Flask-Diamond (c) Ian Dennis Miller
 
 SHELL=/bin/bash
 PROJECT_NAME=Flask-Diamond
 MOD_NAME=flask_diamond
-WWWROOT=/var/www/$(PROJECT_NAME)
-TEST_CMD=SETTINGS=$$PWD/etc/testing.conf nosetests -c tests/nose/test.cfg
-TEST_SINGLE=SETTINGS=$$PWD/etc/testing.conf nosetests -c tests/nose/test-single.cfg
+TEST_CMD=SETTINGS=$$PWD/etc/testing.conf nosetests -w $(MOD_NAME)
 
 install:
 	python setup.py install
-	rsync -a $(MOD_NAME)/views/static $(WWWROOT)
 
 clean:
 	rm -rf build dist *.egg-info
-	rm -rf docs/source/auto docs/build
 	-rm `find . -name "*.pyc"`
 
 server:
@@ -24,26 +19,34 @@ shell:
 	SETTINGS=$$PWD/etc/dev.conf bin/manage.py shell
 
 watch:
-	watchmedo shell-command -R -p "*.py" -c 'echo \\n\\n\\n\\nSTART; date; $(TEST_SINGLE); date' .
+	watchmedo shell-command -R -p "*.py" -c 'echo \\n\\n\\n\\nSTART; date; $(TEST_CMD) -c etc/nose/test-single.cfg; date' .
 
 test:
-	$(TEST_CMD)
+	$(TEST_CMD) -c etc/nose/test.cfg
 
 single:
-	$(TEST_SINGLE)
+	$(TEST_CMD) -c etc/nose/test-single.cfg
 
 db:
 	SETTINGS=$$PWD/etc/dev.conf bin/manage.py init_db
 	SETTINGS=$$PWD/etc/dev.conf bin/manage.py populate_db
 
-doc:
-	rm -rf docs/source/auto
-	mkdir -p docs/source/auto/$(MOD_NAME)
-	sphinx-apidoc -o docs/source/auto/$(MOD_NAME) $(MOD_NAME)
-	SETTINGS=$$PWD/etc/dev.conf sphinx-build -b html docs/source docs/build
-	open docs/build/index.html
+upgradedb:
+	SETTINGS=$$PWD/etc/dev.conf bin/manage.py db upgrade
+
+migratedb:
+	SETTINGS=$$PWD/etc/dev.conf bin/manage.py db migrate
+
+docs:
+	rm -rf docs/api etc/sphinx/api var/sphinx/api
+	mkdir -p var/sphinx/api/$(MOD_NAME)
+	sphinx-apidoc -o var/sphinx/api/$(MOD_NAME) $(MOD_NAME)
+	ln -s $$PWD/var/sphinx/api etc/sphinx/api
+	SETTINGS=$$PWD/etc/dev.conf sphinx-build -b html etc/sphinx var/sphinx/build
+	mv var/sphinx/build docs/api
+	rm -rf etc/sphinx/api var/sphinx/api
 
 notebook:
 	SETTINGS=$$PWD/etc/dev.conf cd var/ipython && ipython notebook
 
-.PHONY: clean install test server watch notebook db dep single doc shell
+.PHONY: clean install test server watch notebook db single docs shell upgradedb migratedb

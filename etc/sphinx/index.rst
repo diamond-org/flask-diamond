@@ -8,7 +8,7 @@ Contents:
 .. toctree::
    :maxdepth: 6
 
-   auto/flask_diamond/modules
+   api/flask_diamond/modules
 
 
 Indices and tables
