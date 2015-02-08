@@ -7,8 +7,9 @@ from flask_diamond import models
 def typical_workflow():
     "create some example objects"
 
-    ian = models.Individual.create(name="Ian")
-    liz = models.Individual.create(name="Ian", friend=ian)
-
-    ian.friend = liz
-    ian.save()
+    ian = models.User.register(
+        email='ian',
+        password='aaa',
+        confirmed=True,
+        roles=["User"],
+    )
