@@ -1,4 +1,4 @@
-"""basic user and role
+"""Initialize User and Role
 
 Revision ID: cf0f5b45967
 Revises: None
