@@ -14,8 +14,7 @@ setup(version=version,
         "flask_diamond.utils",
     ],
     scripts=[
-        # "bin/runserver.py",
-        # "bin/manage.py",
+        "bin/diamond-scaffold.sh",
     ],
     long_description="""\
         Flask-Diamond is a python Flask application platform that roughly approximates a django.
@@ -51,6 +50,7 @@ setup(version=version,
         "cssselect==0.9.1",
         "requests==2.5.1",
         "argh==0.25.0",
+        "mr.bob==0.1.1",
 
         ### Flask Framework
 
