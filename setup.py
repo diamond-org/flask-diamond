@@ -30,7 +30,8 @@ setup(version=version,
     author_email='ian@iandennismiller.com',
     url='http://www.iandennismiller.com',
     dependency_links=[
-        # 'https://github.com/mrjoes/flask-admin/tarball/master#egg=flask_admin-1.0.7'
+        #('https://github.com/iandennismiller/Flask-Diamond'
+        #    '/archive/0.2.0.tar.gz#egg=flask_diamond-0.2.0'),
     ],
     install_requires=[
         ### app

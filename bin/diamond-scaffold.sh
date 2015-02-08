@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # usage:
-# run diamond-scaffold.sh in the target project directory
+# Run diamond-scaffold.sh in the target project directory.
+# It will create a minimal app.
 
 # start with a fresh environment
 rm -rf /tmp/diamond-project /tmp/diamond-app
