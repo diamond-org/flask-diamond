@@ -11,13 +11,18 @@ Make a directory to hold the application.
 ```
 mkdir /tmp/my-diamond-app
 cd /tmp/my-diamond-app
+```
+
+Install Flask-Diamond.
+
+```
 mkvirtualenv my-diamond-app
-```
-
-Install Flask-Diamond.  Then scaffold a new Diamond application with default options.
-
-```
 pip install git+https://github.com/iandennismiller/Flask-Diamond.git#egg=Flask-Diamond
+```
+
+Scaffold a new Diamond application with default options and start the server.
+
+```
 diamond-scaffold.sh
 make db server
 ```
