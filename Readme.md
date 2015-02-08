@@ -14,7 +14,7 @@ cd /tmp/my-diamond-app
 mkvirtualenv my-diamond-app
 ```
 
-Install Flask-Diamond and then scaffold a new Diamond application.
+Install Flask-Diamond.  Then scaffold a new Diamond application with default options.
 
 ```
 pip install git+https://github.com/iandennismiller/Flask-Diamond.git#egg=Flask-Diamond
@@ -22,7 +22,7 @@ diamond-scaffold.sh
 make db server
 ```
 
-That's it!  If you picked the default options, you now have a server running at http://127.0.0.1:5000/admin
+That's it!  You now have a server running at http://127.0.0.1:5000/admin
 
 ## Pre-requisites
 
