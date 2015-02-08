@@ -50,12 +50,12 @@ notebook:
 	SETTINGS=$$PWD/etc/dev.conf cd var/ipython && ipython notebook
 
 gh-pages: docs
-	rm -rf /tmp/flask-diamond-gh-pages
-	git clone -b gh-pages git@github.com:iandennismiller/flask-diamond.git /tmp/flask-diamond-gh-pages
-	cp -r docs/api /tmp/flask-diamond-gh-pages
-	cd /tmp/flask-diamond-gh-pages
+	rm -rf /tmp/gh-pages
+	git clone -b gh-pages git@github.com:iandennismiller/flask-diamond.git /tmp/gh-pages
+	cp -r docs/api /tmp/gh-pages
+	cd /tmp/gh-pages
 	git add -A
-	git commit -am "sync documentation"
-	git push
+	git commit -am "autosync documentation"
+	git push -u origin gh-pages
 
 .PHONY: clean install test server watch notebook db single docs shell upgradedb migratedb gh-pages

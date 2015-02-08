@@ -43,6 +43,8 @@ You now have a server running at http://127.0.0.1:5000/admin
 
 ## Further Reading
 
+[Read the API documentation](http://iandennismiller.github.io/flask-diamond/api/)
+
 See the /docs folder for other documentation.
 
 ## License
