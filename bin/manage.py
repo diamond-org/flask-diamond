@@ -11,7 +11,7 @@ from flask.ext.migrate import Migrate, MigrateCommand
 import alembic
 import alembic.config
 
-from flask_diamond import create_app, db, security
+from flask_diamond import create_app, db, security, models
 app = create_app()
 
 
@@ -31,7 +31,6 @@ manager.add_command('db', MigrateCommand)
 @manager.option('-p', '--password', help='password')
 def adduser(email, password):
     "add a user to the database"
-    from flask_diamond import models
     models.User.create(email=email, password=password)
 
 
@@ -48,8 +47,8 @@ def init_db():
 @manager.command
 def populate_db():
     "insert a default set of objects"
-    from flask_diamond import add_system_users
-    add_system_users(security)
+    models.User.add_system_users()
+
 
 if __name__ == "__main__":
     try:
