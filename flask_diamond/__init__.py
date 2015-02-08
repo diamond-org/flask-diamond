@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 # Ian Dennis Miller
 
-import sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
+import logging
+from flask.ext.security.signals import user_registered
+from flask.ext.security import SQLAlchemyUserDatastore
+
+from .utils.wtfhelpers import add_helpers
 
 import flask
 try:
@@ -32,13 +34,7 @@ mail = Mail()
 
 
 class Diamond(object):
-    def __init__(self, _db, _security_obj, _toolbar, app=None):
-        db = _db
-        security_obj = _security_obj
-        toolbar = _toolbar
-        self.db = db
-        self.security_obj = security_obj
-        self.toolbar = toolbar
+    def __init__(self, app=None):
         self.app = app
         if app is not None:
             self.init_app(app)
@@ -52,24 +48,25 @@ class Diamond(object):
             )
         elif app:
             self.app = app
+
         # configure the application
-        self.config(self.app)
-        self.logger(self.app)
+        self.config()
+        self.logs()
 
         # setup database
-        self.database(self.app, self.db)
+        self.database()
 
         # setup components, referring out to our pre-allocated globalish objects
-        self.security(self.app, self.db, self.security_obj)
-        self.administration(self.app, self.db)
-        self.wtforms(self.app)
-        self.email(self.app)
-        self.blueprints(self.app)
-        self.webassets(self.app)
-        self.debugtoolbar(self.app, self.toolbar)
-        self.signals(self.app, self.security)
-        self.error_handlers(self.app)
-        self.request_handlers(self.app)
+        self.ext_security()
+        self.administration()
+        self.wtforms()
+        self.email()
+        self.blueprints()
+        self.webassets()
+        self.debugtoolbar()
+        self.signals()
+        self.error_handlers()
+        self.request_handlers()
 
         if hasattr(self.app, 'teardown_appcontext'):
             self.app.teardown_appcontext(self.teardown)
@@ -82,93 +79,92 @@ class Diamond(object):
             pass
             #ctx.sqlite3_db.close()
 
-    def config(self, app):
+    def config(self):
         "Establish configuration"
-        app.config.from_envvar('SETTINGS')
+        self.app.config.from_envvar('SETTINGS')
 
-    def logger(self, app):
+    def logs(self):
         "init logging"
-        import logging
-        handler = logging.FileHandler(app.config['LOG'])
+        handler = logging.FileHandler(self.app.config['LOG'])
         handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s: %(message)s'))
-        app.logger.addHandler(handler)
-        app.logger.setLevel(logging.INFO)
-        app.logger.debug('Startup with log: %s' % app.config['LOG'])
+        self.app.logger.addHandler(handler)
+        if self.app.config.get("LOG_LEVEL") == "DEBUG":
+            self.app.logger.setLevel(logging.DEBUG)
+        elif self.app.config.get("LOG_LEVEL") == "WARN":
+            self.app.logger.setLevel(logging.WARN)
+        else:
+            self.app.logger.setLevel(logging.INFO)
+        self.app.logger.info('Startup with log: %s' % self.app.config['LOG'])
 
-    def blueprints(self, app):
+    def blueprints(self):
         "Setup blueprints"
         pass
 
-    def webassets(self, app):
+    def webassets(self):
         "setup web assets"
-        assets.init_app(app)
+        assets.init_app(self.app)
 
-    def administration(self, app, db, index_view=None):
-        from . import administration as A, models as Models
+    def administration(self, index_view=None):
+        from . import administration, models
         admin = Admin(
-            name=app.config["PROJECT_NAME"],
+            name=self.app.config["PROJECT_NAME"],
             base_template='login_base.html',
-            index_view=index_view or A.ForceLoginView(name="Home")
+            index_view=index_view or administration.ForceLoginView(name="Home")
         )
-        admin.add_view(A.UserView(Models.User, db.session, category="Admin"))
-        admin.add_view(A.AdminModelView(Models.Role, db.session, category="Admin"))
-        admin.init_app(app)
+        admin.add_view(administration.UserView(models.User, db.session, category="Admin"))
+        admin.add_view(administration.AdminModelView(models.Role, db.session, category="Admin"))
+        admin.init_app(self.app)
         return admin
 
-    def security(self, app, db, security_obj):
+    def ext_security(self, **kwargs):
         "Setup Flask-Security"
-        from flask.ext.security import SQLAlchemyUserDatastore
-        from . import models as Models
+        from . import models
+        user_datastore = SQLAlchemyUserDatastore(db, models.User, models.Role)
+        security.init_app(self.app, datastore=user_datastore, **kwargs)
+        security._state = self.app.extensions["security"]
+        security.datastore = user_datastore
 
-        user_datastore = SQLAlchemyUserDatastore(db, Models.User, Models.Role)
-        security_obj.init_app(app, user_datastore)
-        security_obj.datastore = user_datastore
-
-    def database(self, app, db):
+    def database(self):
         "set up the database"
-        db.app = app
-        db.init_app(app)
+        db.app = self.app
+        db.init_app(self.app)
 
-    def email(self, app):
+    def email(self):
         "set up flask-mail"
-        mail.init_app(app)
+        mail.init_app(self.app)
 
-    def wtforms(self, app):
+    def wtforms(self):
         "WTForms helpers"
-        from .utils.wtfhelpers import add_helpers
-        add_helpers(app)
+        add_helpers(self.app)
 
-    def debugtoolbar(self, app, toolbar):
+    def debugtoolbar(self):
         "Enable the DebugToolbar"
-        if 'DEBUG_TOOLBAR' in app.config and app.config['DEBUG_TOOLBAR']:
-            toolbar.init_app(app)
+        if 'DEBUG_TOOLBAR' in self.app.config and self.app.config['DEBUG_TOOLBAR']:
+            toolbar.init_app(self.app)
 
-    def error_handlers(self, app):
+    def error_handlers(self):
         import flask.ext.security as security
 
-        @app.errorhandler(403)
+        @self.app.errorhandler(403)
         def page_not_found(e):
             if security.current_user.is_authenticated():
                 return flask.redirect(flask.url_for("admin.index"))
             else:
                 return flask.redirect(security.url_for_security("login"))
 
-    def request_handlers(self, app):
-        @app.route('/')
+    def request_handlers(self):
+        @self.app.route('/')
         def index():
             "set up the default handler for requests to /"
             return flask.redirect(flask.url_for("admin.index"))
 
-    def signals(self, app, security_obj):
-        import logging
-        from flask.ext.security.signals import user_registered
-
-        @user_registered.connect_via(app)
+    def signals(self):
+        @user_registered.connect_via(self.app)
         def user_registered_sighandler(sender, **extra):
             "add User role to all self-registration users"
-            user_role = security_obj.datastore.find_role("User")
-            security_obj.datastore.add_role_to_user(extra['user'], user_role)
-            logging.getLogger("flask-diamond").info("added role User to %s" % extra['user'])
+            user_role = security.datastore.find_role("User")
+            security.datastore.add_role_to_user(extra['user'], user_role)
+            self.logger.info("added role User to %s" % extra['user'])
 
     @property
     def _app(self):
@@ -180,6 +176,6 @@ class Diamond(object):
 
 
 def create_app():
-    diamond = Diamond(db, security, toolbar)
+    diamond = Diamond()
     diamond.init_app()
     return diamond.app

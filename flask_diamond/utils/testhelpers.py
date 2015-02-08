@@ -2,6 +2,8 @@
 
 from flask.ext.testing import TestCase
 from flask import current_app
+from flask_diamond import models
+
 
 class GeneralTestCase(TestCase):
     def create_app(self):
@@ -13,11 +15,10 @@ class GeneralTestCase(TestCase):
         return self.app
 
     def setUp(self):
-        from flask_diamond import security, models as Models
-        from flask_diamond.utils import add_system_users
         self.db.drop_all()
         self.db.create_all()
-        add_system_users(security)
+        models.User.add_system_users()
+        current_app.logger.debug("setup complete")
 
     def tearDown(self):
         self.db.session.remove()

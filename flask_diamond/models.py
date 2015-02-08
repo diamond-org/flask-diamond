@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
+import flask
 from flask.ext.security import UserMixin, RoleMixin
 from flask.ext.security.utils import encrypt_password
+#import flask.ext.security as security
 from . import db, security
 from .utils.mixins import CRUDMixin
 import datetime
@@ -50,7 +52,7 @@ class User(db.Model, UserMixin, CRUDMixin):
         db.session.commit()
 
     @classmethod
-    def create(cls, email, password, confirmed=False, roles=None):
+    def register(cls, email, password, confirmed=False, roles=None):
         new_user = security.datastore.create_user(
             email=email,
             password=encrypt_password(password)
@@ -61,10 +63,11 @@ class User(db.Model, UserMixin, CRUDMixin):
         if roles:
             for role_name in roles:
                 new_user.add_role(role_name)
+        flask.current_app.logger.debug("Created user {0}".format(email))
         return new_user
 
     @classmethod
-    def add_system_users(cls, security):
+    def add_system_users(cls):
         "Create a basic set of users and roles"
 
         # make roles
@@ -72,14 +75,14 @@ class User(db.Model, UserMixin, CRUDMixin):
         security.datastore.find_or_create_role("User")
         db.session.commit()
 
-        User.create(
+        User.register(
             email="admin",
             password="aaa",
             confirmed=True,
             roles=["Admin"]
         )
 
-        User.create(
+        User.register(
             email="guest",
             password="guest",
             confirmed=True,
@@ -89,7 +92,7 @@ class User(db.Model, UserMixin, CRUDMixin):
         db.session.commit()
 
     @classmethod
-    def rm_system_users(cls, security):
+    def rm_system_users(cls):
         "remove default system users"
         security.datastore.delete_user(email="admin")
         security.datastore.delete_user(email="guest")

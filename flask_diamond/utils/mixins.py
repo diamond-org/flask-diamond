@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import logging, os, json
+import os
+import json
 from .. import db
+import flask
+
 
 # adapted from https://github.com/semirook/flask-kit/blob/master/base/models.py
 class CRUDMixin(object):
@@ -31,7 +34,7 @@ class CRUDMixin(object):
     def create(cls, _commit=True, **kwargs):
         instance = cls(**kwargs)
         result = instance.save(_commit)
-        logging.getLogger("flask-diamond").debug("create %r: %r" % (instance, result))
+        flask.current_app.logger.debug("create %r: %r" % (instance, result))
         return result
 
     def update(self, commit=True, **kwargs):
@@ -49,6 +52,7 @@ class CRUDMixin(object):
         db.session.delete(self)
         return commit and db.session.commit()
 
+
 class ImportExportMixin(object):
     @classmethod
     def save_all(cls, dest_dir):
@@ -61,7 +65,7 @@ class ImportExportMixin(object):
         "save an object as a file"
         with open(filename, "w") as f:
             json.dump(self.as_hash(), f, indent=4, sort_keys=True)
-        logging.info("exported %r" % self)
+        flask.current_app.logger.info("exported %r" % self)
 
     @classmethod
     def load_all(cls, src_dir):
@@ -79,5 +83,5 @@ class ImportExportMixin(object):
         with open(filename, "r") as f:
             obj_hash = json.load(f)
             instance = cls.from_hash(obj_hash)
-            logging.info("imported %r" % instance)
+            flask.current_app.logger.info("imported %r" % instance)
             return instance

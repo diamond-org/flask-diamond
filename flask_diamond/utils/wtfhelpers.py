@@ -2,6 +2,7 @@
 
 from wtforms.fields import HiddenField, BooleanField
 
+
 def add_helpers(app):
     def is_hidden_field_filter(field):
         return isinstance(field, HiddenField)
