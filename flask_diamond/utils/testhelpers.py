@@ -7,6 +7,10 @@ from flask_diamond import models
 
 class GeneralTestCase(TestCase):
     def create_app(self):
+        """
+        Create a Flask-Diamond app for testing.
+        """
+
         from flask_diamond import create_app, db
         self.app = create_app()
         self.app.config['TESTING'] = True
@@ -15,11 +19,19 @@ class GeneralTestCase(TestCase):
         return self.app
 
     def setUp(self):
+        """
+        Prepare for a test case.
+        """
+
         self.db.drop_all()
         self.db.create_all()
         models.User.add_system_users()
         current_app.logger.debug("setup complete")
 
     def tearDown(self):
+        """
+        Clean up after a test case.
+        """
+
         self.db.session.remove()
         self.db.drop_all()

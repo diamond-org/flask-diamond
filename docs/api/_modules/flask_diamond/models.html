@@ -62,12 +62,23 @@
 <span class="n">roles_users</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Table</span><span class="p">(</span><span class="s">&#39;roles_users&#39;</span><span class="p">,</span>
     <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="s">&#39;user_id&#39;</span><span class="p">,</span> <span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">(),</span> <span class="n">db</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s">&#39;user.id&#39;</span><span class="p">)),</span>
     <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="s">&#39;role_id&#39;</span><span class="p">,</span> <span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">(),</span> <span class="n">db</span><span class="o">.</span><span class="n">ForeignKey</span><span class="p">(</span><span class="s">&#39;role.id&#39;</span><span class="p">)))</span>
+<span class="s">&quot;A secondary table is used for the one-to-many relationship: User has many Roles&quot;</span>
 
 
 <div class="viewcode-block" id="Role"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.models.Role">[docs]</a><span class="k">class</span> <span class="nc">Role</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">,</span> <span class="n">RoleMixin</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    For the purpose of access controls, Roles can be used to create</span>
+<span class="sd">    collections of users and give them permissions as a group.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">(),</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="s">&quot;integer -- primary key&quot;</span>
+
     <span class="n">name</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">80</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="s">&quot;string -- what the role is called&quot;</span>
+
     <span class="n">description</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">))</span>
+    <span class="s">&quot;string -- a sentence describing the role&quot;</span>
 
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span>
@@ -75,16 +86,34 @@
 </div>
 <div class="viewcode-block" id="User"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.models.User">[docs]</a><span class="k">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Model</span><span class="p">,</span> <span class="n">UserMixin</span><span class="p">,</span> <span class="n">CRUDMixin</span><span class="p">):</span>
     <span class="nb">id</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="s">&quot;integer -- primary key&quot;</span>
+
     <span class="n">email</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">unique</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="s">&quot;string -- email address&quot;</span>
+
     <span class="n">password</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="s">&#39;password&#39;</span><span class="p">,</span> <span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="s">&quot;password -- the users&#39;s password&quot;</span>
+
     <span class="n">active</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Boolean</span><span class="p">())</span>
+    <span class="s">&quot;boolean -- whether the user account is active&quot;</span>
+
     <span class="n">confirmed_at</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">DateTime</span><span class="p">())</span>
+    <span class="s">&quot;datetime -- when the user account was confirmed&quot;</span>
 
     <span class="n">last_login_at</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">DateTime</span><span class="p">())</span>
+    <span class="s">&quot;datetime -- the time of the most recent login&quot;</span>
+
     <span class="n">current_login_at</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">DateTime</span><span class="p">())</span>
+    <span class="s">&quot;datetime -- the time of the current login, if any&quot;</span>
+
     <span class="n">last_login_ip</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">))</span>
+    <span class="s">&quot;string -- the IP address of the previous login&quot;</span>
+
     <span class="n">current_login_ip</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="mi">255</span><span class="p">))</span>
+    <span class="s">&quot;string -- the IP address of the current login&quot;</span>
+
     <span class="n">login_count</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">Column</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">Integer</span><span class="p">(),</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="s">&quot;integer -- the number of times this account been accessed&quot;</span>
 
     <span class="n">roles</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">relationship</span><span class="p">(</span><span class="s">&#39;Role&#39;</span><span class="p">,</span> <span class="n">secondary</span><span class="o">=</span><span class="n">roles_users</span><span class="p">,</span>
         <span class="n">backref</span><span class="o">=</span><span class="n">db</span><span class="o">.</span><span class="n">backref</span><span class="p">(</span><span class="s">&#39;users&#39;</span><span class="p">,</span> <span class="n">lazy</span><span class="o">=</span><span class="s">&#39;dynamic&#39;</span><span class="p">))</span>
@@ -93,17 +122,42 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">email</span>
 
 <div class="viewcode-block" id="User.confirm"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.models.User.confirm">[docs]</a>    <span class="k">def</span> <span class="nf">confirm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        update a User account so that login is permitted</span>
+
+<span class="sd">        :returns: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">confirmed_at</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">active</span> <span class="o">=</span> <span class="bp">True</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 </div>
 <div class="viewcode-block" id="User.add_role"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.models.User.add_role">[docs]</a>    <span class="k">def</span> <span class="nf">add_role</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">role_name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        update a User account so that it includes a new Role</span>
+
+<span class="sd">        :param role_name: the name of the Role to add</span>
+<span class="sd">        :type role_name: string</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">new_role</span> <span class="o">=</span> <span class="n">security</span><span class="o">.</span><span class="n">datastore</span><span class="o">.</span><span class="n">find_or_create_role</span><span class="p">(</span><span class="n">role_name</span><span class="p">)</span>
         <span class="n">security</span><span class="o">.</span><span class="n">datastore</span><span class="o">.</span><span class="n">add_role_to_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_role</span><span class="p">)</span>
         <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
 </div>
     <span class="nd">@classmethod</span>
 <div class="viewcode-block" id="User.register"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.models.User.register">[docs]</a>    <span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">confirmed</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">roles</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a new user account.</span>
+
+<span class="sd">        :param email: the email address used to identify the account</span>
+<span class="sd">        :type email: string</span>
+<span class="sd">        :param password: the plaintext password for the account</span>
+<span class="sd">        :type password: string</span>
+<span class="sd">        :param confirmed: whether to confirm the account immediately</span>
+<span class="sd">        :type confirmed: boolean</span>
+<span class="sd">        :param roles: a list containing the names of the Roles for this User</span>
+<span class="sd">        :type roles: list(string)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">new_user</span> <span class="o">=</span> <span class="n">security</span><span class="o">.</span><span class="n">datastore</span><span class="o">.</span><span class="n">create_user</span><span class="p">(</span>
             <span class="n">email</span><span class="o">=</span><span class="n">email</span><span class="p">,</span>
             <span class="n">password</span><span class="o">=</span><span class="n">encrypt_password</span><span class="p">(</span><span class="n">password</span><span class="p">)</span>
@@ -119,7 +173,11 @@
 </div>
     <span class="nd">@classmethod</span>
 <div class="viewcode-block" id="User.add_system_users"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.models.User.add_system_users">[docs]</a>    <span class="k">def</span> <span class="nf">add_system_users</span><span class="p">(</span><span class="n">cls</span><span class="p">):</span>
-        <span class="s">&quot;Create a basic set of users and roles&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a basic set of users and roles</span>
+
+<span class="sd">        :returns: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="c"># make roles</span>
         <span class="n">security</span><span class="o">.</span><span class="n">datastore</span><span class="o">.</span><span class="n">find_or_create_role</span><span class="p">(</span><span class="s">&quot;Admin&quot;</span><span class="p">)</span>
@@ -144,7 +202,12 @@
 </div>
     <span class="nd">@classmethod</span>
 <div class="viewcode-block" id="User.rm_system_users"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.models.User.rm_system_users">[docs]</a>    <span class="k">def</span> <span class="nf">rm_system_users</span><span class="p">(</span><span class="n">cls</span><span class="p">):</span>
-        <span class="s">&quot;remove default system users&quot;</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        remove default system users</span>
+
+<span class="sd">        :returns: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">security</span><span class="o">.</span><span class="n">datastore</span><span class="o">.</span><span class="n">delete_user</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="s">&quot;admin&quot;</span><span class="p">)</span>
         <span class="n">security</span><span class="o">.</span><span class="n">datastore</span><span class="o">.</span><span class="n">delete_user</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="s">&quot;guest&quot;</span><span class="p">)</span>
         <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div></div>

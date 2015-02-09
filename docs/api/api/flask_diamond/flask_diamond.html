@@ -588,20 +588,25 @@ behaviours.</p>
 <dt id="flask_diamond.models.Role">
 <em class="property">class </em><tt class="descclassname">flask_diamond.models.</tt><tt class="descname">Role</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/models.html#Role"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.models.Role" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">flask_sqlalchemy.Model</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">flask_security.core.RoleMixin</span></tt></p>
+<p>For the purpose of access controls, Roles can be used to create
+collections of users and give them permissions as a group.</p>
 <dl class="attribute">
 <dt id="flask_diamond.models.Role.description">
 <tt class="descname">description</tt><a class="headerlink" href="#flask_diamond.models.Role.description" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>string &#8211; a sentence describing the role</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="flask_diamond.models.Role.id">
 <tt class="descname">id</tt><a class="headerlink" href="#flask_diamond.models.Role.id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>integer &#8211; primary key</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="flask_diamond.models.Role.name">
 <tt class="descname">name</tt><a class="headerlink" href="#flask_diamond.models.Role.name" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>string &#8211; what the role is called</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -612,78 +617,137 @@ behaviours.</p>
 <dl class="attribute">
 <dt id="flask_diamond.models.User.active">
 <tt class="descname">active</tt><a class="headerlink" href="#flask_diamond.models.User.active" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>boolean &#8211; whether the user account is active</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="flask_diamond.models.User.add_role">
 <tt class="descname">add_role</tt><big>(</big><em>role_name</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/models.html#User.add_role"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.models.User.add_role" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>update a User account so that it includes a new Role</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>role_name</strong> (<em>string</em>) &#8211; the name of the Role to add</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="classmethod">
 <dt id="flask_diamond.models.User.add_system_users">
 <em class="property">classmethod </em><tt class="descname">add_system_users</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/models.html#User.add_system_users"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.models.User.add_system_users" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a basic set of users and roles</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="flask_diamond.models.User.confirm">
 <tt class="descname">confirm</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/models.html#User.confirm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.models.User.confirm" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>update a User account so that login is permitted</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="flask_diamond.models.User.confirmed_at">
 <tt class="descname">confirmed_at</tt><a class="headerlink" href="#flask_diamond.models.User.confirmed_at" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>datetime &#8211; when the user account was confirmed</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="flask_diamond.models.User.current_login_at">
 <tt class="descname">current_login_at</tt><a class="headerlink" href="#flask_diamond.models.User.current_login_at" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>datetime &#8211; the time of the current login, if any</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="flask_diamond.models.User.current_login_ip">
 <tt class="descname">current_login_ip</tt><a class="headerlink" href="#flask_diamond.models.User.current_login_ip" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>string &#8211; the IP address of the current login</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="flask_diamond.models.User.email">
 <tt class="descname">email</tt><a class="headerlink" href="#flask_diamond.models.User.email" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>string &#8211; email address</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="flask_diamond.models.User.id">
 <tt class="descname">id</tt><a class="headerlink" href="#flask_diamond.models.User.id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>integer &#8211; primary key</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="flask_diamond.models.User.last_login_at">
 <tt class="descname">last_login_at</tt><a class="headerlink" href="#flask_diamond.models.User.last_login_at" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>datetime &#8211; the time of the most recent login</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="flask_diamond.models.User.last_login_ip">
 <tt class="descname">last_login_ip</tt><a class="headerlink" href="#flask_diamond.models.User.last_login_ip" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>string &#8211; the IP address of the previous login</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="flask_diamond.models.User.login_count">
 <tt class="descname">login_count</tt><a class="headerlink" href="#flask_diamond.models.User.login_count" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>integer &#8211; the number of times this account been accessed</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="flask_diamond.models.User.password">
 <tt class="descname">password</tt><a class="headerlink" href="#flask_diamond.models.User.password" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>password &#8211; the users&#8217;s password</p>
+</dd></dl>
 
 <dl class="classmethod">
 <dt id="flask_diamond.models.User.register">
 <em class="property">classmethod </em><tt class="descname">register</tt><big>(</big><em>email</em>, <em>password</em>, <em>confirmed=False</em>, <em>roles=None</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/models.html#User.register"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.models.User.register" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Create a new user account.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>email</strong> (<em>string</em>) &#8211; the email address used to identify the account</li>
+<li><strong>password</strong> (<em>string</em>) &#8211; the plaintext password for the account</li>
+<li><strong>confirmed</strong> (<em>boolean</em>) &#8211; whether to confirm the account immediately</li>
+<li><strong>roles</strong> (<em>list(string)</em>) &#8211; a list containing the names of the Roles for this User</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="classmethod">
 <dt id="flask_diamond.models.User.rm_system_users">
 <em class="property">classmethod </em><tt class="descname">rm_system_users</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/models.html#User.rm_system_users"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.models.User.rm_system_users" title="Permalink to this definition">¶</a></dt>
 <dd><p>remove default system users</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="attribute">
@@ -691,6 +755,12 @@ behaviours.</p>
 <tt class="descname">roles</tt><a class="headerlink" href="#flask_diamond.models.User.roles" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</dd></dl>
+
+<dl class="data">
+<dt id="flask_diamond.models.roles_users">
+<tt class="descclassname">flask_diamond.models.</tt><tt class="descname">roles_users</tt><em class="property"> = Table('roles_users', MetaData(bind=None), Column('user_id', Integer(), ForeignKey('user.id'), table=&lt;roles_users&gt;), Column('role_id', Integer(), ForeignKey('role.id'), table=&lt;roles_users&gt;), schema=None)</em><a class="headerlink" href="#flask_diamond.models.roles_users" title="Permalink to this definition">¶</a></dt>
+<dd><p>A secondary table is used for the one-to-many relationship: User has many Roles</p>
 </dd></dl>
 
 </div>

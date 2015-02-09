@@ -11,12 +11,23 @@ import datetime
 roles_users = db.Table('roles_users',
     db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
     db.Column('role_id', db.Integer(), db.ForeignKey('role.id')))
+"A secondary table is used for the one-to-many relationship: User has many Roles"
 
 
 class Role(db.Model, RoleMixin):
+    """
+    For the purpose of access controls, Roles can be used to create
+    collections of users and give them permissions as a group.
+    """
+
     id = db.Column(db.Integer(), primary_key=True)
+    "integer -- primary key"
+
     name = db.Column(db.String(80), unique=True)
+    "string -- what the role is called"
+
     description = db.Column(db.String(255))
+    "string -- a sentence describing the role"
 
     def __str__(self):
         return self.name
@@ -24,16 +35,34 @@ class Role(db.Model, RoleMixin):
 
 class User(db.Model, UserMixin, CRUDMixin):
     id = db.Column(db.Integer, primary_key=True)
+    "integer -- primary key"
+
     email = db.Column(db.String(255), unique=True)
+    "string -- email address"
+
     password = db.Column('password', db.String(255), nullable=False)
+    "password -- the users's password"
+
     active = db.Column(db.Boolean())
+    "boolean -- whether the user account is active"
+
     confirmed_at = db.Column(db.DateTime())
+    "datetime -- when the user account was confirmed"
 
     last_login_at = db.Column(db.DateTime())
+    "datetime -- the time of the most recent login"
+
     current_login_at = db.Column(db.DateTime())
+    "datetime -- the time of the current login, if any"
+
     last_login_ip = db.Column(db.String(255))
+    "string -- the IP address of the previous login"
+
     current_login_ip = db.Column(db.String(255))
+    "string -- the IP address of the current login"
+
     login_count = db.Column(db.Integer(), default=0)
+    "integer -- the number of times this account been accessed"
 
     roles = db.relationship('Role', secondary=roles_users,
         backref=db.backref('users', lazy='dynamic'))
@@ -42,17 +71,42 @@ class User(db.Model, UserMixin, CRUDMixin):
         return self.email
 
     def confirm(self):
+        """
+        update a User account so that login is permitted
+
+        :returns: None
+        """
+
         self.confirmed_at = datetime.datetime.now()
         self.active = True
         self.save()
 
     def add_role(self, role_name):
+        """
+        update a User account so that it includes a new Role
+
+        :param role_name: the name of the Role to add
+        :type role_name: string
+        """
+
         new_role = security.datastore.find_or_create_role(role_name)
         security.datastore.add_role_to_user(self, new_role)
         db.session.commit()
 
     @classmethod
     def register(cls, email, password, confirmed=False, roles=None):
+        """
+        Create a new user account.
+
+        :param email: the email address used to identify the account
+        :type email: string
+        :param password: the plaintext password for the account
+        :type password: string
+        :param confirmed: whether to confirm the account immediately
+        :type confirmed: boolean
+        :param roles: a list containing the names of the Roles for this User
+        :type roles: list(string)
+        """
         new_user = security.datastore.create_user(
             email=email,
             password=encrypt_password(password)
@@ -68,7 +122,11 @@ class User(db.Model, UserMixin, CRUDMixin):
 
     @classmethod
     def add_system_users(cls):
-        "Create a basic set of users and roles"
+        """
+        Create a basic set of users and roles
+
+        :returns: None
+        """
 
         # make roles
         security.datastore.find_or_create_role("Admin")
@@ -93,7 +151,12 @@ class User(db.Model, UserMixin, CRUDMixin):
 
     @classmethod
     def rm_system_users(cls):
-        "remove default system users"
+        """
+        remove default system users
+
+        :returns: None
+        """
+
         security.datastore.delete_user(email="admin")
         security.datastore.delete_user(email="guest")
         db.session.commit()

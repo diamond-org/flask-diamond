@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
+# Flask-Diamond (c) Ian Dennis Miller
 
 from nose.plugins.attrib import attr
-import os, shutil, tempfile, sys
 
-from flask_diamond import security, models as Models
+from flask_diamond import models
 from flask_diamond.utils.testhelpers import GeneralTestCase
+
 
 class flask_diamond_ModelTestCase(GeneralTestCase):
     def setUp(self):
@@ -14,7 +15,7 @@ class flask_diamond_ModelTestCase(GeneralTestCase):
 
     @attr("single")
     def test_user(self):
-        ian = Models.User.create(email='ian', password='ian')
-        ian = Models.User.find(email='ian')
+        ian = models.User.create(email='ian', password='ian')
+        ian = models.User.find(email='ian')
         assert ian
         assert ian.email == 'ian'

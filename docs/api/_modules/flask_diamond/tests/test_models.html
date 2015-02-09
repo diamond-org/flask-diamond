@@ -50,12 +50,13 @@
             
   <h1>Source code for flask_diamond.tests.test_models</h1><div class="highlight"><pre>
 <span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c"># Flask-Diamond (c) Ian Dennis Miller</span>
 
 <span class="kn">from</span> <span class="nn">nose.plugins.attrib</span> <span class="kn">import</span> <span class="n">attr</span>
-<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">shutil</span><span class="o">,</span> <span class="nn">tempfile</span><span class="o">,</span> <span class="nn">sys</span>
 
-<span class="kn">from</span> <span class="nn">flask_diamond</span> <span class="kn">import</span> <span class="n">security</span><span class="p">,</span> <span class="n">models</span> <span class="k">as</span> <span class="n">Models</span>
+<span class="kn">from</span> <span class="nn">flask_diamond</span> <span class="kn">import</span> <span class="n">models</span>
 <span class="kn">from</span> <span class="nn">flask_diamond.utils.testhelpers</span> <span class="kn">import</span> <span class="n">GeneralTestCase</span>
+
 
 <div class="viewcode-block" id="flask_diamond_ModelTestCase"><a class="viewcode-back" href="../../../api/flask_diamond/flask_diamond.tests.html#flask_diamond.tests.test_models.flask_diamond_ModelTestCase">[docs]</a><span class="k">class</span> <span class="nc">flask_diamond_ModelTestCase</span><span class="p">(</span><span class="n">GeneralTestCase</span><span class="p">):</span>
 <div class="viewcode-block" id="flask_diamond_ModelTestCase.setUp"><a class="viewcode-back" href="../../../api/flask_diamond/flask_diamond.tests.html#flask_diamond.tests.test_models.flask_diamond_ModelTestCase.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -65,8 +66,8 @@
 </div>
     <span class="nd">@attr</span><span class="p">(</span><span class="s">&quot;single&quot;</span><span class="p">)</span>
 <div class="viewcode-block" id="flask_diamond_ModelTestCase.test_user"><a class="viewcode-back" href="../../../api/flask_diamond/flask_diamond.tests.html#flask_diamond.tests.test_models.flask_diamond_ModelTestCase.test_user">[docs]</a>    <span class="k">def</span> <span class="nf">test_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">ian</span> <span class="o">=</span> <span class="n">Models</span><span class="o">.</span><span class="n">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="s">&#39;ian&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s">&#39;ian&#39;</span><span class="p">)</span>
-        <span class="n">ian</span> <span class="o">=</span> <span class="n">Models</span><span class="o">.</span><span class="n">User</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="s">&#39;ian&#39;</span><span class="p">)</span>
+        <span class="n">ian</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="s">&#39;ian&#39;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s">&#39;ian&#39;</span><span class="p">)</span>
+        <span class="n">ian</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">User</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">email</span><span class="o">=</span><span class="s">&#39;ian&#39;</span><span class="p">)</span>
         <span class="k">assert</span> <span class="n">ian</span>
         <span class="k">assert</span> <span class="n">ian</span><span class="o">.</span><span class="n">email</span> <span class="o">==</span> <span class="s">&#39;ian&#39;</span></div></div>
 </pre></div>

@@ -59,6 +59,10 @@
 
 <div class="viewcode-block" id="GeneralTestCase"><a class="viewcode-back" href="../../../api/flask_diamond/flask_diamond.utils.html#flask_diamond.utils.testhelpers.GeneralTestCase">[docs]</a><span class="k">class</span> <span class="nc">GeneralTestCase</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
 <div class="viewcode-block" id="GeneralTestCase.create_app"><a class="viewcode-back" href="../../../api/flask_diamond/flask_diamond.utils.html#flask_diamond.utils.testhelpers.GeneralTestCase.create_app">[docs]</a>    <span class="k">def</span> <span class="nf">create_app</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a Flask-Diamond app for testing.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="kn">from</span> <span class="nn">flask_diamond</span> <span class="kn">import</span> <span class="n">create_app</span><span class="p">,</span> <span class="n">db</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">create_app</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;TESTING&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
@@ -67,12 +71,20 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span>
 </div>
 <div class="viewcode-block" id="GeneralTestCase.setUp"><a class="viewcode-back" href="../../../api/flask_diamond/flask_diamond.utils.html#flask_diamond.utils.testhelpers.GeneralTestCase.setUp">[docs]</a>    <span class="k">def</span> <span class="nf">setUp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Prepare for a test case.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">drop_all</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">create_all</span><span class="p">()</span>
         <span class="n">models</span><span class="o">.</span><span class="n">User</span><span class="o">.</span><span class="n">add_system_users</span><span class="p">()</span>
         <span class="n">current_app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s">&quot;setup complete&quot;</span><span class="p">)</span>
 </div>
 <div class="viewcode-block" id="GeneralTestCase.tearDown"><a class="viewcode-back" href="../../../api/flask_diamond/flask_diamond.utils.html#flask_diamond.utils.testhelpers.GeneralTestCase.tearDown">[docs]</a>    <span class="k">def</span> <span class="nf">tearDown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Clean up after a test case.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">db</span><span class="o">.</span><span class="n">drop_all</span><span class="p">()</span></div></div>
 </pre></div>

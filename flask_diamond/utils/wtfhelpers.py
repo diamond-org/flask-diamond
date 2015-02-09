@@ -4,6 +4,10 @@ from wtforms.fields import HiddenField, BooleanField
 
 
 def add_helpers(app):
+    """
+    Create any Jinja2 helpers needed.
+    """
+
     def is_hidden_field_filter(field):
         return isinstance(field, HiddenField)
 

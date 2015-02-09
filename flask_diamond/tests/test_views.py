@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
+# Flask-Diamond (c) Ian Dennis Miller
 
 from nose.plugins.attrib import attr
-import os, shutil, tempfile, sys
-
 from flask_diamond.utils.testhelpers import GeneralTestCase
+
 
 class flask_diamond_ViewTestCase(GeneralTestCase):
     def test_login(self):

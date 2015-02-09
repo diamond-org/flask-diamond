@@ -57,12 +57,32 @@
 
 
 <span class="c"># https://stackoverflow.com/questions/2257441/python-random-string-generation-with-upper-case-letters-and-digits</span>
-<div class="viewcode-block" id="id_generator"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.utils.html#flask_diamond.utils.id_generator">[docs]</a><span class="k">def</span> <span class="nf">id_generator</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">chars</span><span class="o">=</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span><span class="p">):</span>
+<div class="viewcode-block" id="id_generator"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.utils.html#flask_diamond.utils.id_generator">[docs]</a><span class="k">def</span> <span class="nf">id_generator</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">chars</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a random sequence of letters and numbers.</span>
+
+<span class="sd">    :param size: the desired length of the sequence</span>
+<span class="sd">    :type size: integer</span>
+<span class="sd">    :param chars: the eligible character set to draw from when picking random characters</span>
+<span class="sd">    :type chars: string</span>
+<span class="sd">    :returns: a string with the random sequence</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">chars</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">chars</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_uppercase</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_lowercase</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span>
     <span class="k">return</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">chars</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">size</span><span class="p">))</span>
 
 
 <span class="c"># http://stackoverflow.com/questions/6027558/flatten-nested-python-dictionaries-compressing-keys</span></div>
 <div class="viewcode-block" id="flatten"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.utils.html#flask_diamond.utils.flatten">[docs]</a><span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">parent_key</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Flatten nested python dictionaries by compressing keys</span>
+
+<span class="sd">    :param d: the hierarchical dictionary to flatten</span>
+<span class="sd">    :type d: dict</span>
+<span class="sd">    :param parent_key: a prefix to apply to new keys (may be &#39;&#39;)</span>
+<span class="sd">    :type parent_key: string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">d</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="n">new_key</span> <span class="o">=</span> <span class="n">parent_key</span> <span class="o">+</span> <span class="s">&#39;.&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">if</span> <span class="n">parent_key</span> <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
@@ -77,7 +97,14 @@
 
 </div>
 <span class="k">def</span> <span class="nf">_u</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="s">&quot;ensure an object is Unicode&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Ensure an object is Unicode.</span>
+
+<span class="sd">    :param obj: the object that needs to be unicode</span>
+<span class="sd">    :type obj: str or unicode</span>
+<span class="sd">    :returns: a unicode representation of the original object</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">obj</span> <span class="o">=</span> <span class="nb">unicode</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>

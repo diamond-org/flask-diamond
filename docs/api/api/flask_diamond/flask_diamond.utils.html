@@ -64,12 +64,41 @@
 <span class="target" id="module-flask_diamond.utils"></span><dl class="function">
 <dt id="flask_diamond.utils.flatten">
 <tt class="descclassname">flask_diamond.utils.</tt><tt class="descname">flatten</tt><big>(</big><em>d</em>, <em>parent_key=''</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils.html#flatten"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.flatten" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Flatten nested python dictionaries by compressing keys</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>d</strong> (<em>dict</em>) &#8211; the hierarchical dictionary to flatten</li>
+<li><strong>parent_key</strong> (<em>string</em>) &#8211; a prefix to apply to new keys (may be &#8216;&#8217;)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="flask_diamond.utils.id_generator">
-<tt class="descclassname">flask_diamond.utils.</tt><tt class="descname">id_generator</tt><big>(</big><em>size=8</em>, <em>chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils.html#id_generator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.id_generator" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<tt class="descclassname">flask_diamond.utils.</tt><tt class="descname">id_generator</tt><big>(</big><em>size=8</em>, <em>chars=None</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils.html#id_generator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.id_generator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a random sequence of letters and numbers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>size</strong> (<em>integer</em>) &#8211; the desired length of the sequence</li>
+<li><strong>chars</strong> (<em>string</em>) &#8211; the eligible character set to draw from when picking random characters</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a string with the random sequence</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </div>
 <div class="section" id="module-flask_diamond.utils.mixins">
@@ -78,40 +107,129 @@
 <dt id="flask_diamond.utils.mixins.CRUDMixin">
 <em class="property">class </em><tt class="descclassname">flask_diamond.utils.mixins.</tt><tt class="descname">CRUDMixin</tt><a class="reference internal" href="../../_modules/flask_diamond/utils/mixins.html#CRUDMixin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.mixins.CRUDMixin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<p>Convenience functions for CRUD operations.</p>
+<p>Adapted from <a class="reference external" href="https://github.com/semirook/flask-kit/blob/master/base/models.py">flask-kit</a>.</p>
 <dl class="classmethod">
 <dt id="flask_diamond.utils.mixins.CRUDMixin.create">
 <em class="property">classmethod </em><tt class="descname">create</tt><big>(</big><em>_commit=True</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/mixins.html#CRUDMixin.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.mixins.CRUDMixin.create" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Create a new object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>commit</strong> (<em>boolean</em>) &#8211; whether to commit the change immediately to the database</li>
+<li><strong>kwargs</strong> (<em>dict</em>) &#8211; parameters corresponding to the new values</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the object that was created</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="flask_diamond.utils.mixins.CRUDMixin.delete">
 <tt class="descname">delete</tt><big>(</big><em>commit=True</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/mixins.html#CRUDMixin.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.mixins.CRUDMixin.delete" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Delete this object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>commit</strong> (<em>boolean</em>) &#8211; whether to commit the change immediately to the database</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">whether the delete was successful</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="classmethod">
 <dt id="flask_diamond.utils.mixins.CRUDMixin.find">
 <em class="property">classmethod </em><tt class="descname">find</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/mixins.html#CRUDMixin.find"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.mixins.CRUDMixin.find" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Find an object in the database with certain properties.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kwargs</strong> (<em>dict</em>) &#8211; the values of the object to find</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the object that was found, or else None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="classmethod">
 <dt id="flask_diamond.utils.mixins.CRUDMixin.find_or_create">
 <em class="property">classmethod </em><tt class="descname">find_or_create</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/mixins.html#CRUDMixin.find_or_create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.mixins.CRUDMixin.find_or_create" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Find an object or, if it does not exist, create it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>kwargs</strong> (<em>dict</em>) &#8211; the values of the object to find or create</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the object that was created</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="classmethod">
 <dt id="flask_diamond.utils.mixins.CRUDMixin.get_by_id">
 <em class="property">classmethod </em><tt class="descname">get_by_id</tt><big>(</big><em>id</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/mixins.html#CRUDMixin.get_by_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.mixins.CRUDMixin.get_by_id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Retrieve an object of this class from the database.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>id</strong> (<em>integer</em>) &#8211; the id of the object to be retrieved</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the object that was retrieved</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="flask_diamond.utils.mixins.CRUDMixin.save">
 <tt class="descname">save</tt><big>(</big><em>commit=True</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/mixins.html#CRUDMixin.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.mixins.CRUDMixin.save" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Save this object to the database.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>commit</strong> (<em>boolean</em>) &#8211; whether to commit the change immediately to the database</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">the object that was saved</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="flask_diamond.utils.mixins.CRUDMixin.update">
 <tt class="descname">update</tt><big>(</big><em>commit=True</em>, <em>**kwargs</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/mixins.html#CRUDMixin.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.mixins.CRUDMixin.update" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Update this object with new values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>commit</strong> (<em>boolean</em>) &#8211; whether to commit the change immediately to the database</li>
+<li><strong>kwargs</strong> (<em>dict</em>) &#8211; parameters corresponding to the new values</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">the object that was updated</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 
@@ -155,17 +273,20 @@
 <dl class="method">
 <dt id="flask_diamond.utils.testhelpers.GeneralTestCase.create_app">
 <tt class="descname">create_app</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/testhelpers.html#GeneralTestCase.create_app"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.testhelpers.GeneralTestCase.create_app" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Create a Flask-Diamond app for testing.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="flask_diamond.utils.testhelpers.GeneralTestCase.setUp">
 <tt class="descname">setUp</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/testhelpers.html#GeneralTestCase.setUp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.testhelpers.GeneralTestCase.setUp" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Prepare for a test case.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="flask_diamond.utils.testhelpers.GeneralTestCase.tearDown">
 <tt class="descname">tearDown</tt><big>(</big><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/testhelpers.html#GeneralTestCase.tearDown"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.testhelpers.GeneralTestCase.tearDown" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Clean up after a test case.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -175,7 +296,8 @@
 <dl class="function">
 <dt id="flask_diamond.utils.wtfhelpers.add_helpers">
 <tt class="descclassname">flask_diamond.utils.wtfhelpers.</tt><tt class="descname">add_helpers</tt><big>(</big><em>app</em><big>)</big><a class="reference internal" href="../../_modules/flask_diamond/utils/wtfhelpers.html#add_helpers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#flask_diamond.utils.wtfhelpers.add_helpers" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Create any Jinja2 helpers needed.</p>
+</dd></dl>
 
 </div>
 </div>
