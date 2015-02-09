@@ -1,7 +1,0 @@
-flask_diamond
-=============
-
-.. toctree::
-   :maxdepth: 4
-
-   flask_diamond

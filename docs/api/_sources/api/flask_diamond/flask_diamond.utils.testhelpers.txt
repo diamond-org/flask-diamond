@@ -1,7 +1,0 @@
-flask_diamond.utils.testhelpers module
-======================================
-
-.. automodule:: flask_diamond.utils.testhelpers
-    :members:
-    :undoc-members:
-    :show-inheritance:
