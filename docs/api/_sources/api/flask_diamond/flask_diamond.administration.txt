@@ -1,0 +1,7 @@
+flask_diamond.administration module
+===================================
+
+.. automodule:: flask_diamond.administration
+    :members:
+    :undoc-members:
+    :show-inheritance:

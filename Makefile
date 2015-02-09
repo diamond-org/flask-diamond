@@ -40,7 +40,7 @@ migratedb:
 docs:
 	rm -rf docs/api etc/sphinx/api var/sphinx/api
 	mkdir -p var/sphinx/api/$(MOD_NAME)
-	sphinx-apidoc -o var/sphinx/api/$(MOD_NAME) $(MOD_NAME)
+	sphinx-apidoc --separate -o var/sphinx/api/$(MOD_NAME) $(MOD_NAME) $(MOD_NAME)/tests
 	ln -s $$PWD/var/sphinx/api etc/sphinx/api
 	SETTINGS=$$PWD/etc/dev.conf sphinx-build -b html etc/sphinx var/sphinx/build
 	mv var/sphinx/build docs/api

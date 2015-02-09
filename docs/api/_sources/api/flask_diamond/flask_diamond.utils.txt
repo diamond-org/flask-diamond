@@ -1,35 +1,19 @@
-utils Package
-=============
+flask_diamond.utils package
+===========================
 
-:mod:`utils` Package
---------------------
+Submodules
+----------
+
+.. toctree::
+
+   flask_diamond.utils.mixins
+   flask_diamond.utils.testhelpers
+   flask_diamond.utils.wtfhelpers
+
+Module contents
+---------------
 
 .. automodule:: flask_diamond.utils
     :members:
     :undoc-members:
     :show-inheritance:
-
-:mod:`mixins` Module
---------------------
-
-.. automodule:: flask_diamond.utils.mixins
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-:mod:`testhelpers` Module
--------------------------
-
-.. automodule:: flask_diamond.utils.testhelpers
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-:mod:`wtfhelpers` Module
-------------------------
-
-.. automodule:: flask_diamond.utils.wtfhelpers
-    :members:
-    :undoc-members:
-    :show-inheritance:
-

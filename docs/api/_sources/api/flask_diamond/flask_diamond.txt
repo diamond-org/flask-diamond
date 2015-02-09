@@ -1,36 +1,26 @@
-flask_diamond Package
+flask_diamond package
 =====================
-
-:mod:`flask_diamond` Package
-----------------------------
-
-.. automodule:: flask_diamond.__init__
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-:mod:`administration` Module
-----------------------------
-
-.. automodule:: flask_diamond.administration
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-:mod:`models` Module
---------------------
-
-.. automodule:: flask_diamond.models
-    :members:
-    :undoc-members:
-    :show-inheritance:
 
 Subpackages
 -----------
 
 .. toctree::
 
-    flask_diamond.tests
     flask_diamond.utils
     flask_diamond.views
 
+Submodules
+----------
+
+.. toctree::
+
+   flask_diamond.administration
+   flask_diamond.models
+
+Module contents
+---------------
+
+.. automodule:: flask_diamond
+    :members:
+    :undoc-members:
+    :show-inheritance:

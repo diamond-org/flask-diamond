@@ -38,7 +38,7 @@ setup(version=version,
 
         ### development
 
-        "Sphinx==1.1.3",
+        "Sphinx==1.2.3",
         "Fabric==1.8.0",
         "nose==1.2.1",
         "watchdog==0.7.1",

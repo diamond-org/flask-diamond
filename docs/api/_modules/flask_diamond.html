@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,38 +6,38 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>flask_diamond.__init__ &mdash; Flask-Diamond 0.2.0 documentation</title>
+    <title>flask_diamond &mdash; Flask-Diamond 0.2.0 documentation</title>
     
-    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
+        URL_ROOT:    '../',
         VERSION:     '0.2.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <link rel="top" title="Flask-Diamond 0.2.0 documentation" href="../../index.html" />
-    <link rel="up" title="Module code" href="../index.html" /> 
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Flask-Diamond 0.2.0 documentation" href="../index.html" />
+    <link rel="up" title="Module code" href="index.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
+          <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../../py-modindex.html" title="Python Module Index"
+          <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">Flask-Diamond 0.2.0 documentation</a> &raquo;</li>
-          <li><a href="../index.html" accesskey="U">Module code</a> &raquo;</li> 
+        <li><a href="../index.html">Flask-Diamond 0.2.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Module code</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -48,7 +46,7 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <h1>Source code for flask_diamond.__init__</h1><div class="highlight"><pre>
+  <h1>Source code for flask_diamond</h1><div class="highlight"><pre>
 <span class="c"># -*- coding: utf-8 -*-</span>
 <span class="c"># Ian Dennis Miller</span>
 
@@ -84,7 +82,7 @@
 <span class="n">mail</span> <span class="o">=</span> <span class="n">Mail</span><span class="p">()</span>
 
 
-<div class="viewcode-block" id="Diamond"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.__init__.Diamond">[docs]</a><span class="k">class</span> <span class="nc">Diamond</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<div class="viewcode-block" id="Diamond"><a class="viewcode-back" href="../api/flask_diamond/flask_diamond.html#flask_diamond.Diamond">[docs]</a><span class="k">class</span> <span class="nc">Diamond</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A Diamond application.</span>
 
@@ -98,7 +96,7 @@
         <span class="k">if</span> <span class="n">app</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Diamond.init_app"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.__init__.Diamond.init_app">[docs]</a>    <span class="k">def</span> <span class="nf">init_app</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Diamond.init_app"><a class="viewcode-back" href="../api/flask_diamond/flask_diamond.html#flask_diamond.Diamond.init_app">[docs]</a>    <span class="k">def</span> <span class="nf">init_app</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize a Diamond application.</span>
 
@@ -145,7 +143,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">teardown_request</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">teardown</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="Diamond.teardown"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.__init__.Diamond.teardown">[docs]</a>    <span class="k">def</span> <span class="nf">teardown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exception</span><span class="p">):</span>
+<div class="viewcode-block" id="Diamond.teardown"><a class="viewcode-back" href="../api/flask_diamond/flask_diamond.html#flask_diamond.Diamond.teardown">[docs]</a>    <span class="k">def</span> <span class="nf">teardown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exception</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Remove any persistent connections during application context teardown.</span>
 
@@ -157,7 +155,7 @@
             <span class="k">pass</span>
             <span class="c">#ctx.sqlite3_db.close()</span>
 </div>
-<div class="viewcode-block" id="Diamond.config"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.__init__.Diamond.config">[docs]</a>    <span class="k">def</span> <span class="nf">config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Diamond.config"><a class="viewcode-back" href="../api/flask_diamond/flask_diamond.html#flask_diamond.Diamond.config">[docs]</a>    <span class="k">def</span> <span class="nf">config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Load the application configuration from the ``SETTINGS`` environment variable.</span>
 
@@ -168,7 +166,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_envvar</span><span class="p">(</span><span class="s">&#39;SETTINGS&#39;</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="Diamond.logs"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.__init__.Diamond.logs">[docs]</a>    <span class="k">def</span> <span class="nf">logs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Diamond.logs"><a class="viewcode-back" href="../api/flask_diamond/flask_diamond.html#flask_diamond.Diamond.logs">[docs]</a>    <span class="k">def</span> <span class="nf">logs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize a log file to collect messages.</span>
 
@@ -190,7 +188,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s">&#39;Startup with log: </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;LOG&#39;</span><span class="p">])</span>
 </div>
-<div class="viewcode-block" id="Diamond.blueprints"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.__init__.Diamond.blueprints">[docs]</a>    <span class="k">def</span> <span class="nf">blueprints</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Diamond.blueprints"><a class="viewcode-back" href="../api/flask_diamond/flask_diamond.html#flask_diamond.Diamond.blueprints">[docs]</a>    <span class="k">def</span> <span class="nf">blueprints</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize blueprints.</span>
 
@@ -204,7 +202,7 @@
 
         <span class="k">pass</span>
 </div>
-<div class="viewcode-block" id="Diamond.webassets"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.__init__.Diamond.webassets">[docs]</a>    <span class="k">def</span> <span class="nf">webassets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Diamond.webassets"><a class="viewcode-back" href="../api/flask_diamond/flask_diamond.html#flask_diamond.Diamond.webassets">[docs]</a>    <span class="k">def</span> <span class="nf">webassets</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize web assets.</span>
 
@@ -218,7 +216,7 @@
 
         <span class="n">assets</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="Diamond.administration"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.__init__.Diamond.administration">[docs]</a>    <span class="k">def</span> <span class="nf">administration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index_view</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Diamond.administration"><a class="viewcode-back" href="../api/flask_diamond/flask_diamond.html#flask_diamond.Diamond.administration">[docs]</a>    <span class="k">def</span> <span class="nf">administration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index_view</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize the Administrative GUI.</span>
 
@@ -251,7 +249,7 @@
         <span class="n">admin</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">admin</span>
 </div>
-<div class="viewcode-block" id="Diamond.ext_security"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.__init__.Diamond.ext_security">[docs]</a>    <span class="k">def</span> <span class="nf">ext_security</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="Diamond.ext_security"><a class="viewcode-back" href="../api/flask_diamond/flask_diamond.html#flask_diamond.Diamond.ext_security">[docs]</a>    <span class="k">def</span> <span class="nf">ext_security</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize Security for application.</span>
 
@@ -278,7 +276,7 @@
         <span class="n">security</span><span class="o">.</span><span class="n">_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">extensions</span><span class="p">[</span><span class="s">&quot;security&quot;</span><span class="p">]</span>
         <span class="n">security</span><span class="o">.</span><span class="n">datastore</span> <span class="o">=</span> <span class="n">user_datastore</span>
 </div>
-<div class="viewcode-block" id="Diamond.database"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.__init__.Diamond.database">[docs]</a>    <span class="k">def</span> <span class="nf">database</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Diamond.database"><a class="viewcode-back" href="../api/flask_diamond/flask_diamond.html#flask_diamond.Diamond.database">[docs]</a>    <span class="k">def</span> <span class="nf">database</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize database</span>
 
@@ -299,7 +297,7 @@
         <span class="n">db</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span>
         <span class="n">db</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="Diamond.email"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.__init__.Diamond.email">[docs]</a>    <span class="k">def</span> <span class="nf">email</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Diamond.email"><a class="viewcode-back" href="../api/flask_diamond/flask_diamond.html#flask_diamond.Diamond.email">[docs]</a>    <span class="k">def</span> <span class="nf">email</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize email facilities.</span>
 
@@ -313,7 +311,7 @@
 
         <span class="n">mail</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="Diamond.wtforms"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.__init__.Diamond.wtforms">[docs]</a>    <span class="k">def</span> <span class="nf">wtforms</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Diamond.wtforms"><a class="viewcode-back" href="../api/flask_diamond/flask_diamond.html#flask_diamond.Diamond.wtforms">[docs]</a>    <span class="k">def</span> <span class="nf">wtforms</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        WTForms helpers</span>
 
@@ -328,7 +326,7 @@
 
         <span class="n">add_helpers</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="Diamond.debugtoolbar"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.__init__.Diamond.debugtoolbar">[docs]</a>    <span class="k">def</span> <span class="nf">debugtoolbar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Diamond.debugtoolbar"><a class="viewcode-back" href="../api/flask_diamond/flask_diamond.html#flask_diamond.Diamond.debugtoolbar">[docs]</a>    <span class="k">def</span> <span class="nf">debugtoolbar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize the DebugToolbar</span>
 
@@ -345,7 +343,7 @@
         <span class="k">if</span> <span class="s">&#39;DEBUG_TOOLBAR&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">config</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s">&#39;DEBUG_TOOLBAR&#39;</span><span class="p">]:</span>
             <span class="n">toolbar</span><span class="o">.</span><span class="n">init_app</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="p">)</span>
 </div>
-<div class="viewcode-block" id="Diamond.error_handlers"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.__init__.Diamond.error_handlers">[docs]</a>    <span class="k">def</span> <span class="nf">error_handlers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Diamond.error_handlers"><a class="viewcode-back" href="../api/flask_diamond/flask_diamond.html#flask_diamond.Diamond.error_handlers">[docs]</a>    <span class="k">def</span> <span class="nf">error_handlers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize handlers for HTTP error events</span>
 
@@ -363,7 +361,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">flask</span><span class="o">.</span><span class="n">redirect</span><span class="p">(</span><span class="n">security</span><span class="o">.</span><span class="n">url_for_security</span><span class="p">(</span><span class="s">&quot;login&quot;</span><span class="p">))</span>
 </div>
-<div class="viewcode-block" id="Diamond.request_handlers"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.__init__.Diamond.request_handlers">[docs]</a>    <span class="k">def</span> <span class="nf">request_handlers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Diamond.request_handlers"><a class="viewcode-back" href="../api/flask_diamond/flask_diamond.html#flask_diamond.Diamond.request_handlers">[docs]</a>    <span class="k">def</span> <span class="nf">request_handlers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        request handlers</span>
 
@@ -384,7 +382,7 @@
             <span class="s">&quot;set up the default handler for requests to /&quot;</span>
             <span class="k">return</span> <span class="n">flask</span><span class="o">.</span><span class="n">redirect</span><span class="p">(</span><span class="n">flask</span><span class="o">.</span><span class="n">url_for</span><span class="p">(</span><span class="s">&quot;admin.index&quot;</span><span class="p">))</span>
 </div>
-<div class="viewcode-block" id="Diamond.signals"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.__init__.Diamond.signals">[docs]</a>    <span class="k">def</span> <span class="nf">signals</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Diamond.signals"><a class="viewcode-back" href="../api/flask_diamond/flask_diamond.html#flask_diamond.Diamond.signals">[docs]</a>    <span class="k">def</span> <span class="nf">signals</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize Flask signal handlers</span>
 
@@ -411,7 +409,7 @@
             <span class="k">return</span> <span class="n">ctx</span><span class="o">.</span><span class="n">app</span>
 
 </div>
-<div class="viewcode-block" id="create_app"><a class="viewcode-back" href="../../api/flask_diamond/flask_diamond.html#flask_diamond.__init__.create_app">[docs]</a><span class="k">def</span> <span class="nf">create_app</span><span class="p">():</span>
+<div class="viewcode-block" id="create_app"><a class="viewcode-back" href="../api/flask_diamond/flask_diamond.html#flask_diamond.create_app">[docs]</a><span class="k">def</span> <span class="nf">create_app</span><span class="p">():</span>
     <span class="n">diamond</span> <span class="o">=</span> <span class="n">Diamond</span><span class="p">()</span>
     <span class="n">diamond</span><span class="o">.</span><span class="n">init_app</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">diamond</span><span class="o">.</span><span class="n">app</span></div>
@@ -424,7 +422,7 @@
         <div class="sphinxsidebarwrapper">
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
-    <form class="search" action="../../search.html" method="get">
+    <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
@@ -443,18 +441,18 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
+          <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../../py-modindex.html" title="Python Module Index"
+          <a href="../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li><a href="../../index.html">Flask-Diamond 0.2.0 documentation</a> &raquo;</li>
-          <li><a href="../index.html" >Module code</a> &raquo;</li> 
+        <li><a href="../index.html">Flask-Diamond 0.2.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >Module code</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2015, Ian Dennis Miller.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

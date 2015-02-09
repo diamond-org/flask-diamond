@@ -1,3 +1,10 @@
-views Package
-=============
+flask_diamond.views package
+===========================
 
+Module contents
+---------------
+
+.. automodule:: flask_diamond.views
+    :members:
+    :undoc-members:
+    :show-inheritance:

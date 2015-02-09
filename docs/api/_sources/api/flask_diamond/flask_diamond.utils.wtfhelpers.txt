@@ -1,0 +1,7 @@
+flask_diamond.utils.wtfhelpers module
+=====================================
+
+.. automodule:: flask_diamond.utils.wtfhelpers
+    :members:
+    :undoc-members:
+    :show-inheritance:
