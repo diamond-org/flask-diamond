@@ -7,7 +7,6 @@ Subpackages
 .. toctree::
 
     flask_diamond.utils
-    flask_diamond.views
 
 Submodules
 ----------
