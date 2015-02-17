@@ -34,4 +34,3 @@ class GeneralTestCase(TestCase):
         """
 
         self.db.session.remove()
-        self.db.drop_all()

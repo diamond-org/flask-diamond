@@ -1,6 +1,6 @@
 from setuptools import setup
 
-version = '0.2.0'
+version = '0.2.1'
 
 setup(version=version,
     name='Flask-Diamond',
@@ -63,7 +63,7 @@ setup(version=version,
         "Flask-WTF==0.9.4",
         "Flask-Login==0.2.9",
         "Flask-Security==1.7.1",
-        "Flask-Script==0.6.2",
+        "Flask-Script==2.0.5",
         "Flask-Mail==0.9.0",
         "Flask-Testing==0.4",
         "Flask-DebugToolbar==0.9.0",
@@ -78,7 +78,7 @@ setup(version=version,
         # "pymongo==2.6.3",
         # "Flask-MongoEngine>=0.1.3",
         ### sqlalchemy
-        "SQLAlchemy==0.9.3",
+        "SQLAlchemy==0.9.8",
         "SQLAlchemy-Utils==0.24.1",
         "Flask-SQLAlchemy==2.0",
     ],

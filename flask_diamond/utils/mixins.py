@@ -3,8 +3,8 @@
 import os
 import json
 import glob
-from .. import db
 import flask
+from .. import db
 
 
 class CRUDMixin(object):
@@ -29,7 +29,7 @@ class CRUDMixin(object):
         return cls.query.filter_by(**kwargs).first()
 
     @classmethod
-    def find_or_create(cls, **kwargs):
+    def find_or_create(cls, _commit=True, **kwargs):
         """
         Find an object or, if it does not exist, create it.
 
@@ -40,7 +40,7 @@ class CRUDMixin(object):
 
         obj = cls.find(**kwargs)
         if not obj:
-            obj = cls.create(**kwargs)
+            obj = cls.create(_commit=_commit, **kwargs)
         return obj
 
     @classmethod
@@ -74,10 +74,10 @@ class CRUDMixin(object):
 
         instance = cls(**kwargs)
         obj = instance.save(_commit)
-        flask.current_app.logger.debug("create %r: %r" % (instance, obj))
+        flask.current_app.logger.debug("create %s" % unicode(obj))
         return obj
 
-    def update(self, commit=True, **kwargs):
+    def update(self, _commit=True, **kwargs):
         """
         Update this object with new values.
 
@@ -90,9 +90,9 @@ class CRUDMixin(object):
 
         for attr, value in kwargs.iteritems():
             setattr(self, attr, value)
-        return commit and self.save() or self
+        return _commit and self.save() or self
 
-    def save(self, commit=True):
+    def save(self, _commit=True):
         """
         Save this object to the database.
 
@@ -102,11 +102,11 @@ class CRUDMixin(object):
         """
 
         db.session.add(self)
-        if commit:
+        if _commit:
             db.session.commit()
         return self
 
-    def delete(self, commit=True):
+    def delete(self, _commit=True):
         """
         Delete this object.
 
@@ -116,7 +116,16 @@ class CRUDMixin(object):
         """
 
         db.session.delete(self)
-        return commit and db.session.commit()
+        return _commit and db.session.commit()
+
+    def __repr__(self):
+        return "<{}(id={})>".format(self.__class__.__name__, self.id)
+
+    def __str__(self):
+        return self.__repr__()
+
+    def __unicode__(self):
+        return self.__repr__()
 
 
 class ImportExportMixin(object):
