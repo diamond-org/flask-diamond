@@ -1,6 +1,6 @@
 from setuptools import setup
 
-version = '0.2.2'
+version = '0.2.3'
 
 setup(version=version,
     name='Flask-Diamond',
@@ -72,6 +72,7 @@ setup(version=version,
         "watchdog==0.8.3",
         "wheel==0.24.0",
         "pylint==1.4.1",
+        "mr.bob==0.1.1",
     ],
     license='MIT',
     zip_safe=False,
