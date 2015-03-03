@@ -32,6 +32,12 @@ admin = Admin()
 from flask.ext.mail import Mail
 mail = Mail()
 
+from flask.ext.marshmallow import Marshmallow
+ma = Marshmallow()
+
+from flask.ext.restful import Api
+rest = Api()
+
 
 class Diamond(object):
     """
@@ -83,6 +89,7 @@ class Diamond(object):
         self.wtforms()
         self.email()
         self.blueprints()
+        self.rest_api()
         self.webassets()
         self.debugtoolbar()
         self.signals()
@@ -152,6 +159,21 @@ class Diamond(object):
         """
 
         pass
+
+    def rest_api(self):
+        """
+        Initialize REST API.
+
+        :returns: None
+
+        By default, this function does nothing.  Your application needs to
+        overload this function in order to implement your REST API.
+        More information about REST can be found in the
+        `documentation <http://flask-restful.readthedocs.org/en/latest/>`_.
+        """
+
+        rest.init_app(self.app)
+        return rest
 
     def webassets(self):
         """

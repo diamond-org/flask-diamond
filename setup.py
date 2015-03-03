@@ -1,6 +1,6 @@
 from setuptools import setup
 
-version = '0.2.1'
+version = '0.2.2'
 
 setup(version=version,
     name='Flask-Diamond',
@@ -31,27 +31,17 @@ setup(version=version,
     url='http://www.iandennismiller.com',
     dependency_links=[
         #('https://github.com/iandennismiller/Flask-Diamond'
-        #    '/archive/0.2.0.tar.gz#egg=flask_diamond-0.2.0'),
+        #    '/archive/0.2.2.tar.gz#egg=flask_diamond-0.2.2'),
     ],
     install_requires=[
-        ### app
+        ### application-specific requirements
 
-        ### development
-
-        "Sphinx==1.2.3",
-        "Fabric==1.8.0",
-        "nose==1.2.1",
-        "watchdog==0.7.1",
-        "alembic==0.6.0",
-        "pylint==1.4.0",
-        "jsmin==2.0.9",
-        "cssutils==1.0",
-        "wheel==0.24.0",
-        "lxml==3.4.1",
-        "cssselect==0.9.1",
-        "requests==2.5.1",
-        "argh==0.25.0",
-        "mr.bob==0.1.1",
+        # "jsmin==2.0.9",
+        # "cssutils==1.0",
+        # "SQLAlchemy-Utils==0.29.8",
+        # "pymongo==2.6.3",
+        # "Flask-MongoEngine>=0.1.3",
+        # "psycopg2==2.6",
 
         ### Flask Framework
 
@@ -64,23 +54,24 @@ setup(version=version,
         "Flask-Login==0.2.9",
         "Flask-Security==1.7.1",
         "Flask-Script==2.0.5",
-        "Flask-Mail==0.9.0",
-        "Flask-Testing==0.4",
-        "Flask-DebugToolbar==0.9.0",
-        "Flask-Assets==0.9",
+        "Flask-Mail==0.9.1",
+        "Flask-Testing==0.4.2",
+        "Flask-DebugToolbar==0.9.2",
+        "Flask-Assets==0.10",
         "Flask-DbShell==1.0",
-        "Flask-RESTful==0.2.12",
+        "Flask-RESTful==0.3.2",
         "Flask-Markdown==0.3",
-
-        ### databases
-
-        ### mongodb
-        # "pymongo==2.6.3",
-        # "Flask-MongoEngine>=0.1.3",
-        ### sqlalchemy
-        "SQLAlchemy==0.9.8",
-        "SQLAlchemy-Utils==0.24.1",
         "Flask-SQLAlchemy==2.0",
+        "Flask-Marshmallow==0.4.0",
+
+        ### project management, documentation, testing, and deployment
+
+        "Sphinx==1.2.3",
+        "Fabric==1.10.1",
+        "nose==1.3.4",
+        "watchdog==0.8.3",
+        "wheel==0.24.0",
+        "pylint==1.4.1",
     ],
     license='MIT',
     zip_safe=False,
