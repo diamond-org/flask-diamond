@@ -38,6 +38,9 @@ ma = Marshmallow()
 from flask.ext.restful import Api
 rest = Api()
 
+from flask.ext.celery import Celery
+celery = Celery()
+
 
 class Diamond(object):
     """
@@ -53,7 +56,7 @@ class Diamond(object):
         if app is not None:
             self.init_app(app)
 
-    def init_app(self, app=None):
+    def init_app(self, app=None, name=None, email=True, request_handlers=True):
         """
         Initialize a Diamond application.
 
@@ -67,9 +70,12 @@ class Diamond(object):
         within your own application.
         """
 
+        if not name:
+            name = __name__
+
         if app is None and self.app is None:
             self.app = flask.Flask(
-                __name__,
+                name,
                 static_folder='views/static',
                 template_folder='views/templates'
             )
@@ -87,14 +93,19 @@ class Diamond(object):
         self.ext_security()
         self.administration()
         self.wtforms()
-        self.email()
         self.blueprints()
         self.rest_api()
+        self.init_celery()
         self.webassets()
         self.debugtoolbar()
         self.signals()
         self.error_handlers()
-        self.request_handlers()
+
+        if email:
+            self.email()
+
+        if request_handlers:
+            self.request_handlers()
 
         if hasattr(self.app, 'teardown_appcontext'):
             self.app.teardown_appcontext(self.teardown)
@@ -160,6 +171,13 @@ class Diamond(object):
 
         pass
 
+    def init_celery(self):
+        """
+        Initialize celery.
+        """
+
+        celery.init_app(self.app)
+
     def rest_api(self):
         """
         Initialize REST API.
@@ -173,7 +191,6 @@ class Diamond(object):
         """
 
         rest.init_app(self.app)
-        return rest
 
     def webassets(self):
         """
@@ -214,7 +231,7 @@ class Diamond(object):
         from . import administration, models
         admin = Admin(
             name=self.app.config["PROJECT_NAME"],
-            base_template='login_base.html',
+            base_template='admin/login_base.html',
             index_view=index_view or administration.ForceLoginView(name="Home")
         )
         admin.add_view(administration.UserView(models.User, db.session, category="Admin"))

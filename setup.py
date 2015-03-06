@@ -31,7 +31,7 @@ setup(version=version,
     url='http://www.iandennismiller.com',
     dependency_links=[
         #('https://github.com/iandennismiller/Flask-Diamond'
-        #    '/archive/0.2.2.tar.gz#egg=flask_diamond-0.2.2'),
+        #    '/archive/0.2.3.tar.gz#egg=flask_diamond-0.2.3'),
     ],
     install_requires=[
         ### application-specific requirements
@@ -63,6 +63,7 @@ setup(version=version,
         "Flask-Markdown==0.3",
         "Flask-SQLAlchemy==2.0",
         "Flask-Marshmallow==0.4.0",
+        "Flask-Celery-Helper==1.1.0",
 
         ### project management, documentation, testing, and deployment
 
