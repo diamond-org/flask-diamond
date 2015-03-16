@@ -1,6 +1,6 @@
 from setuptools import setup
 
-version = '0.2.3'
+version = '0.2.4'
 
 setup(version=version,
     name='Flask-Diamond',
@@ -49,7 +49,7 @@ setup(version=version,
         "Jinja2==2.7.2",
         "Flask==0.10.1",
         "Flask-Migrate==1.3.0",
-        "Flask-Admin==1.0.8",
+        "Flask-Admin==1.1.0",
         "Flask-WTF==0.9.4",
         "Flask-Login==0.2.9",
         "Flask-Security==1.7.1",

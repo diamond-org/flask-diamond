@@ -1,0 +1,55 @@
+{% extends 'admin/model/create.html' %}
+
+{% block head %}
+    {{ super() }}
+    <style type="text/css">
+      label { font-weight: bold; }
+      .form-horizontal {
+        border: 1px solid lightgray;
+        background: rgb(250, 250, 250);
+        margin: 1em;
+        padding: 1em;
+      }
+    </style>
+{% endblock %}
+
+{% block body %}
+  <ul class="nav nav-tabs">
+      <li>
+          <a href="{{ return_url }}"><i class="icon-list-alt"></i> {{ _gettext('List') }}</a>
+      </li>
+      <li class="active">
+          <a href="javascript:void(0)"><i class="icon-plus-sign"></i> {{ _gettext('Create') }} </a>
+      </li>
+    </ul>
+
+    <h3>Create New User</h3>
+
+{% call lib.form_tag(form) %}
+
+    {% if form.hidden_tag is defined %}
+        {{ form.hidden_tag() }}
+    {% else %}
+        {% if csrf_token %}
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        {% endif %}
+        {% for f in form if f.type == 'HiddenField' %}
+            {{ f }}
+        {% endfor %}
+    {% endif %}
+
+{{ lib.render_field(form, form.email) }}
+{{ lib.render_field(form, form.password) }}
+
+        {{ lib.render_form_buttons(return_url) }}
+
+{% endcall %}
+
+{% endblock %}
+
+{% block tail_js %}
+  {{ super() }}
+  <script type="text/javascript">
+    $(function() { $($("#email").focus()); });
+  </script>
+{% endblock %}

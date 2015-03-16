@@ -4,6 +4,8 @@ import flask.ext.security as security
 from flask.ext.admin import BaseView, expose, AdminIndexView
 from flask.ext.admin.contrib.sqla import ModelView
 from flask.ext.admin.base import MenuLink
+from flask.ext.security.utils import encrypt_password
+import flask
 
 
 class AuthMixin(object):
@@ -73,8 +75,28 @@ class UserView(AdminModelView):
     """
 
     column_filters = ['email']
-    column_exclude_list = ('password', 'active', '_password', 'confirmed_at')
-    column_searchable_list = ('email', 'password')
+    column_exclude_list = ('password', 'active', 'confirmed_at')
+    column_searchable_list = ('email', )
+    can_delete = False
+
+    create_template = 'admin/create_user.html'
+
+    def create_model(self, form):
+        self.model.register(
+            email=form.data["email"],
+            password=form.data["password"],
+            confirmed=True,
+            roles=["User"],
+        )
+        return flask.redirect(flask.url_for("user.index_view"))
+
+    def update_model(self, form, model):
+        original_password = model.password
+        model.update(**form.data)
+        if form.data["password"] != original_password:
+            model.password = encrypt_password(form.data["password"])
+            model.save()
+        return flask.redirect(flask.url_for("user.index_view"))
 
 
 class ForceLoginView(AdminIndexView):

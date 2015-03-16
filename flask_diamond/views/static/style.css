@@ -8,3 +8,11 @@
     width: 800px;
     margin: 0px auto;
 }
+
+label.control-label {
+    margin-right: 1em ;
+}
+
+.checkbox input[type="checkbox"] {
+    margin-left: 0px;
+}
