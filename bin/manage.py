@@ -29,9 +29,28 @@ manager.add_command('db', MigrateCommand)
 
 @manager.option('-e', '--email', help='email address')
 @manager.option('-p', '--password', help='password')
-def adduser(email, password):
+@manager.option('-a', '--admin', help='make user an admin user', action='store_true', default=None)
+def useradd(email, password, admin):
     "add a user to the database"
-    models.User.create(email=email, password=password)
+    from LabDaemon import Models
+    if admin:
+        roles = ["Admin"]
+    else:
+        roles = ["User"]
+    Models.User.register(
+        email=email,
+        password=password,
+        confirmed=True,
+        roles=roles
+    )
+
+
+@manager.option('-e', '--email', help='email address')
+def userdel(email):
+    "delete a user from the database"
+    from LabDaemon import Models
+    obj = Models.User.find(email=email)
+    obj.delete()
 
 
 @manager.command
