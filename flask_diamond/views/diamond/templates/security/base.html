@@ -6,7 +6,7 @@
 
 {% block head_css %}
     {{ super() }}
-    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('diamond_blueprint.static', filename='style.css') }}">
 {% endblock %}
 
 {% block page_body %}
