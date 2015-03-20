@@ -3,7 +3,7 @@
 SHELL=/bin/bash
 PROJECT_NAME=Flask-Diamond
 MOD_NAME=flask_diamond
-TEST_CMD=SETTINGS=$$PWD/etc/testing.conf nosetests -w $(MOD_NAME)
+TEST_CMD=SETTINGS=$$PWD/etc/conf/testing.conf nosetests -w $(MOD_NAME)
 
 install:
 	python setup.py install
@@ -13,10 +13,10 @@ clean:
 	-rm `find . -name "*.pyc"`
 
 server:
-	SETTINGS=$$PWD/etc/dev.conf bin/manage.py runserver
+	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py runserver
 
 shell:
-	SETTINGS=$$PWD/etc/dev.conf bin/manage.py shell
+	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py shell
 
 watch:
 	watchmedo shell-command -R -p "*.py" -c 'echo \\n\\n\\n\\nSTART; date; $(TEST_CMD) -c etc/nose/test-single.cfg; date' .
@@ -28,25 +28,25 @@ single:
 	$(TEST_CMD) -c etc/nose/test-single.cfg
 
 db:
-	SETTINGS=$$PWD/etc/dev.conf bin/manage.py init_db
-	SETTINGS=$$PWD/etc/dev.conf bin/manage.py populate_db
+	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py init_db
+	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py populate_db
 
 upgradedb:
-	SETTINGS=$$PWD/etc/dev.conf bin/manage.py db upgrade
+	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py db upgrade
 
 migratedb:
-	SETTINGS=$$PWD/etc/dev.conf bin/manage.py db migrate
+	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py db migrate
 
 docs:
 	rm -rf etc/sphinx/api var/sphinx/api
 	mkdir -p var/sphinx/api/$(MOD_NAME)
 	sphinx-apidoc --separate -o var/sphinx/api/$(MOD_NAME) $(MOD_NAME) $(MOD_NAME)/tests $(MOD_NAME)/views
 	ln -s $$PWD/var/sphinx/api etc/sphinx/api
-	SETTINGS=$$PWD/etc/dev.conf sphinx-build -b html etc/sphinx var/sphinx/build
+	SETTINGS=$$PWD/etc/conf/dev.conf sphinx-build -b html etc/sphinx var/sphinx/build
 	rm etc/sphinx/api
 
 notebook:
-	SETTINGS=$$PWD/etc/dev.conf cd var/ipython && ipython notebook
+	SETTINGS=$$PWD/etc/conf/dev.conf cd var/ipython && ipython notebook
 
 gh-pages: docs
 	rm -rf /tmp/gh-pages

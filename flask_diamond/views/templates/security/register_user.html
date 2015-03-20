@@ -8,9 +8,6 @@
       <li>
         Already have an account? <a href="{{ url_for_security('login') }}">Login here</a>
       </li>
-      <li>
-        During beta testing, you must have a <i>utoronto.ca</i> email address to create a turkr account.
-      </li>
     </ul>
   </div>
 
@@ -27,12 +24,12 @@
         {{ wtf.horizontal_field(register_user_form.password_confirm) }}
     {% endif %}
 
-    <p>
+    {# <p>
       {% for error in register_user_form.recaptcha.errors %}
           {{ error }}
       {% endfor %}
       {{ register_user_form.recaptcha }}
-    </p>
+    </p> #}
 
     <div class="col-lg-offset-2">
         <input type="submit" value="Register" class="btn btn-primary" />

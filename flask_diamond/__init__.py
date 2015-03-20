@@ -56,7 +56,7 @@ class Diamond(object):
         if app is not None:
             self.init_app(app)
 
-    def init_app(self, app=None, name=None, email=True, request_handlers=True):
+    def init_app(self, app=None, name=None, email=True, celery=True, request_handlers=True):
         """
         Initialize a Diamond application.
 
@@ -95,7 +95,6 @@ class Diamond(object):
         self.wtforms()
         self.blueprints()
         self.rest_api()
-        self.init_celery()
         self.webassets()
         self.debugtoolbar()
         self.signals()
@@ -106,6 +105,9 @@ class Diamond(object):
 
         if request_handlers:
             self.request_handlers()
+
+        if celery:
+            self.init_celery()
 
         if hasattr(self.app, 'teardown_appcontext'):
             self.app.teardown_appcontext(self.teardown)
