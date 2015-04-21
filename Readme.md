@@ -12,7 +12,7 @@ Diamond is a python Flask application platform that roughly approximates a djang
 
 ```
 mkvirtualenv my-diamond-app
-pip install git+https://github.com/iandennismiller/Flask-Diamond.git#egg=Flask-Diamond
+pip install git+https://github.com/iandennismiller/flask-diamond
 ```
 
 ### 2. Scaffold a new Diamond application with default options and start the server.
