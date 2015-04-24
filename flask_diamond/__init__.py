@@ -208,7 +208,7 @@ class Diamond(object):
 
         assets.init_app(self.app)
 
-    def administration(self, index_view=None, models=True):
+    def administration(self, index_view=None, views=True):
         """
         Initialize the Administrative GUI.
 
@@ -237,7 +237,7 @@ class Diamond(object):
             index_view=index_view or administration.ForceLoginView(name="Home")
         )
         
-        if models:
+        if views:
             admin.add_view(administration.UserView(models.User, db.session, category="Admin"))
             admin.add_view(administration.AdminModelView(models.Role, db.session, category="Admin"))
         
