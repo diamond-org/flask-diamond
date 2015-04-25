@@ -175,3 +175,46 @@ class ImportExportMixin(object):
             instance = cls.from_hash(obj_hash)
             flask.current_app.logger.info("imported %r" % instance)
             return instance
+
+
+class MarshmallowMixin(object):
+    def dumps(self):
+        "serialize the Model object as a JSON string"
+        return self.__schema__().dumps(self).data
+
+    def dump(self, file_handle):
+        "write a Model object to file_handle as a JSON string"
+        file_handle.write(self.dumps())
+
+    @classmethod
+    def loads(cls, buf):
+        "create a Model object from a JSON-encoded string"
+        obj = cls.__schema__().loads(buf)
+        cls.create(**obj)
+
+    @classmethod
+    def load(cls, file_handle):
+        "create a Model object from a file_handle pointing to a JSON file"
+        cls.loads(file_handle.read())
+
+    @classmethod
+    def dumps_all(cls):
+        "write all objects of Model class to a JSON-encoded array"
+        return cls.__schema__().dumps(cls.query.all(), many=True).data
+
+    @classmethod
+    def dump_all(cls, file_handle):
+        "write all objects of Model class to file_handle as JSON"
+        file_handle.write(cls.dumps_all())
+
+    @classmethod
+    def loads_all(cls, buf):
+        "create objects of Model class from a string containing an array of JSON-encoded objects"
+        objs = cls.__schema__().loads(buf, many=True)
+        for obj in objs.data:
+            cls.create(**obj)
+
+    @classmethod
+    def load_all(cls, file_handle):
+        "create objects of Model class from a file containing an array of JSON-encoded objects"
+        cls.loads_all(file_handle.read())
