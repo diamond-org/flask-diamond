@@ -35,15 +35,6 @@ setup(version=version,
         #    '/archive/0.2.3.tar.gz#egg=flask_diamond-0.2.3'),
     ],
     install_requires=[
-        ### application-specific requirements
-
-        # "jsmin==2.0.9",
-        # "cssutils==1.0",
-        # "SQLAlchemy-Utils==0.29.8",
-        # "pymongo==2.6.3",
-        # "Flask-MongoEngine>=0.1.3",
-        # "psycopg2==2.6",
-
         ### Flask Framework
 
         "Werkzeug==0.9.4",
@@ -63,7 +54,7 @@ setup(version=version,
         "Flask-RESTful==0.3.2",
         "Flask-Markdown==0.3",
         "Flask-SQLAlchemy==2.0",
-        "Flask-Marshmallow==0.4.0",
+        "Flask-Marshmallow==0.5.0",
         "Flask-Celery-Helper==1.1.0",
 
         ### project management, documentation, testing, and deployment

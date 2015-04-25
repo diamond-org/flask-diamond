@@ -190,7 +190,7 @@ class MarshmallowMixin(object):
     def loads(cls, buf):
         "create a Model object from a JSON-encoded string"
         obj = cls.__schema__().loads(buf)
-        cls.create(**obj)
+        cls.create(**obj.data)
 
     @classmethod
     def load(cls, file_handle):
