@@ -11,6 +11,7 @@ setup(version=version,
     packages=[
         "flask_diamond",
         "flask_diamond.views",
+        "flask_diamond.views.diamond",
         "flask_diamond.utils",
     ],
     scripts=[

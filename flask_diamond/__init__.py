@@ -76,8 +76,6 @@ class Diamond(object):
         if app is None and self.app is None:
             self.app = flask.Flask(
                 name,
-                static_folder='views/static',
-                template_folder='views/templates'
             )
         elif app:
             self.app = app
@@ -90,10 +88,10 @@ class Diamond(object):
         self.database()
 
         # setup components, referring out to our pre-allocated globalish objects
+        self.blueprints()
         self.ext_security()
         self.administration()
         self.wtforms()
-        self.blueprints()
         self.rest_api()
         self.webassets()
         self.debugtoolbar()
@@ -171,7 +169,8 @@ class Diamond(object):
         `Flask documentation <http://flask.pocoo.org/docs/0.10/blueprints/>`_.
         """
 
-        pass
+        from views.diamond import diamond_blueprint
+        self.app.register_blueprint(diamond_blueprint, url_prefix="/")
 
     def init_celery(self):
         """
