@@ -66,6 +66,8 @@ setup(version=version,
         "wheel==0.24.0",
         "pylint==1.4.1",
         "mr.bob==0.1.1",
+        # hardcoding marshmallow because Flask-Marshmallow requires the 1.x line
+        "marshmallow==1.2.6",
         # hardcoding alembic because the latest version does not parse correctly in FlaskMigrate
         "alembic==0.7.4",
     ],
