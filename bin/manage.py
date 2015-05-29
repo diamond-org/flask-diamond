@@ -32,7 +32,6 @@ manager.add_command('db', MigrateCommand)
 @manager.option('-a', '--admin', help='make user an admin user', action='store_true', default=None)
 def useradd(email, password, admin):
     "add a user to the database"
-    from LabDaemon import Models
     if admin:
         roles = ["Admin"]
     else:
