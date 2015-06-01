@@ -1,6 +1,6 @@
 from setuptools import setup
 
-version = '0.2.7'
+version = '0.2.8'
 
 setup(version=version,
     name='Flask-Diamond',
@@ -71,6 +71,7 @@ setup(version=version,
         "marshmallow==1.2.6",
         # hardcoding alembic because the latest version does not parse correctly in FlaskMigrate
         "alembic==0.7.4",
+        "gunicorn==19.3.0",
     ],
     license='MIT',
     zip_safe=False,
