@@ -192,6 +192,7 @@ class Diamond(object):
         """
 
         rest.init_app(self.app)
+        return rest
 
     def webassets(self):
         """
