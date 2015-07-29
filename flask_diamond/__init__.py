@@ -56,7 +56,13 @@ class Diamond(object):
         if app is not None:
             self.init_app(app)
 
-    def init_app(self, app=None, name=None, email=True, celery=True, request_handlers=True, admin_views=True):
+    def init_app(self,
+            app=None,
+            name=None,
+            email=True,
+            celery=True,
+            request_handlers=True):
+
         """
         Initialize a Diamond application.
 
@@ -89,7 +95,6 @@ class Diamond(object):
 
         # setup components, referring out to our pre-allocated globalish objects
         self.blueprints()
-        self.ext_security()
         self.wtforms()
         self.rest_api()
         self.webassets()
@@ -97,8 +102,8 @@ class Diamond(object):
         self.signals()
         self.error_handlers()
 
-        if admin_views:
-            self.administration()
+        self.ext_security()
+        self.administration()
 
         if email:
             self.email()
@@ -210,7 +215,7 @@ class Diamond(object):
 
         assets.init_app(self.app)
 
-    def administration(self, index_view=None, views=True):
+    def administration(self, index_view=None, app_models=None):
         """
         Initialize the Administrative GUI.
 
@@ -232,21 +237,25 @@ class Diamond(object):
         >>> )
         """
 
-        from . import administration, models
+        from . import administration
         admin = Admin(
             name=self.app.config["PROJECT_NAME"],
             base_template='admin/login_base.html',
             index_view=index_view or administration.ForceLoginView(name="Home")
         )
-        
-        if views:
-            admin.add_view(administration.UserView(models.User, db.session, category="Admin"))
-            admin.add_view(administration.AdminModelView(models.Role, db.session, category="Admin"))
-        
+
+        if not app_models:
+            from . import models
+        else:
+            models = app_models
+
+        admin.add_view(administration.UserView(models.User, db.session, category="Admin"))
+        admin.add_view(administration.AdminModelView(models.Role, db.session, category="Admin"))
+
         admin.init_app(self.app)
         return admin
 
-    def ext_security(self, **kwargs):
+    def ext_security(self, app_models=None, **kwargs):
         """
         Initialize Security for application.
 
@@ -267,7 +276,11 @@ class Diamond(object):
         >>>    super(MyApp, self).ext_security(confirm_register_form=CaptchaRegisterForm)
         """
 
-        from . import models
+        if not app_models:
+            from . import models
+        else:
+            models = app_models
+
         user_datastore = SQLAlchemyUserDatastore(db, models.User, models.Role)
         security.init_app(self.app, datastore=user_datastore, **kwargs)
         security._state = self.app.extensions["security"]

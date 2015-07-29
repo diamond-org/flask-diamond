@@ -1,36 +1,17 @@
 # -*- coding: utf-8 -*-
 
 import flask
-from flask.ext.security import UserMixin, RoleMixin
+from flask.ext.security import UserMixin
 from flask.ext.security.utils import encrypt_password
 #import flask.ext.security as security
-from . import db, security
-from .utils.mixins import CRUDMixin
+from .. import db, security
+from ..utils.mixins import CRUDMixin
 import datetime
 
 roles_users = db.Table('roles_users',
     db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
     db.Column('role_id', db.Integer(), db.ForeignKey('role.id')))
 "A secondary table is used for the one-to-many relationship: User has many Roles"
-
-
-class Role(db.Model, RoleMixin):
-    """
-    For the purpose of access controls, Roles can be used to create
-    collections of users and give them permissions as a group.
-    """
-
-    id = db.Column(db.Integer(), primary_key=True)
-    "integer -- primary key"
-
-    name = db.Column(db.String(80), unique=True)
-    "string -- what the role is called"
-
-    description = db.Column(db.String(255))
-    "string -- a sentence describing the role"
-
-    def __str__(self):
-        return self.name
 
 
 class User(db.Model, UserMixin, CRUDMixin):
@@ -64,8 +45,11 @@ class User(db.Model, UserMixin, CRUDMixin):
     login_count = db.Column(db.Integer(), default=0)
     "integer -- the number of times this account been accessed"
 
-    roles = db.relationship('Role', secondary=roles_users,
-        backref=db.backref('users', lazy='dynamic'))
+    roles = db.relationship('Role',
+        enable_typechecks=False,
+        secondary=roles_users,
+        # backref=db.backref('users', lazy='dynamic'),
+    )
 
     def __str__(self):
         return self.email
@@ -133,14 +117,14 @@ class User(db.Model, UserMixin, CRUDMixin):
         security.datastore.find_or_create_role("User")
         db.session.commit()
 
-        User.register(
+        cls.register(
             email="admin",
             password="aaa",
             confirmed=True,
             roles=["Admin"]
         )
 
-        User.register(
+        cls.register(
             email="guest",
             password="guest",
             confirmed=True,

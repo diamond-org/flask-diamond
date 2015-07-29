@@ -1,6 +1,6 @@
 from setuptools import setup
 
-version = '0.2.9'
+version = '0.2.10'
 
 setup(version=version,
     name='Flask-Diamond',
@@ -10,6 +10,7 @@ setup(version=version,
         """,
     packages=[
         "flask_diamond",
+        "flask_diamond.models",
         "flask_diamond.views",
         "flask_diamond.views.diamond",
         "flask_diamond.utils",
