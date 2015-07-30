@@ -10,12 +10,37 @@ Flask-Diamond is a python Flask application platform that roughly approximates a
 View the project on GitHub at https://github.com/iandennismiller/flask-diamond
 
 
-Contents:
+Flask-Diamond
+-------------
 
 .. toctree::
-   :maxdepth: 6
 
-   api/flask_diamond/modules
+    api/flask_diamond
+
+Models
+------
+
+.. toctree::
+
+    api/flask_diamond.models.user
+    api/flask_diamond.models.role
+
+Utilities
+---------
+
+.. toctree::
+
+    api/flask_diamond.utils
+    api/flask_diamond.utils.mixins
+    api/flask_diamond.utils.testhelpers
+    api/flask_diamond.utils.wtfhelpers
+
+Administration
+--------------
+
+.. toctree::
+
+    api/flask_diamond.administration
 
 
 Indices and tables
