@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Ian Dennis Miller
 
-__version__ = '0.2.13'
+__version__ = '0.2.14'
 __author__ = 'Ian Dennis Miller'
 __email__ = 'iandennismiller@gmail.com'
 
@@ -40,7 +40,7 @@ from flask.ext.marshmallow import Marshmallow
 ma = Marshmallow()
 
 from flask.ext.restful import Api
-rest = Api()
+rest_extension = Api()
 
 from flask.ext.celery import Celery
 celery = Celery()
@@ -100,14 +100,13 @@ class Diamond(object):
         # setup components, referring out to our pre-allocated globalish objects
         self.blueprints()
         self.wtforms()
-        self.rest_api()
         self.webassets()
         self.debugtoolbar()
         self.signals()
         self.error_handlers()
-
         self.ext_security()
         self.administration()
+        self.rest_api()
 
         if email:
             self.email()
@@ -190,7 +189,7 @@ class Diamond(object):
 
         celery.init_app(self.app)
 
-    def rest_api(self):
+    def rest_api(self, api_map=None):
         """
         Initialize REST API.
 
@@ -202,8 +201,10 @@ class Diamond(object):
         `documentation <http://flask-restful.readthedocs.org/en/latest/>`_.
         """
 
-        rest.init_app(self.app)
-        return rest
+        if api_map:
+            api_map(rest_extension)
+        rest_extension.init_app(self.app)
+        return rest_extension
 
     def webassets(self):
         """
