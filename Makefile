@@ -39,13 +39,8 @@ migratedb:
 	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py db migrate
 
 docs:
-	#rm -rf etc/sphinx/api var/sphinx/api
-	#mkdir -p var/sphinx/api/$(MOD_NAME)
-	#sphinx-apidoc --separate -o var/sphinx/api/$(MOD_NAME) $(MOD_NAME) $(MOD_NAME)/tests $(MOD_NAME)/views
-	#ln -s $$PWD/var/sphinx/api etc/sphinx/api
 	rm -rf var/sphinx/build
 	SETTINGS=$$PWD/etc/conf/dev.conf sphinx-build -b html etc/sphinx var/sphinx/build
-	#rm etc/sphinx/api
 
 notebook:
 	SETTINGS=$$PWD/etc/conf/dev.conf cd var/ipython && ipython notebook

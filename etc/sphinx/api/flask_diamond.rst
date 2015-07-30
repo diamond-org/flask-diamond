@@ -1,5 +1,5 @@
-flask_diamond
-=============
+Diamond
+=======
 
 .. automodule:: flask_diamond
     :members:

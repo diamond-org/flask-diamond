@@ -9,9 +9,16 @@ Flask-Diamond is a python Flask application platform that roughly approximates a
 
 View the project on GitHub at https://github.com/iandennismiller/flask-diamond
 
+Introduction
+============
 
-Flask-Diamond
--------------
+.. toctree::
+
+    quick_start
+    system_requirements
+
+API
+===
 
 .. toctree::
 
