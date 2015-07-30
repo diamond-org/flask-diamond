@@ -6,6 +6,7 @@ MOD_NAME=flask_diamond
 TEST_CMD=SETTINGS=$$PWD/etc/conf/testing.conf nosetests -w $(MOD_NAME)
 
 install:
+	pip install -r requirements.txt
 	python setup.py install
 
 clean:
