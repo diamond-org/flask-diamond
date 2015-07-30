@@ -1,6 +1,25 @@
+import re
+import os
 from setuptools import setup
 
-version = '0.2.10'
+
+# mimicking flask-admin setup.py
+# https://github.com/flask-admin/flask-admin/blob/master/setup.py
+def fpath(name):
+    return os.path.join(os.path.dirname(__file__), name)
+
+
+def read(fname):
+    return open(fpath(fname)).read()
+
+
+file_text = read(fpath('flask_diamond/__init__.py'))
+
+
+def grep(attrname):
+    pattern = r"{0}\W*=\W*'([^']+)'".format(attrname)
+    strval, = re.findall(pattern, file_text)
+    return strval
 
 
 def get_requirements(suffix=''):
@@ -14,7 +33,9 @@ def get_long_description():
         rv = f.read()
     return rv
 
-setup(version=version,
+
+setup(
+    version=grep('__version__'),
     name='Flask-Diamond',
     description="""\
         Flask-Diamond provides a path that can guide your thought and development.
@@ -34,8 +55,8 @@ setup(version=version,
     classifiers=[],  # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
     include_package_data=True,
     keywords='',
-    author='Ian Dennis Miller',
-    author_email='ian@iandennismiller.com',
+    author=grep('__author__'),
+    author_email=grep('__email__'),
     url='http://flask-diamond.readthedocs.org',
     install_requires=get_requirements(),
     license='MIT',

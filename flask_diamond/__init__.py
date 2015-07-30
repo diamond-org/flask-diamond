@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 # Ian Dennis Miller
 
+__version__ = '0.2.11'
+__author__ = 'Ian Dennis Miller'
+__email__ = 'iandennismiller@gmail.com'
+
 import logging
 from flask.ext.security.signals import user_registered
 from flask.ext.security import SQLAlchemyUserDatastore
