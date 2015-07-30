@@ -199,6 +199,16 @@ class Diamond(object):
         overload this function in order to implement your REST API.
         More information about REST can be found in the
         `documentation <http://flask-restful.readthedocs.org/en/latest/>`_.
+
+        api_map is an optional function that can be responsible
+        for setting up the API.  This is usually accomplished with a series of
+        add_resource() invocations.  api_map must take one parameter, which is
+        the Flask-Restful object managed by Flask-Diamond.
+
+        You will end up writing something like this in your application:
+
+        def api_map(rest_extension):
+            rest_extension.add_resource(Blah)
         """
 
         if api_map:
