@@ -10,7 +10,7 @@ def get_requirements(suffix=''):
 
 
 def get_long_description():
-    with open('README.md') as f:
+    with open('Readme.md') as f:
         rv = f.read()
     return rv
 
