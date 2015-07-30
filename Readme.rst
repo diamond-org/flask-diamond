@@ -3,6 +3,15 @@ Flask-Diamond
 
 Flask-Diamond provides a path that can guide your thought and development. Flask-Diamond is the road that leads to other ideas.
 
+.. image:: https://readthedocs.org/projects/flask-diamond/badge/?version=latest
+    :target: http://flask-diamond.readthedocs.org/
+
+.. image:: https://img.shields.io/pypi/v/Flask-Diamond.svg
+    :target: https://pypi.python.org/pypi/Flask-Diamond/
+
+.. image:: https://img.shields.io/github/issues/iandennismiller/flask-diamond.svg
+    :target: https://github.com/iandennismiller/flask-diamond/issues
+
 Description
 -----------
 
@@ -17,8 +26,5 @@ Installation
 
 Documentation
 -------------
-
-.. image:: https://readthedocs.org/projects/flask-diamond/badge/?version=latest
-    :target: http://flask-diamond.readthedocs.org/
 
 http://flask-diamond.readthedocs.org/
