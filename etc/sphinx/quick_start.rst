@@ -9,7 +9,7 @@ Flask-Diamond installs in a Python environment.
 ::
 
     mkvirtualenv my-diamond-app
-    pip install git+http://github.com/iandennismiller/flask-diamond
+    pip install Flask-Diamond
 
 Scaffold a new Flask-Diamond application
 ----------------------------------------

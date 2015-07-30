@@ -2,8 +2,7 @@ Flask-Diamond provides a path that can guide your thought and development; Flask
 
 Flask-Diamond is a python Flask application platform that roughly approximates a django.  Flask-Diamond imports many other Flask libraries, and then glues them all together with sensible defaults.  The end result is a model administration view, accounts and high-level account operations (e.g. password reset), testing, documentation, project management (e.g. deployment), and more.
 
-[View the documentation](http://flask-diamond.readthedocs.org/)
+`View the documentation <http://flask-diamond.readthedocs.org/>`_
 
-<a href="http://flask-diamond.readthedocs.org/">
-    <img src="https://readthedocs.org/projects/flask-diamond/badge/?version=latest">
-</a>
+.. image:: https://readthedocs.org/projects/flask-diamond/badge/?version=latest
+    :target: http://flask-diamond.readthedocs.org/
