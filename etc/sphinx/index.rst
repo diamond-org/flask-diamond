@@ -45,11 +45,3 @@ API
     api/flask_diamond.utils.mixins
     api/flask_diamond.utils.testhelpers
     api/flask_diamond.utils.wtfhelpers
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
