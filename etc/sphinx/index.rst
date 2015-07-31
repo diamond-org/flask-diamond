@@ -1,7 +1,7 @@
 .. include:: ../../Readme.rst
 
 Introduction
-============
+------------
 
 .. toctree::
 
@@ -9,7 +9,7 @@ Introduction
     system_requirements
 
 API
-===
+---
 
 .. toctree::
 
