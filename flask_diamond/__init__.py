@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Ian Dennis Miller
 
-__version__ = '0.2.14'
+__version__ = '0.2.15-dev'
 __author__ = 'Ian Dennis Miller'
 __email__ = 'iandennismiller@gmail.com'
 
