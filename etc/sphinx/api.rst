@@ -1,5 +1,8 @@
-Diamond
--------
+API
+===
+
+Diamond object
+--------------
 
 .. automodule:: flask_diamond
     :members:

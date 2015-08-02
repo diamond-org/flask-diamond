@@ -34,13 +34,13 @@ User Guide
 
 .. Tutorials
 .. ---------
-.. 
+..
 .. .. toctree::
-.. 
+..
 ..  documentation/model-_view-controller_architecture_with_flask-diamond
 
-API
----
+API Reference
+-------------
 
 .. toctree::
     :maxdepth: 2
