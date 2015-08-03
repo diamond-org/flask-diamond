@@ -43,6 +43,7 @@ About Flask-Diamond
     :maxdepth: 1
 
     about/philosophy
+    about/license
 ..    documentation/libraries_included_in_flask-diamond
 ..    documentation/how_to_contribute_to_the_project
 ..    documentation/diagram_of_libraries
