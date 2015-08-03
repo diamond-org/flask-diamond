@@ -15,8 +15,18 @@
 {% endblock %}
 {%- block footer %}
   <div class="footer">
-    &copy; Copyright {{ copyright }}.
-    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    <div>
+      <b>Flask-Diamond {{ version }}</b>
+    </div>
+    <div>
+      Revision {{ git_checksum }}, {{ today }}
+    </div>
+    <div>
+      &copy; Copyright {{ copyright }}.
+    </div>
+    <div>
+      Documentation rendered with <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+    </div>
   </div>
   {% if pagename == 'index' %}
   </div>

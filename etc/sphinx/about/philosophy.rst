@@ -1,5 +1,5 @@
-About
-=====
+Philosophy of Flask-Diamond
+===========================
 
 **Flask-Diamond** is a batteries-included Flask framework. Easily scaffold a working application with sensible defaults, then override the defaults to customize it for your goals.
 

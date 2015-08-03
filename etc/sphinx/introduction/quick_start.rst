@@ -1,10 +1,12 @@
 Quick Start
 ===========
 
+Flask-Diamond installs in a Python environment with :doc:`virtualenv <../documentation/requirements_management_with_virtualenv>`.  Please see the :doc:`../introduction/system_requirements` for information about installation pre-requisites.
+
 Install Flask-Diamond
 ---------------------
 
-Flask-Diamond installs in a Python environment.
+Create a :doc:`virtualenv <../documentation/requirements_management_with_virtualenv>` for your new Flask-Diamond application, and then install Flask-Diamond with `pip <http://pip.readthedocs.org/en/latest/>`_.
 
 ::
 
@@ -14,14 +16,35 @@ Flask-Diamond installs in a Python environment.
 Scaffold a new Flask-Diamond application
 ----------------------------------------
 
-Install with default options and then start the server.
+Create a directory to hold your application, and then scaffold a new Flask-Diamond application inside that directory.  For this *Quick Start*, just use the default options.
 
 ::
 
+    mkdir my-diamond-app
+    cd my-diamond-app
     diamond-scaffold.sh
-    make db server
 
-Finished!
----------
+Use it!
+-------
 
-You now have a server running at http://127.0.0.1:5000/admin
+Create the database:
+
+::
+
+    make db
+
+Start the server:
+
+::
+
+    make server
+
+You now have a server running at http://127.0.0.1:5000/admin.  Visit your new application in a web browser and login with the following account details:
+
+- username: **admin**
+- password: **aaa**
+
+Next Steps
+----------
+
+It's easy to scaffold a Flask-Diamond application.  Now you can :doc:`learn_flask_diamond` by reading the online materials.

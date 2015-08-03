@@ -28,3 +28,4 @@ pysqlite==2.6.3
 marshmallow==1.2.6
 alembic==0.7.4
 gunicorn==19.3.0
+sh==1.11

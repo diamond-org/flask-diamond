@@ -1,6 +1,8 @@
 API
 ===
 
+This documentation is for Flask-Diamond |version|.
+
 Diamond object
 --------------
 
