@@ -13,8 +13,8 @@ The following sections describe the process for installing these requirements on
 
 If you do not have root access, then refer to the section :ref:`unprivileged-installation` for information about creating a virtualenv in your user account.
 
-Installing on Debian/Ubuntu
----------------------------
+Debian/Ubuntu
+-------------
 
 Flask-Diamond installs cleanly on Debian and Ubuntu systems released after 2011.
 
@@ -26,8 +26,8 @@ Flask-Diamond installs cleanly on Debian and Ubuntu systems released after 2011.
     pip install --upgrade virtualenv
     pip install virtualenvwrapper
 
-Installing on Redhat
---------------------
+Redhat
+------
 
 Flask-Diamond can be installed on RedHat, but ensure your package manager is installing Python 2.7; as of August 2015, RHEL provides an older version.
 
@@ -39,8 +39,8 @@ Flask-Diamond can be installed on RedHat, but ensure your package manager is ins
     pip install --upgrade virtualenv
     pip install virtualenvwrapper
 
-Installing on OSX with Homebrew
--------------------------------
+OSX with Homebrew
+-----------------
 
 Flask-Diamond installs pretty easily on OSX with Homebrew.  Make sure you are using the *admin* user for this process, just like a normal Homebrew operation.
 
@@ -52,8 +52,8 @@ Flask-Diamond installs pretty easily on OSX with Homebrew.  Make sure you are us
     brew install sqlite
     pip install --upgrade pip
 
-Installing on Windows with Cygwin
----------------------------------
+Windows with Cygwin
+-------------------
 
 **Note**: Have you done this install successfully?  Please share your process as a comment on `Issue 8 <https://github.com/iandennismiller/flask-diamond/issues/8>`_.
 

@@ -14,6 +14,7 @@ User Guide
 ----------
 
 .. toctree::
+    :maxdepth: 1
 
     documentation/project_initialization_and_scaffolding
     documentation/configuration_explanation
@@ -27,14 +28,15 @@ User Guide
 ..    documentation/writing_models_with_sqlalchemy
 ..    documentation/writing_views_with_jinja
 ..    documentation/writing_an_application_with_flask-diamond
-..    documentation/deploying_with_wsgi
+..    documentation/web_service_with_wsgi
+..    documentation/deploying_with_fabric
 
 .. Tutorials
 .. ---------
 ..
 .. .. toctree::
 ..
-..  documentation/model-_view-controller_architecture_with_flask-diamond
+..  documentation/model-view-controller_architecture_with_flask-diamond
 
 About Flask-Diamond
 -------------------

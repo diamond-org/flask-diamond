@@ -43,7 +43,7 @@ setup(
     classifiers=[],  # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
     include_package_data=True,
     keywords='',
-    author=grep('__author__'),
+    =grep('__author__'),
     author_email=grep('__email__'),
     url='http://flask-diamond.readthedocs.org',
     install_requires=read('requirements.txt'),
