@@ -1,8 +1,9 @@
-<h3>Related Topics</h3>
+<h3>Topic Navigation</h3>
 <ul>
-  <li><a href="{{ pathto(master_doc) }}">Documentation overview</a><ul>
+  <ul>
   {%- for parent in parents %}
-  <li><a href="{{ parent.link|e }}">{{ parent.title }}</a><ul>
+  <li><a href="{{ parent.link|e }}">{{ parent.title }}</a>
+  <ul>
   {%- endfor %}
     {%- if prev %}
       <li>Previous: <a href="{{ prev.link|e }}" title="{{ _('previous chapter')

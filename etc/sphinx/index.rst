@@ -10,6 +10,8 @@ Introduction
     introduction/learn_flask_diamond
     introduction/system_requirements
 
+.. _user-guide:
+
 User Guide
 ----------
 
@@ -17,8 +19,8 @@ User Guide
     :maxdepth: 1
 
     documentation/project_initialization_and_scaffolding
-    documentation/configuration_explanation
-    documentation/requirements_management_with_virtualenv
+..    documentation/requirements_management_with_virtualenv
+..    documentation/configuration_explanation
 ..    documentation/Makefile_explanation
 ..    documentation/manage_py_explanation
 ..    documentation/managing_users_with_flask-security
