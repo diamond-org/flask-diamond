@@ -30,7 +30,7 @@ When you invoke ``diamond-scaffold.sh``, two templates are downloaded and automa
 - :ref:`diamond-project`
 - :ref:`diamond-app`
 
-Using mr.bob, a brief set of questions are used to populate the templates with variables.  When you answer these questions, your choices are stored in a file called ``.mrbob.ini`` that is located in the root folder of your project.
+Using `mr.bob <http://mrbob.readthedocs.org/en/latest/>`_, a brief set of questions are used to populate the templates with variables.  When you answer these questions, your choices are stored in a file called ``.mrbob.ini`` that is located in the root folder of your project.
 
 .. _diamond-project:
 
