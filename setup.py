@@ -13,7 +13,7 @@ def read(fname):
     return open(fpath(fname)).read()
 
 
-file_text = read(fpath('flask_diamond/__init__.py'))
+file_text = read(fpath('flask_diamond/__meta__.py'))
 
 
 def grep(attrname):
@@ -25,10 +25,7 @@ def grep(attrname):
 setup(
     version=grep('__version__'),
     name='Flask-Diamond',
-    description="""\
-        Flask-Diamond provides a path that can guide your thought and development.
-        Flask-Diamond is the road that leads to other ideas.
-        """,
+    description="Flask-Diamond is a batteries-included Flask framework.",
     packages=[
         "flask_diamond",
         "flask_diamond.models",
@@ -40,12 +37,22 @@ setup(
         "bin/diamond-scaffold.sh",
     ],
     long_description=read('Readme.rst'),
-    classifiers=[],  # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
+    classifiers=[
+        "Development Status :: 4 - Beta",
+        "Framework :: Flask",
+        "Intended Audience :: Developers",
+        "Intended Audience :: Science/Research",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: POSIX",
+        "Operating System :: MacOS :: MacOS X",
+        "Programming Language :: Python :: 2.7",
+        "Topic :: Internet :: WWW/HTTP",
+    ],
     include_package_data=True,
     keywords='',
     author=grep('__author__'),
     author_email=grep('__email__'),
-    url='http://flask-diamond.readthedocs.org',
+    url='http://flask-diamond.org',
     install_requires=read('requirements.txt'),
     license='MIT',
     zip_safe=False,

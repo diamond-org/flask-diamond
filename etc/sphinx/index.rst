@@ -22,7 +22,7 @@ User Guide
     documentation/requirements_management_with_virtualenv
     documentation/configuration_explanation
     documentation/libraries_included_in_flask-diamond
-..    documentation/Makefile_explanation
+    documentation/Makefile_explanation
 ..    documentation/manage_py_explanation
 ..    documentation/writing_an_application_with_flask-diamond
 ..

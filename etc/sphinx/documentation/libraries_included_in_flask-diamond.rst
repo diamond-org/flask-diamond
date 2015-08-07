@@ -3,12 +3,12 @@ Libraries Included in Flask-Diamond
 
 Flask-Diamond pulls from many different Flask extensions, which are all listed in this document.  A significant factor for inclusion with Flask-Diamond is the existence of good documentation.  Most of the following libraries therefore provide extensive documentation that can help you to understand everything in greater detail.
 
-Data
-----
+Database/Model
+--------------
 
 - `Flask-SQLAlchemy <http://pythonhosted.org/Flask-SQLAlchemy/>`_: "Flask-SQLAlchemy is an extension for Flask that adds support for SQLAlchemy to your application. It requires SQLAlchemy 0.6 or higher. It aims to simplify using SQLAlchemy with Flask by providing useful defaults and extra helpers that make it easier to accomplish common tasks."
-- `Flask-Marshmallow <http://flask-marshmallow.readthedocs.org/en/latest/>`_: "Flask-Marshmallow is a thin integration layer for Flask (a Python web framework) and marshmallow (an object serialization/deserialization library) that adds additional features to marshmallow, including URL and Hyperlinks fields for HATEOAS-ready APIs. It also (optionally) integrates with Flask-SQLAlchemy."
 - `Flask-Migrate <http://flask-migrate.readthedocs.org/en/latest/>`_: "Flask-Migrate is an extension that handles SQLAlchemy database migrations for Flask applications using Alembic. The database operations are provided as command line arguments for Flask-Script."
+- `Flask-Marshmallow <http://flask-marshmallow.readthedocs.org/en/latest/>`_: "Flask-Marshmallow is a thin integration layer for Flask (a Python web framework) and marshmallow (an object serialization/deserialization library) that adds additional features to marshmallow, including URL and Hyperlinks fields for HATEOAS-ready APIs. It also (optionally) integrates with Flask-SQLAlchemy."
 
 Development
 -----------
