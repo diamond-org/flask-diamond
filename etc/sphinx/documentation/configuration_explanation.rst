@@ -127,16 +127,20 @@ Flask-Security
 ReCAPTCHA
 ^^^^^^^^^
 
+Flask-Captcha provides a quick mechanism for ensuring your application is used by people instead of bots.  You may recognize CAPTCHA as the squiggly letters and numbers that you must type into a text box.  In order to get started with CAPTCHA and ReCAPTCHA, you must create a free account with their service.
+
 ::
 
     RECAPTCHA_PUBLIC_KEY = '0000_00000000000000000000000000000000000'
     RECAPTCHA_PRIVATE_KEY = '0000_00000000000000000000000000000000000'
 
-- ``RECAPTCHA_PUBLIC_KEY``: 
-- ``RECAPTCHA_PRIVATE_KEY``: 
+- ``RECAPTCHA_PUBLIC_KEY``: The ReCAPTCHA online service will provide you with a public key, which will be included with your web application.
+- ``RECAPTCHA_PRIVATE_KEY``: ReCAPTCHA also provides a private key, but this one must be kept secret.  You will enter it in this configuration file, but nowhere else.
 
 Flask-Mail
 ^^^^^^^^^^
+
+The simplest way for your application to send email is using Flask-Mail, which makes it pretty easy to create and send emails.
 
 ::
 
@@ -146,30 +150,21 @@ Flask-Mail
     MAIL_USERNAME = None
     MAIL_PASSWORD = None
 
-- ``MAIL_SERVER``: 
-- ``MAIL_PORT``: 
-- ``MAIL_USE_TLS``: 
-- ``MAIL_USERNAME``: 
-- ``MAIL_PASSWORD``: 
+- ``MAIL_SERVER``: the hostname or IP address of your SMTP server
+- ``MAIL_PORT``: the port used by your SMTP server.  Usually, this is 25 or 465.
+- ``MAIL_USE_TLS``: If the server supports or requires encryption (with TLS), then set this to *True*
+- ``MAIL_USERNAME``: If you must provide authentication information to your server in order to send email through it, then provide the username here.
+- ``MAIL_PASSWORD``: As with the username, provide the password here if it is required.
 
 Celery
 ^^^^^^
+
+Celery is a job queue that has been integrated into Flask-Diamond so that you create background tasks for any operations that take a while to complete.  Typically, you will want your application to respond to requests within 100ms, but when this is not possible, you can achieve a rapid response by queueing the slow operation so that it executes separately.  This way, it is still possible to respond to requests quickly enough that nobody will notice.
 
 ::
 
     CELERY_BROKER_URL = 'sqla+sqlite:///var/db/celerydb.sqlite'
     CELERY_RESULT_BACKEND = 'db+sqlite:///var/db/results.sqlite'
 
-- ``CELERY_BROKER_URL``: 
-- ``CELERY_RESULT_BACKEND``: 
-
-Flask-Marshmallow
-^^^^^^^^^^^^^^^^^
-
-::
-
-    MARSHMALLOW_STRICT = True
-    MARSHMALLOW_DATEFORMAT = "%y%m%d"
-
-- ``MARSHMALLOW_STRICT``: 
-- ``MARSHMALLOW_DATEFORMAT``: 
+- ``CELERY_BROKER_URL``: the URL pointing to a database connection.  This is like the SQLAlchemy URI, but different enough that you should consult the documentation.
+- ``CELERY_RESULT_BACKEND``: Celery is able to store job results in a separate database, and for certain types of jobs, this is recommended.  The URI here is similar to but different from the *CELERY_BROKER_URL*.
