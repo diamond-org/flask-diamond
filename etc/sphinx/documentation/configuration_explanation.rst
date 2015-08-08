@@ -93,8 +93,8 @@ Debugging instructs the application to print extra information during operation.
 - ``DEBUG_TOOLBAR``: whether to include `Flask-DebugToolbar <http://flask-debugtoolbar.readthedocs.org/en/latest/>`_, which is a helpful in-browser debugging widget.
 - ``DEBUG_TB_INTERCEPT_REDIRECTS``: it is possible to inject the debug toolbar before URL redirects, which can be helpful for isolating routing problems.
 
-Flask-Security
-^^^^^^^^^^^^^^
+Accounts and Security
+^^^^^^^^^^^^^^^^^^^^^
 
 `Flask-Security <https://pythonhosted.org/Flask-Security/index.html>`_ provides an integrated platform of account security features, and Flask-Diamond incorporates most of its functionality.  The following directives control Flask-Security.
 
@@ -121,7 +121,7 @@ Flask-Security
 - ``SECURITY_CONFIRMABLE``: Must users confirm their email address in order to activate their account?
 - ``SECURITY_REGISTERABLE``: Is self-registration allowed?
 - ``SECURITY_RECOVERABLE``: Can a user reset their password if they have forgotten it?
-- ``SECURITY_TRACKABLE``: Does the User model include fields for recording User account history?  By default, Flask-Diamond provides these fields.  See `Flask-Security <https://pythonhosted.org/Flask-Security/models.html#trackable>`_ for more information about this.
+- ``SECURITY_TRACKABLE``: Does the User model include fields for recording User account history?  By default, Flask-Diamond provides these fields.  See `the Flask-Security docs <https://pythonhosted.org/Flask-Security/models.html#trackable>`_ for more information about this.
 - ``SECURITY_EMAIL_SENDER``: What is the email address that security messages should be sent from?
 
 ReCAPTCHA

@@ -27,8 +27,8 @@ manager.add_command("publicserver", Server(port=app.config['PORT'], host="0.0.0.
 manager.add_command('db', MigrateCommand)
 
 
-@manager.option('-e', '--email', help='email address')
-@manager.option('-p', '--password', help='password')
+@manager.option('-e', '--email', help='email address', required=True)
+@manager.option('-p', '--password', help='password', required=True)
 @manager.option('-a', '--admin', help='make user an admin user', action='store_true', default=None)
 def useradd(email, password, admin):
     "add a user to the database"
@@ -36,7 +36,7 @@ def useradd(email, password, admin):
         roles = ["Admin"]
     else:
         roles = ["User"]
-    Models.User.register(
+    models.User.register(
         email=email,
         password=password,
         confirmed=True,
@@ -44,12 +44,15 @@ def useradd(email, password, admin):
     )
 
 
-@manager.option('-e', '--email', help='email address')
+@manager.option('-e', '--email', help='email address', required=True)
 def userdel(email):
     "delete a user from the database"
-    from LabDaemon import Models
-    obj = Models.User.find(email=email)
-    obj.delete()
+    obj = models.User.find(email=email)
+    if obj:
+        obj.delete()
+        print("Deleted")
+    else:
+        print("User not found")
 
 
 @manager.command

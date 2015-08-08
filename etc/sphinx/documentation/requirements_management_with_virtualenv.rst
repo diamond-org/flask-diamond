@@ -1,5 +1,5 @@
-Requirements Management with virtualenv
-=======================================
+Requirements Management with ``virtualenv``
+===========================================
 
 The preferred way to manage your Python requirements is with virtualenv.  The preferred way to manage virtualenvs is with virtualenvwrapper, which provides a regularized interface for creating and using virtualenvs.
 
@@ -10,8 +10,8 @@ Pre-requisites
 
 You need to install the minimum :doc:`../introduction/system_requirements` in order to have the necessary tools for this process.  It is assumed that you now have ``workon`` and ``mkvirtualenv`` available.  If you cannot call these commands in a terminal, then you should double-check your :doc:`../introduction/system_requirements`.
 
-Making a New virtualenv
------------------------
+Making a New ``virtualenv``
+---------------------------
 
 The way to initialize a new virtualenv is with ``mkvirtualenv``, which is described on the `mkvirtualenv documentation <http://virtualenvwrapper.readthedocs.org/en/latest/command_ref.html#mkvirtualenv>`_.  The following example demonstrates creating a virtualenv called *my-diamond-app*.
 
@@ -47,8 +47,8 @@ In order to leave the virtualenv and return to a normal shell, use ``deactivate`
     (my-diamond-app) $ deactivate
     $
 
-pip and Installation
---------------------
+``pip`` and Installation
+------------------------
 
 When you use ``pip`` inside your virtualenv, it will automatically install packages locally, instead of installing them at the system level.  This way, it's easy to install anything without needing root access.  In the following example, we are inside our virtualenv and we want to upgrade pip:
 
@@ -85,7 +85,7 @@ You can also store your requirements in a requirements file.
     (my-diamond-app) $ pip freeze > requirements.txt
 
 
-Makefile support
-----------------
+``Makefile`` support
+--------------------
 
 By default, Flask-Diamond provides ``make install``, which will use requirements.txt to install your project's pre-requisites automatically.

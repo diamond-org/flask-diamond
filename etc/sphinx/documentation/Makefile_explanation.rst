@@ -1,7 +1,9 @@
-Makefile Explanation
-====================
+``Makefile`` Explanation
+========================
 
 The Makefile that ships with Flask-Diamond by default includes a number of targets that address several common tasks throughout the life cycle of a project.  The way to use the Makefile is with the ``make`` command.  Thus, to install the project with make, you'd invoke ``make install``.
+
+During development, the Makefile is one of the primary ways for you to interact with your project.  You may find yourself running ``make db server`` or perhaps ``make single`` with some regularity.  It is recommended to become familiar with the Flask-Diamond Makefile.
 
 Integration
 -----------

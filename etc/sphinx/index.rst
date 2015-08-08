@@ -23,7 +23,7 @@ User Guide
     documentation/configuration_explanation
     documentation/libraries_included_in_flask-diamond
     documentation/Makefile_explanation
-..    documentation/manage_py_explanation
+    documentation/manage_py_explanation
 ..    documentation/writing_an_application_with_flask-diamond
 ..
 ..    documentation/writing_models_with_sqlalchemy
