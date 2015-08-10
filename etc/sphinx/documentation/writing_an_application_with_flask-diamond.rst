@@ -1,12 +1,16 @@
 Writing an Application with Flask-Diamond
 =========================================
 
+
+
 This document is a work in progress.
 
-A Simple Flask-Diamond Example
-------------------------------
+A basic Flask-Diamond Example
+-----------------------------
 
-::
+The following example can be generated from a freshly scaffolded project by following the :doc:`../documentation/project_initialization_and_scaffolding` document with the project name ``MyDiamondApp``.  Notice that the ``MyDiamondApp`` class inherits from ``Diamond``, which gives the new project a lot of functionality "out of the box."
+
+.. code-block:: python
 
     from flask.ext.diamond import Diamond, db, security
     from flask.ext.diamond.administration import AdminModelView
@@ -40,7 +44,7 @@ A Simple Flask-Diamond Example
 Customization with Inheritance
 ------------------------------
 
-Create an object that inherits Flask-Diamond, then overload.
+In the basic example above, notice the two functions ``administration()`` and ``blueprints()``.  By overloading these two functions, as well as others in Flask-Diamond, it is possible to customize different aspects of your application.
 
 Extending the Scaffold
 ----------------------
