@@ -19,8 +19,8 @@ Developer Guide
     :maxdepth: 1
 
     documentation/project_initialization_and_scaffolding
-    documentation/writing_an_application_with_flask-diamond
     documentation/model_view_controller_with_flask-diamond
+    documentation/writing_an_application_with_flask-diamond
 
 ..    documentation/writing_models_with_sqlalchemy
 ..    documentation/writing_views_with_jinja
