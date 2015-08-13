@@ -21,14 +21,14 @@ Developer Guide
     documentation/project_initialization_and_scaffolding
     documentation/model_view_controller_with_flask-diamond
     documentation/writing_an_application_with_flask-diamond
+    documentation/writing_models_with_sqlalchemy
+    documentation/schema_management_with_flask-migrations
 
 ..    documentation/designing_a_flask-diamond_application
-..    documentation/writing_models_with_sqlalchemy
 ..    documentation/writing_views_with_jinja
 ..    documentation/writing_a_gui_with_flask-admin
 ..    documentation/writing_an_api_with_flask-restful
 ..    documentation/writing_documentation_with_sphinx
-..    documentation/database_schema_migration_with_flask-migrations
 ..    documentation/managing_users_with_flask-security
 ..    documentation/testing_with_nosetests
 
