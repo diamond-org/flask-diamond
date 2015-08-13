@@ -8,21 +8,21 @@ Application start-up
 
 Flask-Diamond initializes many subsystems when the application is first started.  The subsystems are initialized in this order:
 
-#. flask configuration: the ``$SETTINGS`` environment variable is inspected and the file it points to is loaded.
-#. logging: based on the configuration, write log messages to a file on the filesystem.
-#. sqlalchemy database: connect to a database and initialize the SQLAlchemy Object Relational Mapper (ORM)
-#. flask blueprints: initialize your application's views (in the MVC sense), which are saved as "blueprints" in a Flask application.
-#. forms: initialize your application's web forms, which reads input from users and validates it.
-#. webassets: it is possible to bundle assets like images, CSS, and javascript with your application.  webassets simplifies some of this work.
-#. debug toolbar: when the configuration specifies that ``DEBUG = True``, the web interface will display a widget with extra debugging tools.
-#. flask signals: Flask provides a signals subsystem that your application can hook into to automate certain behaviors.
-#. flask error handlers: when something goes wrong, you may want to handle it (e.g. by displaying a 404 page)
-#. security: manage users, roles, login, passwords, and other security things with Flask-Security.
-#. administration: a quick GUI using Flask-Admin with extensive Model support.
-#. rest: provide a REST API using Flask-RESTful
-#. email: send email with Flask-Mail
-#. request handlers: control the way Flask handles certain requests
-#. celery: provide a task queue using Celery
+#. **flask configuration**: the ``$SETTINGS`` environment variable is inspected and the file it points to is loaded.
+#. **logging**: based on the configuration, write log messages to a file on the filesystem.
+#. **sqlalchemy database**: connect to a database and initialize the SQLAlchemy Object Relational Mapper (ORM)
+#. **flask blueprints**: initialize your application's views (in the MVC sense), which are saved as "blueprints" in a Flask application.
+#. **forms**: initialize your application's web forms, which reads input from users and validates it.
+#. **webassets**: it is possible to bundle assets like images, CSS, and javascript with your application.  webassets simplifies some of this work.
+#. **debug toolbar**: when the configuration specifies that ``DEBUG = True``, the web interface will display a widget with extra debugging tools.
+#. **flask signals**: Flask provides a signals subsystem that your application can hook into to automate certain behaviors.
+#. **flask error handlers**: when something goes wrong, you may want to handle it (e.g. by displaying a 404 page)
+#. **security**: manage users, roles, login, passwords, and other security things with Flask-Security.
+#. **administration**: a quick GUI using Flask-Admin with extensive Model support.
+#. **rest**: provide a REST API using Flask-RESTful
+#. **email**: send email with Flask-Mail
+#. **request handlers**: control the way Flask handles certain requests
+#. **celery**: provide a task queue using Celery
 
 The default behavior of these functions is described in the :ref:`diamond-object` documentation.
 
