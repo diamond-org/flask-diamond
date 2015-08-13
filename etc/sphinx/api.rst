@@ -3,6 +3,8 @@ API
 
 This documentation is for Flask-Diamond |version|.
 
+.. _diamond-object:
+
 Diamond object
 --------------
 
