@@ -60,25 +60,14 @@ When the Model Changes
 There is a close correspondence between the Model and the database tables.  If an attribute is added to a model, then we need a new column in our database to store the values for this attribute.  If the model changes, the database must also change.  There are two ways of updating your database:
 
 - **the clean slate**: delete the old database and creating a new one that reflects the latest changes to the model.  This is accomplished with ``make db`` on the command line.  It's easy and quick.
-- **schema migrations**: analyze your updated model to determine what parts are different from your old database, and then add/remove those parts to a live database.  This is tricky, but it is necessary for databases in production.  Read more in :doc:`schema_management_with_flask-migrations`.
+- **schema migrations**: analyze your updated model to determine what parts are different from your old database, and then add/remove those parts to a live database.  This is tricky, but it is necessary for databases in production.  Read more in :doc:`managing_schemas_with_flask-migrate`.
 
-As long as you are actively developing, it is recommended to use ``make db`` each time you update your model.  However, when your application is live, you will need to read :doc:`schema_management_with_flask-migrations` to learn about altering a production database.
+As long as you are actively developing, it is recommended to use ``make db`` each time you update your model.  However, when your application is live, you will need to read :doc:`managing_schemas_with_flask-migrate` to learn about altering a production database.
 
 Data Fixtures
 -------------
 
 What good is a data model without any data to put in it?  Data fixtures are a way of easily adding data to your database, which is helpful when you are frequently rebuilding your database with ``make db``.  Data fixtures can be placed into ``bin/manage.py`` within the ``populate_db()`` function.  If you find yourself continually re-creating certain model objects in your database so you can test your application, then consider using ``populate_db()`` to automate the creation of these objects.
-
-A Philosophy of Models
-----------------------
-
-A model might be a very simple representation of a real thing, or the model might be very detailed.  For example, a model of an entire country's economy might require lots of detail, whereas a model of a school district might be relatively simpler.
-
-Sometimes, we talk about "domains" when we talk about models, because our models might be thematically related to one another.  We might then say we're modeling a domain, and we might talk to a "domain expert" to learn more about the kinds of models we are building.
-
-A model is in some ways a representationally platonic ideal compared to the actual domain being modeled.  While things in the "real world" are irregular in an uncountable number of ways, our models are perfectly regular.  Since models are stored in a database, all of the model attributes can be lined up nicely into rows and columns.
-
-On the same coin, a model is always an imperfect representation of the thing it is modeling.  The irregularities of the real world are difficult to capture using a model.  The goal for good model creation is to isolate the parts of the model that are regular so as to reduce the number of exceptions to your model.
 
 CRUDMixin and MarshmallowMixin
 ------------------------------
