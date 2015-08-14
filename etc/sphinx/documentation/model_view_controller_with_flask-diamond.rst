@@ -21,7 +21,7 @@ Entities and Relationships
 
 To model a chess game, you'd start with a model of Players and Chess Pieces, which are entities. A player has many chess pieces, so there is a relationship between our entities.  Using nothing more than the idea of "Players" and "Chess Pieces", you can go a long way towards modeling the game of chess.
 
-All models (including the chess model) have two properties:
+All models have two properties:
 
 - **Entities**: An Entity is a type of object.  Entities have attributes, which are characteristics of the Entity.  In the chess example, a Player is a an Entity; there are two Players in chess and each one is an instance of the Player class.  An attribute of Players is "color"; the player controls either white pieces or black pieces, so the player's color can be white or black.  Since a player can have a name, *name* is therefore also an attribute of a Player.
 - **Relationships**: Entities can affect one another through relationships.  In the chess example, a Player has many Pieces and each Piece is owned by a Player.  Since a Player can have many Pieces, we call this a "one-to-many" Relationship.  There are also one-to-one and many-to-many relationships.
@@ -31,13 +31,13 @@ A model can therefore be described using an Entity-Relationship Diagram, which s
 A Philosophy of Models
 ^^^^^^^^^^^^^^^^^^^^^^
 
-A model might be a very simple representation of a real thing, or the model might be very detailed.  For example, a model of an entire country's economy might require lots of detail, whereas a model of a school district might be relatively simpler.
-
-Sometimes, we talk about "domains" when we talk about models, because our models might be thematically related to one another.  A domain might be something like *finance*, *gaming*, *email*, or any other broad category that people build applications for.  To properly model a domain, we might talk to a "domain expert" to learn more about the kinds of models we are building.
+A model might be a very simple representation of a real thing, or the model might be very detailed.  A model of an entire country's economy might require lots of detail, whereas a model of a school district might be relatively simpler.
 
 A model is in some ways a platonic ideal of the actual domain being modeled.  While things in the "real world" are irregular in an uncountable number of ways, our models are perfectly regular.  Since models are stored in a database, all of the model attributes can be lined up nicely into rows and columns.  Tidy!
 
 Paradoxically, a model is always an imperfect representation of the thing it is modeling.  The irregularities of the real world are difficult to capture using a model.  The goal for good model creation is to isolate the parts of the model that are regular so as to reduce the number of exceptions to your model.
+
+Sometimes, we talk about "domains" when we talk about models, because our models might be thematically related to one another.  A domain might be something like *finance*, *gaming*, *email*, or any other broad category that people build applications for.  To properly model a domain, we might talk to a "domain expert" to learn more about the kinds of models we are building.
 
 View
 ----

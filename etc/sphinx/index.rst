@@ -23,16 +23,17 @@ Developer Guide
     documentation/writing_an_application_with_flask-diamond
     documentation/writing_models_with_sqlalchemy
     documentation/managing_schemas_with_flask-migrate
-
+    documentation/crud_with_flask-diamond
 ..    documentation/designing_a_flask-diamond_application
+
 ..    documentation/writing_a_gui_with_flask-admin
 ..    documentation/writing_views_with_jinja
 ..    documentation/writing_an_api_with_flask-restful
 ..    documentation/writing_documentation_with_sphinx
 ..    documentation/managing_users_with_flask-security
 ..    documentation/testing_with_nosetests
-..    documentation/crud_with_flask-diamond
 ..    documentation/debugging_a_flask-diamond_application
+..    documentation/sending_email_with_flask-mail
 
 .. _user-guide:
 

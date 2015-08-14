@@ -10,7 +10,7 @@ A Basic Model
 
 A model is actually written in Flask-Diamond using Python.  Models are represented using `SQLAlchemy <http://docs.sqlalchemy.org/en/rel_1_0/>`_, which is a very powerful Python library for working with databases.  Since we are storing our models in a database, `SQLAlchemy <http://docs.sqlalchemy.org/en/rel_1_0/>`_ provides a strong foundation for getting the job done.
 
-Let's create a model of a person who has a name and an age.  Also, let's model the fact that every person has two biological parents (here called a mother and a father).  The following example demonstrates one way this model might be accomplished.
+Let's create a model of a person who has a name and an age.  Also, let's model the fact that every person has two biological parents (here called a mother and a father).  The following example demonstrates one way this model might be accomplished. [#f1]_
 
 .. code-block:: python
 
@@ -69,10 +69,12 @@ Data Fixtures
 
 What good is a data model without any data to put in it?  Data fixtures are a way of easily adding data to your database, which is helpful when you are frequently rebuilding your database with ``make db``.  Data fixtures can be placed into ``bin/manage.py`` within the ``populate_db()`` function.  If you find yourself continually re-creating certain model objects in your database so you can test your application, then consider using ``populate_db()`` to automate the creation of these objects.
 
-CRUDMixin and MarshmallowMixin
-------------------------------
+Further Reading
+---------------
 
-Flask-Diamond provides a few Python mixins for convenience:
+- See :doc:`crud_with_flask-diamond`, which describes the Create-Read-Update-Delete pattern for Models.
+- See :doc:`managing_schemas_with_flask-migrate`, which describes how to evolve the application database along with its model.
 
-- ``CRUDMixin`` will extend your model with functions for ``create()``, ``read()``, ``update()``, and ``delete()``.  These four key functions are widely used in a pattern called CRUD, which describes a basic lifecycle for model objects.  First an object is created, then it is alternately read and updated, and finally it is deleted.
-- ``MarshmallowMixin`` simplifies object marshalling, which is the process of mapping data to and from a serialization format like JSON.  This is useful because applications must frequently send model data across the Internet, and in order to do so, models are commonly translated into JSON or another format.  Marshalling makes serialization and deserialization into a repeatable process.
+.. rubric:: Footnotes
+
+.. [#f1] Note the use of CRUDMixin, which provides us with a create() method.  For more information about CRUDMixin, see :doc:`crud_with_flask-diamond`.

@@ -13,12 +13,18 @@ Schema migrations, which are handled using `Flask-Migrate <https://flask-migrate
 Creating a Migration
 --------------------
 
-To begin a migration, invoke ``make migratedb`` within the virtualenv.  This will create a new python script within the ``migrations/versions`` subdirectory of your application module directory.  There will be two functions automatically created for you: ``upgrade()`` and ``downgrade()``.  The ``upgrade()`` function will individually add tables and columns to your old database schema until it matches your current model.  The ``downgrade()`` function is the opposite.  In this manner, it is possible to "roll back" to a previous schema.
+To begin a migration, enter the virtualenv and invoke:
+
+::
+
+    make migratedb
+
+This will create a new python script within the ``migrations/versions`` subdirectory of your application module directory.  There will be two functions automatically created for you: ``upgrade()`` and ``downgrade()``.  The ``upgrade()`` function will individually add tables and columns to your old database schema until it matches your current model.  The ``downgrade()`` function is the opposite.  In this manner, it is possible to "roll back" to a previous schema.
 
 An Example Migration
 ^^^^^^^^^^^^^^^^^^^^
 
-It is easy to see how a migration uses SQLAlchemy directly to create tables if we examine an example.  One of the migrations that ships with Flask-Diamond is in ``flask_diamond/migrations/versions/20f04b9598da_flask-diamond-020.py``, and its contents look like this:
+It is easy to see how a migration uses SQLAlchemy directly to create tables if we examine an example.  One of the migrations that ships with Flask-Diamond is in ``flask_diamond/migrations/versions/20f04b9598da_flask-diamond-020.py``.  In this case, the ``upgrade()`` function adds several new columns to the ``user`` table.  The file looks like this:
 
 .. code-block:: python
 
@@ -60,7 +66,13 @@ It is easy to see how a migration uses SQLAlchemy directly to create tables if w
 Applying a Migration
 --------------------
 
-To apply migrations, simply invoke ``make upgradedb`` within the virtualenv.  This will inspect your database and automatically apply migrations, in order, until it is at the latest.
+To apply migrations, enter the virtualenv and run:
+
+::
+
+    make upgradedb
+
+This will inspect your database and automatically apply migrations, in order, until it is at the latest.
 
 Migrations in Production
 ^^^^^^^^^^^^^^^^^^^^^^^^
