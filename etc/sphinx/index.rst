@@ -24,8 +24,8 @@ Developer Guide
     documentation/writing_models_with_sqlalchemy
     documentation/managing_schemas_with_flask-migrate
     documentation/crud_with_flask-diamond
-..    documentation/designing_a_flask-diamond_application
 
+.. documentation/designing_a_flask-diamond_application
 ..    documentation/writing_a_gui_with_flask-admin
 ..    documentation/writing_views_with_jinja
 ..    documentation/writing_an_api_with_flask-restful
@@ -63,9 +63,9 @@ About Flask-Diamond
 .. toctree::
     :maxdepth: 1
 
+    about/libraries_included_in_flask-diamond
     about/philosophy
     about/license
-    about/libraries_included_in_flask-diamond
 ..    about/changelog
 ..    about/contributors
 ..    documentation/how_to_contribute_to_the_project

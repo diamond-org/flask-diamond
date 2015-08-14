@@ -1,7 +1,7 @@
 Managing Schemas with Flask-Migrate
 ===================================
 
-Any time the Python model is changed, the database must be updated so that it has the right columns.  Any time a table or column is added, removed, or changed in any way, we say the database schema [#f1]_ has changed and we need to be sure the database schema always matches the model.
+Any time the data model is changed, the database must be updated so that it has the right columns.  Any time a table or column is added, removed, or changed in any way, we say the database schema [#f1]_ has changed.  We need to be sure the database schema always matches the model.
 
 Flask-Diamond makes it quick and easy to rebuild the schema during development with ``make db``, which will delete the development database and rebuild it with all new columns matching your models.  However, it's a little drastic to always throw everything away and start from scratch.  Furthermore, when the data in your database is important, it's actually impossible to throw it away and start over.  Luckily, there's `Flask-Migrate <https://flask-migrate.readthedocs.org/en/latest/>`_, which can make this much easier.
 
@@ -72,12 +72,12 @@ To apply migrations, enter the virtualenv and run:
 
     make upgradedb
 
-This will inspect your database and automatically apply migrations, in order, until it is at the latest.
+This will inspect your database and automatically apply migrations, in order, until it is at the latest. By default, this applies the migration to your development database.
 
 Migrations in Production
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-By default, this applies the migration to your development database.  In order to affect the production database, you must set ``SETTINGS`` so that it points to your production configuration.  Then, you must invoke Flask-Migrate explicitly, like so:
+In order to affect the production database, you must set ``SETTINGS`` so that it points to your production configuration.  Then, you must invoke Flask-Migrate explicitly, like so:
 
 ::
 
