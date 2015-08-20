@@ -3,7 +3,7 @@ Writing a GUI with Flask-Admin
 
 A common pattern in application design is to apply :doc:`CRUD <crud_with_flask-diamond>` to your :doc:`Model <writing_models_with_sqlalchemy>`, and then provide a Graphical User Interface for people to interact with the Model.  `Flask-Admin <http://flask-admin.readthedocs.org/>`_ makes it very easy to create a basic interface with Create-Read-Update-Delete functionality, and provides a framework for designing much more sophisticated interfaces.
 
-This document discusses a simple CRUD with Flask-Admin, and then extends the CRUD with additional functionality.
+This document discusses a simple CRUD with Flask-Admin, and then extends the CRUD with additional functionality.  When Flask-Admin creates a GUI, it automatically discovers the Model Attributes and creates a web form containing fields for all the attributes.  
 
 A Simple CRUD GUI
 -----------------
@@ -38,10 +38,14 @@ The *category* parameter causes the GUI to put this View into the menu bar benea
 Multiple CRUD Views Inside BaseModelView
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- Create
-- List
-- Edit
-- Delete
+BaseModelView actually creates multiple views that provide CRUD functionality:
+
+- **Create**: this view presents a form with all of the model attributes displayed as blank fields.  When the fields are populated and the form is submitted, a new model object will be created.
+- **List**: the List view displays a paginated list of all the objects of the Model.  This view also contains widgets for editing and deleting objects.
+- **Edit**: the Edit view is identical to the create view, except now the fields are populated by a specific model object.  When the fields are changed, the model object can be updated.
+- **Delete**: The Delete view simply confirms whether the user wants to delete an object.
+
+Create-List-Edit-Delete actually corresponds 
 
 Extending the CRUD
 ------------------
