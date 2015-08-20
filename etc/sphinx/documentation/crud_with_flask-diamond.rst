@@ -65,3 +65,4 @@ Further Reading
 ---------------
 
 - See :doc:`writing_models_with_sqlalchemy` for a more detailed examination of Models.
+- See :doc:`writing_a_gui_with_flask-admin` for a more detailed examination of GUIs.

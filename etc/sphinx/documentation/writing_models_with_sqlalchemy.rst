@@ -49,6 +49,27 @@ Now, we can model a Person and specify their name and age.  Once we create Perso
     me.father = dad
     me.save()
 
+Model Methods
+-------------
+
+Usually, data models are created for entities that are changing.  A person's age increases every year, so we might create a *birthday* method that increments a person's age.  A simplified version of our person model has been extended with the birthday method below:
+
+.. code-block:: python
+
+    class Person(db.Model, CRUDMixin):
+        id = db.Column(db.Integer, primary_key=True)
+        name = db.Column(db.String(255))
+        age = db.Column(db.Integer)
+
+        def birthday(self):
+            self.age += 1
+            self.save()
+
+Only The Model Controls the Data
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It is important to contain any data-altering methods within your Model, or else there may be confusion down the road.  For example, if there is code within the Controller that directly alters the data Model, you should move that code from the Controller to a new Model method that achieves the same task.  Finally, in the controller, invoke the Model method.
+
 SQLAlchemy
 ----------
 
