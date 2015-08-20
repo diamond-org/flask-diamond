@@ -50,4 +50,4 @@ notebook:
 release:
 	python setup.py sdist upload -r https://pypi.python.org/pypi
 
-.PHONY: clean install test server watch notebook db single docs shell upgradedb migratedb release
+.PHONY: clean install test server watch notebook db single docs shell upgradedb migratedb release requirements
