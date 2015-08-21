@@ -32,7 +32,7 @@ Developer Guide
 ..    documentation/testing_with_nosetests
 ..    documentation/debugging_a_flask-diamond_application
 ..    documentation/sending_email_with_flask-mail
-.. documentation/designing_a_flask-diamond_application
+..    documentation/designing_a_flask-diamond_application
 
 .. _user-guide:
 

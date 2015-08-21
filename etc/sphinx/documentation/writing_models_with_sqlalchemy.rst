@@ -75,6 +75,54 @@ SQLAlchemy
 
 `SQLAlchemy <http://docs.sqlalchemy.org/en/rel_1_0/>`_ and `Flask-SQLAlchemy <http://pythonhosted.org/Flask-SQLAlchemy/>`_ are used to provide an Object Relation Mapper (ORM), which reads/writes a database and makes the data easy to access using Python.  By using an ORM such as `SQLAlchemy <http://docs.sqlalchemy.org/en/rel_1_0/>`_, it is possible to avoid many pitfalls of directly using SQL, such as SQL injections or schema mismatches.  One of the best resources to learn about writing models is the `SQLAlchemy <http://docs.sqlalchemy.org/en/rel_1_0/>`_ documentation itself, which is both excellent and extensive.
 
+Model Relationships with SQLAlchemy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The `SQLAlchemy Basic Relationships <http://docs.sqlalchemy.org/en/latest/orm/basic_relationships.html>`_ document provides an excellent overview of different relationship patterns, including:
+
+- `One to Many <http://docs.sqlalchemy.org/en/latest/orm/basic_relationships.html#one-to-many>`_
+- `Many to One <http://docs.sqlalchemy.org/en/latest/orm/basic_relationships.html#many-to-one>`_
+- `One to One <http://docs.sqlalchemy.org/en/latest/orm/basic_relationships.html#one-to-one>`_
+- `Many to Many <http://docs.sqlalchemy.org/en/latest/orm/basic_relationships.html#many-to-many>`_
+- `Many to Many Association <http://docs.sqlalchemy.org/en/latest/orm/basic_relationships.html#association-object>`_
+
+To demonstrate a basic relationship, let's say each Person lives in a House, which is modeled as:
+
+.. code-block:: python
+
+    class House(db.Model, CRUDMixin):
+        id = db.Column(db.Integer, primary_key=True)
+        address = db.Column(db.String(255))
+
+    class Person(db.Model, CRUDMixin):
+        id = db.Column(db.Integer, primary_key=True)
+        name = db.Column(db.String(64))
+        house_id = db.Column(db.Integer, db.ForeignKey("house.id"))
+        house = db.relationship('House',
+            backref=db.backref('persons', lazy='dynamic')
+        )
+
+The following code example uses the classes above to create two people who live at one house.
+
+.. code-block:: python
+
+    our_house = House(address="1600 Pennsylvania Ave")
+    myself = Person("Me", house=our_house)
+    mom = Person("Mom", house=our_house)
+    print(myself.house)
+
+Querying with SQLAlchemy
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Based on the Person class, a simple query that finds a person named "Me" looks like:
+
+.. code-block:: python
+
+    myself = models.Person.find(name="Me")
+    print(myself.name)
+
+However, the `SQLAlchemy Query API <http://docs.sqlalchemy.org/en/latest/orm/query.html>`_ is extremely powerful, and its documentation is the authoritative source.
+
 When the Model Changes
 ----------------------
 
@@ -90,11 +138,30 @@ Data Fixtures
 
 What good is a data model without any data to put in it?  Data fixtures are a way of easily adding data to your database, which is helpful when you are frequently rebuilding your database with ``make db``.  Data fixtures can be placed into ``bin/manage.py`` within the ``populate_db()`` function.  If you find yourself continually re-creating certain model objects in your database so you can test your application, then consider using ``populate_db()`` to automate the creation of these objects.
 
+For example, in order for ``make db`` to automatically create a Person object based on the Person class above, construct ``populate_db()`` like this:
+
+.. code-block:: python
+
+    @manager.command
+    def populate_db():
+        "insert a default set of objects"
+
+        from models import Person
+
+        me = Person.create(name="Me", age=34)
+        mom = Person.create(name="Mom", age=65)
+        dad = Person.create(name="Dad", age=64)
+        me.mother = mom
+        me.father = dad
+        me.save()
+
+
 Further Reading
 ---------------
 
+- See :doc:`managing_schemas_with_flask-migrate`, which describes how to evolve the application database along with its Model.
 - See :doc:`crud_with_flask-diamond`, which describes the Create-Read-Update-Delete pattern for Models.
-- See :doc:`managing_schemas_with_flask-migrate`, which describes how to evolve the application database along with its model.
+- See :doc:`writing_a_gui_with_flask-admin`, which explains how to create a GUI for interacting with Models.
 
 .. rubric:: Footnotes
 
