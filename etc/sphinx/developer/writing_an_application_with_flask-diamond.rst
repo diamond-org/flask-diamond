@@ -6,7 +6,7 @@ By default, Flask-Diamond is ready to run when you initially scaffold a new appl
 A basic Flask-Diamond Example
 -----------------------------
 
-The following example can be generated from a freshly scaffolded project by following the :doc:`../documentation/project_initialization_and_scaffolding` document with the project name ``MyDiamondApp``.  Notice that the ``MyDiamondApp`` class inherits from ``Diamond``, which gives the new project a lot of functionality "out of the box."
+The following example can be generated from a freshly scaffolded project by following the :doc:`project_initialization_and_scaffolding` document with the project name ``MyDiamondApp``.  Notice that the ``MyDiamondApp`` class inherits from ``Diamond``, which gives the new project a lot of functionality "out of the box."
 
 .. code-block:: python
 

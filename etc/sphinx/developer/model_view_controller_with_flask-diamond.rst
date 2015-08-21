@@ -42,7 +42,7 @@ Sometimes, we talk about "domains" when we talk about models, because our models
 View
 ----
 
-A view is a user interface that can present data that comes from a model.  In classic MVC, the model pushes data to the view, and the view knows how to update itself to display the data that was received from the model.  Views can also contain input elements like buttons, fields, and sliders.  When these input elements are activated, the Controller must decide how to respond.  Views are often written as templates that have placeholders for data. For web programming, a View template is frequently written using HTML [#f1]_.  Read more about :doc:`writing_views_with_jinja` for a more detailed discussion and code examples.
+A view is a user interface that can present data that comes from a model.  In classic MVC, the model pushes data to the view, and the view knows how to update itself to display the data that was received from the model.  Views can also contain input elements like buttons, fields, and sliders.  When these input elements are activated, the Controller must decide how to respond.  Views are often written as templates that have placeholders for data. For web programming, a View template is frequently written using HTML [#f1]_.  Read more about :doc:`writing_views_with_jinja_and_blueprints` for a more detailed discussion and code examples.
 
 Controller
 ----------

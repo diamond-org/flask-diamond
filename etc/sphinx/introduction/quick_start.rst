@@ -1,12 +1,12 @@
 Quick Start
 ===========
 
-Flask-Diamond installs in a Python environment with :doc:`virtualenv <../documentation/requirements_management_with_virtualenv>`.  Please see the :doc:`../introduction/system_requirements` for information about installation pre-requisites.
+Flask-Diamond installs in a Python environment with :doc:`virtualenv <../user/requirements_management_with_virtualenv>`.  Please see the :doc:`system_requirements` for information about installation pre-requisites.
 
 Install Flask-Diamond
 ---------------------
 
-Create a :doc:`virtualenv <../documentation/requirements_management_with_virtualenv>` for your new Flask-Diamond application, and then install Flask-Diamond with `pip <http://pip.readthedocs.org/en/latest/>`_.
+Create a :doc:`virtualenv <../user/requirements_management_with_virtualenv>` for your new Flask-Diamond application, and then install Flask-Diamond with `pip <http://pip.readthedocs.org/en/latest/>`_.
 
 ::
 
