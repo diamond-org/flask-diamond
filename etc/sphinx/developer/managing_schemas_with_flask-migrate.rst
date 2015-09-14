@@ -1,9 +1,9 @@
 Managing Schemas with Flask-Migrate
 ===================================
 
-Any time the data model is changed, the database must be updated so that it has the right columns.  Any time a table or column is added, removed, or changed in any way, we say the database schema [#f1]_ has changed.  We need to be sure the database schema always matches the model.
+Any time the data model is changed, the database must be updated so that it has the right columns.  Any time a table or column is added, removed, or changed in any way, we say the database schema [#f1]_ has changed.  We need to be sure the database schema always matches the model.  This common task is called schema migration, and it is handled well by `Alembic <http://alembic.readthedocs.org/en/latest/>`_.
 
-Flask-Diamond makes it quick and easy to rebuild the schema during development with ``make db``, which will delete the development database and rebuild it with all new columns matching your models.  However, it's a little drastic to always throw everything away and start from scratch.  Furthermore, when the data in your database is important, it's actually impossible to throw it away and start over.  Luckily, there's `Flask-Migrate <https://flask-migrate.readthedocs.org/en/latest/>`_, which can make this much easier.
+Flask-Diamond makes it quick and easy to rebuild the schema during development with ``make db``, which will delete the development database and rebuild it with all new columns matching your models.  However, it's a little drastic to always throw everything away and start from scratch.  Furthermore, when the data in your database is important, it's actually impossible to throw it away and start over.  Luckily, there's `Flask-Migrate <https://flask-migrate.readthedocs.org/en/latest/>`_, which makes Alembic integration easy so we can handle migrations smoothly.
 
 Introducing Migrations
 ----------------------
@@ -13,7 +13,39 @@ Schema migrations, which are handled using `Flask-Migrate <https://flask-migrate
 Creating a Migration
 --------------------
 
-To begin a migration, enter the virtualenv and invoke:
+A database migration is potentially complex, so creating one takes several steps.
+
+find the location of the dev database
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We will work on the dev database, which should not have any important data in it.
+
+::
+
+    grep SQLALCHEMY_DATABASE_URI etc/dev.conf
+
+delete the database
+^^^^^^^^^^^^^^^^^^^
+
+We need to start from scratch.
+
+::
+
+    rm /tmp/lims_daemon-dev.db
+
+build the database using migrations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In other words, we build the database without the python Model.
+
+::
+
+    make upgradedb
+
+create a migration
+^^^^^^^^^^^^^^^^^^
+
+This works by comparing python model to last migration version
 
 ::
 
@@ -21,8 +53,31 @@ To begin a migration, enter the virtualenv and invoke:
 
 This will create a new python script within the ``migrations/versions`` subdirectory of your application module directory.  There will be two functions automatically created for you: ``upgrade()`` and ``downgrade()``.  The ``upgrade()`` function will individually add tables and columns to your old database schema until it matches your current model.  The ``downgrade()`` function is the opposite.  In this manner, it is possible to "roll back" to a previous schema.
 
-An Example Migration
-^^^^^^^^^^^^^^^^^^^^
+rename the file with a short summary
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+    cd ${MODULE}/migrations/versions
+    mv ${CHECKSUM}_.py ${CHECKSUM}_${SUMMARY}.py
+
+edit the migration
+^^^^^^^^^^^^^^^^^^
+
+- for sqlalchemy, remove all drop_column() operations
+- for sqlalchemy, remove all create_foreign_key() operations
+
+test the migration
+^^^^^^^^^^^^^^^^^^
+
+- delete the database again (rm /tmp/lims_daemon-dev.db)
+- upgrade using migrations (make upgradedb)
+- perform a new migration (make migratedb)
+- verify that it is empty (i.e. all tables are reflected)
+- delete the empty migration file (rm ${MODULE}/migrations/versions/${CHECKSUM}_.py)
+
+An Example Migration File
+-------------------------
 
 It is easy to see how a migration uses SQLAlchemy directly to create tables if we examine an example.  One of the migrations that ships with Flask-Diamond is in ``flask_diamond/migrations/versions/20f04b9598da_flask-diamond-020.py``.  In this case, the ``upgrade()`` function adds several new columns to the ``user`` table.  The file looks like this:
 
