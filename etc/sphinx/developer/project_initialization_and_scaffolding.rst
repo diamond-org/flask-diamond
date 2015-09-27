@@ -37,7 +37,7 @@ Using `mr.bob <http://mrbob.readthedocs.org/en/latest/>`_, a brief set of questi
 diamond-project
 ---------------
 
-The first templates applied during scaffolding come from https://github.com/iandennismiller/diamond-project.  These templates are suitable for supporting many types of Python projects.  They will create a basic directory structure that provide requirements management, documentation, build, deployment, and other basic project needs.  This step of the scaffolding process asks the following questions:
+The first templates applied during scaffolding come from https://github.com/flask-diamond/diamond-project.  These templates are suitable for supporting many types of Python projects.  They will create a basic directory structure that provide requirements management, documentation, build, deployment, and other basic project needs.  This step of the scaffolding process asks the following questions:
 
 1. What is the name of the application (i.e. username, daemon name, etc)?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
