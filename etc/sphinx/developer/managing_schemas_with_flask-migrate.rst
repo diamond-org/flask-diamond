@@ -31,7 +31,7 @@ We need to start from scratch.
 
 ::
 
-    rm /tmp/lims_daemon-dev.db
+    rm /tmp/my-application.db
 
 build the database using migrations
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
