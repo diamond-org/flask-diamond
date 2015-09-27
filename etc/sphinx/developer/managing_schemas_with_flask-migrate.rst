@@ -15,6 +15,14 @@ Creating a Migration
 
 A database migration is potentially complex, so creating one takes several steps.
 
+1. find the location of the dev database
+2. delete the development database
+3. build the database using migrations
+4. create a new migration
+5. rename the file with a short summary
+6. edit the migration
+7. test the migration
+
 find the location of the dev database
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -24,8 +32,8 @@ We will work on the dev database, which should not have any important data in it
 
     grep SQLALCHEMY_DATABASE_URI etc/dev.conf
 
-delete the database
-^^^^^^^^^^^^^^^^^^^
+delete the development database
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We need to start from scratch.
 
@@ -42,8 +50,8 @@ In other words, we build the database without the python Model.
 
     make upgradedb
 
-create a migration
-^^^^^^^^^^^^^^^^^^
+create a new migration
+^^^^^^^^^^^^^^^^^^^^^^
 
 This works by comparing python model to last migration version
 
@@ -75,6 +83,16 @@ test the migration
 - perform a new migration (make migratedb)
 - verify that it is empty (i.e. all tables are reflected)
 - delete the empty migration file (rm ${MODULE}/migrations/versions/${CHECKSUM}_.py)
+
+done
+^^^^
+
+The migration is ready.  It can now be applied in the production environment.  First, ensure you are using a configuration file that specifies the target database you will apply the migration to.  Then, invoke the schema upgrade directly.
+
+::
+
+    export SETTINGS=/etc/production.conf
+    manage.py db upgrade
 
 An Example Migration File
 -------------------------
@@ -121,7 +139,7 @@ It is easy to see how a migration uses SQLAlchemy directly to create tables if w
 Applying a Migration
 --------------------
 
-To apply migrations, enter the virtualenv and run:
+To apply a migration to the development database, enter the virtualenv and run:
 
 ::
 
