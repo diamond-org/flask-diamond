@@ -22,6 +22,7 @@ A database migration is potentially complex, so creating one takes several steps
 5. rename the file with a short summary
 6. edit the migration
 7. test the migration
+8. done
 
 find the location of the dev database
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
