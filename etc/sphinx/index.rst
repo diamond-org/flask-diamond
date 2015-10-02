@@ -19,13 +19,13 @@ Developer Guide
     :maxdepth: 1
 
     developer/project_initialization_and_scaffolding
-    developer/model_view_controller_with_flask-diamond
     developer/writing_an_application_with_flask-diamond
     developer/writing_models_with_sqlalchemy
     developer/managing_schemas_with_flask-migrate
     developer/crud_with_flask-diamond
     developer/writing_a_gui_with_flask-admin
     developer/writing_views_with_jinja_and_blueprints
+    developer/model_view_controller_with_flask-diamond
 ..    developer/writing_an_api_with_flask-restful
 ..    developer/writing_documentation_with_sphinx
 ..    developer/managing_users_with_flask-security
@@ -63,11 +63,11 @@ About Flask-Diamond
     :maxdepth: 1
 
     about/libraries_included_in_flask-diamond
+    about/how_to_contribute_to_the_project
     about/philosophy
     about/license
 ..    about/changelog
 ..    about/contributors
-..    documentation/how_to_contribute_to_the_project
 ..    documentation/diagram_of_libraries
 ..    documentation/diagram_of_a_subproject
 

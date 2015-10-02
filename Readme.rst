@@ -23,4 +23,4 @@ http://flask-diamond.org
 Project Management
 ^^^^^^^^^^^^^^^^^^
 
-A corresponding framework, `Agile-Diamond <https://github.com/diamond-org/agile-diamond>`_, provides a method for managing Flask-Diamond projects.
+A corresponding framework, `Agile-Diamond <http://diamond-org.github.io/agile-diamond/>`_, provides a method for managing Flask-Diamond projects.

@@ -55,7 +55,7 @@ Flask-Diamond installs pretty easily on OSX with Homebrew.  Make sure you are us
 Windows with Cygwin
 -------------------
 
-**Note**: Have you done this install successfully?  Please share your process as a comment on `Issue 8 <https://github.com/iandennismiller/flask-diamond/issues/8>`_.
+**Note**: Have you done this install successfully?  Please share your process as a comment on `Issue 8 <https://github.com/diamond-org/flask-diamond/issues/8>`_.
 
 Here are a few resources to get you started:
 
