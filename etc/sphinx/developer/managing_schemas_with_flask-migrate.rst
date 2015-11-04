@@ -79,7 +79,7 @@ edit the migration
 test the migration
 ^^^^^^^^^^^^^^^^^^
 
-- delete the database again (rm /tmp/lims_daemon-dev.db)
+- delete the database again (rm /tmp/daemon-dev.db)
 - upgrade using migrations (make upgradedb)
 - perform a new migration (make migratedb)
 - verify that it is empty (i.e. all tables are reflected)
