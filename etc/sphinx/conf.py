@@ -28,7 +28,7 @@ from sh import git
 import re
 
 html_context = {
-    "git_checksum": re.search(r'commit (\w+)', git.log("-1").stdout).group(1)[:7],
+    "git_checksum": "unspecified",  # re.search(r'commit (\w+)', git.log("-1").stdout).group(1)[:7],
     "today": datetime.datetime.strftime(datetime.datetime.now(), "%Y-%m-%d"),
 }
 
