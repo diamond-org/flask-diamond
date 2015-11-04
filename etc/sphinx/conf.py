@@ -24,11 +24,18 @@ from flask_diamond.__meta__ import __version__
 # custom configuration -----------------------------------------------------
 
 import datetime
-from sh import git
-import re
+
+from git import Repo
+try:
+    repo = Repo(".")
+except:
+    repo = Repo("../..")
+
+hc = repo.head.commit
+hct = hc.tree
 
 html_context = {
-    "git_checksum": "unspecified",  # re.search(r'commit (\w+)', git.log("-1").stdout).group(1)[:7],
+    "git_checksum": hct.hexsha[:8],
     "today": datetime.datetime.strftime(datetime.datetime.now(), "%Y-%m-%d"),
 }
 
