@@ -236,14 +236,18 @@ class MarshmallowMixin(object):
         "create objects of Model class from an array of python objects"
         objs = cls.__schema__().load(python_objects, many=True)
         for obj in objs.data:
-            cls.create(**obj)
+            cls.create(_commit=False, **obj)
+        db.session.commit()
+        db.session.flush()
 
     @classmethod
     def loads_all(cls, buf):
         "create objects of Model class from a string containing an array of JSON-encoded objects"
         objs = cls.__schema__().loads(buf, many=True)
         for obj in objs.data:
-            cls.create(**obj)
+            cls.create(_commit=False, **obj)
+        db.session.commit()
+        db.session.flush()
 
     @classmethod
     def loadf_all(cls, file_handle):
