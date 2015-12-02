@@ -73,8 +73,8 @@ rename the file with a short summary
 edit the migration
 ^^^^^^^^^^^^^^^^^^
 
-- for sqlalchemy, remove all drop_column() operations
-- for sqlalchemy, remove all create_foreign_key() operations
+- for sqlite, remove all drop_column() operations
+- for sqlite, remove all create_foreign_key() operations
 
 test the migration
 ^^^^^^^^^^^^^^^^^^
