@@ -18,9 +18,4 @@ Installation
 Documentation
 ^^^^^^^^^^^^^
 
-http://flask-diamond.org
-
-Project Management
-^^^^^^^^^^^^^^^^^^
-
-A corresponding framework, `Agile-Diamond <http://diamond-org.github.io/agile-diamond/>`_, provides a method for managing Flask-Diamond projects.
+http://flask-diamond.readthedocs.org

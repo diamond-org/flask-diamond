@@ -25,17 +25,17 @@ from flask_diamond.__meta__ import __version__
 
 import datetime
 
+this_path = os.path.dirname(os.path.abspath(__file__))
+git_path = os.path.join(this_path, "../..")
+
 from git import Repo
-try:
-    repo = Repo(".")
-except:
-    repo = Repo("../..")
+repo = Repo(git_path)
 
 hc = repo.head.commit
-hct = hc.tree
+git_checksum = str(hc)[:8]
 
 html_context = {
-    "git_checksum": hct.hexsha[:8],
+    "git_checksum": git_checksum,
     "today": datetime.datetime.strftime(datetime.datetime.now(), "%Y-%m-%d"),
 }
 
