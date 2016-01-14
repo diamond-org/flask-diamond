@@ -1,0 +1,52 @@
+# -*- coding: utf-8 -*-
+# {{{ application.name }}} (c) {{{ author.name }}}
+
+from flask.ext.diamond import Diamond, db, security
+from flask.ext.diamond.administration import AdminView, AdminModelView
+from .views.administration.modelviews import IndividualAdmin
+from . import models
+from .views.base import baseview
+from .views.frontend.simpleview import simpleview
+
+
+class {{{ application.module }}}(Diamond):
+    def administration(self):
+        admin = super({{{ application.module }}}, self).administration()
+
+        model_list = [
+            models.Individual,
+        ]
+
+        for model in model_list:
+            admin.add_view(AdminModelView(
+                model,
+                db.session,
+                name=model.__name__,
+                category="Models")
+            )
+
+        #admin.add_view(AdminModelView(
+        #    Individual,
+        #    db.session,
+        #    name="Individuals",
+        #    category="Models")
+        #)
+
+        return admin
+
+    def blueprints(self):
+        from flask_diamond.views.diamond import diamond_blueprint
+        self.app.register_blueprint(baseview, url_prefix="/home")
+        self.app.register_blueprint(diamond_blueprint)
+
+        # self.app.register_blueprint(baseview, url_prefix="/")
+        # self.app.register_blueprint(simpleview, url_prefix="/simpleview")
+
+        from .views.administration.modelviews import adminbaseview
+        self.app.register_blueprint(adminbaseview)
+
+
+def create_app():
+    app_instance = {{{ application.module }}}()
+    app_instance.init_app(email=False, request_handlers=False)
+    return app_instance.app

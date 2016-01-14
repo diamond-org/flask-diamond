@@ -1,0 +1,7 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# {{{ application.name }}} (c) {{{ author.name }}}
+
+from {{{ application.module }}} import create_app
+app = create_app()
+app.run(port=app.config['PORT'])

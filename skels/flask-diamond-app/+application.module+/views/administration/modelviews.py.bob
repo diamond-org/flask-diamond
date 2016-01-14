@@ -1,0 +1,43 @@
+# -*- coding: utf-8 -*-
+# {{{ application.name }}} (c) {{{ author.name }}}
+
+import flask
+import flask.ext.security as security
+from flask.ext.admin import expose
+from flask.ext.diamond.administration import AuthModelView, AdminIndexView
+
+from {{{ application.module }}} import db
+
+
+adminbaseview = flask.Blueprint('adminbaseview', __name__,
+    template_folder='templates', static_folder='static')
+
+
+class RedirectView(AdminIndexView):
+    def is_visible(self):
+        return False
+
+    def is_accessible(self):
+        return security.current_user.is_authenticated()
+
+    @expose('/')
+    def index(self):
+        return flask.redirect(flask.url_for('individual.list_view'))
+
+
+class IndividualAdmin(AuthModelView):
+
+    edit_template = 'individual_view.html'
+
+    column_list = ("name", "friend")
+
+    #form_overrides = {
+    #    "upload_buffer": FileUploadField
+    #}
+
+    #form_args = {
+    #    'upload_buffer': {
+    #        'label': 'Report PDF',
+    #        'base_path': "/tmp",
+    #    }
+    #}

@@ -1,0 +1,15 @@
+# -*- coding: utf-8 -*-
+# {{{ application.name }}} (c) {{{ author.name }}}
+
+from {{{ application.module }}} import models
+
+
+def typical_workflow():
+    "create some example objects"
+
+    ian = models.User.register(
+        email='ian',
+        password='aaa',
+        confirmed=True,
+        roles=["User"],
+    )

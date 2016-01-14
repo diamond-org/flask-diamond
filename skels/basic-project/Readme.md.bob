@@ -1,0 +1,32 @@
+# {{{ application.name }}}
+
+{{{ description.short }}}
+
+{{{ description.long }}}
+
+## quick start
+
+```
+mkvirtualenv {{{ application.name }}}
+git clone {{{ git_repo }}}
+cd {{{ application.name }}}
+make install docs test db server
+```
+
+## Pre-requisites
+
+- python 2.7
+- libxml-dev
+- libxslt-dev
+- python-dev
+- virtualenv
+- virtualenvwrapper
+- pip
+
+## Further Reading
+
+See the /docs folder for other documentation.
+
+## License
+
+MIT License.

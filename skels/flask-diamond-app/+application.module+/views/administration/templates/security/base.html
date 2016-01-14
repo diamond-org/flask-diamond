@@ -1,0 +1,43 @@
+{% import "_wtf.html" as wtf %}
+{% import "admin/layout.html" as layout %}
+{% extends "admin/base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block head_css %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('diamond_blueprint.static', filename='style.css') }}">
+{% endblock %}
+
+{% block page_body %}
+<div class="container">
+  <div class="navbar">
+    <div class="navbar-inner">
+      {% block brand %}
+      <span class="brand">{{ config['PROJECT_NAME'] }}</span>
+      {% endblock %}
+      {% block main_menu %}
+      <ul class="nav">
+      </ul>
+      {% endblock %}
+      {% block menu_links %}
+      {% endblock %}
+      {% block access_control %}
+      {% endblock %}
+    </div>
+  </div>
+
+  {% block messages %}
+  {{ layout.messages() }}
+  {% endblock %}
+
+  {% block body %}
+    {% block security_content %}
+    {% endblock %}
+  {% endblock %}
+</div>
+{% endblock %}
+
+{% block tail_js %}
+    {{ super() }}
+{% endblock %}

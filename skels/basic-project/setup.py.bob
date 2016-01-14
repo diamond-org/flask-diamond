@@ -1,0 +1,35 @@
+# -*- coding: utf-8 -*-
+# {{{ application.name }}} (c) {{{ author.name }}}
+
+from setuptools import setup
+
+version = '0.1'
+diamond_version = '0.2.7'
+
+setup(version=version,
+    name='{{{ application.name }}}',
+    description="{{{ description.short }}}",
+    packages=[
+        "{{{ application.module }}}",
+    ],
+    scripts=[
+        # "bin/runserver.py",
+    ],
+    long_description="""{{{ description.long }}}""",
+    classifiers=[],  # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
+    include_package_data=True,
+    keywords='',
+    author='{{{ author.name }}}',
+    author_email='{{{ author.email }}}',
+    url='{{{ author.url }}}',
+    dependency_links=[
+        ('https://github.com/iandennismiller/Flask-Diamond'
+            '/archive/{ver}.tar.gz#egg=flask_diamond-{ver}'.format(ver=diamond_version)),
+    ],
+    install_requires=[
+        ### app
+        "flask_diamond==0.2.2",
+    ],
+    license='MIT',
+    zip_safe=False,
+)
