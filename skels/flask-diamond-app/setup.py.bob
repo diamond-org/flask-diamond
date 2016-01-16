@@ -25,7 +25,8 @@ def grep(attrname):
     return strval
 
 
-setup(version=version,
+setup(
+    version=grep('__version__'),
     name='{{{ application.name }}}',
     description="{{{ description.short }}}",
     packages=[
@@ -34,12 +35,13 @@ setup(version=version,
         "{{{ application.module }}}.views",
         "{{{ application.module }}}.views.base",
         "{{{ application.module }}}.views.frontend",
+        "{{{ application.module }}}.utils",
     ],
     scripts=[
         "bin/runserver.py",
         "bin/manage.py",
     ],
-    long_description="""{{{ description.long }}}""",
+    long_description=read('Readme.rst'),
     classifiers=[],  # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
     include_package_data=True,
     keywords='',

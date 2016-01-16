@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# Flask-Diamond (c) Ian Dennis Miller
+
 import re
 import os
 from setuptools import setup

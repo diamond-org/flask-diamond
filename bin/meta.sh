@@ -10,16 +10,15 @@ rm -rf /tmp/flask-diamond
 git clone -b 0.3 https://github.com/diamond-org/flask-diamond /tmp/flask-diamond
 
 # apply the two diamond skeletons
-mrbob --non-interactive --config .mrbob.ini -O /tmp/flask-diamond /tmp/flask-diamond/skels/basic-project
-mrbob --non-interactive --config .mrbob.ini -O /tmp/flask-diamond /tmp/flask-diamond/skels/flask-diamond-app
+mrbob --non-interactive --config .mrbob.ini -O /tmp/flask-diamond ./skels/flask-diamond-app
 
 # change to the working path
 cd /tmp/flask-diamond
 
 # revert files that are idiosyncratic to flask-diamond
-git checkout setup.py
-git checkout flask_diamond/__init__.py
-git checkout flask_diamond/tests/test_models.py
+#git checkout setup.py
+#git checkout flask_diamond/__init__.py
+#git checkout flask_diamond/tests/test_models.py
 git checkout MANIFEST.in
 git checkout Readme.rst
 
