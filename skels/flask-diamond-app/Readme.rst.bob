@@ -22,8 +22,8 @@ Usage
 ::
 
     workon {{{ application.name }}}
-    diamond-scaffold.sh ~/Work/new-project
-    cd ~/Work/new-project
+    diamond-scaffold.sh ~/Documents/new-project
+    cd ~/Documents/new-project
     make install docs test db server
 
 Documentation

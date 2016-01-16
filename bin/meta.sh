@@ -24,8 +24,6 @@ rm -rf flask_diamond/models \
     flask_diamond/views/base \
     flask_diamond/views/frontend
 
-# Readme.rst \
-
 # revert files that are idiosyncratic to flask-diamond
 git checkout \
     setup.py \
