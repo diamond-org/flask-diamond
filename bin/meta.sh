@@ -25,7 +25,6 @@ git checkout requirements.txt
 
 # remove the schema migration that adds the Individual model, which is specific to diamond-app
 rm flask_diamond/migrations/versions/13011baa608a_individual.py
-rm Readme.md
 
 # remove the simple CRUD associated with the Individual model
 rm -rf flask_diamond/models \
