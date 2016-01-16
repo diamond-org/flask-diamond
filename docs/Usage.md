@@ -5,7 +5,7 @@
 ### clone Flask-Diamond
 
 ```
-git clone https://github.com:iandennismiller/Flask-Diamond.git
+git clone https://github.com/diamond-org/flask-diamond.git
 cd Flask-Diamond
 ```
 
