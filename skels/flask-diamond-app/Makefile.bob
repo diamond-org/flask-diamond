@@ -57,4 +57,7 @@ gh-pages: docs
 notebook:
 	SETTINGS=$$PWD/etc/conf/dev.conf cd var/ipython && ipython notebook
 
-.PHONY: clean install test server watch notebook db single docs shell upgradedb migratedb apidocs
+release:
+	python setup.py sdist upload -r https://pypi.python.org/pypi
+
+.PHONY: clean install test server watch notebook db single docs shell upgradedb migratedb release requirements apidocs gh-pages
