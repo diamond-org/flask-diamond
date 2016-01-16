@@ -16,7 +16,7 @@ mrbob --non-interactive --config .mrbob.ini -O /tmp/flask-diamond ./skels/flask-
 cd /tmp/flask-diamond
 
 # revert files that are idiosyncratic to flask-diamond
-#git checkout setup.py
+git checkout setup.py
 #git checkout flask_diamond/__init__.py
 #git checkout flask_diamond/tests/test_models.py
 git checkout MANIFEST.in

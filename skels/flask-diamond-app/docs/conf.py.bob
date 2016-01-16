@@ -11,12 +11,49 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import sys, os
+import sys
+import os
+import re
+import datetime
+from git import Repo
+
+# from https://github.com/flask-admin/flask-admin/blob/master/setup.py
+def fpath(name):
+    return os.path.join(os.path.dirname(__file__), name)
+
+
+def read(fname):
+    return open(fpath(fname)).read()
+
+
+file_text = read(fpath('../flask_diamond/__meta__.py'))
+
+
+def grep(attrname):
+    pattern = r"{0}\W*=\W*'([^']+)'".format(attrname)
+    strval, = re.findall(pattern, file_text)
+    return strval
+
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 sys.path.insert(0, os.path.abspath('../..'))
+
+this_path = os.path.dirname(os.path.abspath(__file__))
+git_path = os.path.join(this_path, "..")
+
+try:
+    repo = Repo(git_path)
+    hc = repo.head.commit
+    git_checksum = str(hc)[:8]
+except:
+    git_checksum = "0000000"
+
+html_context = {
+    "git_checksum": git_checksum,
+    "today": datetime.datetime.strftime(datetime.datetime.now(), "%Y-%m-%d"),
+}
 
 # -- General configuration -----------------------------------------------------
 
@@ -40,8 +77,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'{{{ application.name }}}'
-copyright = u'2014, {{{ author.name }}}'
+project = grep("__project__")
+copyright = grep("__copyright__")
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

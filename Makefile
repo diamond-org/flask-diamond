@@ -42,7 +42,7 @@ migratedb:
 
 docs:
 	rm -rf var/sphinx/build
-	SETTINGS=$$PWD/etc/conf/dev.conf sphinx-build -b html etc/sphinx var/sphinx/build
+	SETTINGS=$$PWD/etc/conf/dev.conf sphinx-build -b html docs var/sphinx/build
 
 notebook:
 	SETTINGS=$$PWD/etc/conf/dev.conf cd var/ipython && ipython notebook

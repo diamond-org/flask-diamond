@@ -1,4 +1,4 @@
-recursive-include flask_diamond/views/diamond *
+recursive-include flask_diamond/views *
 recursive-include skels *
 include Readme.rst
 include requirements.txt

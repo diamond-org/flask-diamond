@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # {{{ application.name }}} (c) {{{ author.name }}}
 
-import os
 import re
+import os
 from setuptools import setup
 from distutils.dir_util import copy_tree
 
