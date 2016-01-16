@@ -17,6 +17,7 @@ import re
 import datetime
 from git import Repo
 
+
 # from https://github.com/flask-admin/flask-admin/blob/master/setup.py
 def fpath(name):
     return os.path.join(os.path.dirname(__file__), name)
@@ -38,7 +39,7 @@ def grep(attrname):
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-sys.path.insert(0, os.path.abspath('../..'))
+sys.path.insert(0, os.path.abspath('..'))
 
 # custom configuration -----------------------------------------------------
 this_path = os.path.dirname(os.path.abspath(__file__))
@@ -241,7 +242,7 @@ latex_elements = {
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
     ('index', 'Flask-Diamond.tex', u'Flask-Diamond Documentation',
-    u'Ian Dennis Miller', 'manual'),
+        u'Ian Dennis Miller', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -271,7 +272,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'Flask-Diamond', u'Flask-Diamond Documentation',
-    [u'Ian Dennis Miller'], 1)
+        [u'Ian Dennis Miller'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -285,8 +286,8 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     ('index', 'Flask-Diamond', u'Flask-Diamond Documentation',
-    u'Ian Dennis Miller', 'Flask-Diamond', 'One line description of project.',
-    'Miscellaneous'),
+        u'Ian Dennis Miller', 'Flask-Diamond', 'One line description of project.',
+        'Miscellaneous'),
 ]
 
 # Documents to append as an appendix to all manuals.
