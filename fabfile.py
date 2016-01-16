@@ -7,7 +7,7 @@ from fabric.api import env, run, open_shell
 from fabric.contrib.project import rsync_project
 
 env.user = 'Flask-Diamond'
-env.key_filename = [os.path.expanduser('~/.ssh/Flask-Diamond')]
+env.key_filename = [os.path.expanduser('~/.ssh/id_rsa')]
 
 if not env.hosts:
     print "need to call with -H [host.example.com]"

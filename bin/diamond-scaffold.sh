@@ -6,14 +6,14 @@
 
 echo "Scan environment"
 rm -f /tmp/mrbob.ini
-echo "[variables]" > /tmp/mrbob.ini
+echo "[defaults]" > /tmp/mrbob.ini
 echo "home_directory = ${HOME}" >> /tmp/mrbob.ini
-echo "secret_key = `python -c 'import os; print(repr(os.urandom(24)))'`"  >> /tmp/mrbob.ini
-echo "hash_salt = `python -c 'import string as s, random as r; print repr("".join(r.choice(s.letters+s.digits) for _ in range(16)))'`"  >> /tmp/mrbob.ini
+echo "secret = $(python -c 'import os; print(repr(os.urandom(24)))')"  >> /tmp/mrbob.ini
+echo "hash_salt = $(python -c 'import string as s, random as r; print repr("".join(r.choice(s.letters+s.digits) for _ in range(16)))')"  >> /tmp/mrbob.ini
 echo "OK"
 
 echo "Apply Flask-Diamond Scaffold"
-mrbob --config /tmp/mrbob.ini $VIRTUAL_ENV/share/skels/flask-diamond-app
+mrbob --config /tmp/mrbob.ini -O "$1" $VIRTUAL_ENV/share/skels/flask-diamond-app
 
 echo "Cleaning up..."
 rm /tmp/mrbob.ini

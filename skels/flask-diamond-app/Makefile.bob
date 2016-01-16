@@ -53,7 +53,7 @@ docs:
 
 gh-pages: docs
 	rm -rf /tmp/gh-pages
-	git clone -b gh-pages {{ git_repo }} /tmp/gh-pages
+	git clone -b gh-pages {{{ git_repo }}} /tmp/gh-pages
 	cp -r var/sphinx/build /tmp/gh-pages
 	cd /tmp/gh-pages && git add -A && git commit -am "autosync documentation" && git push -u origin gh-pages
 
