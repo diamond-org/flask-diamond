@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # usage:
-# this script detects skew with diamond-app and diamond-project
+# this script detects skew with the skeleton
 
 # start with a fresh environment
 rm -rf /tmp/flask-diamond
@@ -24,19 +24,19 @@ rm -rf flask_diamond/models \
     flask_diamond/views/base \
     flask_diamond/views/frontend
 
+# Readme.rst \
+
 # revert files that are idiosyncratic to flask-diamond
-#git checkout flask_diamond/tests/test_models.py
 git checkout \
     setup.py \
-    MANIFEST.in \
-    Readme.rst \
     requirements.txt \
-    flask_diamond/__init__.py \
     docs/conf.py \
     docs/index.rst \
+    flask_diamond/__init__.py \
     flask_diamond/models/__init__.py \
     flask_diamond/models/role.py \
-    flask_diamond/models/user.py
+    flask_diamond/models/user.py \
+    flask_diamond/tests/test_models.py
 
 # now ideally there will be no diff
 echo BEGIN diff
