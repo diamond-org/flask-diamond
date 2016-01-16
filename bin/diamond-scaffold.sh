@@ -13,7 +13,7 @@ echo "hash_salt = $(python -c 'import string as s, random as r; print repr("".jo
 echo "OK"
 
 echo "Apply Flask-Diamond Scaffold"
-mrbob --config /tmp/mrbob.ini -O "$1" $VIRTUAL_ENV/share/skels/flask-diamond-app
+mrbob -w --config /tmp/mrbob.ini -O "$1" $VIRTUAL_ENV/share/skels/flask-diamond-app
 
 echo "Cleaning up..."
 rm /tmp/mrbob.ini

@@ -24,6 +24,7 @@ Usage
     workon Flask-Diamond
     diamond-scaffold.sh ~/Documents/new-project
     cd ~/Documents/new-project
+    mkvirtualenv -a . new-project
     make install docs test db server
 
 Documentation
