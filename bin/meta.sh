@@ -4,16 +4,14 @@
 # this script detects skew with diamond-app and diamond-project
 
 # start with a fresh environment
-rm -rf /tmp/diamond-project /tmp/diamond-app /tmp/flask-diamond
+rm -rf /tmp/flask-diamond
 
-# clone flask-diamond and the diamond skeletons
-git clone https://github.com/iandennismiller/diamond-project /tmp/diamond-project
-git clone https://github.com/iandennismiller/diamond-app /tmp/diamond-app
-git clone -b task/refactor-0.2 https://github.com/iandennismiller/flask-diamond /tmp/flask-diamond
+# clone flask-diamond
+git clone -b 0.3 https://github.com/diamond-org/flask-diamond /tmp/flask-diamond
 
 # apply the two diamond skeletons
-mrbob --config .mrbob.ini -O /tmp/flask-diamond /tmp/diamond-project/skel
-mrbob --config .mrbob.ini -O /tmp/flask-diamond /tmp/diamond-app/skel
+mrbob --non-interactive --config .mrbob.ini -O /tmp/flask-diamond /tmp/flask-diamond/skels/basic-project
+mrbob --non-interactive --config .mrbob.ini -O /tmp/flask-diamond /tmp/flask-diamond/skels/flask-diamond-app
 
 # change to the working path
 cd /tmp/flask-diamond
@@ -23,10 +21,11 @@ git checkout setup.py
 git checkout flask_diamond/__init__.py
 git checkout flask_diamond/tests/test_models.py
 git checkout MANIFEST.in
-git checkout Readme.md
+git checkout Readme.rst
 
 # remove the schema migration that adds the Individual model, which is specific to diamond-app
 rm flask_diamond/migrations/versions/13011baa608a_individual.py
+rm Readme.md
 
 # remove the simple CRUD associated with the Individual model
 rm -rf flask_diamond/models \

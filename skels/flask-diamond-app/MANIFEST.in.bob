@@ -4,3 +4,5 @@ recursive-include {{{ application.module }}}/views/frontend/templates *
 recursive-include {{{ application.module }}}/views/frontend/static *
 recursive-include {{{ application.module }}}/views/administration/templates *
 recursive-include {{{ application.module }}}/views/administration/static *
+include Readme.rst
+include requirements.txt

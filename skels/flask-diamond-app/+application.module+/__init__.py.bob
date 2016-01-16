@@ -4,9 +4,16 @@
 from flask.ext.diamond import Diamond, db, security
 from flask.ext.diamond.administration import AdminView, AdminModelView
 from .views.administration.modelviews import IndividualAdmin
-from . import models
 from .views.base import baseview
 from .views.frontend.simpleview import simpleview
+
+
+# declare these globalish objects before initializing models
+app_instance = None
+
+
+# import models after setting up the other objects
+from . import models
 
 
 class {{{ application.module }}}(Diamond):
@@ -47,6 +54,10 @@ class {{{ application.module }}}(Diamond):
 
 
 def create_app():
-    app_instance = {{{ application.module }}}()
-    app_instance.init_app(email=False, request_handlers=False)
+    global app_instance
+    if not app_instance:
+        app_instance = {{{ application.module }}}()
+        app_instance.init_app(email=False, request_handlers=False)
+
+    # print app_instance.app.url_map
     return app_instance.app
