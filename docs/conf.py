@@ -44,10 +44,12 @@ sys.path.insert(0, os.path.abspath('../..'))
 this_path = os.path.dirname(os.path.abspath(__file__))
 git_path = os.path.join(this_path, "..")
 
-repo = Repo(git_path)
-
-hc = repo.head.commit
-git_checksum = str(hc)[:8]
+try:
+    repo = Repo(git_path)
+    hc = repo.head.commit
+    git_checksum = str(hc)[:8]
+except:
+    git_checksum = "0000000"
 
 html_context = {
     "git_checksum": git_checksum,
