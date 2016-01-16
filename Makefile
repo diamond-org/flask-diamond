@@ -5,7 +5,7 @@ PROJECT_NAME=Flask-Diamond
 MOD_NAME=flask_diamond
 TEST_CMD=SETTINGS=$$PWD/etc/conf/testing.conf nosetests -w $(MOD_NAME)
 
-install:
+install: requirements
 	python setup.py install
 
 requirements:

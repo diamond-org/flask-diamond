@@ -35,7 +35,6 @@ setup(
         "{{{ application.module }}}.views",
         "{{{ application.module }}}.views.base",
         "{{{ application.module }}}.views.frontend",
-        "{{{ application.module }}}.utils",
     ],
     scripts=[
         "bin/runserver.py",
