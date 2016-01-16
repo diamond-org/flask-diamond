@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# {{{ project.name }}} copyright {{{ author.name }}}
+# {{{ application.name }}} copyright {{{ author.name }}}
 
 __project__ = '{{{ application.name }}}'
 __version__ = '0.1.0'
