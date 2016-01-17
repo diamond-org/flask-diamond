@@ -27,7 +27,7 @@ def read(fname):
     return open(fpath(fname)).read()
 
 
-file_text = read(fpath('../flask_diamond/__meta__.py'))
+file_text = read(fpath('../{{{ application.module }}}/__meta__.py'))
 
 
 def grep(attrname):
