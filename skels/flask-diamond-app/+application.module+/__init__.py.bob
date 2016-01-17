@@ -22,8 +22,6 @@ class {{{ application.module }}}(Diamond):
 
         model_list = [
             models.Individual,
-            models.User,
-            models.Role,
         ]
 
         for model in model_list:
