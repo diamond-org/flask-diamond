@@ -4,8 +4,6 @@
 from flask.ext.diamond import Diamond, db, security
 from flask.ext.diamond.administration import AdminView, AdminModelView
 from .views.administration.modelviews import IndividualAdmin
-from .views.base import baseview
-from .views.frontend.simpleview import simpleview
 
 
 # declare these globalish objects before initializing models
@@ -18,10 +16,14 @@ from . import models
 
 class {{{ application.module }}}(Diamond):
     def administration(self):
+        "Initialize admin interface"
+
         admin = super({{{ application.module }}}, self).administration()
 
         model_list = [
             models.Individual,
+            models.User,
+            models.Role,
         ]
 
         for model in model_list:
@@ -32,23 +34,24 @@ class {{{ application.module }}}(Diamond):
                 category="Models")
             )
 
-        #admin.add_view(AdminModelView(
-        #    Individual,
-        #    db.session,
-        #    name="Individuals",
-        #    category="Models")
-        #)
-
         return admin
 
     def blueprints(self):
+        "Application blueprints"
+
+        # Flask-Diamond blueprint
         from flask_diamond.views.diamond import diamond_blueprint
-        self.app.register_blueprint(baseview, url_prefix="/home")
         self.app.register_blueprint(diamond_blueprint)
 
-        # self.app.register_blueprint(baseview, url_prefix="/")
-        # self.app.register_blueprint(simpleview, url_prefix="/simpleview")
+        # Redirect
+        from .views.base import baseview
+        self.app.register_blueprint(baseview, url_prefix="/")
 
+        # A simple view
+        from .views.frontend.simpleview import simpleview
+        self.app.register_blueprint(simpleview, url_prefix="/simpleview")
+
+        # Administration UI
         from .views.administration.modelviews import adminbaseview
         self.app.register_blueprint(adminbaseview)
 
