@@ -18,7 +18,7 @@ class {{{ application.module }}}(Diamond):
     def init_administration(self):
         "Initialize admin interface"
 
-        self.super("administration")
+        admin = self.super("administration")
 
         model_list = [
             models.Individual,
