@@ -65,6 +65,7 @@ class Diamond(object):
             else:
                 method_to_call = getattr(self, init_method)
             result = method_to_call(self)
+            self.app.logger.debug("initialized {0}".format(extension_name))
 
         if hasattr(self.app, 'teardown_appcontext'):
             self.app.teardown_appcontext(self.teardown)

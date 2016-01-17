@@ -3,11 +3,11 @@
 
 from flask.ext.security import SQLAlchemyUserDatastore
 from flask.ext.security import Security
+from flask import current_app
 
 security = Security()
 
-
-def init_accounts(self, app_models=None, **kwargs):
+def init_accounts(self, app_models=None):
     """
     Initialize Security for application.
 
@@ -39,6 +39,5 @@ def init_accounts(self, app_models=None, **kwargs):
 
     # create datastore
     user_datastore = SQLAlchemyUserDatastore(db, User, Role)
-    security.init_app(self.app, datastore=user_datastore, **kwargs)
-    # security._state = self.app.extensions["security"]
-    # security.datastore = user_datastore
+    setattr(Security, "user_datastore", user_datastore)
+    security.init_app(self.app, datastore=user_datastore)

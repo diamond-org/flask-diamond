@@ -2,6 +2,7 @@
 
 from flask.ext.testing import TestCase
 from flask import current_app
+from .. import create_app, db
 
 
 class GeneralTestCase(TestCase):
@@ -10,23 +11,17 @@ class GeneralTestCase(TestCase):
         Create a Flask-Diamond app for testing.
         """
 
-        from .. import create_app, db
-        self.app = create_app()
-        self.app.config['TESTING'] = True
-        self.app.config['WTF_CSRF_ENABLED'] = False
-        self.db = db
-        return self.app
+        app = create_app()
+        app.config['TESTING'] = True
+        app.config['WTF_CSRF_ENABLED'] = False
+        return app
 
     def setUp(self):
         """
         Prepare for a test case.
         """
 
-        from ..models.user import User
-
-        self.db.drop_all()
-        self.db.create_all()
-        User.add_system_users()
+        db.create_all()
         current_app.logger.debug("setup complete")
 
     def tearDown(self):
@@ -34,4 +29,5 @@ class GeneralTestCase(TestCase):
         Clean up after a test case.
         """
 
-        self.db.session.remove()
+        db.session.remove()
+        db.drop_all()

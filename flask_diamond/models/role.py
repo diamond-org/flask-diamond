@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from flask.ext.security import RoleMixin
-#import flask.ext.security as security
 from .. import db
 
 

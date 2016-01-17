@@ -76,8 +76,8 @@ class User(db.Model, UserMixin, CRUDMixin):
 
         from .. import security
 
-        new_role = security.datastore.find_or_create_role(role_name)
-        security.datastore.add_role_to_user(self, new_role)
+        new_role = security.Security.user_datastore.find_or_create_role(role_name)
+        security.Security.user_datastore.add_role_to_user(self, new_role)
         db.session.commit()
 
     @classmethod
@@ -97,7 +97,7 @@ class User(db.Model, UserMixin, CRUDMixin):
 
         from .. import security
 
-        new_user = security.datastore.create_user(
+        new_user = security.Security.user_datastore.create_user(
             email=email,
             password=encrypt_password(password)
         )
@@ -120,13 +120,9 @@ class User(db.Model, UserMixin, CRUDMixin):
 
         from .. import security
 
-        print security
-        print security.datastore
-        print dir(security.datastore)
-
         # make roles
-        security.datastore.find_or_create_role("Admin")
-        security.datastore.find_or_create_role("User")
+        security.Security.user_datastore.find_or_create_role("Admin")
+        security.Security.user_datastore.find_or_create_role("User")
         db.session.commit()
 
         cls.register(
@@ -155,6 +151,6 @@ class User(db.Model, UserMixin, CRUDMixin):
 
         from .. import security
 
-        security.datastore.delete_user(email="admin")
-        security.datastore.delete_user(email="guest")
+        security.Security.user_datastore.delete_user(email="admin")
+        security.Security.user_datastore.delete_user(email="guest")
         db.session.commit()
