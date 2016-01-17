@@ -3,8 +3,9 @@
 import flask
 from flask.ext.security import UserMixin
 from flask.ext.security.utils import encrypt_password
-#import flask.ext.security as security
-from .. import db, security
+# import flask.ext.security as security
+# from .. import db, security
+from .. import db
 from ..utils.mixins import CRUDMixin
 import datetime
 
@@ -73,6 +74,8 @@ class User(db.Model, UserMixin, CRUDMixin):
         :type role_name: string
         """
 
+        from .. import security
+
         new_role = security.datastore.find_or_create_role(role_name)
         security.datastore.add_role_to_user(self, new_role)
         db.session.commit()
@@ -91,6 +94,9 @@ class User(db.Model, UserMixin, CRUDMixin):
         :param roles: a list containing the names of the Roles for this User
         :type roles: list(string)
         """
+
+        from .. import security
+
         new_user = security.datastore.create_user(
             email=email,
             password=encrypt_password(password)
@@ -111,6 +117,12 @@ class User(db.Model, UserMixin, CRUDMixin):
 
         :returns: None
         """
+
+        from .. import security
+
+        print security
+        print security.datastore
+        print dir(security.datastore)
 
         # make roles
         security.datastore.find_or_create_role("Admin")
@@ -140,6 +152,8 @@ class User(db.Model, UserMixin, CRUDMixin):
 
         :returns: None
         """
+
+        from .. import security
 
         security.datastore.delete_user(email="admin")
         security.datastore.delete_user(email="guest")

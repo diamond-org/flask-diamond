@@ -1,11 +1,58 @@
 # -*- coding: utf-8 -*-
+# Flask-Diamond (c) Ian Dennis Miller
 
+from flask.ext.admin import Admin
 import flask.ext.security as security
 from flask.ext.admin import BaseView, expose, AdminIndexView
 from flask.ext.admin.contrib.sqla import ModelView
 from flask.ext.admin.base import MenuLink
 from flask.ext.security.utils import encrypt_password
 import flask
+
+admin = Admin()
+
+
+def init_administration(self, index_view=None, app_models=None):
+    """
+    Initialize the Administrative GUI.
+
+    :param index_view: the View that will act as the index page of the admin GUI.
+    :type index_view: AdminIndexView
+    :returns: None
+
+    The administration GUI is substantially derived from `Flask-Admin
+    <http://flask-admin.readthedocs.org/en/latest/>`_. When this function
+    is called, it will instantiate blueprints so the application serves
+    the admin GUI via the URL http://localhost/admin.
+
+    Typically, you will want to call this function even if you override
+    it.  The following example illustrates using super() to invoke this
+    administration() function from within your own application.
+
+    >>> admin = super(MyApp, self).administration(
+    >>>     index_view=MyApp.modelviews.RedirectView(name="Home")
+    >>> )
+    """
+
+    admin = Admin(
+        name=self.app.config["PROJECT_NAME"],
+        base_template='admin/login_base.html',
+        index_view=index_view or ForceLoginView(name="Home")
+    )
+
+    from .. import db
+
+    if not app_models:
+        from ..models.user import User
+        from ..models.role import Role
+    else:
+        models = app_models
+
+    admin.add_view(UserView(User, db.session, category="Admin"))
+    admin.add_view(AdminModelView(Role, db.session, category="Admin"))
+
+    admin.init_app(self.app)
+    return admin
 
 
 class AuthMixin(object):
