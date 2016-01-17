@@ -48,10 +48,11 @@ def init_administration(self, index_view=None, app_models=None):
     else:
         models = app_models
 
+    admin.init_app(self.app)
+
     admin.add_view(UserView(User, db.session, category="Admin"))
     admin.add_view(AdminModelView(Role, db.session, category="Admin"))
 
-    admin.init_app(self.app)
     return admin
 
 

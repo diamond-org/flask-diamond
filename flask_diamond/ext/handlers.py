@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 # Flask-Diamond (c) Ian Dennis Miller
 
+import flask
+
 
 def init_error_handlers(self):
     """
@@ -19,6 +21,7 @@ def init_error_handlers(self):
             return flask.redirect(flask.url_for("admin.index"))
         else:
             return flask.redirect(security.url_for_security("login"))
+
 
 def init_request_handlers(self):
     """

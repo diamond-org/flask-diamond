@@ -2,7 +2,7 @@
 # {{{ application.name }}} (c) {{{ author.name }}}
 
 from flask.ext.diamond import Diamond, db, security
-from flask.ext.diamond.administration import AdminView, AdminModelView
+from flask.ext.diamond.ext.administration import AdminView, AdminModelView
 from .views.administration.modelviews import IndividualAdmin
 
 
@@ -15,10 +15,10 @@ from . import models
 
 
 class {{{ application.module }}}(Diamond):
-    def administration(self):
+    def init_administration(self):
         "Initialize admin interface"
 
-        admin = super({{{ application.module }}}, self).administration()
+        self.super("administration")
 
         model_list = [
             models.Individual,
@@ -34,12 +34,10 @@ class {{{ application.module }}}(Diamond):
 
         return admin
 
-    def blueprints(self):
+    def init_blueprints(self):
         "Application blueprints"
 
-        # Flask-Diamond blueprint
-        from flask_diamond.views.diamond import diamond_blueprint
-        self.app.register_blueprint(diamond_blueprint)
+        self.super("blueprints")
 
         # Redirect
         from .views.base import baseview
@@ -49,7 +47,7 @@ class {{{ application.module }}}(Diamond):
         from .views.frontend.simpleview import simpleview
         self.app.register_blueprint(simpleview, url_prefix="/simpleview")
 
-        # Administration UI
+        # administration blueprint is custom to this application
         from .views.administration.modelviews import adminbaseview
         self.app.register_blueprint(adminbaseview)
 
@@ -57,8 +55,26 @@ class {{{ application.module }}}(Diamond):
 def create_app():
     global app_instance
     if not app_instance:
-        app_instance = {{{ application.module }}}()
-        app_instance.init_app(email=False, request_handlers=False)
+        app_instance = test_app()
+        app_instance.init_app(
+            extensions=[
+                "configuration",
+                "logs",
+                "database",
+                "accounts",
+                "blueprints",
+                "signals",
+                "forms",
+                "error_handlers",
+                "request_handlers",
+                "administration",
+                # "rest",
+                # "webassets",
+                # "email",
+                # "debugger",
+                # "task_queue",
+            ]
+        )
 
     # print app_instance.app.url_map
     return app_instance.app

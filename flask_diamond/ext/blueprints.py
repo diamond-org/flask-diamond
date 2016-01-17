@@ -15,4 +15,4 @@ def init_blueprints(self):
     """
 
     from ..views.diamond import diamond_blueprint
-    self.app.register_blueprint(diamond_blueprint, url_prefix="/")
+    self.app.register_blueprint(diamond_blueprint)

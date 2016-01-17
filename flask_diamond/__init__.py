@@ -9,6 +9,8 @@ try:
 except ImportError:
     from flask import _request_ctx_stack as stack
 
+app_instance = None
+
 
 class Diamond(object):
     """
@@ -24,7 +26,26 @@ class Diamond(object):
         if app is not None:
             self.init_app(app)
 
-    def init_app(self, name=None, extensions=["email", "task_queue", "request_handlers"]):
+    def init_app(self,
+            name=None,
+            extensions=[
+                "configuration",
+                "logs",
+                "database",
+                "accounts",
+                "blueprints",
+                "signals",
+                "forms",
+                "error_handlers",
+                "request_handlers",
+                "administration",
+                "rest",
+                "webassets",
+                "email",
+                "debugger",
+                "task_queue",
+            ]
+        ):
         """
         Initialize a Diamond application.
 
@@ -42,35 +63,41 @@ class Diamond(object):
             name = __name__
 
         self.app = flask.Flask(name)
-        extension_list = [
-            "configuration",
-            "logs",
-            "database",
-            "accounts",
-            "administration",
-            "forms",
-            "webassets",
-            "debugger",
-            "rest",
-            "blueprints",
-            "signals",
-            "error_handlers",
-        ]
-        extension_list.extend(extensions)
 
-        for extension_name in extension_list:
+        for extension_name in extensions:
             init_method = "init_{0}".format(extension_name)
             if not hasattr(self, init_method):
                 method_to_call = globals()[init_method]
             else:
                 method_to_call = getattr(self, init_method)
-            result = method_to_call(self)
+            setattr(self, init_method, method_to_call)
+
+            try:
+                # try to explicitly pass self as the first parameter
+                result = method_to_call(self)
+            except TypeError:
+                # just call it because it will be wrapped to inject self
+                result = method_to_call()
+
             self.app.logger.debug("initialized {0}".format(extension_name))
 
         if hasattr(self.app, 'teardown_appcontext'):
             self.app.teardown_appcontext(self.teardown)
         else:
             self.app.teardown_request(self.teardown)
+
+    def super(self, extension_name):
+        """
+        invoke the initialization method for the superclass
+
+        ex: self.super("administration")
+        """
+
+        init_method = "init_{0}".format(extension_name)
+        # ensure the global version is called
+        method_to_call = globals()[init_method]
+        result = method_to_call(self)
+        return result
 
     def teardown(self, exception):
         """
@@ -94,6 +121,8 @@ class Diamond(object):
 
 
 def create_app():
-    diamond = Diamond()
-    diamond.init_app()
-    return diamond.app
+    global app_instance
+    if not app_instance:
+        app_instance = Diamond()
+        app_instance.init_app()
+    return app_instance.app
