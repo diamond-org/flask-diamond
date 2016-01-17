@@ -63,7 +63,10 @@ def userdel(email):
 def init_db(migration):
     "drop all databases, instantiate schemas"
     db.drop_all()
+
     if migration:
+        # create database using migrations
+        print "applying migration"
         upgrade()
     else:
         # create database from model schema directly

@@ -7,7 +7,7 @@ import traceback
 sys.path.insert(0, '.')
 
 from flask.ext.script import Manager, Shell, Server
-from flask.ext.migrate import Migrate, MigrateCommand
+from flask.ext.migrate import Migrate, MigrateCommand, upgrade
 import alembic
 import alembic.config
 from flask_diamond import create_app, db, security, models
@@ -22,7 +22,6 @@ def _make_context():
         "db": db,
         "user_datastore": security.Security.user_datastore,
         "models": models,
-        "migrate": MigrateCommand,
     }
 
 manager = Manager(app)
@@ -60,14 +59,21 @@ def userdel(email):
         print("User not found")
 
 
-@manager.command
-def init_db():
+@manager.option('-m', '--migration', help='create database from migrations', action='store_true', default=None)
+def init_db(migration):
     "drop all databases, instantiate schemas"
     db.drop_all()
-    db.create_all()
-    db.session.commit()
-    cfg = alembic.config.Config("flask_diamond/migrations/alembic.ini")
-    alembic.command.stamp(cfg, "head")
+
+    if migration:
+        # create database using migrations
+        print "applying migration"
+        upgrade()
+    else:
+        # create database from model schema directly
+        db.create_all()
+        db.session.commit()
+        cfg = alembic.config.Config("flask_diamond/migrations/alembic.ini")
+        alembic.command.stamp(cfg, "head")
 
 
 @manager.command
