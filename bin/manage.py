@@ -10,15 +10,20 @@ from flask.ext.script import Manager, Shell, Server
 from flask.ext.migrate import Migrate, MigrateCommand
 import alembic
 import alembic.config
-
 from flask_diamond import create_app, db, security, models
+
 app = create_app()
+migrate = Migrate(app, db, directory="flask_diamond/migrations")
 
 
 def _make_context():
-    return dict(app=app, db=db, user_datastore=security.datastore)
-
-migrate = Migrate(app, db, directory="flask_diamond/migrations")
+    return {
+        "app": app,
+        "db": db,
+        "user_datastore": security.Security.user_datastore,
+        "models": models,
+        "migrate": MigrateCommand,
+    }
 
 manager = Manager(app)
 manager.add_command("shell", Shell(make_context=_make_context))
