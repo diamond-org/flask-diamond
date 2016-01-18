@@ -4,13 +4,13 @@
 from nose.plugins.attrib import attr
 from flask.ext.testing import TestCase
 from flask.ext.diamond.mixins.testing import DiamondTestCaseMixin
-from ..models.user import User
-from fixtures import typical_workflow
+from ..models import User
+from .fixtures import typical_workflow
 
 
 class WorkflowTestCase(DiamondTestCaseMixin, TestCase):
     def setUp(self):
-        super(TestCase, self).setUp()
+        super(WorkflowTestCase, self).setUp()
         typical_workflow()
 
     @attr("single")
