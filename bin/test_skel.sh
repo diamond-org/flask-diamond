@@ -1,4 +1,5 @@
 #!/bin/bash
+# Flask-Diamond (c) Ian Dennis Miller
 
 source "$(which virtualenvwrapper.sh)"
 

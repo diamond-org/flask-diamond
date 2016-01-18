@@ -1,4 +1,5 @@
 #!/bin/bash
+# Flask-Diamond (c) Ian Dennis Miller
 
 # usage:
 # Run diamond-scaffold.sh in the target project directory.

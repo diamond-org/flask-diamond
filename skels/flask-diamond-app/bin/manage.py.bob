@@ -10,7 +10,7 @@ from flask.ext.script import Manager, Shell, Server
 from flask.ext.migrate import Migrate, MigrateCommand, upgrade
 import alembic
 import alembic.config
-from {{{ application.module }}} import create_app, db, security, models
+from {{{ application.module }}} import create_app, db, models
 
 app = create_app()
 migrate = Migrate(app, db, directory="{{{ application.module }}}/migrations")
@@ -20,7 +20,6 @@ def _make_context():
     return {
         "app": app,
         "db": db,
-        "user_datastore": security.Security.user_datastore,
         "models": models,
     }
 

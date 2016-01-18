@@ -1,4 +1,5 @@
 #!/bin/bash
+# Flask-Diamond (c) Ian Dennis Miller
 
 # usage:
 # this script detects skew with the skeleton
