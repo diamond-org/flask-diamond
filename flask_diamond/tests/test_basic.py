@@ -6,12 +6,7 @@ from nose.plugins.attrib import attr
 from flask.ext.diamond.utils.testhelpers import GeneralTestCase
 
 
-class BasicTestCase(GeneralTestCase):
-    def setUp(self):
-        pass
-
-
-class flask_diamondBasicTestCase(BasicTestCase):
+class flask_diamondBasicTestCase(GeneralTestCase):
     def test_basic(self):
         assert True
 

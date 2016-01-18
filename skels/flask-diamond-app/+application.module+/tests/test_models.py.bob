@@ -5,15 +5,10 @@ from nose.plugins.attrib import attr
 
 from flask.ext.diamond.utils.testhelpers import GeneralTestCase
 from {{{ application.module }}} import models, create_app, db
-from .fixtures import typical_workflow
 
 
 class UserTestCase(GeneralTestCase):
     "Coverage for User Model"
-
-    def setUp(self):
-        super(UserTestCase, self).setUp()
-        typical_workflow()
 
     def test_create(self):
         "ensure an account can be created"

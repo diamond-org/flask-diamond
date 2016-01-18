@@ -19,8 +19,8 @@ cd /tmp/flask-diamond
 rm flask_diamond/migrations/versions/13011baa608a_individual.py
 
 # remove the simple CRUD associated with the Individual model
-rm -rf flask_diamond/models \
-    flask_diamond/views/administration \
+# rm -rf flask_diamond/models \
+rm -rf flask_diamond/views/administration \
     flask_diamond/views/base \
     flask_diamond/views/frontend
 
@@ -31,10 +31,9 @@ git checkout \
     docs/conf.py \
     docs/index.rst \
     flask_diamond/__init__.py \
-    flask_diamond/models/__init__.py \
-    flask_diamond/models/role.py \
-    flask_diamond/models/user.py \
-    flask_diamond/tests/test_models.py
+    flask_diamond/models/__init__.py
+    #flask_diamond/models/role.py \
+    #flask_diamond/models/user.py
 
 # now ideally there will be no diff
 echo BEGIN diff
