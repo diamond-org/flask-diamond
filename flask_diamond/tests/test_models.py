@@ -3,15 +3,16 @@
 
 from nose.plugins.attrib import attr
 
-from flask_diamond import models
-from flask_diamond.utils.testhelpers import GeneralTestCase
+from flask.ext.diamond.utils.testhelpers import GeneralTestCase
+from flask_diamond import models, create_app, db
 
 
-class flask_diamond_ModelTestCase(GeneralTestCase):
+class UserTestCase(GeneralTestCase):
+    "Coverage for User Model"
 
-    @attr("single")
-    def test_user(self):
-        ian = models.user.User.create(email='ian', password='ian')
-        ian = models.user.User.find(email='ian')
-        assert ian
-        assert ian.email == 'ian'
+    def test_create(self):
+        "ensure an account can be created"
+        models.User.create(email='an_account', password='a_password')
+        an_account = models.User.find(email='an_account')
+        assert an_account
+        assert an_account.email == 'an_account'
