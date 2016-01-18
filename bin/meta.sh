@@ -14,12 +14,10 @@ git clone -b 0.3 . /tmp/flask-diamond
 mrbob --non-interactive --config .mrbob.ini -O /tmp/flask-diamond ./skels/flask-diamond-app
 
 # change to the working path
-cd /tmp/flask-diamond
+pushd /tmp/flask-diamond
 
 # remove the views
-rm -rf flask_diamond/views/administration \
-    flask_diamond/views/base \
-    flask_diamond/views/frontend
+rm -rf flask_diamond/views/administration
 
 # revert files that are idiosyncratic to flask-diamond
 git checkout \
@@ -34,3 +32,5 @@ git checkout \
 echo BEGIN diff
 git status
 echo END diff
+
+popd
