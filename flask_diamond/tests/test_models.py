@@ -2,9 +2,8 @@
 # Flask-Diamond (c) Ian Dennis Miller
 
 from nose.plugins.attrib import attr
-
 from flask.ext.diamond.utils.testhelpers import GeneralTestCase
-from flask_diamond import models, create_app, db
+from flask_diamond import models
 
 
 class UserTestCase(GeneralTestCase):

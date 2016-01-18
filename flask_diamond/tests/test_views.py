@@ -7,7 +7,7 @@ from flask_diamond.utils.testhelpers import GeneralTestCase
 
 class ViewTestCase(GeneralTestCase):
     def test_login(self):
-        rv = self.client.get('/login')
+        rv = self.client.get('/user/login')
         assert 'Flask-Diamond' in rv.data
 
     def test_index(self):
