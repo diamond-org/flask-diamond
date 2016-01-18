@@ -4,7 +4,7 @@
 from nose.plugins.attrib import attr
 from flask.ext.testing import TestCase
 from flask.ext.diamond.mixins.testing import DiamondTestCaseMixin
-from flask_diamond import models
+from .. import models
 
 
 class UserTestCase(DiamondTestCaseMixin, TestCase):

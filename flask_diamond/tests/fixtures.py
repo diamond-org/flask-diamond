@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Flask-Diamond (c) Ian Dennis Miller
 
-from flask_diamond import models
+from .. import models
 
 
 def typical_workflow():

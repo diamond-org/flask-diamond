@@ -8,6 +8,7 @@ from flask.ext.diamond.mixins.testing import DiamondTestCaseMixin
 
 class BasicTestCase(DiamondTestCaseMixin, TestCase):
     def test_basic(self):
+        "ensure the minimum test works"
         assert True
 
     @attr("skip")

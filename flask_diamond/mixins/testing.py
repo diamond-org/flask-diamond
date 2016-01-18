@@ -3,11 +3,12 @@
 
 from flask import current_app
 from .. import create_app, db
+from flask.ext.testing import TestCase
 
 # intended to be used with flask.ext.testing.TestCase
 
 
-class DiamondTestCaseMixin(object):
+class DiamondTestCaseMixin(TestCase):
     def create_app(self):
         """
         Create a Flask-Diamond app for testing.
