@@ -3,10 +3,9 @@
 import flask
 from flask.ext.security import UserMixin
 from flask.ext.security.utils import encrypt_password
-# import flask.ext.security as security
-# from .. import db, security
 from .. import db
-from ..utils.mixins import CRUDMixin
+from ..mixins.crud import CRUDMixin
+from ..mixins.marshmallow import MarshmallowMixin
 import datetime
 
 roles_users = db.Table('roles_users',
@@ -15,7 +14,7 @@ roles_users = db.Table('roles_users',
 "A secondary table is used for the one-to-many relationship: User has many Roles"
 
 
-class User(db.Model, UserMixin, CRUDMixin):
+class User(db.Model, UserMixin, CRUDMixin, MarshmallowMixin):
     id = db.Column(db.Integer, primary_key=True)
     "integer -- primary key"
 

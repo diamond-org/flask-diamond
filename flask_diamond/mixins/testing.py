@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
+# Flask-Diamond (c) Ian Dennis Miller
 
-from flask.ext.testing import TestCase
 from flask import current_app
 from .. import create_app, db
 
+# intended to be used with flask.ext.testing.TestCase
 
-class GeneralTestCase(TestCase):
+
+class DiamondTestCaseMixin(object):
     def create_app(self):
         """
         Create a Flask-Diamond app for testing.

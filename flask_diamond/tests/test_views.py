@@ -2,10 +2,11 @@
 # Flask-Diamond (c) Ian Dennis Miller
 
 from nose.plugins.attrib import attr
-from flask_diamond.utils.testhelpers import GeneralTestCase
+from flask.ext.testing import TestCase
+from flask.ext.diamond.mixins.testing import DiamondTestCaseMixin
 
 
-class ViewTestCase(GeneralTestCase):
+class ViewTestCase(DiamondTestCaseMixin, TestCase):
     def test_login(self):
         rv = self.client.get('/user/login')
         assert 'Flask-Diamond' in rv.data

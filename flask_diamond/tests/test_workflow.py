@@ -2,13 +2,15 @@
 # Flask-Diamond (c) Ian Dennis Miller
 
 from nose.plugins.attrib import attr
-from ..utils.testhelpers import GeneralTestCase
+from flask.ext.testing import TestCase
+from flask.ext.diamond.mixins.testing import DiamondTestCaseMixin
 from ..models.user import User
+from fixtures import typical_workflow
 
 
-class WorkflowTestCase(GeneralTestCase):
+class WorkflowTestCase(DiamondTestCaseMixin, TestCase):
     def setUp(self):
-        super(ModelTestCase, self).setUp()
+        super(TestCase, self).setUp()
         typical_workflow()
 
     @attr("single")

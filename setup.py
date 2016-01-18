@@ -35,10 +35,10 @@ setup(
         "flask_diamond.ext",
         "flask_diamond.migrations",
         "flask_diamond.migrations.versions",
+        "flask_diamond.mixins",
         "flask_diamond.models",
         "flask_diamond.views",
         "flask_diamond.views.diamond",
-        "flask_diamond.utils",
     ],
     scripts=[
         "bin/diamond-scaffold.sh",
