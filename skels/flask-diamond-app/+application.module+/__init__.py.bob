@@ -3,7 +3,6 @@
 
 from flask.ext.diamond import Diamond, db, security
 from flask.ext.diamond.ext.administration import AdminView, AdminModelView
-from .views.administration.modelviews import IndividualAdmin
 
 
 # declare these globalish objects before initializing models
@@ -21,7 +20,6 @@ class {{{ application.module }}}(Diamond):
         admin = self.super("administration")
 
         model_list = [
-            models.Individual,
         ]
 
         for model in model_list:
