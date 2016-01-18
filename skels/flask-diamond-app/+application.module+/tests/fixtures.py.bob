@@ -7,9 +7,9 @@ from {{{ application.module }}} import models
 def typical_workflow():
     "create some example objects"
 
-    ian = models.User.register(
-        email='ian',
-        password='aaa',
+    a_user = models.User.register(
+        email='{{{ author.email }}}',
+        password='{{{ author.email }}}',
         confirmed=True,
         roles=["User"],
     )
