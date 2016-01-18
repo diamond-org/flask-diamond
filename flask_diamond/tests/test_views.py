@@ -5,7 +5,7 @@ from nose.plugins.attrib import attr
 from flask_diamond.utils.testhelpers import GeneralTestCase
 
 
-class flask_diamond_ViewTestCase(GeneralTestCase):
+class ViewTestCase(GeneralTestCase):
     def test_login(self):
         rv = self.client.get('/login')
         assert 'Flask-Diamond' in rv.data

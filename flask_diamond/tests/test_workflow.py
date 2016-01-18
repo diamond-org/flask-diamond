@@ -6,7 +6,11 @@ from ..utils.testhelpers import GeneralTestCase
 from ..models.user import User
 
 
-class flask_diamond_WorkflowTestCase(GeneralTestCase):
+class WorkflowTestCase(GeneralTestCase):
+    def setUp(self):
+        super(ModelTestCase, self).setUp()
+        typical_workflow()
+
     @attr("single")
     def test_user(self):
         "user created in workflow"

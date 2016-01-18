@@ -15,10 +15,7 @@ mrbob --non-interactive --config .mrbob.ini -O /tmp/flask-diamond ./skels/flask-
 # change to the working path
 cd /tmp/flask-diamond
 
-# remove the schema migration that adds the Individual model, which is specific to diamond-app
-rm flask_diamond/migrations/versions/13011baa608a_individual.py
-
-# remove the simple CRUD associated with the Individual model
+# remove the views
 rm -rf flask_diamond/views/administration \
     flask_diamond/views/base \
     flask_diamond/views/frontend
