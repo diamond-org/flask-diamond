@@ -86,7 +86,7 @@ class Diamond(object):
         else:
             self.app.teardown_request(self.teardown)
 
-    def super(self, extension_name):
+    def super(self, extension_name, **kwargs):
         """
         invoke the initialization method for the superclass
 
@@ -96,7 +96,7 @@ class Diamond(object):
         init_method = "init_{0}".format(extension_name)
         # ensure the global version is called
         method_to_call = globals()[init_method]
-        result = method_to_call(self)
+        result = method_to_call(self, **kwargs)
         return result
 
     def teardown(self, exception):

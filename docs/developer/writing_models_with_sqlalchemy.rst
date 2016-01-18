@@ -156,6 +156,30 @@ For example, in order for ``make db`` to automatically create a Person object ba
         me.save()
 
 
+Another model example
+---------------------
+
+.. code-block:: python
+
+    class Individual(db.Model, CRUDMixin):
+        id = db.Column(db.Integer, primary_key=True)
+        name = db.Column(db.String(255))
+
+        friend_id = db.Column(db.Integer, db.ForeignKey('individual.id'))
+        friend = db.relationship('Individual',
+            primaryjoin=('Individual.friend_id == Individual.id'),
+            remote_side="Individual.id")
+
+        def set_friend(self, obj):
+            self.friend = obj
+            self.save()
+
+        def as_hash(self):
+            pass
+
+        def __str__(self):
+            return self.name
+
 Further Reading
 ---------------
 

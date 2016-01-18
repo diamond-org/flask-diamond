@@ -22,22 +22,4 @@ class RedirectView(AdminIndexView):
 
     @expose('/')
     def index(self):
-        return flask.redirect(flask.url_for('individual.list_view'))
-
-
-class IndividualAdmin(AuthModelView):
-
-    edit_template = 'individual_view.html'
-
-    column_list = ("name", "friend")
-
-    #form_overrides = {
-    #    "upload_buffer": FileUploadField
-    #}
-
-    #form_args = {
-    #    'upload_buffer': {
-    #        'label': 'Report PDF',
-    #        'base_path': "/tmp",
-    #    }
-    #}
+        return flask.redirect(flask.url_for('user.list_view'))

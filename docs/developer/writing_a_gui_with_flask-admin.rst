@@ -103,6 +103,28 @@ One simple way to add functionality to the user interface is to use Flask-Admin'
 
 When these two *PersonModelView* examples are combined, the result is a user interface that can model a Person's birthday when a link is clicked.
 
+ModelViews
+^^^^^^^^^^
+
+.. code-block:: python
+
+    class IndividualAdmin(AuthModelView):
+
+        edit_template = 'individual_view.html'
+
+        column_list = ("name", "friend")
+
+        #form_overrides = {
+        #    "upload_buffer": FileUploadField
+        #}
+
+        #form_args = {
+        #    'upload_buffer': {
+        #        'label': 'Report PDF',
+        #        'base_path': "/tmp",
+        #    }
+        #}
+
 More Flask-Admin
 ^^^^^^^^^^^^^^^^
 

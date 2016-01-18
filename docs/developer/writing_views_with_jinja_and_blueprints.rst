@@ -120,3 +120,32 @@ In :doc:`Flask-Admin <writing_a_gui_with_flask-admin>`, each BaseModelView is ac
 - `self.render() <http://flask-admin.readthedocs.org/en/latest/api/mod_base/#flask_admin.base.BaseView.render>`_ is used instead of `render_template <http://flask.pocoo.org/docs/0.10/api/#flask.render_template>`_
 
 In this manner, it becomes easy to extend a CRUD with custom methods that go beyond create, read, update, and delete.
+
+Another admin view
+------------------
+
+::
+
+    {% extends 'admin/model/edit.html' %}
+
+    {% block body %}
+        {% block model_menu_bar %}
+        <ul class="nav nav-tabs">
+            <li>
+                <a href="{{ url_for('.index_view') }}"><i class="icon-list-alt"></i> {{ _gettext('List') }}</a>
+            </li>
+            <li class="active">
+                <a href="{{ url_for('.index_view') }}"><i class="icon-eye-open"></i> Individual</a>
+            </li>
+        </ul>
+        {% endblock %}
+
+        {% block model_content %}
+            <h2>Individual</h2>
+
+            <ul>
+                <li>ID: <b>{{ model.id }}</b></li>
+            </ul>
+        {% endblock %}
+
+    {% endblock %}
