@@ -37,14 +37,6 @@ class {{{ application.module }}}(Diamond):
 
         self.super("blueprints")
 
-        # Redirect
-        from .views.base import baseview
-        self.app.register_blueprint(baseview, url_prefix="/")
-
-        # A simple view
-        from .views.frontend.simpleview import simpleview
-        self.app.register_blueprint(simpleview, url_prefix="/simpleview")
-
         # administration blueprint is custom to this application
         from .views.administration.modelviews import adminbaseview
         self.app.register_blueprint(adminbaseview)
