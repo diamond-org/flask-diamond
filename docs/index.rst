@@ -69,6 +69,7 @@ About Flask-Diamond
     about/libraries_included_in_flask-diamond
     about/how_to_contribute_to_the_project
     about/philosophy
+    about/changes
     license
 ..    about/changelog
 ..    about/contributors
