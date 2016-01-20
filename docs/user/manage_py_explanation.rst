@@ -21,7 +21,7 @@ Commands
 
     - ``app``: your app's Flask-Diamond object
     - ``db``: your app's database object
-    - ``user_datastore``: from `Flask-Security <https://pythonhosted.org/Flask-Security/>`_, this is the datastore containing all users
+    - ``model``: your app's model
 
 - ``runserver``: Launch your application's HTTP server.  When ``runserver`` is invoked, it will bind to ``localhost``.  The ``PORT`` your application listens on is defined in the :doc:`configuration_explanation`.
 

@@ -3,7 +3,7 @@
 
 from flask.ext.restful import Api
 
-rest_extension = Api()
+rest = Api()
 
 
 def init_rest(self, api_map=None):
@@ -24,11 +24,11 @@ def init_rest(self, api_map=None):
 
     You will end up writing something like this in your application:
 
-    def api_map(rest_extension):
-        rest_extension.add_resource(Blah)
+    def api_map(rest):
+        rest.add_resource(Blah)
     """
 
     if api_map:
-        api_map(rest_extension)
-    rest_extension.init_app(self.app)
-    return rest_extension
+        api_map(rest)
+    rest.init_app(self.app)
+    return rest

@@ -103,8 +103,10 @@ One simple way to add functionality to the user interface is to use Flask-Admin'
 
 When these two *PersonModelView* examples are combined, the result is a user interface that can model a Person's birthday when a link is clicked.
 
-ModelViews
-^^^^^^^^^^
+ModelView Example
+^^^^^^^^^^^^^^^^^
+
+The following ``AuthModelView`` includes examples for overriding various fields within the model view.  The full documentation for ModelView should be consulted for more information, but this example is intended to describe how that information may be applied within a Flask-Diamond project.
 
 .. code-block:: python
 
@@ -114,16 +116,16 @@ ModelViews
 
         column_list = ("name", "friend")
 
-        #form_overrides = {
-        #    "upload_buffer": FileUploadField
-        #}
+        form_overrides = {
+            "upload_buffer": FileUploadField
+        }
 
-        #form_args = {
-        #    'upload_buffer': {
-        #        'label': 'Report PDF',
-        #        'base_path': "/tmp",
-        #    }
-        #}
+        form_args = {
+            'upload_buffer': {
+                'label': 'Report PDF',
+                'base_path': "/tmp",
+            }
+        }
 
 More Flask-Admin
 ^^^^^^^^^^^^^^^^

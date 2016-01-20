@@ -14,7 +14,7 @@ CRUD stands for Create, Read, Update, and Delete. The CRUD pattern complements :
 CRUDMixin
 ---------
 
-``CRUDMixin``, which has been adapted from `Flask-Kit <https://github.com/semirook/flask-kit/blob/master/base/models.py>`_, will extend your model with functions for ``create()``, ``read()``, ``update()``, and ``delete()``.  The default Flask-Diamond scaffold provides an example of CRUDMixin usage:
+:class:`flask_diamond.mixins.crud.CRUDMixin`, which has been adapted from `Flask-Kit <https://github.com/semirook/flask-kit/blob/master/base/models.py>`_, will extend your model with functions for ``create()``, ``read()``, ``update()``, and ``delete()``.  The default Flask-Diamond scaffold provides an example of CRUDMixin usage:
 
 .. code-block:: python
 

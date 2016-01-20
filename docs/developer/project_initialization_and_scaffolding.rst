@@ -11,33 +11,28 @@ As described in the :doc:`../introduction/quick_start`, the basic process looks 
 
 ::
 
-    mkvirtualenv my-diamond-app
+    mkvirtualenv Flask-Diamond
     pip install Flask-Diamond
 
 2. Scaffold an application in a new directory
 
 ::
 
-    mkdir my-diamond-app
-    cd my-diamond-app
-    diamond-scaffold.sh
+    workon Flask-Diamond
+    diamond-scaffold.sh ~/Documents/new-project
+    cd ~/Documents/new-project
+    mkvirtualenv -a . new-project
+    make install docs test db server
 
 About Scaffolding
 -----------------
 
-When you invoke ``diamond-scaffold.sh``, two templates are downloaded and automatically applied:
+When you invoke ``diamond-scaffold.sh``, a template is automatically applied.  Using `mr.bob <http://mrbob.readthedocs.org/en/latest/>`_, a brief set of questions are used to populate the templates with variables.  When you answer these questions, your choices are stored in a file called ``.mrbob.ini`` that is located in the root folder of your project.
 
-- :ref:`diamond-project`
-- :ref:`diamond-app`
+Template questions
+------------------
 
-Using `mr.bob <http://mrbob.readthedocs.org/en/latest/>`_, a brief set of questions are used to populate the templates with variables.  When you answer these questions, your choices are stored in a file called ``.mrbob.ini`` that is located in the root folder of your project.
-
-.. _diamond-project:
-
-diamond-project
----------------
-
-The first templates applied during scaffolding come from https://github.com/flask-diamond/diamond-project.  These templates are suitable for supporting many types of Python projects.  They will create a basic directory structure that provide requirements management, documentation, build, deployment, and other basic project needs.  This step of the scaffolding process asks the following questions:
+This template is suitable for supporting many types of Python projects.  It will create a basic directory structure that provide requirements management, documentation, build, deployment, and other basic project needs.  This step of the scaffolding process asks the following questions:
 
 1. What is the name of the application (i.e. username, daemon name, etc)?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -102,12 +97,17 @@ Example: ``https://github.com/iandennismiller/flask-diamond``
 
 If you will be distributing your application through hosted version control, then provide the URL here.  This is used during deployment, and it is useful for reference.
 
-.. _diamond-app:
+10. Which port will the daemon listen on?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-diamond-app
------------
+Example: ``5000``
 
-The last templates applied during scaffolding come from https://github.com/iandennismiller/diamond-app.  These templates extend diamond-project with a fully-articulated Flask-Diamond application.  The questions during this portion of scaffolding pertain primarily to the configuration of the Flask project, itself.
+Your application will run as an HTTP service that listens on the port provided here.  Thus, if you answer ``8000`` you will be able to connect to your application at ``http://localhost:8000/admin``.
+
+Automatically generated scaffolding fields
+------------------------------------------
+
+There are some steps in the scaffolding process that are automatically generated for you because they involve random processes.
 
 1. What is the secret key?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -132,9 +132,3 @@ Flask uses a hash salt for password storage.  To generate a suitable random stri
     python -c 'import string as s, random as r; \
         print repr("".join(r.choice(s.letters+s.digits) for _ in range(16)))'
 
-3. Which port will the daemon listen on?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Example: ``5000``
-
-Your application will run as an HTTP service that listens on the port provided here.  Thus, if you answer ``8000`` you will be able to connect to your application at ``http://localhost:8000/admin``.
