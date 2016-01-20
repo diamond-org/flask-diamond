@@ -30,10 +30,10 @@ The Developer Guide topics are for developers who are writing or maintaining Fla
     developer/model_view_controller_with_flask-diamond
     developer/writing_an_api_with_flask-restful
     developer/writing_documentation_with_sphinx
+    developer/sending_email_with_flask-mail
+    developer/testing_with_nosetests
 ..    developer/managing_users_with_flask-security
-..    developer/testing_with_nosetests
 ..    developer/debugging_a_flask-diamond_application
-..    developer/sending_email_with_flask-mail
 ..    developer/designing_a_flask-diamond_application
 
 .. _user-guide:
