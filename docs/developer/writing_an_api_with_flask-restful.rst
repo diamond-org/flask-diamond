@@ -65,7 +65,7 @@ If you were to place this code into your own application alongside your *init_bl
 MarshmallowMixin
 ----------------
 
-:module:`flask_diamond.ext.mixins.marshmallow.MarshmallowMixin` simplifies object marshalling, which is the process of mapping data to and from a serialization format like JSON.  This functionality is provided by `Marshmallow <http://marshmallow.readthedocs.org/en/latest/>`_ and `Flask-Marshmallow <http://flask-marshmallow.readthedocs.org/en/latest/>`_.
+:class:`flask_diamond.mixins.marshmallow.MarshmallowMixin` simplifies object marshalling, which is the process of mapping data to and from a serialization format like JSON.  This functionality is provided by `Marshmallow <http://marshmallow.readthedocs.org/en/latest/>`_ and `Flask-Marshmallow <http://flask-marshmallow.readthedocs.org/en/latest/>`_.
 
 Marshalling is useful because applications must frequently send model data across the Internet, and in order to do so, models are commonly translated into JSON or another format. For example, date and time objects are native Python objects that must be converted to a string in order for JSON to transmit them. Marshalling makes serialization and deserialization into a repeatable process.
 
