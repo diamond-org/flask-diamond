@@ -46,7 +46,6 @@ Once you have a project to work with, more advanced topics are discussed in the 
     developer/testing_with_nosetests
     developer/managing_users_with_flask-security
     developer/debugging_a_flask-diamond_application
-..    developer/designing_a_flask-diamond_application
 
 .. _user-guide:
 
@@ -63,7 +62,7 @@ The User Guide topics are for managing and installing a Flask-Diamond applicatio
     user/Makefile_explanation
     user/manage_py_explanation
     user/web_service_with_wsgi
-..    user/deploying_with_fabric
+    user/deploying_with_fabric
 
 .. Tutorials
 .. ---------
@@ -71,6 +70,7 @@ The User Guide topics are for managing and installing a Flask-Diamond applicatio
 .. .. toctree::
 ..
 ..  tutorial/model-view-controller_architecture_with_flask-diamond
+..    developer/designing_a_flask-diamond_application
 
 About Flask-Diamond
 -------------------
