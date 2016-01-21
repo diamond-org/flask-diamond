@@ -21,6 +21,7 @@ The Developer Guide topics are for developers who are writing or maintaining Fla
     :maxdepth: 1
 
     developer/project_initialization_and_scaffolding
+    developer/diagram_of_a_scaffold
     developer/writing_an_application_with_flask-diamond
     developer/writing_models_with_sqlalchemy
     developer/managing_schemas_with_flask-migrate
@@ -32,7 +33,7 @@ The Developer Guide topics are for developers who are writing or maintaining Fla
     developer/writing_documentation_with_sphinx
     developer/sending_email_with_flask-mail
     developer/testing_with_nosetests
-..    developer/managing_users_with_flask-security
+    developer/managing_users_with_flask-security
 ..    developer/debugging_a_flask-diamond_application
 ..    developer/designing_a_flask-diamond_application
 
@@ -73,7 +74,6 @@ About Flask-Diamond
     about/changes
     license
 ..    about/contributors
-..    about/diagram_of_a_subproject
 
 API Reference
 -------------
