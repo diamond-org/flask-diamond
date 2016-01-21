@@ -1,7 +1,7 @@
-Writing
-=======
+Debugging a Flask-Diamond Application
+=====================================
 
-This document is a work in progress.
+There are two main tricks here.
 
 Heading
 -------

@@ -34,7 +34,7 @@ The Developer Guide topics are for developers who are writing or maintaining Fla
     developer/sending_email_with_flask-mail
     developer/testing_with_nosetests
     developer/managing_users_with_flask-security
-..    developer/debugging_a_flask-diamond_application
+    developer/debugging_a_flask-diamond_application
 ..    developer/designing_a_flask-diamond_application
 
 .. _user-guide:
