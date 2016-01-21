@@ -1,5 +1,5 @@
-Writing Models with SQLAlchemy
-==============================
+Models with SQLAlchemy
+======================
 
 In Flask-Diamond, a Model is a way of reading and writing a database. If our application is a chess game, then we're modeling chess objects in a database.  If our application is a social network, then we're modeling people objects in a database. A fundamental assumption of the :doc:`Model-View-Controller <model_view_controller_with_flask-diamond>` architecture is that our application deals with objects, and our objects are modeled after the things our application deals with.
 

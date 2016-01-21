@@ -1,4 +1,6 @@
+# Pedro Kroger
 # https://gist.github.com/kroger/3856821
+# http://pedrokroger.net/using-sphinx-write-technical-books/
 
 import os
 from docutils import nodes

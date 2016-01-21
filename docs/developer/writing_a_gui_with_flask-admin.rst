@@ -1,5 +1,5 @@
-Writing a GUI with Flask-Admin
-==============================
+GUI with Flask-Admin
+====================
 
 A common pattern in application design is to apply :doc:`CRUD <crud_with_flask-diamond>` to your :doc:`Model <writing_models_with_sqlalchemy>`, and then provide a Graphical User Interface for people to interact with the Model.  `Flask-Admin <http://flask-admin.readthedocs.org/>`_ makes it very easy to create a basic interface with Create-Read-Update-Delete functionality, and provides a framework for designing much more sophisticated interfaces.
 

@@ -1,5 +1,5 @@
-Managing Schemas with Flask-Migrate
-===================================
+Database Schema Migration with Flask-Migrate
+============================================
 
 Any time the data model is changed, the database must be updated so that it has the right columns.  Any time a table or column is added, removed, or changed in any way, we say the database schema [#f1]_ has changed.  We need to be sure the database schema always matches the model.  This common task is called schema migration, and it is handled well by `Alembic <http://alembic.readthedocs.org/en/latest/>`_.
 
