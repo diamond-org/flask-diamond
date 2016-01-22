@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 # Flask-Diamond (c) Ian Dennis Miller
 
-from flask_diamond import models
+from .. import models
 
 
 def typical_workflow():
     "create some example objects"
 
-    ian = models.User.register(
-        email='ian',
-        password='aaa',
+    a_user = models.User.register(
+        email='iandennismiller@gmail.com',
+        password='iandennismiller@gmail.com',
         confirmed=True,
         roles=["User"],
     )

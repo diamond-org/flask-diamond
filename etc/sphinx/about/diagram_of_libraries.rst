@@ -1,3 +1,0 @@
-Diagram of Libraries
-====================
-

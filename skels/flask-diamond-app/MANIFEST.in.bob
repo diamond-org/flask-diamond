@@ -1,0 +1,6 @@
+recursive-include {{{ application.module }}}/views *
+recursive-include skels *
+include Readme.rst
+include requirements.txt
+include {{{ application.module }}}/migrations/alembic.ini
+include {{{ application.module }}}/migrations/script.py.mako

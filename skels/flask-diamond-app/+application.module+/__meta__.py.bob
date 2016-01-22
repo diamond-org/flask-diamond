@@ -1,0 +1,9 @@
+# -*- coding: utf-8 -*-
+# {{{ application.name }}} copyright {{{ author.name }}}
+
+__project__ = '{{{ application.name }}}'
+__version__ = '{{{ project.version }}}'
+__author__ = '{{{ author.name }}}'
+__email__ = '{{{ author.email }}}'
+__url__ = '{{{ project.url }}}'
+__copyright__ = '{{{ author.name }}}'

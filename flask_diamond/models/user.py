@@ -3,9 +3,9 @@
 import flask
 from flask.ext.security import UserMixin
 from flask.ext.security.utils import encrypt_password
-#import flask.ext.security as security
-from .. import db, security
-from ..utils.mixins import CRUDMixin
+from .. import db
+from ..mixins.crud import CRUDMixin
+from ..mixins.marshmallow import MarshmallowMixin
 import datetime
 
 roles_users = db.Table('roles_users',
@@ -14,7 +14,7 @@ roles_users = db.Table('roles_users',
 "A secondary table is used for the one-to-many relationship: User has many Roles"
 
 
-class User(db.Model, UserMixin, CRUDMixin):
+class User(db.Model, UserMixin, CRUDMixin, MarshmallowMixin):
     id = db.Column(db.Integer, primary_key=True)
     "integer -- primary key"
 
@@ -73,8 +73,10 @@ class User(db.Model, UserMixin, CRUDMixin):
         :type role_name: string
         """
 
-        new_role = security.datastore.find_or_create_role(role_name)
-        security.datastore.add_role_to_user(self, new_role)
+        from .. import security
+
+        new_role = security.Security.user_datastore.find_or_create_role(role_name)
+        security.Security.user_datastore.add_role_to_user(self, new_role)
         db.session.commit()
 
     @classmethod
@@ -91,7 +93,10 @@ class User(db.Model, UserMixin, CRUDMixin):
         :param roles: a list containing the names of the Roles for this User
         :type roles: list(string)
         """
-        new_user = security.datastore.create_user(
+
+        from .. import security
+
+        new_user = security.Security.user_datastore.create_user(
             email=email,
             password=encrypt_password(password)
         )
@@ -112,9 +117,11 @@ class User(db.Model, UserMixin, CRUDMixin):
         :returns: None
         """
 
+        from .. import security
+
         # make roles
-        security.datastore.find_or_create_role("Admin")
-        security.datastore.find_or_create_role("User")
+        security.Security.user_datastore.find_or_create_role("Admin")
+        security.Security.user_datastore.find_or_create_role("User")
         db.session.commit()
 
         cls.register(
@@ -141,6 +148,8 @@ class User(db.Model, UserMixin, CRUDMixin):
         :returns: None
         """
 
-        security.datastore.delete_user(email="admin")
-        security.datastore.delete_user(email="guest")
+        from .. import security
+
+        security.Security.user_datastore.delete_user(email="admin")
+        security.Security.user_datastore.delete_user(email="guest")
         db.session.commit()

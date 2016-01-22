@@ -2,17 +2,13 @@
 # Flask-Diamond (c) Ian Dennis Miller
 
 from nose.plugins.attrib import attr
-
-from flask.ext.diamond.utils.testhelpers import GeneralTestCase
-
-
-class BasicTestCase(GeneralTestCase):
-    def setUp(self):
-        pass
+from flask.ext.testing import TestCase
+from flask.ext.diamond.mixins.testing import DiamondTestCaseMixin
 
 
-class flask_diamondBasicTestCase(BasicTestCase):
+class BasicTestCase(DiamondTestCaseMixin, TestCase):
     def test_basic(self):
+        "ensure the minimum test works"
         assert True
 
     @attr("skip")

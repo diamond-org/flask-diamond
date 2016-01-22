@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# Flask-Diamond (c) Ian Dennis Miller
+
 import re
 import os
 from setuptools import setup
@@ -26,13 +29,16 @@ def grep(attrname):
 setup(
     version=grep('__version__'),
     name='Flask-Diamond',
-    description="Flask-Diamond is a batteries-included Flask framework.",
+    description="Flask-Diamond is a batteries-included Flask framework. Easily scaffold a working application with sensible defaults, then override the defaults to customize it for your goals.",
     packages=[
         "flask_diamond",
+        "flask_diamond.ext",
+        "flask_diamond.migrations",
+        "flask_diamond.migrations.versions",
+        "flask_diamond.mixins",
         "flask_diamond.models",
         "flask_diamond.views",
         "flask_diamond.views.diamond",
-        "flask_diamond.utils",
     ],
     scripts=[
         "bin/diamond-scaffold.sh",
@@ -53,12 +59,11 @@ setup(
     keywords='',
     author=grep('__author__'),
     author_email=grep('__email__'),
-    url='http://flask-diamond.org',
+    url=grep('__url__'),
     install_requires=read('requirements.txt'),
     license='MIT',
     zip_safe=False,
 )
-
 
 venv_path = os.environ.get("VIRTUAL_ENV")
 if venv_path:

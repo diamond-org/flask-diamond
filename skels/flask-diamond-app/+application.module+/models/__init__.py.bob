@@ -1,0 +1,5 @@
+# -*- coding: utf-8 -*-
+# {{{ application.name }}} (c) {{{ author.name }}}
+
+from flask.ext.diamond.models.user import User
+from flask.ext.diamond.models.role import Role

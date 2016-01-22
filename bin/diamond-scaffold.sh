@@ -1,12 +1,20 @@
 #!/bin/bash
+# Flask-Diamond (c) Ian Dennis Miller
 
 # usage:
 # Run diamond-scaffold.sh in the target project directory.
 # It will create a minimal app.
 
-# start with a fresh environment
-rm -rf /tmp/diamond-project /tmp/diamond-app
+echo "Scan environment"
+rm -f /tmp/mrbob.ini
+echo "[defaults]" > /tmp/mrbob.ini
+echo "home_directory = ${HOME}" >> /tmp/mrbob.ini
+echo "secret = $(python -c 'import os; print(repr(os.urandom(24)))')"  >> /tmp/mrbob.ini
+echo "hash_salt = $(python -c 'import string as s, random as r; print repr("".join(r.choice(s.letters+s.digits) for _ in range(16)))')"  >> /tmp/mrbob.ini
+echo "OK"
 
-# apply the two diamond skeletons
-mrbob -w $VIRTUAL_ENV/share/skels/diamond-project/skel
-mrbob --config .mrbob.ini $VIRTUAL_ENV/share/skels/diamond-app/skel
+echo "Apply Flask-Diamond Scaffold"
+mrbob -w --config /tmp/mrbob.ini -O "$1" $VIRTUAL_ENV/share/skels/flask-diamond-app
+
+echo "Cleaning up..."
+rm /tmp/mrbob.ini

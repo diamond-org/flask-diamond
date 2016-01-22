@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from flask.ext.security import RoleMixin
-#import flask.ext.security as security
 from .. import db
+from ..mixins.crud import CRUDMixin
+from ..mixins.marshmallow import MarshmallowMixin
 
 
-class Role(db.Model, RoleMixin):
+class Role(db.Model, RoleMixin, CRUDMixin, MarshmallowMixin):
     """
     For the purpose of access controls, Roles can be used to create
     collections of users and give them permissions as a group.
