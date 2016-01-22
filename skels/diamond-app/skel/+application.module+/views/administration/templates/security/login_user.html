@@ -1,0 +1,51 @@
+{% extends "security/base.html" %}
+
+{% block security_content %}
+
+  <div class="alert alert-info alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <ul>
+    {% if security.registerable %}
+      <li>
+        Don't have an account yet? <a href="{{ url_for_security('register') }}">Create a new account</a>
+      </li>
+    {% endif %}
+    {% if security.recoverable %}
+    <li>
+      Forgot your password? <a href="{{ url_for_security('forgot_password') }}">Reset it via email</a>
+    </li>
+    {% endif %}
+    {% if security.confirmable %}
+    <li>
+      Didn't receive your confirmation email? <a href="{{ url_for_security('send_confirmation') }}">Resend confirmation email</a>
+    </li>
+    {% endif %}
+    </ul>
+  </div>
+
+  <div class="page-header">
+    <h1>Login</h1>
+  </div>
+
+  <form class="form form-horizontal" action="{{ url_for_security('login') }}" method="POST" name="login_user_form">
+    {{ login_user_form.hidden_tag() }}
+
+    {{ wtf.horizontal_field(login_user_form.email) }}
+    {{ wtf.horizontal_field(login_user_form.password) }}
+    {{ wtf.horizontal_field(login_user_form.remember) }}
+
+    <div class="col-lg-offset-2">
+      <input type="submit" value="Login" class="btn btn-primary" />
+    </div>
+  </form>
+
+  <br />
+
+{% endblock %}
+
+{% block tail_js %}
+  {{ super() }}
+  <script type="text/javascript">
+    $(function() { $($("#email").focus()); });
+  </script>
+{% endblock %}

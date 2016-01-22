@@ -1,0 +1,32 @@
+# -*- coding: utf-8 -*-
+# {{{ application.name }}} (c) {{{ author.name }}}
+
+from flask.ext.diamond.utils.mixins import CRUDMixin
+
+from .. import db
+
+
+GENDER_CHOICES = [
+    ('M', 'Male'),
+    ('F', 'Female')
+]
+
+
+class Individual(db.Model, CRUDMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255))
+
+    friend_id = db.Column(db.Integer, db.ForeignKey('individual.id'))
+    friend = db.relationship('Individual',
+        primaryjoin=('Individual.friend_id == Individual.id'),
+        remote_side="Individual.id")
+
+    def set_friend(self, obj):
+        self.friend = obj
+        self.save()
+
+    def as_hash(self):
+        pass
+
+    def __str__(self):
+        return self.name

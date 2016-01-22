@@ -1,0 +1,19 @@
+.. {{{ application.name }}} documentation master file
+
+Welcome to {{{ application.name }}}'s documentation!
+=====================================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 6
+
+   api/{{{ application.module }}}/modules
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

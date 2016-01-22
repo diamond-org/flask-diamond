@@ -7,10 +7,6 @@
 # start with a fresh environment
 rm -rf /tmp/diamond-project /tmp/diamond-app
 
-# clone flask-diamond and the diamond skeletons
-git clone https://github.com/iandennismiller/diamond-project /tmp/diamond-project
-git clone https://github.com/iandennismiller/diamond-app /tmp/diamond-app
-
 # apply the two diamond skeletons
-mrbob -w /tmp/diamond-project/skel
-mrbob --config .mrbob.ini -w /tmp/diamond-app/skel
+mrbob -w $VIRTUAL_ENV/share/skels/diamond-project/skel
+mrbob --config .mrbob.ini $VIRTUAL_ENV/share/skels/diamond-app/skel

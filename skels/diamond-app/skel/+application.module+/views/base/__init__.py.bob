@@ -1,0 +1,17 @@
+# -*- coding: utf-8 -*-
+# {{{ application.name }}} (c) {{{ author.name }}}
+
+import flask
+baseview = flask.Blueprint(
+    'baseview',
+    __name__,
+    template_folder='templates',
+    static_folder='static'
+)
+
+
+@baseview.route('/')
+def index():
+    "set up the default handler for requests to /"
+    return flask.redirect(flask.url_for("simpleview.hello"))
+    # return flask.render_template("index.html")

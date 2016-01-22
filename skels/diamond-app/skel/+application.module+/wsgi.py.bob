@@ -1,0 +1,6 @@
+# -*- coding: utf-8 -*-
+# {{{ application.name }}} (c) {{{ author.name }}}
+
+from {{{ application.name }}} import create_app
+app = create_app()
+

@@ -1,0 +1,39 @@
+# {{{ application.name }}} (c) {{{ author.name }}}
+
+PROJECT_NAME = "{{{ application.name }}}"
+PORT = {{{ application.port }}}
+LOG = "/var/lib/{{{ application.module }}}/daemon.log"
+LOG_LEVEL = "DEBUG"
+SQLALCHEMY_DATABASE_URI = "sqlite:////var/lib/{{{ application.module }}}/main.db"
+SECRET_KEY = {{{ secret }}}
+BASE_URL = "http://{{{ application.module }}}.com"
+
+SECURITY_PASSWORD_SALT = {{{ hash_salt }}}
+SECURITY_POST_LOGIN_VIEW = "/admin"
+SECURITY_PASSWORD_HASH = 'sha256_crypt'
+SECURITY_URL_PREFIX = '/user'
+SECURITY_CHANGEABLE = True
+SECURITY_SEND_PASSWORD_CHANGE_EMAIL = False
+SECURITY_CONFIRMABLE = False
+SECURITY_REGISTERABLE = False
+SECURITY_RECOVERABLE = False
+SECURITY_TRACKABLE = False
+SECURITY_EMAIL_SENDER = "accounts@{{{ application.module }}}.com"
+
+RECAPTCHA_PUBLIC_KEY = '0000_00000000000000000000000000000000000'
+RECAPTCHA_PRIVATE_KEY = '0000_00000000000000000000000000000000000'
+
+DEBUG = False
+DEBUG_TOOLBAR = False
+
+MAIL_SERVER = '127.0.0.1'
+MAIL_PORT = 25
+MAIL_USE_TLS = False
+MAIL_USERNAME = None
+MAIL_PASSWORD = None
+
+CELERY_BROKER_URL = 'sqla+sqlite:///var/lib/{{{ application.module }}}/celery-db.sqlite'
+CELERY_RESULT_BACKEND = 'db+sqlite:///var/lib/{{{ application.module }}}/celery-results.sqlite'
+
+MARSHMALLOW_STRICT = True
+MARSHMALLOW_DATEFORMAT = "%y%m%d"

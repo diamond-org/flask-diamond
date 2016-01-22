@@ -1,0 +1,45 @@
+# -*- coding: utf-8 -*-
+# {{{ application.name }}} (c) {{{ author.name }}}
+
+from setuptools import setup
+
+version = '0.1'
+
+setup(version=version,
+    name='{{{ application.name }}}',
+    description="{{{ description.short }}}",
+    packages=[
+        "{{{ application.module }}}",
+        "{{{ application.module }}}.models",
+        "{{{ application.module }}}.views",
+        "{{{ application.module }}}.views.base",
+        "{{{ application.module }}}.views.frontend",
+        "{{{ application.module }}}.views.administration",
+    ],
+    scripts=[
+        "bin/runserver.py",
+        "bin/manage.py",
+    ],
+    long_description="""{{{ description.long }}}""",
+    classifiers=[],  # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
+    include_package_data=True,
+    keywords='',
+    author='{{{ author.name }}}',
+    author_email='{{{ author.email }}}',
+    url='{{{ author.url }}}',
+    install_requires=[
+        "Flask-Diamond==0.2.14",
+
+        ### application-specific requirements
+
+        # "jsmin==2.0.9",
+        # "cssutils==1.0",
+        # "SQLAlchemy-Utils==0.29.8",
+        # "pymongo==2.6.3",
+        # "Flask-MongoEngine>=0.1.3",
+        # "psycopg2==2.6",
+        # "python-dateutil==2.4.2",
+    ],
+    license='MIT',
+    zip_safe=False,
+)

@@ -1,6 +1,7 @@
 import re
 import os
 from setuptools import setup
+from distutils.dir_util import copy_tree
 
 
 # mimicking flask-admin setup.py
@@ -57,3 +58,11 @@ setup(
     license='MIT',
     zip_safe=False,
 )
+
+
+venv_path = os.environ.get("VIRTUAL_ENV")
+if venv_path:
+    copy_tree("skels", os.path.join(venv_path, "share/skels"))
+else:
+    print("This was not installed in a virtual environment")
+    print("So, I won't install the skel files.")

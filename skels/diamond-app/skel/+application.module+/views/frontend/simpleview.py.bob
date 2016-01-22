@@ -1,0 +1,21 @@
+# -*- coding: utf-8 -*-
+# {{{ application.name }}} (c) {{{ author.name }}}
+
+import flask
+
+simpleview = flask.Blueprint(
+    'simpleview',
+    __name__,
+    template_folder='templates',
+    static_folder='static'
+)
+
+
+@simpleview.route('/')
+def index():
+    return flask.redirect(flask.url_for(".hello"))
+
+
+@simpleview.route('/hello')
+def hello():
+    return flask.render_template('hello.html')

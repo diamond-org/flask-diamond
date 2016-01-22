@@ -1,0 +1,20 @@
+# -*- coding: utf-8 -*-
+# {{{ application.name }}} (c) {{{ author.name }}}
+
+from nose.plugins.attrib import attr
+
+from flask.ext.diamond.utils.testhelpers import GeneralTestCase
+
+
+class BasicTestCase(GeneralTestCase):
+    def setUp(self):
+        pass
+
+
+class {{{ application.module }}}BasicTestCase(BasicTestCase):
+    def test_basic(self):
+        assert True
+
+    @attr("skip")
+    def test_skip(self):
+        assert False

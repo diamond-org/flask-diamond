@@ -1,0 +1,23 @@
+{% extends 'admin/model/edit.html' %}
+
+{% block body %}
+    {% block model_menu_bar %}
+    <ul class="nav nav-tabs">
+        <li>
+            <a href="{{ url_for('.index_view') }}"><i class="icon-list-alt"></i> {{ _gettext('List') }}</a>
+        </li>
+        <li class="active">
+            <a href="{{ url_for('.index_view') }}"><i class="icon-eye-open"></i> Individual</a>
+        </li>
+    </ul>
+    {% endblock %}
+
+    {% block model_content %}
+        <h2>Individual</h2>
+
+        <ul>
+            <li>ID: <b>{{ model.id }}</b></li>
+        </ul>
+    {% endblock %}
+
+{% endblock %}
