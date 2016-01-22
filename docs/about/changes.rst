@@ -6,10 +6,33 @@ This file contains a summary of major changes to Flask-Diamond.
 0.3.0
 -----
 
-2016-01-18
+2016-01-21
 
 - a new application startup procedure based on extensions
-- scaffolding files are inside the package now
+- putting skels into project
+- integrate wsgi launcher
+- refine questions, add version to project config
+- making readme generate from a template
+- use alabaster doc theme
+- refactor extensions into separate namespace
+- added super method, fixing templates
+- removing Individual from the skeleton
+- refactoring mixins
+- simplify views, create separate skel
+- added change log document
+- documented API creation
+- diagram of libraries
+- wrote sphinx docs
+- wrote email document, testing document
+- wrote about user accounts, project diagram
+- wrote wsgi, fabric
+
+0.2.16
+------
+
+2015-01-21
+
+- putting skels into project
 
 0.2.15
 ------
