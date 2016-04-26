@@ -45,7 +45,7 @@ class {{{ application.module }}}(Diamond):
 def create_app():
     global app_instance
     if not app_instance:
-        app_instance = test_app()
+        app_instance = {{{ application.module }}}()
         app_instance.init_app(
             extensions=[
                 "configuration",

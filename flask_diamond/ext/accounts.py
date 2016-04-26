@@ -3,9 +3,9 @@
 
 from flask.ext.security import SQLAlchemyUserDatastore
 from flask.ext.security import Security
-from flask import current_app
 
 security = Security()
+
 
 def init_accounts(self, app_models=None):
     """

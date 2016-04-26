@@ -10,7 +10,7 @@ rm -f /tmp/mrbob.ini
 echo "[defaults]" > /tmp/mrbob.ini
 echo "home_directory = ${HOME}" >> /tmp/mrbob.ini
 echo "secret = $(python -c 'import os; print(repr(os.urandom(24)))')"  >> /tmp/mrbob.ini
-echo "hash_salt = $(python -c 'import string as s, random as r; print repr("".join(r.choice(s.letters+s.digits) for _ in range(16)))')"  >> /tmp/mrbob.ini
+echo "hash_salt = $(python -c 'import string as s, random as r; print(repr("".join(r.choice(s.ascii_letters+s.digits) for _ in range(16))))')"  >> /tmp/mrbob.ini
 echo "OK"
 
 echo "Apply Flask-Diamond Scaffold"

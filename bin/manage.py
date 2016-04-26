@@ -10,7 +10,7 @@ from flask.ext.script import Manager, Shell, Server
 from flask.ext.migrate import Migrate, MigrateCommand, upgrade
 import alembic
 import alembic.config
-from flask_diamond import create_app, db, models
+from flask_diamond import create_app, db
 
 app = create_app()
 migrate = Migrate(app, db, directory="flask_diamond/migrations")
@@ -20,7 +20,6 @@ def _make_context():
     return {
         "app": app,
         "db": db,
-        "models": models,
     }
 
 manager = Manager(app)
@@ -35,6 +34,7 @@ manager.add_command('db', MigrateCommand)
 @manager.option('-a', '--admin', help='make user an admin user', action='store_true', default=None)
 def useradd(email, password, admin):
     "add a user to the database"
+    from flask_diamond import models
     if admin:
         roles = ["Admin"]
     else:
@@ -50,6 +50,7 @@ def useradd(email, password, admin):
 @manager.option('-e', '--email', help='email address', required=True)
 def userdel(email):
     "delete a user from the database"
+    from flask_diamond import models
     obj = models.User.find(email=email)
     if obj:
         obj.delete()
@@ -78,6 +79,7 @@ def init_db(migration):
 @manager.command
 def populate_db():
     "insert a default set of objects"
+    from flask_diamond import models
     models.User.add_system_users()
 
 
