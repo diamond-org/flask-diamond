@@ -43,24 +43,3 @@ def flatten(d, parent_key=''):
         else:
             items.append((new_key, v))
     return dict(items)
-
-
-def _u(obj, default=None):
-    """
-    Ensure an object is Unicode.
-
-    :param obj: the object that needs to be unicode
-    :type obj: str or unicode
-    :returns: a unicode representation of the original object
-    """
-
-    if type(obj) == str:
-        try:
-            obj = unicode(obj)
-        except UnicodeDecodeError:
-            obj = unicode(obj.decode("latin1"))
-        return obj
-    elif type(obj) == unicode:
-        return obj
-    else:
-        return default

@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 # Flask-Diamond (c) Ian Dennis Miller
 
-import os
-import json
-import glob
 import flask
+from builtins import str
 from .. import db
 
 
@@ -75,7 +73,7 @@ class CRUDMixin(object):
 
         instance = cls(**kwargs)
         obj = instance.save(_commit)
-        flask.current_app.logger.debug("create %s" % unicode(obj))
+        flask.current_app.logger.debug("create %s" % str(obj))
         return obj
 
     def update(self, _commit=True, **kwargs):
@@ -124,7 +122,3 @@ class CRUDMixin(object):
 
     def __str__(self):
         return self.__repr__()
-
-    def __unicode__(self):
-        return self.__repr__()
-

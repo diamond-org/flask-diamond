@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
 # Flask-Diamond (c) Ian Dennis Miller
 
-import os
-import json
-import glob
-import flask
 from .. import db
 
 
