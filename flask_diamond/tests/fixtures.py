@@ -2,14 +2,11 @@
 # Flask-Diamond (c) Ian Dennis Miller
 
 from ..models.user import User
+from ..models.role import Role
 
 
 def typical_workflow():
     "create some example objects"
 
-    User.register(
-        email='iandennismiller@gmail.com',
-        password='iandennismiller@gmail.com',
-        confirmed=True,
-        roles=["User"],
-    )
+    Role.add_default_roles()
+    User.add_guest_user()

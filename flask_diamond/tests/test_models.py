@@ -2,8 +2,8 @@
 # Flask-Diamond (c) Ian Dennis Miller
 
 from nose.plugins.attrib import attr
-from .mixins import DiamondTestCase
 from ..models.user import User
+from .mixins import DiamondTestCase
 
 
 class UserTestCase(DiamondTestCase):

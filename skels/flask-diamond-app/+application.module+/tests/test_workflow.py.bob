@@ -2,9 +2,9 @@
 # {{{ application.name }}} (c) {{{ author.name }}}
 
 from nose.plugins.attrib import attr
+from ..models import User
 from .mixins import DiamondTestCase
 from .fixtures import typical_workflow
-from ..models import User
 
 
 class WorkflowTestCase(DiamondTestCase):
