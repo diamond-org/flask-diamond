@@ -23,3 +23,18 @@ class Role(db.Model, RoleMixin, CRUDMixin, MarshmallowMixin):
 
     def __str__(self):
         return self.name
+
+    @classmethod
+    def add_default_roles(cls):
+        """
+        Create a basic set of users and roles
+
+        :returns: None
+        """
+
+        from .. import security
+
+        # make roles
+        security.Security.user_datastore.find_or_create_role("Admin")
+        security.Security.user_datastore.find_or_create_role("User")
+        db.session.commit()

@@ -2,13 +2,13 @@
 # Flask-Diamond (c) Ian Dennis Miller
 
 from nose.plugins.attrib import attr
-from flask.ext.testing import TestCase
-from flask.ext.diamond.mixins.testing import DiamondTestCaseMixin
+from ..mixins.testing import DiamondTestCase
 from ..models.user import User
+from ..models.role import Role
 from .fixtures import typical_workflow
 
 
-class WorkflowTestCase(DiamondTestCaseMixin, TestCase):
+class WorkflowTestCase(DiamondTestCase):
     def setUp(self):
         super(WorkflowTestCase, self).setUp()
         typical_workflow()
@@ -16,7 +16,8 @@ class WorkflowTestCase(DiamondTestCaseMixin, TestCase):
     @attr("single")
     def test_user(self):
         "user created in workflow"
-        User.add_system_users()
+        Role.add_default_roles()
+        User.add_guest_user()
 
         u = User.find(email='guest')
         assert u

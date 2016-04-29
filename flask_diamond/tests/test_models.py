@@ -2,12 +2,11 @@
 # Flask-Diamond (c) Ian Dennis Miller
 
 from nose.plugins.attrib import attr
-from flask.ext.testing import TestCase
-from flask.ext.diamond.mixins.testing import DiamondTestCaseMixin
+from ..mixins.testing import DiamondTestCase
 from ..models.user import User
 
 
-class UserTestCase(DiamondTestCaseMixin, TestCase):
+class UserTestCase(DiamondTestCase):
     "Coverage for User Model"
 
     def test_create(self):

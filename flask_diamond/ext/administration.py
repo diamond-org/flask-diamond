@@ -12,7 +12,7 @@ import flask
 admin = Admin()
 
 
-def init_administration(self, index_view=None, app_models=None):
+def init_administration(self, index_view=None, user=None, role=None):
     """
     Initialize the Administrative GUI.
 
@@ -42,16 +42,13 @@ def init_administration(self, index_view=None, app_models=None):
 
     from .. import db
 
-    if not app_models:
-        from ..models.user import User
-        from ..models.role import Role
-    else:
-        models = app_models
+    if not user or not role:
+        raise Exception
 
     admin.init_app(self.app)
 
-    admin.add_view(UserView(User, db.session, category="Admin"))
-    admin.add_view(AdminModelView(Role, db.session, category="Admin"))
+    admin.add_view(UserView(user, db.session, category="Admin"))
+    admin.add_view(AdminModelView(role, db.session, category="Admin"))
 
     return admin
 

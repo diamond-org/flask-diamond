@@ -2,18 +2,23 @@
 # {{{ application.name }}} (c) {{{ author.name }}}
 
 from flask.ext.diamond import Diamond, db
-from flask.ext.diamond.ext.administration import AdminView, AdminModelView
+from flask.ext.diamond.ext.administration import AdminModelView
+from .models import User, Role
 
-
-# create an application instance variable within this process
-app_instance = None
+# declare these globalish objects before initializing models
+application = None
 
 
 class {{{ application.module }}}(Diamond):
+    def init_accounts(self):
+        "initialize accounts with the User and Role classes imported from .models"
+        result = self.super("accounts", user=User, role=Role)
+        return result
+
     def init_administration(self):
         "Initialize admin interface"
 
-        admin = self.super("administration")
+        admin = self.super("administration", user=User, role=Role)
 
         model_list = [
         ]
@@ -39,28 +44,25 @@ class {{{ application.module }}}(Diamond):
 
 
 def create_app():
-    global app_instance
-    if not app_instance:
-        app_instance = {{{ application.module }}}()
-        app_instance.init_app(
-            extensions=[
-                "configuration",
-                "logs",
-                "database",
-                "accounts",
-                "blueprints",
-                "signals",
-                "forms",
-                "error_handlers",
-                "request_handlers",
-                "administration",
-                # "rest",
-                # "webassets",
-                # "email",
-                # "debugger",
-                # "task_queue",
-            ]
-        )
+    global application
+    if not application:
+        application = rss_aggregator()
+        application.init()
+        application.bootup("configuration")
+        application.bootup("logs")
+        application.bootup("database")
+        application.bootup("accounts")
+        application.bootup("blueprints")
+        application.bootup("signals")
+        application.bootup("forms")
+        application.bootup("error_handlers")
+        application.bootup("request_handlers")
+        application.bootup("administration")
+        # application.bootup("rest")
+        # application.bootup("webassets")
+        # application.bootup("email")
+        # application.bootup("debugger")
+        # application.bootup("task_queue")
 
-    # print app_instance.app.url_map
-    return app_instance.app
+    # print application.app.url_map
+    return application.app

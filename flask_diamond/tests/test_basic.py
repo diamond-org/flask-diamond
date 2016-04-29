@@ -2,11 +2,10 @@
 # Flask-Diamond (c) Ian Dennis Miller
 
 from nose.plugins.attrib import attr
-from flask.ext.testing import TestCase
-from flask.ext.diamond.mixins.testing import DiamondTestCaseMixin
+from ..mixins.testing import DiamondTestCase
 
 
-class BasicTestCase(DiamondTestCaseMixin, TestCase):
+class BasicTestCase(DiamondTestCase):
     def test_basic(self):
         "ensure the minimum test works"
         assert True

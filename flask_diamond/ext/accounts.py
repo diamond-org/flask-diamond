@@ -7,7 +7,7 @@ from flask.ext.security import Security
 security = Security()
 
 
-def init_accounts(self, app_models=None):
+def init_accounts(self, user=None, role=None):
     """
     Initialize Security for application.
 
@@ -28,16 +28,13 @@ def init_accounts(self, app_models=None):
     >>>    super(MyApp, self).ext_security(confirm_register_form=CaptchaRegisterForm)
     """
 
-    # import model and database
+    # import database
     from .. import db
 
-    if not app_models:
-        from ..models.user import User
-        from ..models.role import Role
-    else:
-        models = app_models
+    if not user or not role:
+        raise Exception
 
     # create datastore
-    user_datastore = SQLAlchemyUserDatastore(db, User, Role)
+    user_datastore = SQLAlchemyUserDatastore(db, user, role)
     setattr(Security, "user_datastore", user_datastore)
     security.init_app(self.app, datastore=user_datastore)

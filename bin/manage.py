@@ -11,6 +11,8 @@ from flask.ext.migrate import Migrate, MigrateCommand, upgrade
 import alembic
 import alembic.config
 from flask_diamond import create_app, db
+from flask_diamond.models.user import User
+from flask_diamond.models.role import Role
 
 app = create_app()
 migrate = Migrate(app, db, directory="flask_diamond/migrations")
@@ -34,12 +36,11 @@ manager.add_command('db', MigrateCommand)
 @manager.option('-a', '--admin', help='make user an admin user', action='store_true', default=None)
 def useradd(email, password, admin):
     "add a user to the database"
-    from flask_diamond import models
     if admin:
         roles = ["Admin"]
     else:
         roles = ["User"]
-    models.User.register(
+    User.register(
         email=email,
         password=password,
         confirmed=True,
@@ -50,8 +51,7 @@ def useradd(email, password, admin):
 @manager.option('-e', '--email', help='email address', required=True)
 def userdel(email):
     "delete a user from the database"
-    from flask_diamond import models
-    obj = models.User.find(email=email)
+    obj = User.find(email=email)
     if obj:
         obj.delete()
         print("Deleted")
@@ -59,7 +59,9 @@ def userdel(email):
         print("User not found")
 
 
-@manager.option('-m', '--migration', help='create database from migrations', action='store_true', default=None)
+@manager.option('-m', '--migration',
+    help='create database from migrations',
+    action='store_true', default=None)
 def init_db(migration):
     "drop all databases, instantiate schemas"
     db.drop_all()
@@ -79,8 +81,9 @@ def init_db(migration):
 @manager.command
 def populate_db():
     "insert a default set of objects"
-    from flask_diamond import models
-    models.User.add_system_users()
+    Role.add_default_roles()
+    User.add_guest_user()
+    User.add_admin_user(password="aaa")
 
 
 if __name__ == "__main__":

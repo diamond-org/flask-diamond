@@ -110,35 +110,22 @@ class User(db.Model, UserMixin, CRUDMixin, MarshmallowMixin):
         return new_user
 
     @classmethod
-    def add_system_users(cls):
-        """
-        Create a basic set of users and roles
-
-        :returns: None
-        """
-
-        from .. import security
-
-        # make roles
-        security.Security.user_datastore.find_or_create_role("Admin")
-        security.Security.user_datastore.find_or_create_role("User")
-        db.session.commit()
-
+    def add_guest_user(cls, email="guest", password="guest"):
         cls.register(
-            email="admin",
-            password="aaa",
-            confirmed=True,
-            roles=["Admin"]
-        )
-
-        cls.register(
-            email="guest",
-            password="guest",
+            email=email,
+            password=password,
             confirmed=True,
             roles=["User"]
         )
 
-        db.session.commit()
+    @classmethod
+    def add_admin_user(cls, email="admin", password="aaa"):
+        cls.register(
+            email=email,
+            password=password,
+            confirmed=True,
+            roles=["Admin"]
+        )
 
     @classmethod
     def rm_system_users(cls):

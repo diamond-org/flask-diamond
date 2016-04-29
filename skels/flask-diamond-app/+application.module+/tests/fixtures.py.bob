@@ -1,15 +1,11 @@
 # -*- coding: utf-8 -*-
 # {{{ application.name }}} (c) {{{ author.name }}}
 
-from .. import models
+from ..models import Role, User
 
 
 def typical_workflow():
     "create some example objects"
 
-    a_user = models.User.register(
-        email='{{{ author.email }}}',
-        password='{{{ author.email }}}',
-        confirmed=True,
-        roles=["User"],
-    )
+    Role.add_default_roles()
+    User.add_guest_user()

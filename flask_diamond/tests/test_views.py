@@ -2,11 +2,10 @@
 # Flask-Diamond (c) Ian Dennis Miller
 
 from nose.plugins.attrib import attr
-from flask.ext.testing import TestCase
-from flask.ext.diamond.mixins.testing import DiamondTestCaseMixin
+from ..mixins.testing import DiamondTestCase
 
 
-class ViewTestCase(DiamondTestCaseMixin, TestCase):
+class ViewTestCase(DiamondTestCase):
     def test_login(self):
         "ensure the login screen loads"
         rv = self.client.get('/user/login')

@@ -9,7 +9,7 @@ try:
 except ImportError:
     from flask import _request_ctx_stack as stack
 
-app_instance = None
+application = None
 
 
 class Diamond(object):
@@ -26,26 +26,7 @@ class Diamond(object):
         if app is not None:
             self.init_app(app)
 
-    def init_app(self,
-            name=None,
-            extensions=[
-                "configuration",
-                "logs",
-                "database",
-                "accounts",
-                "blueprints",
-                "signals",
-                "forms",
-                "error_handlers",
-                "request_handlers",
-                "administration",
-                "rest",
-                "webassets",
-                "email",
-                "debugger",
-                "task_queue",
-            ]
-        ):
+    def init(self, name=None):
         """
         Initialize a Diamond application.
 
@@ -64,27 +45,31 @@ class Diamond(object):
 
         self.app = flask.Flask(name)
 
-        for extension_name in extensions:
-            init_method = "init_{0}".format(extension_name)
-            if not hasattr(self, init_method):
-                method_to_call = globals()[init_method]
-            else:
-                method_to_call = getattr(self, init_method)
-            setattr(self, init_method, method_to_call)
-
-            try:
-                # try to explicitly pass self as the first parameter
-                result = method_to_call(self)
-            except TypeError:
-                # just call it because it will be wrapped to inject self
-                result = method_to_call()
-
-            self.app.logger.debug("initialized {0}".format(extension_name))
-
         if hasattr(self.app, 'teardown_appcontext'):
             self.app.teardown_appcontext(self.teardown)
         else:
             self.app.teardown_request(self.teardown)
+
+    def bootup(self, extension_name, **kwargs):
+        """
+        initialize an extension
+        """
+        init_method = "init_{0}".format(extension_name)
+        if not hasattr(self, init_method):
+            method_to_call = globals()[init_method]
+        else:
+            method_to_call = getattr(self, init_method)
+        setattr(self, init_method, method_to_call)
+
+        try:
+            # try to explicitly pass self as the first parameter
+            result = method_to_call(self, **kwargs)
+        except TypeError:
+            # just call it because it will be wrapped to inject self
+            result = method_to_call(**kwargs)
+
+        self.app.logger.debug("bootup {0}".format(extension_name))
+        return result
 
     def super(self, extension_name, **kwargs):
         """
@@ -111,6 +96,18 @@ class Diamond(object):
             pass
             # ctx.sqlite3_db.close()
 
+    def init_accounts(self):
+        "initialize accounts with the User and Role classes imported from .models"
+        from .models.user import User
+        from .models.role import Role
+        self.super("accounts", user=User, role=Role)
+
+    def init_administration(self):
+        "Initialize admin interface"
+        from .models.user import User
+        from .models.role import Role
+        self.super("administration", user=User, role=Role)
+
     @property
     def _app(self):
         ctx = stack.top
@@ -121,8 +118,24 @@ class Diamond(object):
 
 
 def create_app():
-    global app_instance
-    if not app_instance:
-        app_instance = Diamond()
-        app_instance.init_app()
-    return app_instance.app
+    global application
+    if not application:
+        application = Diamond()
+        application.init()
+        application.bootup("configuration")
+        application.bootup("logs")
+        application.bootup("database")
+        application.bootup("accounts")
+        application.bootup("blueprints")
+        application.bootup("signals")
+        application.bootup("forms")
+        application.bootup("error_handlers")
+        application.bootup("request_handlers")
+        application.bootup("administration")
+        # application.bootup("rest")
+        # application.bootup("webassets")
+        # application.bootup("email")
+        # application.bootup("debugger")
+        # application.bootup("task_queue")
+
+    return application.app
