@@ -2,7 +2,7 @@
 # Flask-Diamond (c) Ian Dennis Miller
 
 from nose.plugins.attrib import attr
-from ..mixins.testing import DiamondTestCase
+from .mixins import DiamondTestCase
 
 
 class BasicTestCase(DiamondTestCase):

@@ -2,7 +2,7 @@
 # Flask-Diamond (c) Ian Dennis Miller
 
 from nose.plugins.attrib import attr
-from ..mixins.testing import DiamondTestCase
+from .mixins import DiamondTestCase
 from ..models.user import User
 from ..models.role import Role
 from .fixtures import typical_workflow

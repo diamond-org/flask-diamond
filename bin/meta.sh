@@ -8,9 +8,9 @@
 rm -rf /tmp/flask-diamond
 
 # clone flask-diamond
-git clone -b 0.3 . /tmp/flask-diamond
+git clone . /tmp/flask-diamond
 
-# apply the two diamond skeletons
+# apply the diamond skeletons
 mrbob --non-interactive --config .mrbob.ini -O /tmp/flask-diamond ./skels/flask-diamond-app
 
 # change to the working path
