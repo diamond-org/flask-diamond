@@ -4,7 +4,7 @@
 from nose.plugins.attrib import attr
 from flask.ext.testing import TestCase
 from flask.ext.diamond.mixins.testing import DiamondTestCaseMixin
-from ..models import User
+from ..models.user import User
 from .fixtures import typical_workflow
 
 

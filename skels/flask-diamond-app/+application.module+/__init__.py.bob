@@ -5,12 +5,8 @@ from flask.ext.diamond import Diamond, db
 from flask.ext.diamond.ext.administration import AdminView, AdminModelView
 
 
-# declare these globalish objects before initializing models
+# create an application instance variable within this process
 app_instance = None
-
-
-# import models after setting up the other objects
-from . import models
 
 
 class {{{ application.module }}}(Diamond):

@@ -10,7 +10,7 @@ class ViewTestCase(DiamondTestCaseMixin, TestCase):
     def test_login(self):
         "ensure the login screen loads"
         rv = self.client.get('/user/login')
-        assert 'Login' in rv.data
+        assert b"Login" in rv.data
 
     def test_index(self):
         "ensure index is redirecting"
