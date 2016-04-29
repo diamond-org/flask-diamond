@@ -82,7 +82,7 @@ def populate_db():
     "insert a default set of objects"
     Role.add_default_roles()
     User.add_guest_user()
-    User.add_admin_user(password="aaa")
+    User.add_admin_user(password={{{ simple_password }}})
 
 
 if __name__ == "__main__":

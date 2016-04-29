@@ -46,7 +46,7 @@ class {{{ application.module }}}(Diamond):
 def create_app():
     global application
     if not application:
-        application = rss_aggregator()
+        application = {{{ application.module }}}()
         application.init()
         application.bootup("configuration")
         application.bootup("logs")
