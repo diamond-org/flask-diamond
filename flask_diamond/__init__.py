@@ -12,7 +12,7 @@ except ImportError:
 application = None
 
 
-class Diamond(object):
+class Diamond:
     """
     A Diamond application.
 
@@ -21,12 +21,7 @@ class Diamond(object):
     :returns: None
     """
 
-    def __init__(self, app=None):
-        self.app = app
-        if app is not None:
-            self.init_app(app)
-
-    def init(self, name=None):
+    def __init__(self, name=None):
         """
         Initialize a Diamond application.
 
@@ -121,10 +116,10 @@ def create_app():
     global application
     if not application:
         application = Diamond()
-        application.init()
         application.bootup("configuration")
         application.bootup("logs")
         application.bootup("database")
+        application.bootup("marshalling")
         application.bootup("accounts")
         application.bootup("blueprints")
         application.bootup("signals")

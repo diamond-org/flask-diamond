@@ -53,7 +53,7 @@ def init_administration(self, index_view=None, user=None, role=None):
     return admin
 
 
-class AuthMixin(object):
+class AuthMixin:
     """
     Require user authentication to be accessible
     """
@@ -66,7 +66,7 @@ class AuthMixin(object):
         return security.current_user.is_authenticated()
 
 
-class AdminMixin(object):
+class AdminMixin:
     """
     Require admin Role to be accessible
     """

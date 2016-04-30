@@ -6,7 +6,7 @@ from builtins import str
 from .. import db
 
 
-class CRUDMixin(object):
+class CRUDMixin:
     """
     Convenience functions for CRUD operations.
 

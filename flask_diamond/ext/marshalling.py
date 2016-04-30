@@ -11,8 +11,7 @@ def init_marshalling(self):
     Initialize Marshmallow.
 
     :returns: None
-
-    By default, this function does nothing.
     """
 
-    pass
+    ma.app = self.app
+    ma.init_app(self.app)

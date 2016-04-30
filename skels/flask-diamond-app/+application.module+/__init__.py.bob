@@ -47,10 +47,10 @@ def create_app():
     global application
     if not application:
         application = {{{ application.module }}}()
-        application.init()
         application.bootup("configuration")
         application.bootup("logs")
         application.bootup("database")
+        application.bootup("marshalling")
         application.bootup("accounts")
         application.bootup("blueprints")
         application.bootup("signals")

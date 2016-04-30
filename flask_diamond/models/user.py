@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
 import flask
+import datetime
 from flask.ext.security import UserMixin
 from flask.ext.security.utils import encrypt_password
+from flask.ext.marshmallow.fields import fields
 from .. import db
+from .. import ma
 from ..mixins.crud import CRUDMixin
 from ..mixins.marshmallow import MarshmallowMixin
-import datetime
 
 roles_users = db.Table('roles_users',
     db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
@@ -14,7 +16,30 @@ roles_users = db.Table('roles_users',
 "A secondary table is used for the one-to-many relationship: User has many Roles"
 
 
+class UserSchema(ma.Schema):
+    confirmed_at = fields.DateTime(required=False)
+    last_login_at = fields.DateTime(required=False)
+    current_login_at = fields.DateTime(required=False)
+
+    # RoleSchema must be specified in role.py
+    roles = fields.Nested('RoleSchema', allow_none=True, many=True)
+
+    class Meta:
+        dateformat = ("%F %T %z")
+        additional = (
+            "id",
+            "email",
+            "password",
+            "active",
+            "last_login_ip",
+            "current_login_ip",
+            "login_count",
+        )
+
+
 class User(db.Model, UserMixin, CRUDMixin, MarshmallowMixin):
+    __schema__ = UserSchema
+
     id = db.Column(db.Integer, primary_key=True)
     "integer -- primary key"
 

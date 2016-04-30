@@ -4,7 +4,7 @@
 from .. import db
 
 
-class MarshmallowMixin(object):
+class MarshmallowMixin:
 
     # dump
 
