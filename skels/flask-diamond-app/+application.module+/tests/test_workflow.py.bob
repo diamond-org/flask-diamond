@@ -15,6 +15,6 @@ class WorkflowTestCase(DiamondTestCase):
     @attr("single")
     def test_user(self):
         "user created in workflow"
-        u = User.find(email='guest')
+        u = User.find(email='guest@example.com')
         assert u
-        assert u.email == 'guest'
+        assert u.email == 'guest@example.com'
