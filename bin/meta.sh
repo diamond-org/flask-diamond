@@ -1,8 +1,11 @@
 #!/bin/bash
 # Flask-Diamond (c) Ian Dennis Miller
 
-# usage:
 # this script detects skew with the skeleton
+#
+# usage:
+# workon flask-diamond
+# bin/meta.sh
 
 # start with a fresh environment
 rm -rf /tmp/flask-diamond
