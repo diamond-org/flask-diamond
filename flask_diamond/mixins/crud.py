@@ -87,7 +87,7 @@ class CRUDMixin:
         :returns: the object that was updated
         """
 
-        for attr, value in kwargs.iteritems():
+        for attr, value in kwargs.items():
             setattr(self, attr, value)
         return _commit and self.save() or self
 
