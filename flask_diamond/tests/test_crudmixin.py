@@ -30,6 +30,7 @@ class CRUDMixinTestCase(DiamondTestCase):
         self.assertIsNotNone(a_planet)
         self.assertEqual(a_planet.name, 'Earth')
 
+    @attr("single")
     def test_get_by_id(self):
         "test CRUDMixin get_by_id"
         Planet.create(name="Earth")

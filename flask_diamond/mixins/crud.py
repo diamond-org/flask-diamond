@@ -53,7 +53,7 @@ class CRUDMixin:
         """
 
         if any(
-            (isinstance(id, basestring) and id.isdigit(),
+            (isinstance(id, str) and id.isdigit(),
              isinstance(id, (int, float))),
         ):
             return cls.query.get(int(id))
