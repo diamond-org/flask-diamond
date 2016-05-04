@@ -14,6 +14,7 @@ class ModelTestCase(DiamondTestCase):
         super(ModelTestCase, self).setUp()
         typical_workflow()
 
+    @attr("single")
     def test_relationship(self):
         "test relationship: child belongs to parent"
         moon = Satellite.find(name="Moon")

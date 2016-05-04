@@ -2,10 +2,8 @@
 # Flask-Diamond (c) Ian Dennis Miller
 
 from flask import current_app
-from .. import create_app, db
 from flask.ext.testing import TestCase
-
-# intended to be used with flask.ext.testing.TestCase
+from .. import create_app, db
 
 
 class DiamondTestCase(TestCase):
