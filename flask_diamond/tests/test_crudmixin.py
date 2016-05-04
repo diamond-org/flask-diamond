@@ -3,16 +3,8 @@
 
 from nose.plugins.attrib import attr
 from .. import db
-from ..mixins.crud import CRUDMixin
-from ..mixins.marshmallow import MarshmallowMixin
 from .mixins import DiamondTestCase
-
-
-class Planet(db.Model, CRUDMixin, MarshmallowMixin):
-    "A Planet is a celestial body"
-    id = db.Column(db.Integer(), primary_key=True)
-    name = db.Column(db.String(80), unique=True)
-    mass = db.Column(db.Float())
+from .fixtures import Planet
 
 
 class CRUDMixinTestCase(DiamondTestCase):
@@ -30,7 +22,6 @@ class CRUDMixinTestCase(DiamondTestCase):
         self.assertIsNotNone(a_planet)
         self.assertEqual(a_planet.name, 'Earth')
 
-    @attr("single")
     def test_get_by_id(self):
         "test CRUDMixin get_by_id"
         Planet.create(name="Earth")
