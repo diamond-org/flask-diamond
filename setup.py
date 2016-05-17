@@ -67,7 +67,10 @@ setup(
 
 venv_path = os.environ.get("VIRTUAL_ENV")
 if venv_path:
-    copy_tree("skels", os.path.join(venv_path, "share/skels"))
+    try:
+        copy_tree("skels", os.path.join(venv_path, "share/skels"))
+    except:
+        print("WARN: failed to install skels.  diamond-scaffold.sh may not work as a result.")
 else:
     print("This was not installed in a virtual environment")
     print("So, I won't install the skel files.")

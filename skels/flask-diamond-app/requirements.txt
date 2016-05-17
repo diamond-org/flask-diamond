@@ -1,1 +1,1 @@
-flask-diamond==0.3.4
+flask-diamond==0.3.6
