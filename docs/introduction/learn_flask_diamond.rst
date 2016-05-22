@@ -5,12 +5,9 @@ The best way to learn Flask-Diamond is to read the :ref:`developer-guide`; conta
 
 - :doc:`quick_start` shows you how to scaffold a new application.  You can be up and running in just a few minutes.
 - :doc:`../basics/project_initialization_and_scaffolding` offers many options for you to customize your application.  Read this document to learn more about answering the questions during scaffolding.
-- :doc:`../developer/model_view_controller_with_flask-diamond` describes the architecture provided by Flask-Diamond.  Model-View-Controller (MVC) is widely used in software engineering to write applications that provide a user interface.  Once you understand how to implement MVC using Flask-Diamond, you will be able to write applications for a wide range of domains.
-- :doc:`../basics/writing_an_application_with_flask-diamond` provides examples and describes an approach for designing and programming something that achieves your goals.
-
-.. - :doc:`../about/philosophy` describes some of the higher-level objectives of Flask-Diamond, which influenced the way it was designed.
-
-.. - :doc:`../documentation/configuration_explanation` describes the configuration file, what the settings mean, and how you can change the settings based on how you want to install your application.
+- :doc:`../basics/application_facets` describes the use of Flask-Diamond's *facets* for customizing your application's behavior.
+- :doc:`../basics/writing_an_application_with_flask-diamond` provides examples and describes an approach for designing and programming an application that achieves your goals.
+- :doc:`../developer/model_view_controller_with_flask-diamond` is a more advanced document that describes the Flask-Diamond architecture.  Model-View-Controller (MVC) is widely used in software engineering to write applications that provide a user interface.  Once you understand how to implement MVC using Flask-Diamond, you will be able to write applications for a wide range of domains.
 
 Learning Python
 ---------------

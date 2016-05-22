@@ -3,6 +3,19 @@ Change Log
 
 This file contains a summary of major changes to Flask-Diamond.
 
+0.4.0
+-----
+
+2016-05-21
+
+- renamed extensions to "facets" (backwards incompatible change)
+- new command line utility: "flask-diamond" (was diamond-scaffold.sh)
+- enhanced code skeletons: example-models and example-views
+- migrated many application components from Flask-Diamond proper into skeletons
+- migrated all testing into code skeletons to test actual usage scenario
+- deeper integration with Travis CI, including testing using code skeletons
+- generally cleaned up the Flask-Diamond core
+
 0.3.0
 -----
 

@@ -3,6 +3,8 @@
 Introduction
 ------------
 
+**Start here**.  These introductory readings will teach you how to install Flask-Diamond and how to read the rest of the Flask-Diamond documentation.
+
 .. toctree::
     :maxdepth: 1
 
@@ -15,14 +17,23 @@ Introduction
 Basics
 ------
 
-The basics: how to start a new project and the first steps for making a Flask-Diamond application.
+Learn how to create a new project.  This section introduces the Flask-Diamond philosophy and the first steps for making an application.
 
 .. toctree::
     :maxdepth: 1
 
     basics/project_initialization_and_scaffolding
+    basics/application_facets
     basics/writing_an_application_with_flask-diamond
     basics/diagram_of_a_scaffold
+
+.. Tutorials
+.. ---------
+..
+.. .. toctree::
+..
+..  tutorial/model-view-controller_architecture_with_flask-diamond
+..    developer/designing_a_flask-diamond_application
 
 .. _developer-guide:
 
@@ -64,28 +75,6 @@ The User Guide topics are for managing and installing a Flask-Diamond applicatio
     user/web_service_with_wsgi
     user/deploying_with_fabric
 
-.. Tutorials
-.. ---------
-..
-.. .. toctree::
-..
-..  tutorial/model-view-controller_architecture_with_flask-diamond
-..    developer/designing_a_flask-diamond_application
-
-About Flask-Diamond
--------------------
-
-.. toctree::
-    :maxdepth: 1
-
-    about/libraries_included_in_flask-diamond
-    about/diagram_of_libraries
-    about/how_to_contribute_to_the_project
-    about/philosophy
-    about/changes
-    license
-..    about/contributors
-
 API Reference
 -------------
 
@@ -93,3 +82,28 @@ API Reference
     :maxdepth: 3
 
     api
+
+About Flask-Diamond
+-------------------
+
+This section contains a little more information about Flask-Diamond.
+
+.. toctree::
+    :maxdepth: 1
+
+    about/philosophy
+    about/libraries_included_in_flask-diamond
+    about/diagram_of_libraries
+
+Open Source Software
+--------------------
+
+Flask-Diamond is Open Source Software that changes rapidly according to the contributions of volunteers.
+
+.. toctree::
+    :maxdepth: 1
+
+    about/changes
+    about/contributors
+    about/how_to_contribute_to_the_project
+    license
