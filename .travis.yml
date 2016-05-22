@@ -5,4 +5,6 @@ python:
 # command to install dependencies
 install: make install
 # command to run tests
-script: make test
+script:
+  - make test
+  - bin/test-skel.sh

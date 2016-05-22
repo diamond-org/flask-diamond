@@ -4,7 +4,7 @@
 import flask
 import flask.ext.security as security
 from flask.ext.admin import expose
-from flask.ext.diamond.ext.administration import AuthModelView, AdminIndexView
+from flask.ext.diamond.facet.administration import AuthModelView, AdminIndexView
 
 from {{{ application.module }}} import db
 

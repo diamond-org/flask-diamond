@@ -1,8 +1,0 @@
-{% extends "base.html" %}
-
-{% block htmlhead %}
-{% endblock %}
-
-{% block content %}
-hello world!
-{% endblock %}

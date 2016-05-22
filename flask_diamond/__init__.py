@@ -2,7 +2,7 @@
 # Ian Dennis Miller
 
 import flask
-from .ext import *
+from .facets import *
 
 try:
     from flask import _app_ctx_stack as stack
@@ -45,7 +45,7 @@ class Diamond:
         else:
             self.app.teardown_request(self.teardown)
 
-    def bootup(self, extension_name, **kwargs):
+    def facet(self, extension_name, **kwargs):
         """
         initialize an extension
         """
@@ -63,7 +63,7 @@ class Diamond:
             # just call it because it will be wrapped to inject self
             result = method_to_call(**kwargs)
 
-        self.app.logger.debug("bootup {0}".format(extension_name))
+        self.app.logger.debug("facet {0}".format(extension_name))
         return result
 
     def super(self, extension_name, **kwargs):
@@ -116,21 +116,21 @@ def create_app():
     global application
     if not application:
         application = Diamond()
-        application.bootup("configuration")
-        application.bootup("logs")
-        application.bootup("database")
-        application.bootup("marshalling")
-        application.bootup("accounts")
-        application.bootup("blueprints")
-        application.bootup("signals")
-        application.bootup("forms")
-        application.bootup("error_handlers")
-        application.bootup("request_handlers")
-        application.bootup("administration")
-        # application.bootup("rest")
-        # application.bootup("webassets")
-        # application.bootup("email")
-        # application.bootup("debugger")
-        # application.bootup("task_queue")
+        application.facet("configuration")
+        application.facet("logs")
+        application.facet("database")
+        application.facet("marshalling")
+        application.facet("accounts")
+        application.facet("blueprints")
+        application.facet("signals")
+        application.facet("forms")
+        application.facet("error_handlers")
+        application.facet("request_handlers")
+        application.facet("administration")
+        # application.facet("rest")
+        # application.facet("webassets")
+        # application.facet("email")
+        # application.facet("debugger")
+        # application.facet("task_queue")
 
     return application.app
