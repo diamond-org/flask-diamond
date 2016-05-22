@@ -7,27 +7,19 @@ The quickest way to start a new Flask-Diamond project is to use the scaffolding 
 
 As described in the :doc:`../introduction/quick_start`, the basic process looks like this:
 
-1. Install Flask-Diamond in a virtualenv
-
 ::
 
-    mkvirtualenv Flask-Diamond
+    mkdir my-application
+    cd my-application
+    mkvirtualenv -a . my-application
     pip install Flask-Diamond
-
-2. Scaffold an application in a new directory
-
-::
-
-    workon Flask-Diamond
-    diamond-scaffold.sh ~/Documents/new-project
-    cd ~/Documents/new-project
-    mkvirtualenv -a . new-project
+    flask-diamond app .
     make install docs test db server
 
 About Scaffolding
 -----------------
 
-When you invoke ``diamond-scaffold.sh``, a template is automatically applied.  Using `mr.bob <http://mrbob.readthedocs.org/en/latest/>`_, a brief set of questions are used to populate the templates with variables.  When you answer these questions, your choices are stored in a file called ``.mrbob.ini`` that is located in the root folder of your project.
+When you invoke ``flask-diamond``, a template is automatically applied.  Using `mr.bob <http://mrbob.readthedocs.org/en/latest/>`_, a brief set of questions are used to populate the templates with variables.  When you answer these questions, your choices are stored in a file called ``.mrbob.ini`` that is located in the root folder of your project.
 
 Template questions
 ------------------

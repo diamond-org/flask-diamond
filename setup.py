@@ -70,7 +70,8 @@ if venv_path:
     try:
         copy_tree("skels", os.path.join(venv_path, "share/skels"))
     except:
-        print("WARN: failed to install skels.  diamond-scaffold.sh may not work as a result.")
+        print("WARN: failed to install skels.")
+        print("flask-diamond may not work correctly as a result.")
 else:
-    print("This was not installed in a virtual environment")
-    print("So, I won't install the skel files.")
+    print("WARN: did not install skels.  This was not installed in a virtual environment")
+    print("flask-diamond may not work correctly as a result.")

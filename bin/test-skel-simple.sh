@@ -2,6 +2,7 @@
 # Flask-Diamond (c) Ian Dennis Miller
 
 # create folder
+rm -rf build/test-app
 mkdir -p build/test-app
 cd build/test-app
 
@@ -16,6 +17,3 @@ make install test
 # models
 mrbob --config ../../skels/test-app/.mrbob.ini ../../skels/example-models
 make install test
-
-cd ../..
-rm -rf build/test-app

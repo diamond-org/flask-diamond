@@ -10,7 +10,9 @@ Create a :doc:`virtualenv <../user/requirements_management_with_virtualenv>` for
 
 ::
 
-    mkvirtualenv Flask-Diamond
+    mkdir my-application
+    cd my-application
+    mkvirtualenv -a . my-application
     pip install Flask-Diamond
 
 Scaffold a new Flask-Diamond application
@@ -20,10 +22,9 @@ Create a directory to hold your application, and then scaffold a new Flask-Diamo
 
 ::
 
-    workon Flask-Diamond
-    diamond-scaffold.sh ~/Documents/new-project
-    cd ~/Documents/new-project
-    mkvirtualenv -a . new-project
+    workon my-application
+    flask-diamond app .
+    make install test
 
 Use it!
 -------
