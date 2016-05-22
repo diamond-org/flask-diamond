@@ -32,7 +32,7 @@ setup(
     description="Flask-Diamond is a batteries-included Flask framework. Easily scaffold a working application with sensible defaults, then override the defaults to customize it for your goals.",
     packages=[
         "flask_diamond",
-        "flask_diamond.ext",
+        "flask_diamond.facets",
         "flask_diamond.migrations",
         "flask_diamond.migrations.versions",
         "flask_diamond.mixins",
