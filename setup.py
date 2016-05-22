@@ -42,6 +42,8 @@ setup(
     ],
     scripts=[
         "bin/diamond-scaffold.sh",
+        "bin/diamond-scaffold-model.sh",
+        "bin/diamond-scaffold-views.sh",
     ],
     long_description=read('Readme.rst'),
     classifiers=[

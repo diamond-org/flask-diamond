@@ -7,4 +7,4 @@ install: make install
 # command to run tests
 script:
   - make test
-  - bin/test-skel.sh
+  - /bin/bash bin/test-skel.sh
