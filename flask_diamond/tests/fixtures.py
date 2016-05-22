@@ -2,7 +2,7 @@
 # Flask-Diamond (c) Ian Dennis Miller
 
 from flask.ext.marshmallow.fields import fields
-from .. import db, ma
+from flask.ext.diamond import db, ma
 from ..models.user import User
 from ..models.role import Role
 from ..mixins.crud import CRUDMixin
