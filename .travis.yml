@@ -7,5 +7,4 @@ python:
 # command to install dependencies
 install: make requirements install
 # command to run tests
-script:
-  - /bin/bash .travis/test-skel-travis.sh
+script: make test

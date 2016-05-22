@@ -2,9 +2,9 @@
 # {{{ application.name }}} (c) {{{ author.name }}}
 
 from nose.plugins.attrib import attr
-from .. import db
+from flask.ext.diamond import db
 from .mixins import DiamondTestCase
-from .fixtures import Planet
+from ..models import Planet
 
 
 class CRUDMixinTestCase(DiamondTestCase):

@@ -15,11 +15,11 @@ clean:
 	find . -name __pycache__ -delete
 
 test:
-	bin/test-skel.sh
+	bin/test-skel-simple.sh
 
 docs:
-	rm -rf var/sphinx/build
-	SETTINGS=$$PWD/etc/conf/dev.conf sphinx-build -b html docs var/sphinx/build
+	rm -rf build/sphinx
+	SETTINGS=$$PWD/etc/conf/dev.conf sphinx-build -b html docs build/sphinx
 
 release:
 	python setup.py sdist upload -r https://pypi.python.org/pypi

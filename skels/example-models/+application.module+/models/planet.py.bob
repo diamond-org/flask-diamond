@@ -3,8 +3,8 @@
 
 from flask.ext.marshmallow.fields import fields
 from flask.ext.diamond import db, ma
-from ..mixins.crud import CRUDMixin
-from ..mixins.marshmallow import MarshmallowMixin
+from flask.ext.diamond.mixins.crud import CRUDMixin
+from flask.ext.diamond.mixins.marshmallow import MarshmallowMixin
 
 
 class PlanetSchema(ma.Schema):

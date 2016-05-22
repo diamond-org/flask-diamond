@@ -3,7 +3,8 @@
 
 from nose.plugins.attrib import attr
 from .mixins import DiamondTestCase
-from .fixtures import Planet, Satellite, typical_workflow
+from .fixtures import typical_workflow
+from ..models import Planet, Satellite
 
 
 class MarshmallowMixinTestCase(DiamondTestCase):

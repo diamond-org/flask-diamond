@@ -2,9 +2,9 @@
 # {{{ application.name }}} (c) {{{ author.name }}}
 
 from nose.plugins.attrib import attr
-from ..models.user import User
+from ..models import User, Planet, Satellite
 from .mixins import DiamondTestCase
-from .fixtures import Planet, Satellite, typical_workflow
+from .fixtures import typical_workflow
 
 
 class ModelTestCase(DiamondTestCase):

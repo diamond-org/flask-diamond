@@ -51,145 +51,129 @@ mixins.marshmallow
     :undoc-members:
     :show-inheritance:
 
-mixins.testing
-^^^^^^^^^^^^^^
+facets
+------
 
-.. automodule:: flask_diamond.mixins.testing
+.. automodule:: flask_diamond.facets
     :members:
     :undoc-members:
     :show-inheritance:
 
-ext
----
+facets.accounts
+^^^^^^^^^^^^^^^
 
-.. automodule:: flask_diamond.ext
+.. automodule:: flask_diamond.facets.accounts
     :members:
     :undoc-members:
     :show-inheritance:
 
-ext.accounts
-^^^^^^^^^^^^
+facets.administration
+^^^^^^^^^^^^^^^^^^^^^
 
-.. automodule:: flask_diamond.ext.accounts
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-ext.administration
-^^^^^^^^^^^^^^^^^^
-
-.. automodule:: flask_diamond.ext.administration
+.. automodule:: flask_diamond.facets.administration
     :members: init_administration
     :show-inheritance:
 
-ext.blueprints
-^^^^^^^^^^^^^^
-
-.. automodule:: flask_diamond.ext.blueprints
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-ext.configuration
+facets.blueprints
 ^^^^^^^^^^^^^^^^^
 
-.. automodule:: flask_diamond.ext.configuration
+.. automodule:: flask_diamond.facets.blueprints
     :members:
     :undoc-members:
     :show-inheritance:
 
-ext.database
-^^^^^^^^^^^^
+facets.configuration
+^^^^^^^^^^^^^^^^^^^^
 
-.. automodule:: flask_diamond.ext.database
+.. automodule:: flask_diamond.facets.configuration
     :members:
     :undoc-members:
     :show-inheritance:
 
-ext.debugger
-^^^^^^^^^^^^
-
-.. automodule:: flask_diamond.ext.debugger
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-ext.email
-^^^^^^^^^
-
-.. automodule:: flask_diamond.ext.email
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-ext.forms
-^^^^^^^^^
-
-.. automodule:: flask_diamond.ext.forms
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-ext.handlers
-^^^^^^^^^^^^
-
-.. automodule:: flask_diamond.ext.handlers
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-ext.logs
-^^^^^^^^
-
-.. automodule:: flask_diamond.ext.logs
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-ext.marshalling
+facets.database
 ^^^^^^^^^^^^^^^
 
-.. automodule:: flask_diamond.ext.marshalling
+.. automodule:: flask_diamond.facets.database
     :members:
     :undoc-members:
     :show-inheritance:
 
-ext.rest
-^^^^^^^^
+facets.debugger
+^^^^^^^^^^^^^^^
 
-.. automodule:: flask_diamond.ext.rest
+.. automodule:: flask_diamond.facets.debugger
     :members:
     :undoc-members:
     :show-inheritance:
 
-ext.signals
+facets.email
+^^^^^^^^^^^^
+
+.. automodule:: flask_diamond.facets.email
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+facets.forms
+^^^^^^^^^^^^
+
+.. automodule:: flask_diamond.facets.forms
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+facets.handlers
+^^^^^^^^^^^^^^^
+
+.. automodule:: flask_diamond.facets.handlers
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+facets.logs
 ^^^^^^^^^^^
 
-.. automodule:: flask_diamond.ext.signals
+.. automodule:: flask_diamond.facets.logs
     :members:
     :undoc-members:
     :show-inheritance:
 
-ext.task_queue
+facets.marshalling
+^^^^^^^^^^^^^^^^^^
+
+.. automodule:: flask_diamond.facets.marshalling
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+facets.rest
+^^^^^^^^^^^
+
+.. automodule:: flask_diamond.facets.rest
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+facets.signals
 ^^^^^^^^^^^^^^
 
-.. automodule:: flask_diamond.ext.task_queue
+.. automodule:: flask_diamond.facets.signals
     :members:
     :undoc-members:
     :show-inheritance:
 
-ext.webassets
-^^^^^^^^^^^^^
+facets.task_queue
+^^^^^^^^^^^^^^^^^
 
-.. automodule:: flask_diamond.ext.webassets
+.. automodule:: flask_diamond.facets.task_queue
     :members:
     :undoc-members:
     :show-inheritance:
 
-utils
------
+facets.webassets
+^^^^^^^^^^^^^^^^
 
-.. automodule:: flask_diamond.utils
+.. automodule:: flask_diamond.facets.webassets
     :members:
     :undoc-members:
     :show-inheritance:
