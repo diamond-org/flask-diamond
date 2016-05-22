@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# Flask-Diamond (c) Ian Dennis Miller
+
 from .logs import *
 from .database import *
 from .marshalling import *
