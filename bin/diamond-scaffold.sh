@@ -1,9 +1,11 @@
 #!/bin/bash
 # Flask-Diamond (c) Ian Dennis Miller
 
-# usage:
-# Run diamond-scaffold.sh in the target project directory.
-# It will create a minimal app.
+if [ -z "$1" ]; then
+    echo "error: expected a target directory"
+    echo "usage: diamond-scaffold.sh ~/my-new-project"
+    exit
+fi
 
 echo "Scan environment"
 rm -f /tmp/mrbob.ini

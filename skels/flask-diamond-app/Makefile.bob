@@ -5,7 +5,7 @@ PROJECT_NAME={{{ application.name }}}
 MOD_NAME={{{ application.module }}}
 TEST_CMD=SETTINGS=$$PWD/etc/conf/testing.conf nosetests -w $(MOD_NAME)
 
-install: requirements
+install:
 	python setup.py install
 
 requirements:
