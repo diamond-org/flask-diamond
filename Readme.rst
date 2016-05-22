@@ -11,7 +11,7 @@ Flask-Diamond imports many other Flask extensions and glues them all together.  
 Usage
 ^^^^^
 
-The following will install Flask-Diamond and create a new application with it.
+The following steps will create a new Flask-Diamond application.
 
 ::
 
@@ -21,6 +21,8 @@ The following will install Flask-Diamond and create a new application with it.
     pip install Flask-Diamond
     flask-diamond app .
     make install docs test db server
+
+You will need Python 2.7 or 3.5+, pip, virtualenv, and virtualenvwrapper.  Please see the documentation for more information.
 
 Documentation
 ^^^^^^^^^^^^^

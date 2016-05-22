@@ -2,10 +2,11 @@ language: python
 # cache: pip
 python:
   - 2.7
+  - 3.4
   - 3.5
 # command to install dependencies
 install: make requirements install
 # command to run tests
 script:
   - make test
-  - /bin/bash bin/test-skel.sh
+  - /bin/bash bin/test-skel-travis.sh
