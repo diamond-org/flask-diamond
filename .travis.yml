@@ -9,4 +9,4 @@ install: make requirements install
 # command to run tests
 script:
   - make test
-  - /bin/bash bin/test-skel-travis.sh
+  - /bin/bash .travis/test-skel-travis.sh
