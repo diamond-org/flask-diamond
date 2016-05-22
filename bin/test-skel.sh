@@ -15,7 +15,7 @@ echo "1. call application 'test-app'"
 echo "2. call module 'test_app'"
 echo "3. accept all other defaults with ENTER"
 echo
-workon flask-diamond && diamond-scaffold.sh /tmp/test-app
+workon flask-diamond && flask-diamond app /tmp/test-app
 
 # create virtualenv
 pushd /tmp/test-app

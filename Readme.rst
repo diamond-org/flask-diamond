@@ -11,11 +11,13 @@ Flask-Diamond imports many other Flask extensions and glues them all together.  
 Usage
 ^^^^^
 
+The following will install Flask-Diamond and create a new application with it.
+
 ::
 
-    mkdir my-project
-    cd my-project
-    mkvirtualenv -a . my-project
+    mkdir my-application
+    cd my-application
+    mkvirtualenv -a . my-application
     pip install Flask-Diamond
     flask-diamond app .
     make install docs test db server

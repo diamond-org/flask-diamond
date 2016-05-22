@@ -11,20 +11,13 @@ Flask-Diamond imports many other Flask extensions and glues them all together.  
 Installation
 ^^^^^^^^^^^^
 
-::
-
-    mkvirtualenv {{{ application.name }}}
-    pip install {{{ application.name }}}
-
-Usage
-^^^^^
+The following will install {{{ application.name }}}.
 
 ::
 
-    workon {{{ application.name }}}
-    diamond-scaffold.sh ~/Documents/new-project
-    cd ~/Documents/new-project
-    mkvirtualenv -a . new-project
+    mkdir {{{ application.name }}}
+    cd {{{ application.name }}}
+    mkvirtualenv -a . {{{ application.name }}}
     make install docs test db server
 
 Documentation
