@@ -15,7 +15,21 @@ clean:
 	find . -name __pycache__ -delete
 
 test:
-	bin/test-skel-simple.sh
+	# create folder
+	rm -rf build/test-app
+	mkdir -p build/test-app
+
+	# scaffold the app
+	mrbob --config skels/test-app/.mrbob.ini -O build/test-app skels/flask-diamond-app
+	cd build/test-app && make install test
+
+	# views
+	mrbob --config skels/test-app/.mrbob.ini -O build/test-app skels/example-views
+	cd build/test-app && make install test
+
+	# models
+	mrbob --config skels/test-app/.mrbob.ini -O build/test-app skels/example-models
+	cd build/test-app && make install test
 
 docs:
 	rm -rf build/sphinx

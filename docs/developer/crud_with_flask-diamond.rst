@@ -19,7 +19,7 @@ CRUDMixin
 .. code-block:: python
 
     from flask.ext.diamond.utils.mixins import CRUDMixin
-    from .. import db
+    from flask.ext.diamond import db
 
     class Person(db.Model, CRUDMixin):
         id = db.Column(db.Integer, primary_key=True)

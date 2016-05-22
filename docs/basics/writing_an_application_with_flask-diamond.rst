@@ -11,7 +11,7 @@ The following example can be generated from a freshly scaffolded project by foll
 .. code-block:: python
 
     from flask.ext.diamond import Diamond, db
-    from flask.ext.diamond.ext.administration import AdminView, AdminModelView
+    from flask.ext.diamond.facets.administration import AdminView, AdminModelView
     app_instance = None
     from . import models
 
@@ -22,45 +22,36 @@ The following example can be generated from a freshly scaffolded project by foll
             self.app.register_blueprint(adminbaseview)
 
     def create_app():
-        global app_instance
-        if not app_instance:
-            app_instance = test_app()
-            app_instance.init_app()
-        return app_instance.app
+        global application
+        if not application:
+            application = Diamond()
+            application.facet("configuration")
+            application.facet("logs")
+            application.facet("database")
+            application.facet("marshalling")
+            application.facet("accounts")
+            application.facet("blueprints")
+            application.facet("signals")
+            application.facet("forms")
+            application.facet("error_handlers")
+            application.facet("request_handlers")
+            application.facet("administration")
+            # application.facet("rest")
+            # application.facet("webassets")
+            # application.facet("email")
+            # application.facet("debugger")
+            # application.facet("task_queue")
+        return application.app
 
 Customization with Inheritance
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In the basic example above, notice the function ``blueprints()``.  This function handles the initialization of Flask blueprints.  By overloading [#f1]_ this functions (and others) within your application, it is possible to customize the start-up behavior of any subsystem.  Every subsystem in the Flask-Diamond start-up can be configured.  For a complete list of the functions you can overload, refer to the **extensions** argument in the :ref:`diamond-object` documentation.
 
-Disabling Functionality
-^^^^^^^^^^^^^^^^^^^^^^^
+Enable or Disable Functionality
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Flask-Diamond functionality is initialized using extensions.  In case you wish to disable certain functionality, you may simply omit that initialization step from the extensions list.  For example, to disable email functionality, omit email initialization from the extensions passed to create_app():
-
-.. code-block:: python
-
-    app_instance.init_app(
-        extensions=[
-            "configuration",
-            "logs",
-            "database",
-            "accounts",
-            "blueprints",
-            "signals",
-            "forms",
-            "error_handlers",
-            "request_handlers",
-            "administration",
-            "rest",
-            "webassets",
-            # "email",
-            "debugger",
-            "task_queue",
-        ]
-    )
-
-Notice that *email* has been commented out, but the other extensions are explicitly stated.  This ensures the extensions will initialize in the order specified, but that the email extensions will be skipped.  Many extensions can be enabled/disabled with ease, including rest, webassets, email, debugger, and task_queue.
+Flask-Diamond functionality is initialized using extensions.  In case you wish to disable certain functionality, you may simply omit that initialization step from the extensions list.  For example, to enable REST functionality, omit email initialization from the extensions passed to create_app().  Many extensions can be enabled/disabled with ease, including rest, webassets, email, debugger, and task_queue.
 
 Other extensions, like blueprints, are fundamental to the behavior of a Flask application, and are therefore trickier to disable in Flask-Diamond.  In those cases, it may be better to override the initialization function using inheritance.
 
@@ -76,21 +67,21 @@ Application start-up
 
 Flask-Diamond initializes many subsystems when the application is first started.  The subsystems are initialized in this order:
 
-#. :class:`flask_diamond.ext.configuration`.  the ``$SETTINGS`` environment variable is inspected and the file it points to is loaded.
-#. :class:`flask_diamond.ext.logs`.  based on the configuration, write log messages to a file on the filesystem.
-#. :class:`flask_diamond.ext.database`.  connect to a database and initialize the SQLAlchemy Object Relational Mapper (ORM)
-#. :class:`flask_diamond.ext.accounts`.  manage users, roles, login, passwords, and other security things with Flask-Security.
-#. :class:`flask_diamond.ext.blueprints`.  initialize your application's views (in the MVC sense), which are saved as "blueprints" in a Flask application.
-#. :class:`flask_diamond.ext.signals`.  Flask provides a signals subsystem that your application can hook into to automate certain behaviors.
-#. :class:`flask_diamond.ext.forms`.  initialize your application's form helpers, which may be global to the forms used in your application.
-#. :class:`flask_diamond.ext.handlers`.  when something goes wrong, you may want to handle it (e.g. by displaying a 404 page)
-#. :class:`flask_diamond.ext.handlers`.  This is the place to create redirections or other custom request handlers that extend beyond views.
-#. :class:`flask_diamond.ext.administration`.  a quick GUI using Flask-Admin with extensive Model support.
-#. :class:`flask_diamond.ext.rest`.  provide a REST API using Flask-RESTful
-#. :class:`flask_diamond.ext.webassets`.  it is possible to bundle assets like images, CSS, and javascript with your application.  webassets simplifies some of this work.
-#. :class:`flask_diamond.ext.email`.  send email with Flask-Mail
-#. :class:`flask_diamond.ext.debugger`.  when the configuration specifies that ``DEBUG = True``, the web interface will display a widget with extra debugging tools.
-#. :class:`flask_diamond.ext.task_queue`.  provide a task queue using Celery
+#. :class:`flask_diamond.facets.configuration`.  the ``$SETTINGS`` environment variable is inspected and the file it points to is loaded.
+#. :class:`flask_diamond.facets.logs`.  based on the configuration, write log messages to a file on the filesystem.
+#. :class:`flask_diamond.facets.database`.  connect to a database and initialize the SQLAlchemy Object Relational Mapper (ORM)
+#. :class:`flask_diamond.facets.accounts`.  manage users, roles, login, passwords, and other security things with Flask-Security.
+#. :class:`flask_diamond.facets.blueprints`.  initialize your application's views (in the MVC sense), which are saved as "blueprints" in a Flask application.
+#. :class:`flask_diamond.facets.signals`.  Flask provides a signals subsystem that your application can hook into to automate certain behaviors.
+#. :class:`flask_diamond.facets.forms`.  initialize your application's form helpers, which may be global to the forms used in your application.
+#. :class:`flask_diamond.facets.handlers`.  when something goes wrong, you may want to handle it (e.g. by displaying a 404 page)
+#. :class:`flask_diamond.facets.handlers`.  This is the place to create redirections or other custom request handlers that extend beyond views.
+#. :class:`flask_diamond.facets.administration`.  a quick GUI using Flask-Admin with extensive Model support.
+#. :class:`flask_diamond.facets.rest`.  provide a REST API using Flask-RESTful
+#. :class:`flask_diamond.facets.webassets`.  it is possible to bundle assets like images, CSS, and javascript with your application.  webassets simplifies some of this work.
+#. :class:`flask_diamond.facets.email`.  send email with Flask-Mail
+#. :class:`flask_diamond.facets.debugger`.  when the configuration specifies that ``DEBUG = True``, the web interface will display a widget with extra debugging tools.
+#. :class:`flask_diamond.facets.task_queue`.  provide a task queue using Celery
 
 Extending the Scaffold
 ----------------------

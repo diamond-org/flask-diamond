@@ -15,7 +15,7 @@ Let's create a model of a person who has a name and an age.  Also, let's model t
 .. code-block:: python
 
     from flask.ext.diamond.utils.mixins import CRUDMixin
-    from .. import db
+    from flask.ext.diamond import db
 
 
     class Person(db.Model, CRUDMixin):

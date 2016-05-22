@@ -28,7 +28,7 @@ Sphinx can use the `autodoc extension <http://www.sphinx-doc.org/en/stable/ext/a
 docstrings
 ^^^^^^^^^^
 
-Sphinx autodoc is also able to scan your source code for comments that have been formatted for Sphinx using Restructured Text.  Here is an example taken from the :func:`flask_diamond.ext.accounts.init_accounts` Flask-Diamond source code:
+Sphinx autodoc is also able to scan your source code for comments that have been formatted for Sphinx using Restructured Text.  Here is an example taken from the :func:`flask_diamond.facets.accounts.init_accounts` Flask-Diamond source code:
 
 ::
 
