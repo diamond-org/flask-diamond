@@ -29,12 +29,12 @@ def grep(attrname):
 setup(
     version=grep('__version__'),
     name='Flask-Diamond',
-    description="Flask-Diamond is a batteries-included Flask framework. Easily scaffold a working application with sensible defaults, then override the defaults to customize it for your goals.",
+    description=("Flask-Diamond is a batteries-included Flask framework. ",
+        "Easily scaffold a working application with sensible defaults, ",
+        "then override the defaults to customize it for your goals."),
     packages=[
         "flask_diamond",
         "flask_diamond.facets",
-        "flask_diamond.migrations",
-        "flask_diamond.migrations.versions",
         "flask_diamond.mixins",
         "flask_diamond.models",
         "flask_diamond.views",

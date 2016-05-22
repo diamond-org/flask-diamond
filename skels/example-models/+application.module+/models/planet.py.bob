@@ -1,0 +1,22 @@
+# -*- coding: utf-8 -*-
+# {{{ application.name }}} (c) {{{ author.name }}}
+
+from flask.ext.marshmallow.fields import fields
+from flask.ext.diamond import db, ma
+from ..mixins.crud import CRUDMixin
+from ..mixins.marshmallow import MarshmallowMixin
+
+
+class PlanetSchema(ma.Schema):
+    satellites = fields.Nested('SatelliteSchema', allow_none=True, many=True)
+
+    class Meta:
+        additional = ("id", "name", "mass")
+
+
+class Planet(db.Model, CRUDMixin, MarshmallowMixin):
+    "A Planet is a celestial body"
+    __schema__ = PlanetSchema
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(80), unique=True)
+    mass = db.Column(db.Float())

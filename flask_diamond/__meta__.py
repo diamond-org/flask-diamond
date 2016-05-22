@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Flask-Diamond copyright Ian Dennis Miller
+# Flask-Diamond (c) Ian Dennis Miller
 
 __project__ = 'Flask-Diamond'
 __version__ = '0.4.0'

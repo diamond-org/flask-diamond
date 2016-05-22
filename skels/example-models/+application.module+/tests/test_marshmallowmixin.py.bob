@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Flask-Diamond (c) Ian Dennis Miller
+# {{{ application.name }}} (c) {{{ author.name }}}
 
 from nose.plugins.attrib import attr
 from .mixins import DiamondTestCase

@@ -1,0 +1,16 @@
+# -*- coding: utf-8 -*-
+# {{{ application.name }}} (c) {{{ author.name }}}
+
+from ..models import Role, User, Planet, Satellite
+
+
+def typical_workflow():
+    "instantiate the minimal viable product"
+
+    # create user accounts
+    Role.add_default_roles()
+    User.add_guest_user()
+
+    # create data for users to manage
+    earth = Planet.create(name="Earth")
+    Satellite.create(name="Moon", planet=earth)

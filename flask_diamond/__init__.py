@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Ian Dennis Miller
+# Flask-Diamond (c) Ian Dennis Miller
 
 import flask
 from .facets import *

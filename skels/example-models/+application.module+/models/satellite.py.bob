@@ -1,0 +1,21 @@
+# -*- coding: utf-8 -*-
+# {{{ application.name }}} (c) {{{ author.name }}}
+
+from flask.ext.diamond import db, ma
+from ..mixins.crud import CRUDMixin
+from ..mixins.marshmallow import MarshmallowMixin
+
+
+class SatelliteSchema(ma.Schema):
+    class Meta:
+        additional = ("id", "name")
+
+
+class Satellite(db.Model, CRUDMixin, MarshmallowMixin):
+    "A Satellite orbits a Planet"
+    __schema__ = SatelliteSchema
+    id = db.Column(db.Integer(), primary_key=True)
+    name = db.Column(db.String(80), unique=True)
+    mass = db.Column(db.Float())
+    planet = db.relationship('Planet', backref=db.backref('satellites', lazy='dynamic'))
+    planet_id = db.Column(db.Integer(), db.ForeignKey("planet.id"))
