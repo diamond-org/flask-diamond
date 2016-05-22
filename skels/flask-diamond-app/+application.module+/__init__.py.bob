@@ -2,7 +2,7 @@
 # {{{ application.name }}} (c) {{{ author.name }}}
 
 from flask.ext.diamond import Diamond, db
-from flask.ext.diamond.facet.administration import AdminModelView
+from flask.ext.diamond.facets.administration import AdminModelView
 from .models import User, Role
 
 # declare these globalish objects before initializing models
