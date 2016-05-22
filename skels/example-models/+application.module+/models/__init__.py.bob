@@ -3,5 +3,5 @@
 
 from flask.ext.diamond.models.user import User
 from flask.ext.diamond.models.role import Role
-from planet import Planet
-from satellite import Satellite
+from .planet import Planet
+from .satellite import Satellite
