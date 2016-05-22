@@ -19,7 +19,7 @@ test:
 
 docs:
 	rm -rf build/sphinx
-	SETTINGS=$$PWD/etc/conf/dev.conf sphinx-build -b html docs build/sphinx
+	SETTINGS=$$PWD/etc/conf/testing.conf sphinx-build -b html docs build/sphinx
 
 release:
 	python setup.py sdist upload -r https://pypi.python.org/pypi

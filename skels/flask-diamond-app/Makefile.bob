@@ -13,7 +13,8 @@ requirements:
 
 clean:
 	rm -rf build dist *.egg-info
-	-rm `find . -name "*.pyc"`
+	find . -name '*.pyc' -delete
+	find . -name __pycache__ -delete
 
 server:
 	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py runserver
@@ -48,8 +49,8 @@ apidocs:
 	ln -s $$PWD/var/sphinx/auto-api docs/auto-api
 
 docs:
-	rm -rf var/sphinx/build
-	SETTINGS=$$PWD/etc/conf/dev.conf sphinx-build -b html docs var/sphinx/build
+	rm -rf build/sphinx
+	SETTINGS=$$PWD/etc/conf/testing.conf sphinx-build -b html docs build/sphinx
 
 gh-pages: docs
 	rm -rf /tmp/gh-pages
