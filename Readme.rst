@@ -22,7 +22,7 @@ The following steps will create a new Flask-Diamond application.
     flask-diamond app .
     make install docs test db server
 
-You will need Python 2.7 or 3.4+, pip, virtualenv, and virtualenvwrapper.  Please see the documentation for more information.
+Please read the `Introduction Documentation <http://flask-diamond.readthedocs.io/en/latest/#introduction>`_ to get started.
 
 Documentation
 ^^^^^^^^^^^^^

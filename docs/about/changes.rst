@@ -3,6 +3,13 @@ Change Log
 
 This file contains a summary of major changes to Flask-Diamond.
 
+0.4.1
+-----
+
+2016-05-21
+
+- fixed typo in flask-diamond command line app
+
 0.4.0
 -----
 
@@ -15,6 +22,52 @@ This file contains a summary of major changes to Flask-Diamond.
 - migrated all testing into code skeletons to test actual usage scenario
 - deeper integration with Travis CI, including testing using code skeletons
 - generally cleaned up the Flask-Diamond core
+
+0.3.6
+-----
+
+2016-05-17
+
+- do not fail during setup if files cannot be copied
+
+0.3.5
+-----
+
+2016-05-03
+
+- Python 3 compatibility
+- added Travis CI
+- added Planetary model for testing
+- testing for marshmallow
+
+0.3.4
+-----
+
+2016-04-29
+
+- adding username to User model schema
+
+0.3.3
+-----
+
+2016-04-29
+
+- Python 3 compatibility
+- refactor test mixin
+
+0.3.2
+-----
+
+2016-04-26
+
+- Python 3 compatibility
+
+0.3.1
+-----
+
+2016-04-25
+
+- Python 3 compatibility
 
 0.3.0
 -----
