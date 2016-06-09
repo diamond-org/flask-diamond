@@ -43,8 +43,8 @@ Start the server:
 
 You now have a server running at http://127.0.0.1:5000/admin.  Visit your new application in a web browser and login with the following account details:
 
-- username: **admin**
-- password: **aaa**
+- username: **admin@example.com**
+- password: **the simple_password specified while scaffold the app**
 
 Next Steps
 ----------
