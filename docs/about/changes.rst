@@ -3,6 +3,11 @@ Change Log
 
 This file contains a summary of major changes to Flask-Diamond.
 
+0.4.3
+-----
+
+- permit any sufficiently modern version of Fabric3
+
 0.4.2
 -----
 
