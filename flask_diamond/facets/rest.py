@@ -29,6 +29,6 @@ def init_rest(self, api_map=None):
     """
 
     if api_map:
-        api_map(rest)
+        api_map(rest_api)
     rest_api.init_app(self.app)
     return rest_api
