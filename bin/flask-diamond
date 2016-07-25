@@ -8,6 +8,8 @@ usage: flask-diamond [scaffold_type] [target_path]
 
 example: flask-diamond app ~/my-new-project
 
+scaffold_type may be one of: app, example-models, example-views
+
 See http://flask-diamond.org for more information.
 EOF
 

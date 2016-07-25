@@ -1,0 +1,16 @@
+# -*- coding: utf-8 -*-
+# {{{ application.name }}} (c) {{{ author.name }}}
+
+from flask.ext.restful import Resource
+import flask
+
+
+class Planet(Resource):
+
+    def get(self, id):
+        flask.abort(404)
+        # return flask.Response(view_agent(id))
+
+
+def init_rest(rest_extension):
+    rest_extension.add_resource(Planet, '/planet/<int:id>')
