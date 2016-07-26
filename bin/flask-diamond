@@ -8,7 +8,7 @@ usage: flask-diamond [scaffold_type] [target_path]
 
 example: flask-diamond app ~/my-new-project
 
-scaffold_type may be one of: app, example-models, example-views
+scaffold_type may be one of: app, example-models, example-api, example-views
 
 See http://flask-diamond.org for more information.
 EOF
@@ -80,6 +80,6 @@ if [ "$1" == "example-views" ]; then
     exit
 fi
 
-echo "ERROR: expected a scaffold type {app, example-models, example-views}"
+echo "ERROR: expected a scaffold type {app, example-models, example-views, example-api}"
 echo
 echo "Try 'flask-diamond help' for more information."

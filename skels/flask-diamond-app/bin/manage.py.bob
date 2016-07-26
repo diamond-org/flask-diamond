@@ -67,7 +67,7 @@ def init_db(migration):
 
     if migration:
         # create database using migrations
-        print "applying migration"
+        print("applying migration")
         upgrade()
     else:
         # create database from model schema directly
