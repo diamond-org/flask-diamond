@@ -15,11 +15,10 @@ The following steps will create a new Flask-Diamond application.
 
 ::
 
-    mkdir my-application
-    cd my-application
-    mkvirtualenv -a . my-application
     pip install Flask-Diamond
-    flask-diamond app .
+    mkdir my-application
+    flask-diamond app my-application
+    cd my-application
     make install docs test db server
 
 Please read the `Introduction Documentation <http://flask-diamond.readthedocs.io/en/latest/#introduction>`_ to get started.
