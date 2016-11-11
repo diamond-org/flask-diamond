@@ -38,6 +38,7 @@
         {% endfor %}
     {% endif %}
 
+{{ lib.render_field(form, form.name) }}
 {{ lib.render_field(form, form.email) }}
 {{ lib.render_field(form, form.password) }}
 

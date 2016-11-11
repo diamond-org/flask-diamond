@@ -128,6 +128,7 @@ class UserView(AdminModelView):
 
     def create_model(self, form):
         self.model.register(
+            name=form.data["name"],
             email=form.data["email"],
             password=form.data["password"],
             confirmed=True,
