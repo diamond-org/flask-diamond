@@ -7,7 +7,7 @@ from flask.ext.security import Security
 security = Security()
 
 
-def init_accounts(self, user=None, role=None):
+def init_accounts(self, user=None, role=None, confirm_register_form=None):
     """
     Initialize Security for application.
 
@@ -24,8 +24,8 @@ def init_accounts(self, user=None, role=None):
     with implementing CAPTCHA) then you must use super() from within your
     application and provide any arguments destined for Flask-Security.
 
-    >>> def ext_security(self):
-    >>>    super(MyApp, self).ext_security(confirm_register_form=CaptchaRegisterForm)
+    >>> result = self.super("accounts", user=User, role=Role,
+    >>>    confirm_register_form=ExtendedRegisterForm)
     """
 
     # import database
@@ -37,4 +37,8 @@ def init_accounts(self, user=None, role=None):
     # create datastore
     user_datastore = SQLAlchemyUserDatastore(db, user, role)
     setattr(Security, "user_datastore", user_datastore)
-    security.init_app(self.app, datastore=user_datastore)
+    if confirm_register_form:
+        security.init_app(self.app, datastore=user_datastore,
+            confirm_register_form=confirm_register_form)
+    else:
+        security.init_app(self.app, datastore=user_datastore)

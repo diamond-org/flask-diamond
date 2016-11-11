@@ -10,14 +10,14 @@ env.user = '{{{ application.name }}}'
 env.key_filename = [os.path.expanduser('{{{ env.key_filename }}}')]
 
 if not env.hosts:
-    print "need to call with -H [host.example.com]"
+    print("need to call with -H [host.example.com]")
     sys.exit(1)
 
 
 def rsync():
     "rsync local changes (ignoring git)"
     if not os.path.exists("fabfile.py"):
-        print "need to run in root of project"
+        print("need to run in root of project")
         sys.exit(1)
 
     excluded = [
@@ -70,7 +70,7 @@ def logs():
 
 def help():
     "get help on testing and deploying"
-    print helpfile
+    print(helpfile)
 
 helpfile = """
 # quickly copy some changes over
