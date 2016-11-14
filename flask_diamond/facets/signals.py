@@ -19,6 +19,6 @@ def init_signals(self):
     @user_registered.connect_via(self.app)
     def user_registered_sighandler(sender, **extra):
         "add User role to all self-registration users"
-        user_role = security.datastore.find_role("User")
-        security.datastore.add_role_to_user(extra['user'], user_role)
+        user_role = security.user_datastore.find_role("User")
+        security.user_datastore.add_role_to_user(extra['user'], user_role)
         self.app.logger.info("added role User to %s" % extra['user'])
