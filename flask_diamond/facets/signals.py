@@ -2,6 +2,7 @@
 # Flask-Diamond (c) Ian Dennis Miller
 
 from flask.ext.security.signals import user_registered
+from .accounts import security
 
 
 def init_signals(self):
