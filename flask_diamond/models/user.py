@@ -28,7 +28,6 @@ class UserSchema(ma.Schema):
         dateformat = ("%F %T %z")
         additional = (
             "id",
-            "name",
             "email",
             "password",
             "active",
@@ -43,9 +42,6 @@ class User(db.Model, UserMixin, CRUDMixin, MarshmallowMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     "integer -- primary key"
-
-    name = db.Column(db.String(255), unique=True)
-    "string -- user name"
 
     email = db.Column(db.String(255), unique=True)
     "string -- email address"
@@ -104,17 +100,15 @@ class User(db.Model, UserMixin, CRUDMixin, MarshmallowMixin):
 
         from .. import security
 
-        new_role = security.Security.user_datastore.find_or_create_role(role_name)
-        security.Security.user_datastore.add_role_to_user(self, new_role)
+        new_role = security.user_datastore.find_or_create_role(role_name)
+        security.user_datastore.add_role_to_user(self, new_role)
         db.session.commit()
 
     @classmethod
-    def register(cls, name, email, password, confirmed=False, roles=None):
+    def register(cls, email, password, confirmed=False, roles=None):
         """
         Create a new user account.
 
-        :param name: the name of the account
-        :type name: string
         :param email: the email address used to identify the account
         :type email: string
         :param password: the plaintext password for the account
@@ -127,8 +121,7 @@ class User(db.Model, UserMixin, CRUDMixin, MarshmallowMixin):
 
         from .. import security
 
-        new_user = security.Security.user_datastore.create_user(
-            name=name,
+        new_user = security.user_datastore.create_user(
             email=email,
             password=encrypt_password(password)
         )
@@ -142,9 +135,8 @@ class User(db.Model, UserMixin, CRUDMixin, MarshmallowMixin):
         return new_user
 
     @classmethod
-    def add_guest_user(cls, name="guest", email="guest@example.com", password="guest"):
+    def add_guest_user(cls, email="guest@example.com", password="guest"):
         cls.register(
-            name=name,
             email=email,
             password=password,
             confirmed=True,
@@ -152,9 +144,8 @@ class User(db.Model, UserMixin, CRUDMixin, MarshmallowMixin):
         )
 
     @classmethod
-    def add_admin_user(cls, name="admin", email="admin@example.com", password="aaa"):
+    def add_admin_user(cls, email="admin@example.com", password="aaa"):
         cls.register(
-            name=name,
             email=email,
             password=password,
             confirmed=True,
@@ -171,6 +162,6 @@ class User(db.Model, UserMixin, CRUDMixin, MarshmallowMixin):
 
         from .. import security
 
-        security.Security.user_datastore.delete_user(name="admin")
-        security.Security.user_datastore.delete_user(name="guest")
+        security.user_datastore.delete_user(email="admin@example.com")
+        security.user_datastore.delete_user(email="guest@example.com")
         db.session.commit()

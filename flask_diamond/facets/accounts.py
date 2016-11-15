@@ -37,6 +37,7 @@ def init_accounts(self, user=None, role=None, confirm_register_form=None):
     # create datastore
     user_datastore = SQLAlchemyUserDatastore(db, user, role)
     setattr(Security, "user_datastore", user_datastore)
+
     if confirm_register_form:
         security.init_app(self.app, datastore=user_datastore,
             confirm_register_form=confirm_register_form)

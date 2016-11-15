@@ -15,22 +15,14 @@ class MarshmallowMixinTestCase(DiamondTestCase):
         typical_workflow()
 
     def test_dump(self):
-        "test Marshmallow Mixin dump()"
-        earth = Planet.find(name="Earth")
-        result = earth.dump()
-        self.assertEqual(result['name'], "Earth")
+        user = User.find(email="guest@example.com")
+        result = user.dump()
+        self.assertEqual(result['email'], "guest@example.com")
 
-    @attr("single")
     def test_dumps(self):
-        "test Marshmallow Mixin dumps()"
-        moon = Satellite.find(name="Moon")
-        result = moon.dumps()
-        self.assertRegexpMatches(result, r"Moon")
-
-        earth = Planet.find(name="Earth")
-        result = earth.dumps()
-        self.assertRegexpMatches(result, r"Moon")
-        self.assertRegexpMatches(result, r"Earth")
+        user = User.find(email="guest@example.com")
+        result = user.dumps()
+        self.assertRegexpMatches(result, r"guest@example.com")
 
     @attr("skip")
     def test_dumpf(self):

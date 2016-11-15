@@ -47,6 +47,6 @@ class Role(db.Model, RoleMixin, CRUDMixin, MarshmallowMixin):
         from .. import security
 
         # make roles
-        security.Security.user_datastore.find_or_create_role("Admin")
-        security.Security.user_datastore.find_or_create_role("User")
+        security.user_datastore.find_or_create_role("Admin")
+        security.user_datastore.find_or_create_role("User")
         db.session.commit()

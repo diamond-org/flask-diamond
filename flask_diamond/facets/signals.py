@@ -3,6 +3,7 @@
 
 from flask.ext.security.signals import user_registered
 from .accounts import security
+from .database import db
 
 
 def init_signals(self):
@@ -21,4 +22,5 @@ def init_signals(self):
         "add User role to all self-registration users"
         user_role = security.user_datastore.find_role("User")
         security.user_datastore.add_role_to_user(extra['user'], user_role)
+        db.session.commit()
         self.app.logger.info("added role User to %s" % extra['user'])
