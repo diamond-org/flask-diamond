@@ -63,7 +63,7 @@ class AuthMixin:
         the View is accessible if the User is authenticated
         """
 
-        return security.current_user.is_authenticated()
+        return security.current_user.is_authenticated
 
 
 class AdminMixin:
@@ -155,7 +155,7 @@ class ForceLoginView(AdminIndexView):
         the View is accessible if the User is authenticated
         """
 
-        return security.current_user.is_authenticated()
+        return security.current_user.is_authenticated
 
     @expose('/')
     def index(self):

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# Flask-Diamond (c) Ian Dennis Miller
 
 import flask
 import datetime
@@ -10,10 +11,11 @@ from .. import ma
 from ..mixins.crud import CRUDMixin
 from ..mixins.marshmallow import MarshmallowMixin
 
+
+"A secondary table is used for the one-to-many relationship: User has many Roles"
 roles_users = db.Table('roles_users',
     db.Column('user_id', db.Integer(), db.ForeignKey('user.id')),
     db.Column('role_id', db.Integer(), db.ForeignKey('role.id')))
-"A secondary table is used for the one-to-many relationship: User has many Roles"
 
 
 class UserSchema(ma.Schema):

@@ -17,7 +17,7 @@ def init_error_handlers(self):
 
     @self.app.errorhandler(403)
     def page_forbidden(e):
-        if security.current_user.is_authenticated():
+        if security.current_user.is_authenticated:
             return flask.redirect(flask.url_for("admin.index"))
         else:
             return flask.redirect(security.url_for_security("login"))
