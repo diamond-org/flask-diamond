@@ -7,7 +7,7 @@ from flask.ext.security import Security
 security = Security()
 
 
-def init_accounts(self, user=None, role=None, confirm_register_form=None):
+def init_accounts(self, user=None, role=None, *args, **kwargs):
     """
     Initialize Security for application.
 
@@ -38,8 +38,6 @@ def init_accounts(self, user=None, role=None, confirm_register_form=None):
     user_datastore = SQLAlchemyUserDatastore(db, user, role)
     setattr(Security, "user_datastore", user_datastore)
 
-    if confirm_register_form:
-        security.init_app(self.app, datastore=user_datastore,
-            confirm_register_form=confirm_register_form)
-    else:
-        security.init_app(self.app, datastore=user_datastore)
+    security.init_app(self.app, datastore=user_datastore, *args, **kwargs)
+    # else:
+    #     security.init_app(self.app, datastore=user_datastore)
