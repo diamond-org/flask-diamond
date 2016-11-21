@@ -39,5 +39,3 @@ def init_accounts(self, user=None, role=None, *args, **kwargs):
     setattr(Security, "user_datastore", user_datastore)
 
     security.init_app(self.app, datastore=user_datastore, *args, **kwargs)
-    # else:
-    #     security.init_app(self.app, datastore=user_datastore)
