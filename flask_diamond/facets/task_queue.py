@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Flask-Diamond (c) Ian Dennis Miller
 
-from flask.ext.celery import Celery
+from flask_celery import Celery
 
 celery = Celery()
 

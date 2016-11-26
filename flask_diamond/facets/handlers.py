@@ -13,7 +13,7 @@ def init_error_handlers(self):
     Flask is able to respond to HTTP error codes with custom behaviours.
     By default, it will redirect error 403 (forbidden) to the login page.
     """
-    import flask.ext.security as security
+    import flask_security as security
 
     @self.app.errorhandler(403)
     def page_forbidden(e):

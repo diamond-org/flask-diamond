@@ -45,7 +45,7 @@ class Diamond:
         else:
             self.app.teardown_request(self.teardown)
 
-    def facet(self, extension_name, **kwargs):
+    def facet(self, extension_name, *args, **kwargs):
         """
         initialize an extension
         """
@@ -58,15 +58,15 @@ class Diamond:
 
         try:
             # try to explicitly pass self as the first parameter
-            result = method_to_call(self, **kwargs)
+            result = method_to_call(self, *args, **kwargs)
         except TypeError:
             # just call it because it will be wrapped to inject self
-            result = method_to_call(**kwargs)
+            result = method_to_call(*args, **kwargs)
 
         self.app.logger.debug("facet {0}".format(extension_name))
         return result
 
-    def super(self, extension_name, **kwargs):
+    def super(self, extension_name, *args, **kwargs):
         """
         invoke the initialization method for the superclass
 
@@ -76,7 +76,7 @@ class Diamond:
         init_method = "init_{0}".format(extension_name)
         # ensure the global version is called
         method_to_call = globals()[init_method]
-        result = method_to_call(self, **kwargs)
+        result = method_to_call(self, *args, **kwargs)
         return result
 
     def teardown(self, exception):

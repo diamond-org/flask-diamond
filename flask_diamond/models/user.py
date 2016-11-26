@@ -3,9 +3,9 @@
 
 import flask
 import datetime
-from flask.ext.security import UserMixin
-from flask.ext.security.utils import encrypt_password
-from flask.ext.marshmallow.fields import fields
+from flask_security import UserMixin
+from flask_security.utils import encrypt_password
+from flask_marshmallow.fields import fields
 from .. import db
 from .. import ma
 from ..mixins.crud import CRUDMixin

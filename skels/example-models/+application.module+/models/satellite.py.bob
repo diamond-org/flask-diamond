@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 # {{{ application.name }}} (c) {{{ author.name }}}
 
-from flask.ext.diamond import db, ma
-from flask.ext.diamond.mixins.crud import CRUDMixin
-from flask.ext.diamond.mixins.marshmallow import MarshmallowMixin
+from flask_diamond import db, ma
+from flask_diamond.mixins.crud import CRUDMixin
+from flask_diamond.mixins.marshmallow import MarshmallowMixin
 
 
 class SatelliteSchema(ma.Schema):

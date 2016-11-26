@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Flask-Diamond (c) Ian Dennis Miller
 
-from flask.ext.security.signals import user_registered
+from flask_security.signals import user_registered
 from .accounts import security
 from .database import db
 

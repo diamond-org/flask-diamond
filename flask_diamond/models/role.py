@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from flask.ext.security import RoleMixin
+from flask_security import RoleMixin
 from .. import db
 from .. import ma
 from ..mixins.crud import CRUDMixin

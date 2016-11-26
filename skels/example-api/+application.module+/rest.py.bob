@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # {{{ application.name }}} (c) {{{ author.name }}}
 
-from flask.ext.restful import Resource
+from flask_restful import Resource
 
 
 class Planet(Resource):

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Flask-Diamond (c) Ian Dennis Miller
 
-from flask.ext.assets import Environment
+from flask_assets import Environment
 
 assets = Environment()
 

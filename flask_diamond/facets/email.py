@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Flask-Diamond (c) Ian Dennis Miller
 
-from flask.ext.mail import Mail
+from flask_mail import Mail
 
 mail = Mail()
 

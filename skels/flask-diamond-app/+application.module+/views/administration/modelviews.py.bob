@@ -2,10 +2,10 @@
 # {{{ application.name }}} (c) {{{ author.name }}}
 
 import flask
-import flask.ext.security as security
-from flask.ext.admin import expose
-from flask.ext.diamond import db
-from flask.ext.diamond.facets.administration import AuthModelView, AdminIndexView
+import flask_security as security
+from flask_admin import expose
+from flask_diamond import db
+from flask_diamond.facets.administration import AuthModelView, AdminIndexView
 
 
 adminbaseview = flask.Blueprint('adminbaseview', __name__,

@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 # Flask-Diamond (c) Ian Dennis Miller
 
-from flask.ext.admin import Admin
-import flask.ext.security as security
-from flask.ext.admin import BaseView, expose, AdminIndexView
-from flask.ext.admin.contrib.sqla import ModelView
-from flask.ext.admin.base import MenuLink
-from flask.ext.security.utils import encrypt_password
+from flask_admin import Admin
+import flask_security as security
+from flask_admin import BaseView, expose, AdminIndexView
+from flask_admin.contrib.sqla import ModelView
+from flask_admin.base import MenuLink
+from flask_security.utils import encrypt_password
 import flask
 
 admin = Admin()
@@ -119,7 +119,7 @@ class UserView(AdminModelView):
     Manage the User Model
     """
 
-    column_filters = ['email']
+    # column_filters = ['email']
     column_exclude_list = ('password', 'active', 'confirmed_at')
     column_searchable_list = ('email', )
     can_delete = False

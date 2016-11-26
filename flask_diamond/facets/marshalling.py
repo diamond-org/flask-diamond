@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Flask-Diamond (c) Ian Dennis Miller
 
-from flask.ext.marshmallow import Marshmallow
+from flask_marshmallow import Marshmallow
 
 ma = Marshmallow()
 

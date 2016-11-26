@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Flask-Diamond (c) Ian Dennis Miller
 
-from flask.ext.security import SQLAlchemyUserDatastore
-from flask.ext.security import Security
+from flask_security import SQLAlchemyUserDatastore
+from flask_security import Security
 
 security = Security()
 

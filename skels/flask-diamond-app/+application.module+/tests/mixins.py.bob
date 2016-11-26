@@ -3,7 +3,7 @@
 
 from flask import current_app
 from .. import create_app, db
-from flask.ext.testing import TestCase
+from flask_testing import TestCase
 
 
 class DiamondTestCase(TestCase):

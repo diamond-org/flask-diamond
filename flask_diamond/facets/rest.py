@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Flask-Diamond (c) Ian Dennis Miller
 
-from flask.ext.restful import Api
+from flask_restful import Api
 
 rest_api = Api()
 
