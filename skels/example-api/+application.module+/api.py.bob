@@ -1,0 +1,13 @@
+# -*- coding: utf-8 -*-
+# {{{ application.name }}} (c) {{{ author.name }}}
+
+from flask_restful import Resource
+from .models import Planet as PlanetModel
+
+
+class Planet(Resource):
+
+    def get(self, name):
+        planet = PlanetModel.find(name=name)
+        if planet:
+            return(planet.dumps())

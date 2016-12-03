@@ -43,6 +43,11 @@ class {{{ application.module }}}(Diamond):
         self.app.register_blueprint(adminbaseview)
 
 
+# def api_map(rest_extension):
+#     from .api import Planet
+#     rest_extension.add_resource(Planet, '/planet/<int:id>')
+
+
 def create_app():
     global application
     if not application:
@@ -58,7 +63,7 @@ def create_app():
         application.facet("error_handlers")
         application.facet("request_handlers")
         application.facet("administration")
-        # application.facet("rest")
+        # application.facet("rest", api_map=api_map)
         # application.facet("webassets")
         # application.facet("email")
         # application.facet("debugger")

@@ -24,8 +24,17 @@ def init_rest(self, api_map=None):
 
     You will end up writing something like this in your application:
 
-    def api_map(rest):
-        rest_api.add_resource(Blah)
+    class PlanetResource(Resource):
+        def get(self, name):
+            planet = Planet.find(name=name)
+            if planet:
+                return(planet.dump())
+
+    def api_map(rest_extension):
+        rest_extension.add_resource(PlanetResource, '/api/planet/<string:name>')
+
+    def create_app():
+        application.facet("rest", api_map=api_map)
     """
 
     if api_map:
