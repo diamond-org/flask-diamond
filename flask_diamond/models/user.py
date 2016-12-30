@@ -135,35 +135,3 @@ class User(db.Model, UserMixin, CRUDMixin, MarshmallowMixin):
                 new_user.add_role(role_name)
         flask.current_app.logger.debug("Created user {0}".format(email))
         return new_user
-
-    @classmethod
-    def add_guest_user(cls, email="guest@example.com", password="guest"):
-        cls.register(
-            email=email,
-            password=password,
-            confirmed=True,
-            roles=["User"]
-        )
-
-    @classmethod
-    def add_admin_user(cls, email="admin@example.com", password="aaa"):
-        cls.register(
-            email=email,
-            password=password,
-            confirmed=True,
-            roles=["Admin"]
-        )
-
-    @classmethod
-    def rm_system_users(cls):
-        """
-        remove default system users
-
-        :returns: None
-        """
-
-        from .. import security
-
-        security.user_datastore.delete_user(email="admin@example.com")
-        security.user_datastore.delete_user(email="guest@example.com")
-        db.session.commit()

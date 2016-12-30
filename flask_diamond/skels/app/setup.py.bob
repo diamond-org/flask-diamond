@@ -3,25 +3,18 @@
 
 import re
 import os
-from setuptools import setup
+import codecs
+from setuptools import setup, find_packages
 from distutils.dir_util import copy_tree
 
 
-# from https://github.com/flask-admin/flask-admin/blob/master/setup.py
-def fpath(name):
-    return os.path.join(os.path.dirname(__file__), name)
-
-
-def read(fname):
-    return open(fpath(fname)).read()
-
-
-file_text = read(fpath('{{{ application.module }}}/__meta__.py'))
+def read(*rnames):
+    return codecs.open(os.path.join(os.path.dirname(__file__), *rnames), 'r', 'utf-8').read()
 
 
 def grep(attrname):
     pattern = r"{0}\W*=\W*'([^']+)'".format(attrname)
-    strval, = re.findall(pattern, file_text)
+    strval, = re.findall(pattern, read('{{{ application.module }}}/__meta__.py'))
     return strval
 
 
@@ -29,14 +22,7 @@ setup(
     version=grep('__version__'),
     name='{{{ application.name }}}',
     description="{{{ description.short }}}",
-    packages=[
-        "{{{ application.module }}}",
-        "{{{ application.module }}}.migrations",
-        "{{{ application.module }}}.migrations.versions",
-        "{{{ application.module }}}.models",
-        "{{{ application.module }}}.views",
-        "{{{ application.module }}}.views.administration",
-    ],
+    packages=find_packages(),
     scripts=[
         "bin/runserver.py",
         "bin/manage.py",

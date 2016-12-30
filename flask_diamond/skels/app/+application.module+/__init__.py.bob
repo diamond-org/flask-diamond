@@ -10,10 +10,11 @@ application = None
 
 
 class {{{ application.module }}}(Diamond):
+
+
     def init_accounts(self):
         "initialize accounts with the User and Role classes imported from .models"
-        result = self.super("accounts", user=User, role=Role)
-        return result
+        return self.super("accounts", user=User, role=Role)
 
     def init_administration(self):
         "Initialize admin interface"
@@ -42,10 +43,8 @@ class {{{ application.module }}}(Diamond):
         from .views.administration.modelviews import adminbaseview
         self.app.register_blueprint(adminbaseview)
 
-
-# def api_map(rest_extension):
-#     from .api import Planet
-#     rest_extension.add_resource(Planet, '/planet/<int:id>')
+        from .views.diamond import diamond_blueprint
+        self.app.register_blueprint(diamond_blueprint)
 
 
 def create_app():

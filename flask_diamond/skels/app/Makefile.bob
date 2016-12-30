@@ -33,13 +33,16 @@ single:
 
 db:
 	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py init_db
-	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py populate_db
+	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py user_add --email "guest@example.com" --password "password"
+    SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py user_add --email "admin@example.com" --password "{{{ simple_password }}}" --admin
 
-upgradedb:
+newmigration:
+	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py drop_db
 	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py db upgrade
-
-migratedb:
 	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py db migrate
+
+migrate:
+	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py db upgrade
 
 apidocs:
 	rm -rf var/sphinx/auto-api
@@ -51,12 +54,6 @@ apidocs:
 docs:
 	rm -rf build/sphinx
 	SETTINGS=$$PWD/etc/conf/testing.conf sphinx-build -b html docs build/sphinx
-
-gh-pages: docs
-	rm -rf /tmp/gh-pages
-	git clone -b gh-pages {{{ git_repo }}} /tmp/gh-pages
-	cp -r var/sphinx/build /tmp/gh-pages
-	cd /tmp/gh-pages && git add -A && git commit -am "autosync documentation" && git push -u origin gh-pages
 
 notebook:
 	SETTINGS=$$PWD/etc/conf/dev.conf cd var/ipython && ipython notebook

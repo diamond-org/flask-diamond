@@ -8,4 +8,8 @@ def typical_workflow():
     "create some example objects"
 
     Role.add_default_roles()
-    User.add_guest_user()
+
+    User.register(
+        email="guest@example.com",
+        password="password",
+    )

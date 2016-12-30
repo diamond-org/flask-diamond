@@ -58,6 +58,13 @@ def user_del(email):
         print("User not found")
 
 
+@manager.command
+def drop_db():
+    "drop all databases, instantiate schemas"
+    db.reflect()
+    db.drop_all()
+
+
 @manager.option('-m', '--migration',
     help='create database from migrations',
     action='store_true', default=None)
@@ -75,14 +82,7 @@ def init_db(migration):
         db.session.commit()
         cfg = alembic.config.Config("{{{ application.module }}}/migrations/alembic.ini")
         alembic.command.stamp(cfg, "head")
-
-
-@manager.command
-def populate_db():
-    "insert a default set of objects"
     Role.add_default_roles()
-    User.add_guest_user()
-    User.add_admin_user(password={{{ simple_password }}})
 
 
 if __name__ == "__main__":

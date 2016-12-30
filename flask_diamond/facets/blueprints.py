@@ -14,5 +14,7 @@ def init_blueprints(self):
     `Flask documentation <http://flask.pocoo.org/docs/0.10/blueprints/>`_.
     """
 
-    from ..views.diamond import diamond_blueprint
-    self.app.register_blueprint(diamond_blueprint)
+    pass
+
+    # from ..views.diamond import diamond_blueprint
+    # self.app.register_blueprint(diamond_blueprint)

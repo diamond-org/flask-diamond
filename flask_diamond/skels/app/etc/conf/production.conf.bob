@@ -2,11 +2,11 @@
 
 PROJECT_NAME = "{{{ application.name }}}"
 PORT = {{{ application.port }}}
-LOG = "/var/log/{{{ application.module }}}/daemon.log"
+LOG = "/var/log/{{{ application.name }}}/daemon.log"
 LOG_LEVEL = "DEBUG"
-SQLALCHEMY_DATABASE_URI = "sqlite:////var/lib/{{{ application.module }}}/main.db"
+SQLALCHEMY_DATABASE_URI = "sqlite:////var/lib/{{{ application.name }}}/main.db"
 SECRET_KEY = {{{ secret }}}
-BASE_URL = "http://{{{ application.module }}}.com"
+BASE_URL = "http://{{{ application.name }}}.com"
 
 SECURITY_PASSWORD_SALT = {{{ hash_salt }}}
 SECURITY_POST_LOGIN_VIEW = "/admin"

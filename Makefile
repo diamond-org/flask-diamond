@@ -20,15 +20,19 @@ test:
 	mkdir -p build/test-app
 
 	# scaffold the app
-	mrbob --config skels/test-app/.mrbob.ini -O build/test-app skels/flask-diamond-app
+	mrbob --config flask_diamond/tests/mrbob.ini -O build/test-app flask_diamond/skels/app
 	cd build/test-app && make install test
 
 	# views
-	mrbob --config skels/test-app/.mrbob.ini -O build/test-app skels/example-views
+	mrbob --config flask_diamond/tests/mrbob.ini -O build/test-app flask_diamond/skels/example-views
 	cd build/test-app && make install test
 
 	# models
-	mrbob --config skels/test-app/.mrbob.ini -O build/test-app skels/example-models
+	mrbob --config flask_diamond/tests/mrbob.ini -O build/test-app flask_diamond/skels/example-models
+	cd build/test-app && make install test
+
+	# api
+	mrbob --config flask_diamond/tests/mrbob.ini -O build/test-app flask_diamond/skels/example-api
 	cd build/test-app && make install test
 
 docs:

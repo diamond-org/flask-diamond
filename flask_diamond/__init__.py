@@ -2,7 +2,6 @@
 # Flask-Diamond (c) Ian Dennis Miller
 
 import flask
-from .facets import *
 
 try:
     from flask import _app_ctx_stack as stack
@@ -91,18 +90,6 @@ class Diamond:
             pass
             # ctx.sqlite3_db.close()
 
-    def init_accounts(self):
-        "initialize accounts with the User and Role classes imported from .models"
-        from .models.user import User
-        from .models.role import Role
-        self.super("accounts", user=User, role=Role)
-
-    def init_administration(self):
-        "Initialize admin interface"
-        from .models.user import User
-        from .models.role import Role
-        self.super("administration", user=User, role=Role)
-
     @property
     def _app(self):
         ctx = stack.top
@@ -110,27 +97,3 @@ class Diamond:
             if not hasattr(ctx, 'app'):
                 pass
             return ctx.app
-
-
-def create_app():
-    global application
-    if not application:
-        application = Diamond()
-        application.facet("configuration")
-        application.facet("logs")
-        application.facet("database")
-        application.facet("marshalling")
-        application.facet("blueprints")
-        application.facet("accounts")
-        application.facet("signals")
-        application.facet("forms")
-        application.facet("error_handlers")
-        application.facet("request_handlers")
-        application.facet("administration")
-        # application.facet("rest")
-        # application.facet("webassets")
-        # application.facet("email")
-        # application.facet("debugger")
-        # application.facet("task_queue")
-
-    return application.app

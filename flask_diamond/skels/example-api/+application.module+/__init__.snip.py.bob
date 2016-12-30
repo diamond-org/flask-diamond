@@ -1,0 +1,6 @@
+# -*- coding: utf-8 -*-
+# {{{ application.name }}} (c) {{{ author.name }}}
+
+def api_map(rest_extension):
+    from .api import Planet
+    rest_extension.add_resource(Planet, '/planet/<int:id>')

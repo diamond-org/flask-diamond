@@ -6,7 +6,7 @@ from flask_assets import Environment
 assets = Environment()
 
 
-def init_webassets(self):
+def init_webassets(self, asset_map=None):
     """
     Initialize web assets.
 
@@ -19,3 +19,5 @@ def init_webassets(self):
     """
 
     assets.init_app(self.app)
+    if asset_map:
+        asset_map(assets)

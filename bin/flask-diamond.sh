@@ -1,0 +1,91 @@
+#!/bin/bash
+# Flask-Diamond (c) Ian Dennis Miller
+
+define(){ IFS='\n' read -r -d '' ${1} || true; }
+
+define USAGE <<'EOF'
+usage: flask-diamond [scaffold_type] [target_path]
+
+example: flask-diamond app ~/my-new-project
+
+scaffold_type may be one of: app, example-models, example-api, example-views
+
+See http://flask-diamond.org for more information.
+EOF
+
+if [ "$1" == "--version" ]; then
+    python -c 'from flask_diamond.__meta__ import __version__; print(__version__)'
+    exit
+fi
+
+VERSION=$(python -c 'import flask_diamond.__meta__; print("Flask-Diamond {0}".format(flask_diamond.__meta__.__version__))')
+echo $VERSION
+echo
+
+if [ -z "$1" ]; then
+    echo "ERROR: expected a scaffold type {app, example-models, example-views}"
+    echo
+    echo "Try 'flask-diamond help' for more information."
+    exit
+fi
+
+if [ "$1" == "help" ]; then
+    echo "$USAGE"
+    exit
+fi
+
+if [ -z "$2" ]; then
+    echo "ERROR: expected a target directory"
+    echo
+    echo "Try 'flask-diamond help' for more information."
+    exit
+fi
+
+if [ "$1" == "app" ]; then
+    echo "Scan environment"
+    rm -f /tmp/mrbob.ini
+    echo "[defaults]" > /tmp/mrbob.ini
+    echo "home_directory = ${HOME}" >> /tmp/mrbob.ini
+    echo "flask_diamond_version = $(python -c 'from flask_diamond.__meta__ import __version__; print(__version__)')" >> /tmp/mrbob.ini
+    echo "secret = \"`python -c 'import os, re; print(re.escape(repr(os.urandom(24))[1:-1]))'`\"" >> /tmp/mrbob.ini
+    echo "hash_salt = $(python -c 'import string as s, random as r; print(repr("".join(r.choice(s.ascii_letters+s.digits) for _ in range(16))))')" >> /tmp/mrbob.ini
+    echo "simple_password = $(python -c 'import string as s, random as r; print(repr("".join(r.choice(s.ascii_lowercase) for _ in range(3))))')" >> /tmp/mrbob.ini
+    echo "OK"
+
+    echo "Apply Flask-Diamond Scaffold"
+    mrbob -w --config /tmp/mrbob.ini -O "$2" $VIRTUAL_ENV/share/skels/flask-diamond-app
+
+    echo "Cleaning up..."
+    # rm /tmp/mrbob.ini
+    exit
+fi
+
+if [ "$1" == "example-models" ]; then
+    echo "Scaffold a Flask-Diamond model"
+
+    if [ -f $2/.mrbob.ini ]; then
+        mrbob -w --config "$2/.mrbob.ini" -O "$2" $VIRTUAL_ENV/share/skels/example-models
+    else
+        echo "ERROR: $2/.mrbob.ini does not exist."
+        echo
+        echo "This must be run in the root directory of a Flask-Diamond application."
+    fi
+    exit
+fi
+
+if [ "$1" == "example-views" ]; then
+    echo "Scaffold the default Flask-Diamond views"
+
+    if [ -f $2/.mrbob.ini ]; then
+        mrbob -w --config "$2/.mrbob.ini" -O "$2" $VIRTUAL_ENV/share/skels/example-views
+    else
+        echo "ERROR: $2/.mrbob.ini does not exist."
+        echo
+        echo "This must be run in the root directory of a Flask-Diamond application."
+    fi
+    exit
+fi
+
+echo "ERROR: expected a scaffold type {app, example-models, example-views, example-api}"
+echo
+echo "Try 'flask-diamond help' for more information."

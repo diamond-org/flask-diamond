@@ -16,13 +16,11 @@ Creating a Migration
 A database migration is potentially complex, so creating one takes several steps.
 
 1. find the location of the dev database
-2. delete the development database
-3. build the database using migrations
-4. create a new migration
-5. rename the file with a short summary
-6. edit the migration
-7. test the migration
-8. done
+2. create a new migration
+3. rename the file with a short summary
+4. edit the migration
+5. test the migration
+6. done
 
 find the location of the dev database
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -33,24 +31,6 @@ We will work on the dev database, which should not have any important data in it
 
     grep SQLALCHEMY_DATABASE_URI etc/dev.conf
 
-delete the development database
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-We need to start from scratch.
-
-::
-
-    rm /tmp/my-application.db
-
-build the database using migrations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-In other words, we build the database without the python Model.
-
-::
-
-    make upgradedb
-
 create a new migration
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -58,7 +38,7 @@ This works by comparing python model to last migration version
 
 ::
 
-    make migratedb
+    make newmigration
 
 This will create a new python script within the ``migrations/versions`` subdirectory of your application module directory.  There will be two functions automatically created for you: ``upgrade()`` and ``downgrade()``.  The ``upgrade()`` function will individually add tables and columns to your old database schema until it matches your current model.  The ``downgrade()`` function is the opposite.  In this manner, it is possible to "roll back" to a previous schema.
 
@@ -80,15 +60,16 @@ test the migration
 ^^^^^^^^^^^^^^^^^^
 
 - delete the database again (rm /tmp/daemon-dev.db)
-- upgrade using migrations (make upgradedb)
-- perform a new migration (make migratedb)
+- perform a new migration (make migrate)
 - verify that it is empty (i.e. all tables are reflected)
 - delete the empty migration file (rm ${MODULE}/migrations/versions/${CHECKSUM}_.py)
 
 done
 ^^^^
 
-The migration is ready.  It can now be applied in the production environment.  First, ensure you are using a configuration file that specifies the target database you will apply the migration to.  Then, invoke the schema upgrade directly.
+The migration is ready.  It can now be applied in the production environment by specifying the configuration for the production system.
+
+First, ensure you are using a configuration file that specifies the target database you will apply the migration to.  Then, invoke the schema upgrade directly.
 
 ::
 
@@ -144,7 +125,7 @@ To apply a migration to the development database, enter the virtualenv and run:
 
 ::
 
-    make upgradedb
+    make migrate
 
 This will inspect your database and automatically apply migrations, in order, until it is at the latest. By default, this applies the migration to your development database.
 

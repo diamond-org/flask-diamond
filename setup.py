@@ -3,26 +3,17 @@
 
 import re
 import os
-from setuptools import setup
-from distutils.dir_util import copy_tree
+import codecs
+from setuptools import setup, find_packages
 
 
-# mimicking flask-admin setup.py
-# https://github.com/flask-admin/flask-admin/blob/master/setup.py
-def fpath(name):
-    return os.path.join(os.path.dirname(__file__), name)
-
-
-def read(fname):
-    return open(fpath(fname)).read()
-
-
-file_text = read(fpath('flask_diamond/__meta__.py'))
+def read(*rnames):
+    return codecs.open(os.path.join(os.path.dirname(__file__), *rnames), 'r', 'utf-8').read()
 
 
 def grep(attrname):
     pattern = r"{0}\W*=\W*'([^']+)'".format(attrname)
-    strval, = re.findall(pattern, file_text)
+    strval, = re.findall(pattern, read('flask_diamond/__meta__.py'))
     return strval
 
 
@@ -30,14 +21,7 @@ setup(
     version=grep('__version__'),
     name='Flask-Diamond',
     description="Flask-Diamond is a batteries-included Flask framework.",
-    packages=[
-        "flask_diamond",
-        "flask_diamond.facets",
-        "flask_diamond.mixins",
-        "flask_diamond.models",
-        "flask_diamond.views",
-        "flask_diamond.views.diamond",
-    ],
+    packages=find_packages(),
     scripts=[
         "bin/flask-diamond",
     ],
@@ -65,13 +49,13 @@ setup(
     zip_safe=False,
 )
 
-venv_path = os.environ.get("VIRTUAL_ENV")
-if venv_path:
-    try:
-        copy_tree("skels", os.path.join(venv_path, "share/skels"))
-    except:
-        print("WARN: failed to install skels.")
-        print("flask-diamond may not work correctly as a result.")
-else:
-    print("WARN: did not install skels.  This was not installed in a virtual environment")
-    print("flask-diamond may not work correctly as a result.")
+# venv_path = os.environ.get("VIRTUAL_ENV")
+# if venv_path:
+#     try:
+#         copy_tree("skels", os.path.join(venv_path, "share/skels"))
+#     except:
+#         print("WARN: failed to install skels.")
+#         print("flask-diamond may not work correctly as a result.")
+# else:
+#     print("WARN: did not install skels.  This was not installed in a virtual environment")
+#     print("flask-diamond may not work correctly as a result.")
