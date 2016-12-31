@@ -75,5 +75,5 @@ Sometimes, you do not have root access to the system.  It is still possible to u
 
     curl -O https://raw.github.com/pypa/virtualenv/master/virtualenv.py
     python virtualenv.py my-diamond-app
-    . my-diamond-app/bin/activate
+    source my-diamond-app/bin/activate
     pip install Flask-Diamond

@@ -1,5 +1,5 @@
-API with Flask-RESTful
-======================
+Facet: REST
+===========
 
 One of the most common ways to build an API is using a paradigm called `REST <https://en.wikipedia.org/wiki/Representational_state_transfer>`_.  `Flask-RESTful <http://flask-restful.readthedocs.org/en/latest/>`_ is a great library for Flask that simplifies the creation of a REST API.  This document describes REST and how to implement it in a Flask-Diamond project.
 

@@ -1,5 +1,5 @@
-Model-View-Controller with Flask-Diamond
-========================================
+MVC: Model, View, Controller
+============================
 
 Model-View-Controller (MVC) is a popular architecture for designing applications that have a user interface.  At its heart, MVC is a collection of `software design patterns <https://en.wikipedia.org/wiki/Software_design_pattern>`_ that provide a vocabulary for designing your application.  When you "speak MVC," other people who also know MVC will understand what you are saying.
 

@@ -1,5 +1,5 @@
-Testing with Nose
-=================
+Testing
+=======
 
 Writing tests is an important part of building an application.  Especially with dynamically typed languages such as Python, testing is one of the only ways to determine the correctness of your implementation.  Python has built the concept of `Unit Tests <https://docs.python.org/2/library/unittest.html>`_ into the core library.  *Unit Testing* is a technique for validating units of your program by making assertions about the behaviour of that code.  If any assertions turn out to be false, then you know your code isn't correct.
 

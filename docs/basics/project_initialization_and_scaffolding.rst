@@ -13,7 +13,7 @@ As described in the :doc:`../introduction/quick_start`, the basic process looks 
     cd my-application
     mkvirtualenv -a . my-application
     pip install Flask-Diamond
-    flask-diamond app .
+    flask-diamond scaffold app
     make install docs test db server
 
 About Scaffolding
@@ -75,26 +75,13 @@ Example: ``http://flask-diamond.org``
 
 This question corresponds to the ``setuptools.setup(url="")`` variable in the project setup.py file.  If you have a website that provides support for your project, put it here.  In the case of Flask-Diamond, there are lots of resources on the official website, including a link to the project issue tracker.  As a result, Flask-Diamond uses the project URL as the contact URL.
 
-8. What ssh key is used to deploy?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Example: ``~/.ssh/id_rsa``
-
-This question corresponds to ``fabric.api.env.key_filename`` inside ``fabfile.py``, which is the SSH key filename that is used to deploy the project to a remote host via SSH.
-
-9. Where is the git repository?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Example: ``https://github.com/iandennismiller/flask-diamond``
-
-If you will be distributing your application through hosted version control, then provide the URL here.  This is used during deployment, and it is useful for reference.
-
-10. Which port will the daemon listen on?
+8. Which port will the daemon listen on?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Example: ``5000``
 
-Your application will run as an HTTP service that listens on the port provided here.  Thus, if you answer ``8000`` you will be able to connect to your application at ``http://localhost:8000/admin``.
+Your application will run as an HTTP service that listens on the port provided here.
+Thus, if you answer ``8000`` you will be able to connect to your application at ``http://localhost:8000/admin``.
 
 Automatically generated scaffolding fields
 ------------------------------------------
@@ -124,3 +111,13 @@ Flask uses a hash salt for password storage.  To generate a suitable random stri
     python -c 'import string as s, random as r; \
         print repr("".join(r.choice(s.letters+s.digits) for _ in range(16)))'
 
+
+3. What is the simple_password?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Example: ``abc``
+
+Flask-Diamond can simplify the creation of testing accounts during development.
+One of the default accounts has administrative privileges, so a simple password is used to protect the account.
+This password is just 3 letters long by default, so it should never be used anywhere but during development.
+To ensure this weak password is not used in production, the ``Makefile`` is hardcoded to use the development configuration, only.

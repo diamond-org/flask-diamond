@@ -1,5 +1,5 @@
-Views with Jinja and blueprints
-===============================
+Facet: Blueprints
+=================
 
 As is explained in :doc:`model_view_controller_with_flask-diamond`, a *View* takes data from a Model and presents it (typically to a user).  Often times, there are multiple Views of a data Model, and they may present different aspects of the Model.  A common pattern for multiple views is the use of permissions to restrict functionality to users based upon their account role.  The administrator may have a special *View* into the data that provides extra functionality that regular users do not have.
 

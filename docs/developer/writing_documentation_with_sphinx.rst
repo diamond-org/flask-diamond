@@ -1,5 +1,5 @@
-Documentation with Sphinx
-=========================
+Documentation
+=============
 
 As projects grow in size, the need to create documentation increases.  The `Sphinx Project <http://www.sphinx-doc.org/en/stable/contents.html>`_ has put forth a very robust Python documentation solution.  As a result, Flask-Diamond provides a starter template for creating your own documentation using Sphinx.
 

@@ -17,11 +17,11 @@ The following steps will create a new Flask-Diamond application.
 
     pip install Flask-Diamond
     mkdir my-application
-    flask-diamond app my-application
     cd my-application
+    flask-diamond scaffold app
     make install docs test db server
 
-Please read the `Introduction Documentation <http://flask-diamond.readthedocs.io/en/latest/#introduction>`_ to get started.
+Please read the `Introduction Documentation <http://flask-diamond.readthedocs.io/en/latest/#get-started>`_ to get started.
 
 Documentation
 ^^^^^^^^^^^^^

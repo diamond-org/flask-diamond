@@ -1,7 +1,7 @@
 .. include:: ../Readme.rst
 
-Introduction
-------------
+Get Started
+-----------
 
 **Start here**.  These introductory readings will teach you how to install Flask-Diamond and how to read the rest of the Flask-Diamond documentation.
 
@@ -46,17 +46,24 @@ Once you have a project to work with, more advanced topics are discussed in the 
     :maxdepth: 1
 
     developer/model_view_controller_with_flask-diamond
-    developer/writing_models_with_sqlalchemy
-    developer/writing_views_with_jinja_and_blueprints
-    developer/writing_an_api_with_flask-restful
-    developer/writing_a_gui_with_flask-admin
     developer/crud_with_flask-diamond
     developer/managing_schemas_with_flask-migrate
     developer/writing_documentation_with_sphinx
-    developer/sending_email_with_flask-mail
     developer/testing_with_nosetests
+
+Facets Guide
+------------
+
+.. toctree::
+    :maxdepth: 1
+
     developer/managing_users_with_flask-security
+    developer/writing_a_gui_with_flask-admin
+    developer/writing_views_with_jinja_and_blueprints
+    developer/writing_models_with_sqlalchemy
     developer/debugging_a_flask-diamond_application
+    developer/sending_email_with_flask-mail
+    developer/writing_an_api_with_flask-restful
 
 .. _user-guide:
 

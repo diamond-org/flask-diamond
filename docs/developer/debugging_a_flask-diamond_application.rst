@@ -1,5 +1,5 @@
-Debugging a Flask-Diamond Application
-=====================================
+Facet: Debugger
+===============
 
 To simplify debugging, Flask-Diamond provides a basic setup for logging so that your application can write trace data to a file for your inspection.  Flask-Diamond also integrates `Flask-DebugToolbar <http://flask-debugtoolbar.readthedocs.org/en/latest/>`_ to provide a powerful debugger shell directly in the interface.
 

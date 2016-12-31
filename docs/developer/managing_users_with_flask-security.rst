@@ -1,5 +1,5 @@
-Users Accounts with Flask-Security
-==================================
+Facet: Accounts
+===============
 
 *User* accounts are a common requirement for many applications.  Another common requirement is *Roles*, which can be used to grant certain users access to specific functions.  Both Users and Roles are provided in Flask-Diamond by `Flask-Security <http://pythonhosted.org/Flask-Security/>`_, which provides a nice interface for controlling these models.
 

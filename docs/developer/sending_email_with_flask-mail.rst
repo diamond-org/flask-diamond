@@ -1,5 +1,5 @@
-Email with Flask-Mail
-=====================
+Facet: Email
+============
 
 Lots of applications need to send emails in the course of their operation.  Email remains one of the best sources of *identity* on the Internet today.  `Flask-Mail <http://pythonhosted.org/Flask-Mail/>`_ is an easy way to integrate email-sending capabilities into your application.
 
