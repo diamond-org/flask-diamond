@@ -6,8 +6,8 @@ import datetime
 from flask_security import UserMixin
 from flask_security.utils import encrypt_password
 from flask_marshmallow.fields import fields
-from .. import db
-from .. import ma
+from ..facets.database import db
+from ..facets.marshalling import ma
 from ..mixins.crud import CRUDMixin
 from ..mixins.marshmallow import MarshmallowMixin
 

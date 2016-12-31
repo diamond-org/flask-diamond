@@ -8,7 +8,7 @@ SQLALCHEMY_DATABASE_URI = "sqlite:////tmp/{{{ application.name }}}-dev.db"
 SECRET_KEY = {{{ secret }}}
 BASE_URL = "http://{{{ application.name }}}.com"
 
-SECURITY_PASSWORD_SALT = {{{ hash_salt }}}
+SECURITY_PASSWORD_SALT = "{{{ hash_salt }}}"
 SECURITY_POST_LOGIN_VIEW = "/admin"
 SECURITY_PASSWORD_HASH = 'sha256_crypt'
 SECURITY_URL_PREFIX = '/user'

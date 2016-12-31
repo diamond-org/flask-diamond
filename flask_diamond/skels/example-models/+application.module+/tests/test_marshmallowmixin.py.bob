@@ -4,7 +4,7 @@
 from nose.plugins.attrib import attr
 from .mixins import DiamondTestCase
 from .fixtures import typical_workflow
-from ..models import Planet, Satellite
+from ..models import Planet, Satellite, User
 
 
 class MarshmallowMixinTestCase(DiamondTestCase):

@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 # {{{ application.name }}} (c) {{{ author.name }}}
 
-from flask_diamond import Diamond, db
+from flask_diamond import Diamond
 from flask_diamond.facets.administration import AdminModelView
+from flask_diamond.facets.database import db
 from .models import User, Role
 
 # declare these globalish objects before initializing models
@@ -10,7 +11,6 @@ application = None
 
 
 class {{{ application.module }}}(Diamond):
-
 
     def init_accounts(self):
         "initialize accounts with the User and Role classes imported from .models"

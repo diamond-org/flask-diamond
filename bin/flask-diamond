@@ -6,7 +6,6 @@ import click
 import pkg_resources
 import os
 import flask_diamond
-import re
 import string
 import random
 from flask_diamond.__meta__ import __version__

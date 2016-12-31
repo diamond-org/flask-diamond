@@ -2,6 +2,7 @@
 # Flask-Diamond (c) Ian Dennis Miller
 
 import flask
+from .facets import *
 
 try:
     from flask import _app_ctx_stack as stack

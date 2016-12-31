@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Flask-Diamond (c) Ian Dennis Miller
 
-from .. import db
+from ..facets.database import db
 
 
 class MarshmallowMixin:

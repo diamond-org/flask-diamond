@@ -9,7 +9,11 @@ def typical_workflow():
 
     # create user accounts
     Role.add_default_roles()
-    User.add_guest_user()
+
+    User.register(
+        email="guest@example.com",
+        password="password",
+    )
 
     # create data for users to manage
     earth = Planet.create(name="Earth")

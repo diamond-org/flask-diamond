@@ -3,7 +3,7 @@
 
 import flask
 from builtins import str
-from .. import db
+from ..facets.database import db
 
 
 class CRUDMixin:

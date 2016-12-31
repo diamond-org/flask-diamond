@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from flask_security import RoleMixin
-from .. import db
-from .. import ma
+from ..facets.database import db
+from ..facets.marshalling import ma
 from ..mixins.crud import CRUDMixin
 from ..mixins.marshmallow import MarshmallowMixin
 
