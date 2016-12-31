@@ -1,1 +1,1 @@
-flask-diamond=={{{ flask_diamond_version }}}
+flask-diamond>=0.4.0

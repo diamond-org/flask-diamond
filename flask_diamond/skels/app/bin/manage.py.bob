@@ -6,8 +6,8 @@ import sys
 import traceback
 sys.path.insert(0, '.')
 
-from flask.ext.script import Manager, Shell, Server
-from flask.ext.migrate import Migrate, MigrateCommand, upgrade
+from flask_script import Manager, Shell, Server
+from flask_migrate import Migrate, MigrateCommand, upgrade
 import alembic
 import alembic.config
 from {{{ application.module }}} import create_app, db
