@@ -12,7 +12,14 @@ def typical_workflow():
 
     User.register(
         email="guest@example.com",
-        password="password",
+        password="guest",
+        roles=["User"],
+    )
+
+    User.register(
+        email="admin@example.com",
+        password="admin",
+        roles=["Admin"],
     )
 
     # create data for users to manage

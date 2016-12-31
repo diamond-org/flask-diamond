@@ -23,16 +23,8 @@ test:
 	mrbob --config flask_diamond/tests/mrbob.ini -O build/test-app flask_diamond/skels/app
 	cd build/test-app && make install test
 
-	# views
-	mrbob --config flask_diamond/tests/mrbob.ini -O build/test-app flask_diamond/skels/example-views
-	cd build/test-app && make install test
-
-	# models
-	mrbob --config flask_diamond/tests/mrbob.ini -O build/test-app flask_diamond/skels/example-models
-	cd build/test-app && make install test
-
-	# api
-	mrbob --config flask_diamond/tests/mrbob.ini -O build/test-app flask_diamond/skels/example-api
+	# planets tutorial
+	mrbob --config flask_diamond/tests/mrbob.ini -O build/test-app flask_diamond/skels/tutorial-planets
 	cd build/test-app && make install test
 
 docs:

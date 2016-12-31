@@ -33,8 +33,8 @@ single:
 
 db:
 	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py init_db
-	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py user_add --email "guest@example.com" --password "password"
-    SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py user_add --email "admin@example.com" --password "{{{ simple_password }}}" --admin
+	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py user_add --email "guest@example.com" --password "guest"
+	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py user_add --email "admin@example.com" --password "{{{ simple_password }}}" --admin
 
 newmigration:
 	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py drop_db
