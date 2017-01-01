@@ -4,7 +4,7 @@ SHELL=/bin/bash
 MOD_NAME=flask_diamond
 WATCHMEDO_PATH=$$(which watchmedo)
 NOSETESTS_PATH=$$(which nosetests)
-TEST_CMD=SETTINGS=$$PWD/etc/conf/testing.conf $(NOSETESTS_PATH) $(MOD_NAME)
+TEST_CMD=SETTINGS=$$PWD/$(MOD_NAME)/tests/testing.conf $(NOSETESTS_PATH) $(MOD_NAME)
 
 install:
 	python setup.py install
@@ -41,7 +41,7 @@ test-scaffold:
 
 docs:
 	rm -rf build/sphinx
-	SETTINGS=$$PWD/etc/conf/testing.conf sphinx-build -b html docs build/sphinx
+	SETTINGS=$$PWD/$(MOD_NAME)/tests/testing.conf sphinx-build -b html docs build/sphinx
 
 release:
 	python setup.py sdist upload -r https://pypi.python.org/pypi
