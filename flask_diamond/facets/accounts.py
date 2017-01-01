@@ -3,6 +3,7 @@
 
 from flask_security import SQLAlchemyUserDatastore
 from flask_security import Security
+from flask import current_app
 
 security = Security()
 
@@ -32,7 +33,8 @@ def init_accounts(self, user=None, role=None, *args, **kwargs):
     from .. import db
 
     if not user or not role:
-        raise Exception
+        from ..models.user import User as user
+        from ..models.role import Role as role
 
     # create datastore
     user_datastore = SQLAlchemyUserDatastore(db, user, role)

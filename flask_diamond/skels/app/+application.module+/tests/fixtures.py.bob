@@ -11,5 +11,12 @@ def typical_workflow():
 
     User.register(
         email="guest@example.com",
-        password="password",
+        password="guest",
+        roles=["User"],
+    )
+
+    User.register(
+        email="admin@example.com",
+        password="{{{ simple_password }}}",
+        roles=["Admin"],
     )

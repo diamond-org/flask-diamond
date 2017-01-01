@@ -2,6 +2,9 @@
 
 SHELL=/bin/bash
 MOD_NAME=flask_diamond
+WATCHMEDO_PATH=$$(which watchmedo)
+NOSETESTS_PATH=$$(which nosetests)
+TEST_CMD=SETTINGS=$$PWD/etc/conf/testing.conf $(NOSETESTS_PATH) $(MOD_NAME)
 
 install:
 	python setup.py install
@@ -14,7 +17,16 @@ clean:
 	find . -name '*.pyc' -delete
 	find . -name __pycache__ -delete
 
-test:
+test: test-all test-scaffold
+	@echo "OK"
+
+test-all:
+	$(TEST_CMD) -c etc/nose/test-all.cfg
+
+single:
+	$(TEST_CMD) -c etc/nose/test-single.cfg 2>&1
+
+test-scaffold:
 	# create folder
 	rm -rf build/test-app
 	mkdir -p build/test-app

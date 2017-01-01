@@ -1,12 +1,15 @@
 Flask-Diamond
 =============
 
-Flask-Diamond is a batteries-included Flask framework. Easily scaffold a working application with sensible defaults, then override the defaults to customize it for your goals.
+Flask-Diamond provides some opinions about Flask.
+Flask-Diamond is a batteries-included Flask framework, sortof like Django.
+Scaffold a working application with sensible defaults, then easily override the defaults to customize it for your goals.
 
 Overview
 --------
 
-Flask-Diamond imports many other Flask extensions and glues them all together.  The end result is a model administration view, accounts and high-level account operations (e.g. password reset), testing, documentation, deployment, and more.
+Flask-Diamond imports many other Flask extensions and glues them all together.
+The end result is a model administration view, accounts and high-level account operations (e.g. password reset), testing, documentation, deployment, and more.
 
 Usage
 ^^^^^

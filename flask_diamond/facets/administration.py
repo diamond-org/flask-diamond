@@ -43,7 +43,8 @@ def init_administration(self, index_view=None, user=None, role=None):
     from .. import db
 
     if not user or not role:
-        raise Exception
+        from ..models.user import User as user
+        from ..models.role import Role as role
 
     admin.init_app(self.app)
 
