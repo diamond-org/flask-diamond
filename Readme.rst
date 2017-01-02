@@ -46,4 +46,9 @@ http://flask-diamond.org
 Video Tutorial
 ^^^^^^^^^^^^^^
 
-[![Flask-Diamond Quick Start](https://img.youtube.com/vi/XqfF_du06uo/0.jpg)](https://www.youtube.com/watch?v=XqfF_du06uo)
+.. image:: https://img.youtube.com/vi/XqfF_du06uo/0.jpg
+    :alt: Flask-Diamond Quick Start
+    :target: https://www.youtube.com/watch?v=XqfF_du06uo
+    :align: center
+    :height: 315px
+    :width: 560px
