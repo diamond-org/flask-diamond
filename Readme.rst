@@ -41,13 +41,9 @@ Please read the `Introduction Documentation <http://flask-diamond.readthedocs.io
 Documentation
 ^^^^^^^^^^^^^
 
-http://flask-diamond.readthedocs.org
+http://flask-diamond.org
 
 Video Tutorial
 ^^^^^^^^^^^^^^
 
-.. raw:: html
-
-    <center>
-        <iframe width="560" height="315" src="http://www.youtube.com/embed/XqfF_du06uo" frameborder="0" allowfullscreen></iframe>
-    </center>
+[![Flask-Diamond Quick Start](https://img.youtube.com/vi/XqfF_du06uo/0.jpg)](https://www.youtube.com/watch?v=XqfF_du06uo)

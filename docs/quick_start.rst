@@ -63,3 +63,4 @@ Next Steps
 ----------
 
 Now that you have scaffolded your first Flask-Diamond application, you can read about how to :doc:`learn_flask_diamond` by using the online documentation and materials.
+If you prefer to learn by experimenting with a live example, see :doc:`tutorial-planets` for a hands-on introduction to an working Flask-Diamond application.

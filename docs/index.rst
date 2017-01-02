@@ -22,6 +22,7 @@ Learn how to create a new project.  This section introduces the Flask-Diamond ph
 .. toctree::
     :maxdepth: 1
 
+    tutorial-planets
     project_initialization_and_scaffolding
     diagram_of_a_scaffold
     writing_an_application_with_flask-diamond
