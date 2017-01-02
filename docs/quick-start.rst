@@ -1,12 +1,21 @@
 Quick Start
 ===========
 
-Flask-Diamond installs in a Python environment with :doc:`virtualenv <requirements_management_with_virtualenv>`.  Please see the :doc:`system_requirements` for information about installation pre-requisites.
+Flask-Diamond installs in a Python environment with :doc:`virtualenv <requirements>`.  Please see the :doc:`system-requirements` for information about installation pre-requisites.
+
+Screencast
+----------
+
+.. raw:: html
+
+    <center>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/XqfF_du06uo" frameborder="0" allowfullscreen></iframe>
+    </center>
 
 Install Flask-Diamond
 ---------------------
 
-Create a :doc:`virtualenv <requirements_management_with_virtualenv>` for your application and install Flask-Diamond.
+Create a :doc:`virtualenv <requirements>` for your application and install Flask-Diamond.
 
 ::
 
@@ -15,7 +24,7 @@ Create a :doc:`virtualenv <requirements_management_with_virtualenv>` for your ap
     mkvirtualenv -a . my-application
     pip install Flask-Diamond
 
-If any of these steps do not work, review the :doc:`system_requirements` and ensure everything is installed.
+If any of these steps do not work, review the :doc:`system-requirements` and ensure everything is installed.
 
 Scaffold a new Flask-Diamond application
 ----------------------------------------
@@ -62,5 +71,5 @@ Login with the following account details:
 Next Steps
 ----------
 
-Now that you have scaffolded your first Flask-Diamond application, you can read about how to :doc:`learn_flask_diamond` by using the online documentation and materials.
+Now that you have scaffolded your first Flask-Diamond application, you can read about how to :doc:`learn` by using the online documentation and materials.
 If you prefer to learn by experimenting with a live example, see :doc:`tutorial-planets` for a hands-on introduction to an working Flask-Diamond application.

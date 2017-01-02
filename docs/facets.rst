@@ -26,4 +26,4 @@ Here are all of the facets currently shipping with Flask-Diamond:
 Next Steps
 ----------
 
-Now that you know what facets are, learn how to use them by :doc:`writing_an_application_with_flask-diamond`.
+Now that you know what facets are, learn how to use them by :doc:`writing-an-application`.

@@ -8,7 +8,7 @@ When you install your Flask-Diamond application inside a virtualenv, you are abl
 Pre-requisites
 --------------
 
-You need to install the minimum :doc:`system_requirements` in order to have the necessary tools for this process.  It is assumed that you now have ``workon`` and ``mkvirtualenv`` available.  If you cannot call these commands in a terminal, then you should double-check your :doc:`system_requirements`.
+You need to install the minimum :doc:`system-requirements` in order to have the necessary tools for this process.  It is assumed that you now have ``workon`` and ``mkvirtualenv`` available.  If you cannot call these commands in a terminal, then you should double-check your :doc:`system-requirements`.
 
 Making a New ``virtualenv``
 ---------------------------

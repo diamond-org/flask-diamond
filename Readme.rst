@@ -1,9 +1,9 @@
 Flask-Diamond
 =============
 
-**Flask-Diamond** provides some opinions about data-centric Internet applications and systems.
-**Flask-Diamond** is a batteries-included Flask framework, sortof like Django but radically decomposable.
-Using **Flask-Diamond**, you can scaffold a working application with sensible defaults, then easily override those defaults to customize it for your own goals.
+**Flask-Diamond** offers some opinions about network information systems that process data.
+**Flask-Diamond** is a batteries-included Python Flask framework, sortof like Django but radically decomposable.
+Using **Flask-Diamond**, you can scaffold a working application with sensible defaults, then easily override those defaults to meet your own goals.
 **Flask-Diamond** provides a shared vocabulary that helps teams coordinate as they scale up to develop multiple Flask applications while maintaining good code reuse and learning transfer.
 **Flask-Diamond** goes beyond a "project scaffold" by providing a complete architecture and team solution, including documentation, tutorials, and other learning support.
 
@@ -43,8 +43,8 @@ Documentation
 
 http://flask-diamond.org
 
-Video Tutorial
-^^^^^^^^^^^^^^
+Quick Start Screencast
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. image:: https://img.youtube.com/vi/XqfF_du06uo/0.jpg
     :alt: Flask-Diamond Quick Start
@@ -52,3 +52,5 @@ Video Tutorial
     :align: center
     :height: 315px
     :width: 560px
+
+Length: 3:13

@@ -6,7 +6,7 @@ By default, Flask-Diamond is ready to run when you initially scaffold a new appl
 A basic Flask-Diamond Example
 -----------------------------
 
-The following example can be generated from a freshly scaffolded project by following the :doc:`project_initialization_and_scaffolding` document with the project name ``MyDiamondApp``.  Notice that the ``MyDiamondApp`` class inherits from ``Diamond``, which gives the new project a lot of functionality "out of the box."
+The following example can be generated from a freshly scaffolded project by following the :doc:`scaffolding` document with the project name ``MyDiamondApp``.  Notice that the ``MyDiamondApp`` class inherits from ``Diamond``, which gives the new project a lot of functionality "out of the box."
 
 .. code-block:: python
 
@@ -82,7 +82,7 @@ Flask-Diamond applications initialize the following facets during startup:
 #. :class:`flask_diamond.facets.debugger`
 #. :class:`flask_diamond.facets.task_queue`
 
-See :doc:`application_facets` for an overview of the specific facets that ship with Flask-Diamond.
+See :doc:`facets` for an overview of the specific facets that ship with Flask-Diamond.
 
 Extending the Scaffold
 ----------------------
@@ -98,9 +98,9 @@ Further Reading
 
 Several guides have been created to discuss Flask-Diamond application building in greater detail:
 
-- :doc:`writing_models_with_sqlalchemy`
-- :doc:`writing_a_gui_with_flask-admin`
-- :doc:`writing_views_with_jinja_and_blueprints`
+- :doc:`models`
+- :doc:`administration`
+- :doc:`blueprints`
 
 .. rubric:: Footnotes
 

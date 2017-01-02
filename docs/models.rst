@@ -1,7 +1,7 @@
 Facet: Database
 ===============
 
-In Flask-Diamond, a Model is a way of reading and writing a database. If our application is a chess game, then we're modeling chess objects in a database.  If our application is a social network, then we're modeling people objects in a database. A fundamental assumption of the :doc:`Model-View-Controller <model_view_controller_with_flask-diamond>` architecture is that our application deals with objects, and our objects are modeled after the things our application deals with.
+In Flask-Diamond, a Model is a way of reading and writing a database. If our application is a chess game, then we're modeling chess objects in a database.  If our application is a social network, then we're modeling people objects in a database. A fundamental assumption of the :doc:`Model-View-Controller <model-view-controller>` architecture is that our application deals with objects, and our objects are modeled after the things our application deals with.
 
 This document will demonstrate a model, then discuss some of the ways Flask-Diamond makes it easier to work with models.
 
@@ -129,9 +129,9 @@ When the Model Changes
 There is a close correspondence between the Model and the database tables.  If an attribute is added to a model, then we need a new column in our database to store the values for this attribute.  If the model changes, the database must also change.  There are two ways of updating your database:
 
 - **the clean slate**: delete the old database and creating a new one that reflects the latest changes to the model.  This is accomplished with ``make db`` on the command line.  It's easy and quick.
-- **schema migrations**: analyze your updated model to determine what parts are different from your old database, and then add/remove those parts to a live database.  This is tricky, but it is necessary for databases in production.  Read more in :doc:`managing_schemas_with_flask-migrate`.
+- **schema migrations**: analyze your updated model to determine what parts are different from your old database, and then add/remove those parts to a live database.  This is tricky, but it is necessary for databases in production.  Read more in :doc:`schemas-and-migrations`.
 
-As long as you are actively developing, it is recommended to use ``make db`` each time you update your model.  However, when your application is live, you will need to read :doc:`managing_schemas_with_flask-migrate` to learn about altering a production database.
+As long as you are actively developing, it is recommended to use ``make db`` each time you update your model.  However, when your application is live, you will need to read :doc:`schemas-and-migrations` to learn about altering a production database.
 
 Data Fixtures
 -------------
@@ -183,10 +183,10 @@ Another model example
 Further Reading
 ---------------
 
-- See :doc:`managing_schemas_with_flask-migrate`, which describes how to evolve the application database along with its Model.
-- See :doc:`crud_with_flask-diamond`, which describes the Create-Read-Update-Delete pattern for Models.
-- See :doc:`writing_a_gui_with_flask-admin`, which explains how to create a GUI for interacting with Models.
+- See :doc:`schemas-and-migrations`, which describes how to evolve the application database along with its Model.
+- See :doc:`crud`, which describes the Create-Read-Update-Delete pattern for Models.
+- See :doc:`administration`, which explains how to create a GUI for interacting with Models.
 
 .. rubric:: Footnotes
 
-.. [#f1] Note the use of CRUDMixin, which provides us with a create() method.  For more information about CRUDMixin, see :doc:`crud_with_flask-diamond`.
+.. [#f1] Note the use of CRUDMixin, which provides us with a create() method.  For more information about CRUDMixin, see :doc:`crud`.

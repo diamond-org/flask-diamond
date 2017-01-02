@@ -8,11 +8,11 @@ Get Started
 .. toctree::
     :maxdepth: 1
 
-    quick_start
-    learn_flask_diamond
-    system_requirements
+    quick-start
+    learn
+    system-requirements
 
-.. _basics:
+.. -basics:
 
 Basics
 ------
@@ -23,9 +23,9 @@ Learn how to create a new project.  This section introduces the Flask-Diamond ph
     :maxdepth: 1
 
     tutorial-planets
-    project_initialization_and_scaffolding
-    diagram_of_a_scaffold
-    writing_an_application_with_flask-diamond
+    scaffolding
+    scaffold-diagram
+    writing-an-application
     philosophy
 
 Developers Guide
@@ -36,23 +36,23 @@ Learn common development patterns.
 .. toctree::
     :maxdepth: 1
 
-    model_view_controller_with_flask-diamond
-    crud_with_flask-diamond
-    managing_schemas_with_flask-migrate
-    writing_documentation_with_sphinx
-    testing_with_nosetests
-    libraries_included_in_flask-diamond
-    diagram_of_libraries
+    model-view-controller
+    crud
+    schemas-and-migrations
+    documentation
+    testing
+    libraries-included
+    libraries-diagram
 
 .. Tutorials
 .. ---------
 ..
 .. .. toctree::
 ..
-..  tutorial/model-view-controller_architecture_with_flask-diamond
-..    developer/designing_a_flask-diamond_application
+..  tutorial/model-view-controller-architecture-with-flask-diamond
+..    developer/designing-a-flask-diamond-application
 
-.. _developer-guide:
+.. -developer-guide:
 
 Facets Guide
 ------------
@@ -62,16 +62,16 @@ This section describes the facets of Flask-Diamond.
 .. toctree::
     :maxdepth: 1
 
-    application_facets
-    managing_users_with_flask-security
-    writing_a_gui_with_flask-admin
-    writing_views_with_jinja_and_blueprints
-    writing_models_with_sqlalchemy
-    debugging_a_flask-diamond_application
-    sending_email_with_flask-mail
-    writing_an_api_with_flask-restful
+    facets
+    accounts
+    administration
+    blueprints
+    models
+    debugging
+    email
+    rest
 
-.. _user-guide:
+.. -user-guide:
 
 Operation Guide
 ---------------
@@ -81,12 +81,12 @@ The User Guide topics are for managing and installing a Flask-Diamond applicatio
 .. toctree::
     :maxdepth: 1
 
-    requirements_management_with_virtualenv
-    configuration_explanation
-    Makefile_explanation
-    manage_py_explanation
-    web_service_with_wsgi
-    deploying_with_fabric
+    requirements
+    configuration
+    makefile
+    manage-py
+    wsgi
+    deploying
 
 API Reference
 -------------
@@ -102,15 +102,15 @@ Open Source Software
 .. toctree::
     :maxdepth: 1
 
-    how_to_contribute_to_the_project
+    helping
     contributors
     license
+    changelog
 
 Online Resources
 ----------------
 
-- `GitHub Project Page <http://github.com/diamond-org/flask-diamond>`_
-- `Issue Tracker <http://github.com/diamond-org/flask-diamond/issues>`_
-- `Python Project on PyPI <http://pypi.python.org/pypi/Flask-Diamond>`_
-- `Diamond Methods <http://diamond-methods.org/>`_
-- :doc:`changelog`
+- `GitHub Project Page <http://github.com/diamond-org/flask-diamond>`-
+- `Issue Tracker <http://github.com/diamond-org/flask-diamond/issues>`-
+- `Python Project on PyPI <http://pypi.python.org/pypi/Flask-Diamond>`-
+- `Diamond Methods <http://diamond-methods.org/>`-

@@ -23,9 +23,9 @@ Commands
     - ``db``: your app's database object
     - ``model``: your app's model
 
-- ``runserver``: Launch your application's HTTP server.  When ``runserver`` is invoked, it will bind to ``localhost``.  The ``PORT`` your application listens on is defined in the :doc:`configuration_explanation`.
+- ``runserver``: Launch your application's HTTP server.  When ``runserver`` is invoked, it will bind to ``localhost``.  The ``PORT`` your application listens on is defined in the :doc:`configuration`.
 
-- ``publicserver``: Like ``runserver`` but public.  This causes the server to bind to ``0.0.0.0`` so that remote hosts can connect to your application.  This is intended for development purposes, and is not recommended for deployment.  See :doc:`web_service_with_wsgi` for more information about running a public web service.
+- ``publicserver``: Like ``runserver`` but public.  This causes the server to bind to ``0.0.0.0`` so that remote hosts can connect to your application.  This is intended for development purposes, and is not recommended for deployment.  See :doc:`wsgi` for more information about running a public web service.
 
 - ``db``: This command acts as the entry point for `Flask-Migrate <http://flask-migrate.readthedocs.org/en/latest/>`_.  The subcommands available, taken directly from the command output, are:
 

@@ -1,7 +1,7 @@
 Contributors
 ============
 
-Flask-Diamond is a volunteer effort. This page discusses the Contributors Agreement and Contributors List.  This page is also the official document for signing up as a contributor to the Flask-Diamond project. To learn more about how you can volunteer, please read :doc:`how_to_contribute_to_the_project`.
+Flask-Diamond is a volunteer effort. This page discusses the Contributors Agreement and Contributors List.  This page is also the official document for signing up as a contributor to the Flask-Diamond project. To learn more about how you can volunteer, please read :doc:`helping`.
 
 Contributors Agreement
 ----------------------

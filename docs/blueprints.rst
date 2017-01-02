@@ -1,7 +1,7 @@
 Facet: Blueprints
 =================
 
-As is explained in :doc:`model_view_controller_with_flask-diamond`, a *View* takes data from a Model and presents it (typically to a user).  Often times, there are multiple Views of a data Model, and they may present different aspects of the Model.  A common pattern for multiple views is the use of permissions to restrict functionality to users based upon their account role.  The administrator may have a special *View* into the data that provides extra functionality that regular users do not have.
+As is explained in :doc:`model-view-controller`, a *View* takes data from a Model and presents it (typically to a user).  Often times, there are multiple Views of a data Model, and they may present different aspects of the Model.  A common pattern for multiple views is the use of permissions to restrict functionality to users based upon their account role.  The administrator may have a special *View* into the data that provides extra functionality that regular users do not have.
 
 Views are frequently written using *templates*, which have placeholders for variables that may be filled in by the application.  In Flask-Diamond, the `Jinja templating language <http://jinja.pocoo.org/>`_ is used to generate HTML, javascript, CSS, and other web-facing files that create a user interface.  By populating the template with data from the Model, the result is that users can interact with Model data.
 
@@ -54,7 +54,7 @@ Routing a View
 
 URLs are used within web applications to identify Views.  In the case of a chess game application, the URL */piece_list* could return with a summary of all the chess pieces, and */piece/black/pawn/1* could provide information about the black player's first pawn.
 
-When building an :doc:`MVC <model_view_controller_with_flask-diamond>` View for a web application, the Controller is responsible for actually routing the user to the View.  MVC Web applications use the URL to connect with a view, such that a user can use their web browser to request */user/login_form* in order to log in to a website or view the */player/white/pieces* to figure out the score in a game of chess.  In Flask, the `route() <http://flask.pocoo.org/docs/0.10/api/#flask.Flask.route>`_ decorator is used to apply a route to a View function.
+When building an :doc:`MVC <model-view-controller>` View for a web application, the Controller is responsible for actually routing the user to the View.  MVC Web applications use the URL to connect with a view, such that a user can use their web browser to request */user/login_form* in order to log in to a website or view the */player/white/pieces* to figure out the score in a game of chess.  In Flask, the `route() <http://flask.pocoo.org/docs/0.10/api/#flask.Flask.route>`_ decorator is used to apply a route to a View function.
 
 A simple route looks like:
 
@@ -114,7 +114,7 @@ The Flask documentation also explains `how to register a blueprint <http://flask
 Views within Flask-Admin BaseModelView
 --------------------------------------
 
-In :doc:`Flask-Admin <writing_a_gui_with_flask-admin>`, each BaseModelView is actually a Blueprint that provides views for :doc:`creating, reading, updating, and deleting <crud_with_flask-diamond>` model objects.  The BaseModelView template behaves much like a regular blueprint, except:
+In :doc:`Flask-Admin <administration>`, each BaseModelView is actually a Blueprint that provides views for :doc:`creating, reading, updating, and deleting <crud>` model objects.  The BaseModelView template behaves much like a regular blueprint, except:
 
 - `expose() <http://flask-admin.readthedocs.org/en/latest/api/mod_base/#flask_admin.base.expose>`_ is used to "expose" a view inside BaseModelView instead of `route() <http://flask.pocoo.org/docs/0.10/api/#flask.Flask.route>`_
 - `self.render() <http://flask-admin.readthedocs.org/en/latest/api/mod_base/#flask_admin.base.BaseView.render>`_ is used instead of `render_template <http://flask.pocoo.org/docs/0.10/api/#flask.render_template>`_

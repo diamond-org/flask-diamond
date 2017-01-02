@@ -1,7 +1,7 @@
 Facet: Administration
 =====================
 
-A common pattern in application design is to apply :doc:`CRUD <crud_with_flask-diamond>` to your :doc:`Model <writing_models_with_sqlalchemy>`, and then provide a Graphical User Interface for people to interact with the Model.  `Flask-Admin <http://flask-admin.readthedocs.org/>`_ makes it very easy to create a basic interface with Create-Read-Update-Delete functionality, and provides a framework for designing much more sophisticated interfaces.
+A common pattern in application design is to apply :doc:`CRUD <crud>` to your :doc:`Model <models>`, and then provide a Graphical User Interface for people to interact with the Model.  `Flask-Admin <http://flask-admin.readthedocs.org/>`_ makes it very easy to create a basic interface with Create-Read-Update-Delete functionality, and provides a framework for designing much more sophisticated interfaces.
 
 This document discusses a simple CRUD with `Flask-Admin <http://flask-admin.readthedocs.org/>`_, and then extends the CRUD with additional functionality.
 
@@ -13,7 +13,7 @@ When `Flask-Admin <http://flask-admin.readthedocs.org/>`_ creates a GUI, it auto
 AdminModelViewExample
 ^^^^^^^^^^^^^^^^^^^^^
 
-The following example imports a class called Person (which is described in the :doc:`Model documentation <writing_models_with_sqlalchemy>`).  Then, the Person class is added to the GUI using the `add_view() <http://flask-admin.readthedocs.org/en/latest/api/mod_base/#flask_admin.base.Admin.add_view>`_ method.
+The following example imports a class called Person (which is described in the :doc:`Model documentation <models>`).  Then, the Person class is added to the GUI using the `add_view() <http://flask-admin.readthedocs.org/en/latest/api/mod_base/#flask_admin.base.Admin.add_view>`_ method.
 
 .. code-block:: python
 
@@ -50,7 +50,7 @@ Create-List-Edit-Delete corresponds directly to Create-Read-Update-Delete.
 Extending the CRUD
 ------------------
 
-Flask-Admin makes it pretty easy to add custom functionality through `Python class inheritance <https://docs.python.org/2/tutorial/classes.html>`_ [#f1]_.  In the :doc:`Model documentation <writing_models_with_sqlalchemy>`, the Person Model provides a birthday() method that causes the person to become one year older.  The following sections demonstrate how to expose the birthday method and create a user interface widget for calling that method.
+Flask-Admin makes it pretty easy to add custom functionality through `Python class inheritance <https://docs.python.org/2/tutorial/classes.html>`_ [#f1]_.  In the :doc:`Model documentation <models>`, the Person Model provides a birthday() method that causes the person to become one year older.  The following sections demonstrate how to expose the birthday method and create a user interface widget for calling that method.
 
 Exposing a new View
 ^^^^^^^^^^^^^^^^^^^
@@ -135,8 +135,8 @@ Flask-Admin is really powerful, and the best way to learn more is by `reading th
 Further Reading
 ---------------
 
-- See :doc:`crud_with_flask-diamond`, which describes the Create-Read-Update-Delete pattern for Models.
-- See :doc:`writing_models_with_sqlalchemy` for a more detailed examination of Models.
+- See :doc:`crud`, which describes the Create-Read-Update-Delete pattern for Models.
+- See :doc:`models` for a more detailed examination of Models.
 
 .. rubric:: Footnotes
 

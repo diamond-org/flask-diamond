@@ -4,7 +4,7 @@ CRUD: Create, Read, Update, Delete
 Create Read Update Delete
 -------------------------
 
-CRUD stands for Create, Read, Update, and Delete. The CRUD pattern complements :doc:`Model-View-Controller <model_view_controller_with_flask-diamond>` by providing a standard set of methods that can be applied to most types of models.  CRUD acts like a simple API for models in Flask-Diamond. The four CRUD actions describe the life-cycle of a model object:
+CRUD stands for Create, Read, Update, and Delete. The CRUD pattern complements :doc:`Model-View-Controller <model-view-controller>` by providing a standard set of methods that can be applied to most types of models.  CRUD acts like a simple API for models in Flask-Diamond. The four CRUD actions describe the life-cycle of a model object:
 
 #. First, an object is **created** with certain attribute values.
 #. The object may be **read** to get the value of those object attributes.
@@ -63,5 +63,5 @@ The following application instantiates a CRUD for the ``Person`` model described
 Further Reading
 ---------------
 
-- See :doc:`writing_models_with_sqlalchemy` for a more detailed examination of Models.
-- See :doc:`writing_a_gui_with_flask-admin` for a more detailed examination of GUIs.
+- See :doc:`models` for a more detailed examination of Models.
+- See :doc:`administration` for a more detailed examination of GUIs.

@@ -5,7 +5,7 @@ Project Initialization and Scaffolding
 
 The quickest way to start a new Flask-Diamond project is to use the scaffolding system.  Scaffolding applies a series of file templates that result in a starter application that can be further customized.  This document discusses the configuration questions that are used during scaffolding.
 
-As described in the :doc:`quick_start`, the basic process looks like this:
+As described in the :doc:`quick-start`, the basic process looks like this:
 
 ::
 

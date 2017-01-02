@@ -1,7 +1,7 @@
 System Requirements
 ===================
 
-Flask-Diamond requires some software to be installed in order to function.  Once you have installed these requirements, you can follow the :doc:`quick_start` to start your first project.  The following packages should be installed globally, as the superuser, for all users on the system to access.
+Flask-Diamond requires some software to be installed in order to function.  Once you have installed these requirements, you can follow the :doc:`quick-start` to start your first project.  The following packages should be installed globally, as the superuser, for all users on the system to access.
 
 - `Python 2.7.x <https://www.python.org/download/releases/2.7/>`_ or `3.4 and above <https://www.python.org/download/releases/3.4.0/>`_.
 - Python development libraries (i.e. header files for compiling C code)
