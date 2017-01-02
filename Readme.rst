@@ -42,3 +42,12 @@ Documentation
 ^^^^^^^^^^^^^
 
 http://flask-diamond.readthedocs.org
+
+Video Tutorial
+^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <center>
+        <iframe width="560" height="315" src="http://www.youtube.com/embed/XqfF_du06uo" frameborder="0" allowfullscreen></iframe>
+    </center>
