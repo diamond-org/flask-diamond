@@ -10,20 +10,20 @@ Flask-Diamond will load its configuration from whatever file is referenced by th
 
 ::
 
-    export SETTINGS=$PWD/etc/dev.conf
+    export SETTINGS=$PWD/etc/conf/dev.conf
 
 Another common way to control ``$SETTINGS`` is to use it as a prefix in front of a command.  In the following example, the script ``bin/manage.py`` is invoked with the ``dev.conf`` profile to start the embedded HTTP server:
 
 ::
 
-    SETTINGS=$PWD/etc/dev.conf bin/manage.py server
+    SETTINGS=$PWD/etc/conf/dev.conf bin/manage.py server
 
 
 To start the server with the ``production.conf`` environment:
 
 ::
 
-    SETTINGS=$PWD/etc/production.conf bin/manage.py server
+    SETTINGS=$PWD/etc/conf/production.conf bin/manage.py server
 
 Examples of Configurations
 --------------------------
@@ -48,7 +48,7 @@ For testing purposes, there is a special configuration that writes to a temporar
 Makefile Support
 ----------------
 
-If you inspect the ``Makefile``, you will see that ``$SETTINGS=$PWD/etc/dev.conf`` appears before most commands.  Most cases will use ``dev.conf`` by default in order to protect against accidentally performing tasks upon the production database.  Those prefixes are hardcoded so that a command like ``make db`` (which resets the database from scratch) cannot easily be applied to the production database.
+If you inspect the ``Makefile``, you will see that ``$SETTINGS=$PWD/etc/conf/dev.conf`` appears before most commands.  Most cases will use ``dev.conf`` by default in order to protect against accidentally performing tasks upon the production database.  Those prefixes are hardcoded so that a command like ``make db`` (which resets the database from scratch) cannot easily be applied to the production database.
 
 Flask-Diamond Configuration Variables
 -------------------------------------
@@ -63,12 +63,12 @@ The project is configured with the following directives.
 ::
 
     PROJECT_NAME = "Flask-Diamond"
-    PORT = 5028
-    LOG = "var/log/dev.log"
+    PORT = 5000
+    LOG = "/tmp/dev.log"
     LOG_LEVEL = "DEBUG"
-    SQLALCHEMY_DATABASE_URI = "sqlite:////tmp/flask_diamond-dev.db"
+    SQLALCHEMY_DATABASE_URI = "sqlite:////tmp/flask-diamond-dev.db"
     SECRET_KEY = "av^\x81\x03\xd7\xd1\xbd\x92~b\x00\xe8\xf7n9\x0e\xf8i\xdb\xba'\xa9\xea"
-    BASE_URL = "http://flask-diamond.org/my-diamond-app"
+    BASE_URL = "http://flask-diamond.org"
 
 - ``PROJECT_NAME``: the human-readable name of the project
 - ``PORT``: which TCP port will the HTTP server listen on?

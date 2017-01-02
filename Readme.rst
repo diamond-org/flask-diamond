@@ -1,17 +1,27 @@
 Flask-Diamond
 =============
 
-Flask-Diamond provides some opinions about data-centric Internet applications and systems.
-Flask-Diamond is a batteries-included Flask framework, sortof like Django but radically decomposable.
-Using Flask-Diamond, you can scaffold a working application with sensible defaults, then easily override those defaults to customize it for your own goals.
+**Flask-Diamond** provides some opinions about data-centric Internet applications and systems.
+**Flask-Diamond** is a batteries-included Flask framework, sortof like Django but radically decomposable.
+Using **Flask-Diamond**, you can scaffold a working application with sensible defaults, then easily override those defaults to customize it for your own goals.
+**Flask-Diamond** provides a shared vocabulary that helps teams coordinate as they scale up to develop multiple Flask applications while maintaining good code reuse and learning transfer.
+**Flask-Diamond** goes beyond a "project scaffold" by providing a complete architecture and team solution, including documentation, tutorials, and other learning support.
 
 Overview
 --------
 
 A Flask-Diamond application consists of *facets*, which are common facilities that many applications eventually need to provide.
-Facets provided by Flask-Diamond include account management, administrative access, databases, Model object CRUD, email, testing, documentation, deployment, and more.
-Flask-Diamond provides a vocabulary that helps teams coordinate as they scale up to develop multiple Flask applications while maintaining good code reuse and learning transfer.
-Flask-Diamond goes beyond *Python Flask Project Scaffolds* by providing a complete architecture and team solution, including documentation, tutorials, and other learning support.
+The *facets* provided by Flask-Diamond include:
+
+- account management
+- administrative access
+- databases
+- Model object CRUD
+- email
+- testing
+- documentation
+- deployment
+- and more
 
 Usage
 ^^^^^

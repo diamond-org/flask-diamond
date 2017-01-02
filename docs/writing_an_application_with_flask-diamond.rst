@@ -98,9 +98,9 @@ Further Reading
 
 Several guides have been created to discuss Flask-Diamond application building in greater detail:
 
-- :doc:`/developer/writing_models_with_sqlalchemy`
-- :doc:`/developer/writing_a_gui_with_flask-admin`
-- :doc:`/developer/writing_views_with_jinja_and_blueprints`
+- :doc:`writing_models_with_sqlalchemy`
+- :doc:`writing_a_gui_with_flask-admin`
+- :doc:`writing_views_with_jinja_and_blueprints`
 
 .. rubric:: Footnotes
 

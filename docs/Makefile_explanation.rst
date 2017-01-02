@@ -38,5 +38,5 @@ Databases
 These targets control the database.  By default these use the ``dev.conf`` profile so as to avoid inadvertently changing the production database.
 
 - ``db``: drop the database, re-create the database, and populate the database with starter values.
-- ``migratedb``: when the data model schema has changed, use ``migratedb`` to create a new data migration.
-- ``upgradedb``: apply all data migrations, in order, until the database is up to date.
+- ``newmigration``: when the data model schema has changed, use ``newmigration`` to create a new data migration.
+- ``migrate``: apply all data migrations, in order, until the database is up to date.

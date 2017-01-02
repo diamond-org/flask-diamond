@@ -51,5 +51,3 @@ Commands
 - ``userdel``: Delete a user from the users database.
 
 - ``init_db``: Drop the existing database using `Flask-SQLAlchemy <http://pythonhosted.org/Flask-SQLAlchemy/>`_ and re-create it.  This obviously destroys anything in the database, resetting it to its original state.
-
-- ``populate_db``: Sometimes, it is convenient to populate the database with a starting set of objects.  The ``populate_db`` command is a handy opportunity to ship some data with your project.
