@@ -110,7 +110,7 @@ Open Source Software
 Online Resources
 ----------------
 
-- `GitHub Project Page <http://github.com/diamond-org/flask-diamond>`-
-- `Issue Tracker <http://github.com/diamond-org/flask-diamond/issues>`-
-- `Python Project on PyPI <http://pypi.python.org/pypi/Flask-Diamond>`-
-- `Diamond Methods <http://diamond-methods.org/>`-
+- `GitHub Project Page <http://github.com/diamond-org/flask-diamond>`_
+- `Issue Tracker <http://github.com/diamond-org/flask-diamond/issues>`_
+- `Python Project on PyPI <http://pypi.python.org/pypi/Flask-Diamond>`_
+- `Diamond Methods <http://diamond-methods.org/>`_
