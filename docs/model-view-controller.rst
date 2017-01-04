@@ -1,7 +1,9 @@
 MVC: Model, View, Controller
 ============================
 
-Model-View-Controller (MVC) is a popular architecture for designing applications that have a user interface.  At its heart, MVC is a collection of `software design patterns <https://en.wikipedia.org/wiki/Software_design_pattern>`_ that provide a vocabulary for designing your application.  When you "speak MVC," other people who also know MVC will understand what you are saying.
+Model-View-Controller (MVC) is a popular architecture for designing applications that have a user interface.
+At its heart, MVC is a collection of `software design patterns <https://en.wikipedia.org/wiki/Software_design_pattern>`_ that provide a vocabulary for designing your application.
+When you "speak MVC," other people who also know MVC will understand what you are saying.
 
 The MVC vocabulary consists of:
 
@@ -14,24 +16,35 @@ This document presents an overview of Model-View-Controller and links to more de
 Model
 -----
 
-A model is usually named after a noun.  A model is a data representation of something that exists, and just about anything that exists can be modeled.
+A model is usually named after a noun.
+A model is a data representation of something that exists, and just about anything that exists can be modeled.
 
 Entities and Relationships
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To model a chess game, you'd start with a model of Players and Chess Pieces, which are entities. A player has many chess pieces, so there is a relationship between our entities.  Using nothing more than the idea of "Players" and "Chess Pieces", you can go a long way towards modeling the game of chess.
+To model a solar system, you'd start with a model of Planets and Satellites, which are the *entities* we will be dealing with.
+A planet can have many satellites, so there is a relationship between our entities.
+Using nothing more than the idea of "Planets" and "Satellites", you can go a long way towards modeling a solar system.
 
-All models have two properties:
+A complete data model consists of entities and the relationships between those entities.
 
-- **Entities**: An Entity is a type of object.  Entities have attributes, which are characteristics of the Entity.  In the chess example, a Player is a an Entity; there are two Players in chess and each one is an instance of the Player class.  An attribute of Players is "color"; the player controls either white pieces or black pieces, so the player's color can be white or black.  Since a player can have a name, *name* is therefore also an attribute of a Player.
-- **Relationships**: Entities can affect one another through relationships.  In the chess example, a Player has many Pieces and each Piece is owned by a Player.  Since a Player can have many Pieces, we call this a "one-to-many" Relationship.  There are also one-to-one and many-to-many relationships.
+- **Entities**: An Entity is a type of object.  Entities have attributes, which are characteristics of the Entity.
+In :doc:`tutorial-planets`, a Planet is a an Entity and so is a Satellite.
+An attribute of a Planet is its "mass"; the mass of a planet is stored in the data model alongside the name of the planet.
+Since a planet can have a name, *name* is therefore also an attribute of a Planet.
+- **Relationships**: Entities can affect one another through relationships.
+In :doc:`tutorial-planet`, a Planet can have many Satellites.
+Since a Planet can have many Satellites, we call this a "one-to-many" Relationship.
+There are also one-to-one and many-to-many relationships.
 
-A model can therefore be described using an Entity-Relationship Diagram, which shows all of the types of objects, their attributes, and the way entities relate to one another.  Read more about :doc:`models` for a more detailed discussion and code examples.
+A model can therefore be described using an Entity-Relationship Diagram, which shows all of the types of objects, their attributes, and the way entities relate to one another.
+Read more about :doc:`models` for a more detailed discussion and code examples.
 
 A Philosophy of Models
 ^^^^^^^^^^^^^^^^^^^^^^
 
-A model might be a very simple representation of a real thing, or the model might be very detailed.  A model of an entire country's economy might require lots of detail, whereas a model of a school district might be relatively simpler.
+A model might be a very simple representation of a real thing, or the model might be very detailed.
+A model of an entire country's economy might require lots of detail, whereas a model of a school district might be relatively simpler.
 
 A model is in some ways a platonic ideal of the actual domain being modeled.  While things in the "real world" are irregular in an uncountable number of ways, our models are perfectly regular.  Since models are stored in a database, all of the model attributes can be lined up nicely into rows and columns.  Tidy!
 

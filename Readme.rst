@@ -46,11 +46,11 @@ http://flask-diamond.org
 Quick Start Screencast
 ^^^^^^^^^^^^^^^^^^^^^^
 
-.. image:: https://img.youtube.com/vi/XqfF_du06uo/0.jpg
+.. image:: https://img.youtube.com/vi/dFp-YtV4898/0.jpg
     :alt: Flask-Diamond Quick Start
-    :target: https://www.youtube.com/watch?v=XqfF_du06uo
+    :target: https://www.youtube.com/watch?v=dFp-YtV4898
     :align: center
     :height: 315px
     :width: 560px
 
-Length: 3:13
+Length: 3:17

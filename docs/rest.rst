@@ -8,7 +8,7 @@ This document describes REST and how to implement it in a Flask-Diamond project.
 REST in a Nutshell
 ------------------
 
-I like to simplify REST like so:
+Representational State Transfer, usually abbreviated REST, can be simplified as follows:
 
 - The web consists of documents that are referred to by URL links.
 - Each URL is a "thing".  As a part of speech, it is a noun.  For example: a URL points to a picture, a document, or a person's timeline.
@@ -23,27 +23,18 @@ If we learn to make APIs that are *RESTful*, then we can count on others to be a
 Examples of REST
 ^^^^^^^^^^^^^^^^
 
-Let's say you are building an API for chess.
-The main thing players must do is change the lay of the board by moving pieces.  Our API therefore exposes one endpoint: ``/api/board``.
-To change the board, we will update it by providing a standard chess move that takes a piece from one location and moves it to another.
-We will use JSON to represent the move like so:
+Let's say you are building an API for a solar system and you need to manage planets for observation.
+Our API could then expose one URL endpoint for retrieving all planets: ``/api/planet_list``.
+We could then add a planet to our solar system with an HTTP POST containing the following data:
 
 ::
 
     {
-        'from': 'A2',
-        'to': 'C3'
+        'name': 'Venus',
+        'mass': '90.0'
     }
 
-So, to put a knight into a new spot, we might issue the following HTTP command:
-
-::
-
-    PUT /api/board HTTP/1.1
-
-    {'from': 'A2', 'to': 'C3'}
-
-Such a command could be issued using javascript, from the command line (e.g. with ``curl``), or using any HTTP client.
+Such a POST could be issued using javascript, from the command line (e.g. with ``curl``), or using any HTTP client.
 That's the beauty of REST: if you work with the web, the web can work with you.
 
 Flask-RESTful
@@ -55,23 +46,20 @@ The primary way to use Flask-RESTful is to create Resource objects.  A Resource 
 
 ::
 
+    from flask_diamond import db
+    from .mixins import DiamondTestCase
+    from ..models import Planet
+
     def init_rest():
-        class Board(Resource):
-            def get(self, id):
-                return models.board.get(id).dumps()
+        class PlanetResource(Resource):
+            def get(self, name):
+                return models.planet.find(name=name).dumps()
 
-            def put(self, id):
-                board = models.board.get(id)
-                board.move_piece()
+        rest.add_resource(PlanetResource, '/api/planet/<str:name>')
 
-        rest.add_resource(Board, '/api/board/<int:id>')
-
-This simple example creates a resource called Board.
-Then, it specifies a way to handle the GET verb, which will result in retrieving a board.
-It also specifies how to handle the PUT verb, which it will respond to by moving a piece.
-Finally, the resource is exposed using a URL: ``/api/board/...``.
-
-If you were to place this code into your own application alongside your *init_blueprints()* function, you will suddenly have an API for your app!
+This simple example creates a resource called PlanetResource.
+Then, it specifies a way to handle the GET verb, which will result in retrieving a planet.
+Finally, the resource is exposed using a URL: ``/api/planet/...``.
 
 MarshmallowMixin
 ----------------
@@ -87,7 +75,7 @@ Let's look at the following line of code:
 
 ::
 
-    return models.board.get(id).dumps()
+    return models.planet.get(id).dumps()
 
 The *dumps()* at the end of the line will cause an ORM model object to be converted to JSON using Marshmallow.
 For more information, please see the documentation for `Marshmallow <http://marshmallow.readthedocs.org/en/latest/>`_ and `Flask-Marshmallow <http://flask-marshmallow.readthedocs.org/en/latest/>`_.
@@ -96,13 +84,14 @@ How not to REST
 ---------------
 
 REST says we should not create URLs that imply actions; URLs must be things.  This pattern is common in older websites.
-For example, you should not build an API with a URL called ``/api/move_piece`` because that describes an action: moving a piece.
+For example, you should not build an API with a URL called ``/api/rename_planet`` because that describes an action: changing a planet's name.
 REST says the only actions available are HTTP verbs, like GET and PUT.
 
 You can think about it this way too: when a web client visits a URL, it usually issues the GET verb.
-It doesn't really make sense to ``GET /api/move_piece``.  However, early web developers tried to make this work using arguments.
-That resulted in operations like ``GET /api/move_piece?from=A2&to=C3``.
+It doesn't really make sense to ``GET /api/rename_planet`` because that's actually something you want to push to the server, not get from the server.
+However, early web developers tried to make this work using arguments, which resulted in operations like ``GET /api/move_piece?from=A2&to=C3``.
 These became really long URLs that contained all the same information as the RESTful example, but which broke certain features of the Internet.
 For example, if a web spider visited that URL, the web server would incorrectly interpret that visit as a command to move a piece.
-
-This leads to chaos.  Don't make URLs this way.  Be RESTful, instead.
+This leads to chaos.
+Don't make URLs this way.
+Be RESTful, instead.
