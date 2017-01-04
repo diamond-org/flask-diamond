@@ -3,13 +3,100 @@ Change Log
 
 This file contains a summary of major changes to Flask-Diamond.
 
+0.5.0
+-----
+
+2017-01-04
+
+- updating flask-security to 1.7.5, flask to 0.11.1
+- more robust accounts facet
+- moving templates out of core library into skel
+- renamed all intances of flask.ext.whatever as flask_whatever
+- update rest API docs and skel
+- refactor of cli
+- migrate global junk into scaffolds
+- consolidate Planets tutorial
+- update documentation
+- testing uses latest available flask-diamond version
+- permit testing of core flask-diamond library without scaffolding
+- screencast in readme
+- simplify naming of documentation files
+
+0.4.12
+------
+
+2016-11-14
+
+- remove tutorial dependencies from basic tests
+
+0.4.11
+------
+
+2016-11-14
+
+- ensure user registration signal works
+
+0.4.10
+------
+
+2016-11-14
+
+- ensure skel references latest version of flask-diamond
+
+0.4.9
+-----
+
+2016-11-10
+
+- add user name to GUI Create form
+
+0.4.8
+-----
+
+2016-11-10
+
+- fix other python 3 errors
+
+0.4.7
+-----
+
+2016-11-05
+
+- fix escaping problem with flask-diamond scaffold
+
+0.4.6
+-----
+
+2016-07-25
+
+- update scaffolds to be compatible with py3
+
+0.4.5
+-----
+
+2016-07-25
+
+- add example REST interface to scaffolds
+
+0.4.4
+-----
+
+2016-07-25
+
+- fix documentation
+- fix namespace conflict with REST api
+
 0.4.3
 -----
+
+2016-06-09
 
 - permit any sufficiently modern version of Fabric3
 
 0.4.2
 -----
+
+2016-05-22
 
 - using Fabric3 instead of Fabric
 
