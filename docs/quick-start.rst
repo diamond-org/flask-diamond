@@ -12,6 +12,8 @@ Screencast
         <iframe width="560" height="315" src="https://www.youtube.com/embed/XqfF_du06uo" frameborder="0" allowfullscreen></iframe>
     </center>
 
+Length: 3:13
+
 Install Flask-Diamond
 ---------------------
 

@@ -1,7 +1,7 @@
 Facet: Database
 ===============
 
-In Flask-Diamond, a Model is a way of reading and writing a database. If our application is a chess game, then we're modeling chess objects in a database.  If our application is a social network, then we're modeling people objects in a database. A fundamental assumption of the :doc:`Model-View-Controller <model-view-controller>` architecture is that our application deals with objects, and our objects are modeled after the things our application deals with.
+In Flask-Diamond, a Model is a way of reading and writing a database. If our application is a model of the solar system, then we're modeling planet objects in a database. A fundamental assumption of the :doc:`Model-View-Controller <model-view-controller>` architecture is that our application deals with objects, and our objects are modeled after the things our application deals with.
 
 This document will demonstrate a model, then discuss some of the ways Flask-Diamond makes it easier to work with models.
 
@@ -10,60 +10,53 @@ A Basic Model
 
 A model is actually written in Flask-Diamond using Python.  Models are represented using `SQLAlchemy <http://docs.sqlalchemy.org/en/rel_1_0/>`_, which is a very powerful Python library for working with databases.  Since we are storing our models in a database, `SQLAlchemy <http://docs.sqlalchemy.org/en/rel_1_0/>`_ provides a strong foundation for getting the job done.
 
-Let's create a model of a person who has a name and an age.  Also, let's model the fact that every person has two biological parents (here called a mother and a father).  The following example demonstrates one way this model might be accomplished. [#f1]_
+Let's create a model of a planet with a name and mass. Let us also create a model of a satellite that orbits a planet. The following example demonstrates one way this model might be accomplished. [#f1]_
 
 .. code-block:: python
 
-    from flask.ext.diamond.utils.mixins import CRUDMixin
-    from flask.ext.diamond import db
+    from flask_diamond import db
+    from flask_diamond.mixins.crud import CRUDMixin
 
+    class Planet(db.Model, CRUDMixin):
+        "A Planet is a celestial body"
+        id = db.Column(db.Integer(), primary_key=True)
+        name = db.Column(db.String(80), unique=True)
+        mass = db.Column(db.Float())
 
-    class Person(db.Model, CRUDMixin):
-        id = db.Column(db.Integer, primary_key=True)
-        name = db.Column(db.String(255))
-        age = db.Column(db.Integer)
-
-        mother_id = db.Column(db.Integer, db.ForeignKey('person.id'))
-        mother = db.relationship('Person',
-            primaryjoin=('Person.mother_id == Person.id'),
-            remote_side="Person.id")
-
-        father_id = db.Column(db.Integer, db.ForeignKey('person.id'))
-        father = db.relationship('Person',
-            primaryjoin=('Person.father_id == Person.id'),
-            remote_side="Person.id")
-
-        def __str__(self):
-            return self.name
-
-Now, we can model a Person and specify their name and age.  Once we create Person objects for a mother and a father, we can model the parent-child relationships.  The model above could be used in Python like so:
+Now, we can model a Planet and a Satellite.  Notice that satellites specify a relationship to a planet.  Let's use our data model to create a few objects in our database.
 
 .. code-block:: python
 
-    from models import Person
-
-    me = Person.create(name="Me", age=34)
-    mom = Person.create(name="Mom", age=65)
-    dad = Person.create(name="Dad", age=64)
-    me.mother = mom
-    me.father = dad
-    me.save()
+    from planets import models
+    earth = models.Planet.create(name="Earth", mass=100.0)
+    mars = models.Planet.create(name="Mars", mass=90.0)
 
 Model Methods
 -------------
 
-Usually, data models are created for entities that are changing.  A person's age increases every year, so we might create a *birthday* method that increments a person's age.  A simplified version of our person model has been extended with the birthday method below:
+Now let's assume our planets can be bombarded by asteroids with a certain mass.
+We can extend our planet model to incorporate this feature
 
 .. code-block:: python
 
-    class Person(db.Model, CRUDMixin):
-        id = db.Column(db.Integer, primary_key=True)
-        name = db.Column(db.String(255))
-        age = db.Column(db.Integer)
+    class Planet(db.Model, CRUDMixin):
+        "A Planet is a celestial body"
+        id = db.Column(db.Integer(), primary_key=True)
+        name = db.Column(db.String(80), unique=True)
+        mass = db.Column(db.Float())
 
-        def birthday(self):
-            self.age += 1
+        def bombard(self, mass=1.0):
+            self.mass += mass
             self.save()
+
+Now we can send an asteroid at a planet and our data model will add the mass of the asteroid to the planet:
+
+.. code-block:: python
+
+    from planets import models
+    earth = models.Planet.create(name="Earth", mass=100.0)
+    earth.bombard(mass=15)
+    print(earth.mass)
 
 Only The Model Controls the Data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -86,40 +79,44 @@ The `SQLAlchemy Basic Relationships <http://docs.sqlalchemy.org/en/latest/orm/ba
 - `Many to Many <http://docs.sqlalchemy.org/en/latest/orm/basic_relationships.html#many-to-many>`_
 - `Many to Many Association <http://docs.sqlalchemy.org/en/latest/orm/basic_relationships.html#association-object>`_
 
-To demonstrate a basic relationship, let's say each Person lives in a House, which is modeled as:
+To demonstrate a basic relationship, let's say a planet can have a satellite orbiting it:
 
 .. code-block:: python
 
-    class House(db.Model, CRUDMixin):
-        id = db.Column(db.Integer, primary_key=True)
-        address = db.Column(db.String(255))
+    from flask_diamond import db
+    from flask_diamond.mixins.crud import CRUDMixin
 
-    class Person(db.Model, CRUDMixin):
-        id = db.Column(db.Integer, primary_key=True)
-        name = db.Column(db.String(64))
-        house_id = db.Column(db.Integer, db.ForeignKey("house.id"))
-        house = db.relationship('House',
-            backref=db.backref('persons', lazy='dynamic')
-        )
+    class Planet(db.Model, CRUDMixin):
+        "A Planet is a celestial body"
+        id = db.Column(db.Integer(), primary_key=True)
+        name = db.Column(db.String(80), unique=True)
+        mass = db.Column(db.Float())
 
-The following code example uses the classes above to create two people who live at one house.
+    class Satellite(db.Model, CRUDMixin):
+        "A Satellite orbits a Planet"
+        id = db.Column(db.Integer(), primary_key=True)
+        name = db.Column(db.String(80), unique=True)
+        mass = db.Column(db.Float())
+        planet = db.relationship('Planet', backref=db.backref('satellites', lazy='dynamic'))
+        planet_id = db.Column(db.Integer(), db.ForeignKey("planet.id"))
+
+The following code example uses the classes above to create a planet called Earth with a moon.
 
 .. code-block:: python
 
-    our_house = House(address="1600 Pennsylvania Ave")
-    myself = Person("Me", house=our_house)
-    mom = Person("Mom", house=our_house)
-    print(myself.house)
+    from planets import models
+    earth = models.Planet.create(name="Earth", mass=100.0)
+    moon = models.Satellite.create(name="Moon", mass=25.0, planet=earth)
 
 Querying with SQLAlchemy
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Based on the Person class, a simple query that finds a person named "Me" looks like:
+Based on the Planet class, a simple query that finds a planet named "Earth" looks like:
 
 .. code-block:: python
 
-    myself = models.Person.find(name="Me")
-    print(myself.name)
+    earth = models.Planet.find(name="Earth")
+    print(earth.mass)
 
 However, the `SQLAlchemy Query API <http://docs.sqlalchemy.org/en/latest/orm/query.html>`_ is extremely powerful, and its documentation is the authoritative source.
 
@@ -133,33 +130,15 @@ There is a close correspondence between the Model and the database tables.  If a
 
 As long as you are actively developing, it is recommended to use ``make db`` each time you update your model.  However, when your application is live, you will need to read :doc:`schemas-and-migrations` to learn about altering a production database.
 
-Data Fixtures
--------------
-
-What good is a data model without any data to put in it?  Data fixtures are a way of easily adding data to your database, which is helpful when you are frequently rebuilding your database with ``make db``.  Data fixtures can be placed into ``bin/manage.py`` within the ``populate_db()`` function.  If you find yourself continually re-creating certain model objects in your database so you can test your application, then consider using ``populate_db()`` to automate the creation of these objects.
-
-For example, in order for ``make db`` to automatically create a Person object based on the Person class above, construct ``populate_db()`` like this:
-
-.. code-block:: python
-
-    @manager.command
-    def populate_db():
-        "insert a default set of objects"
-
-        from models import Person
-
-        me = Person.create(name="Me", age=34)
-        mom = Person.create(name="Mom", age=65)
-        dad = Person.create(name="Dad", age=64)
-        me.mother = mom
-        me.father = dad
-        me.save()
-
-
 Another model example
 ---------------------
 
+For the sake of illustration, the following is a recursive model that is able to link to itself, creating a friendship graph of individuals.
+
 .. code-block:: python
+
+    from flask_diamond import db
+    from flask_diamond.mixins.crud import CRUDMixin
 
     class Individual(db.Model, CRUDMixin):
         id = db.Column(db.Integer, primary_key=True)
@@ -173,9 +152,6 @@ Another model example
         def set_friend(self, obj):
             self.friend = obj
             self.save()
-
-        def as_hash(self):
-            pass
 
         def __str__(self):
             return self.name

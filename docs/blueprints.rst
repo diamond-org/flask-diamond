@@ -1,14 +1,20 @@
 Facet: Blueprints
 =================
 
-As is explained in :doc:`model-view-controller`, a *View* takes data from a Model and presents it (typically to a user).  Often times, there are multiple Views of a data Model, and they may present different aspects of the Model.  A common pattern for multiple views is the use of permissions to restrict functionality to users based upon their account role.  The administrator may have a special *View* into the data that provides extra functionality that regular users do not have.
+As is explained in :doc:`model-view-controller`, a *View* takes data from a Model and presents it (typically to a user).
+Often times, there are multiple Views of a data Model, and they may present different aspects of the Model.
+A common pattern for multiple views is the use of permissions to restrict functionality to users based upon their account role.
+The administrator may have a special *View* into the data that provides extra functionality that regular users do not have.
 
-Views are frequently written using *templates*, which have placeholders for variables that may be filled in by the application.  In Flask-Diamond, the `Jinja templating language <http://jinja.pocoo.org/>`_ is used to generate HTML, javascript, CSS, and other web-facing files that create a user interface.  By populating the template with data from the Model, the result is that users can interact with Model data.
+Views are frequently written using *templates*, which have placeholders for variables that may be filled in by the application.
+In Flask-Diamond, the `Jinja templating language <http://jinja.pocoo.org/>`_ is used to generate HTML, javascript, CSS, and other web-facing files that create a user interface.
+By populating the template with data from the Model, the result is that users can interact with Model data.
 
 Jinja is a Templating Language
 ------------------------------
 
-The rest of this document provides a summary of the key points about Jinja Views.  The `Jinja website <http://jinja.pocoo.org/>`_ provides a nice example of what Jinja looks like:
+The rest of this document provides a summary of the key points about Jinja Views.
+The `Jinja website <http://jinja.pocoo.org/>`_ provides a nice example of what Jinja looks like:
 
 ::
 
@@ -26,12 +32,18 @@ A detailed discussion of templates is available from the `Jinja templates docume
 Variables in Jinja
 ^^^^^^^^^^^^^^^^^^
 
-A python expression within a Jinja template is denoted using double-curlies as ``{{ }}``.  In this manner, it is easy to reference variables by simply placing them inside double-curlies.  In the example above, *user.username* will be replaced by the actual value of a user's username (e.g. "administrator").  If it were not inside the double-curlies, "user.username" would be printed verbatim (i.e. substitution is not performed unless inside double-curlies).
+A python expression within a Jinja template is denoted using double-curlies as ``{{ }}``.
+In this manner, it is easy to reference variables by simply placing them inside double-curlies.
+In the example above, *user.username* will be replaced by the actual value of a user's username (e.g. "administrator").
+If it were not inside the double-curlies, "user.username" would be printed verbatim (i.e. substitution is not performed unless inside double-curlies).
 
 Statements in Jinja
 ^^^^^^^^^^^^^^^^^^^
 
-A python statement (like an "if statement") is denoted in Jinja using ``{% %}``. Using statements, it is possible to create dynamic templates that print different details based upon the data given to them.  For example, in a chess game, each player would view the chess board from opposite sides of a table, so the view should display the board differently to each player.  A logic statement like ``{% if player.color=='white' %}`` can be used to display the board in one direction to the white player, and ``{% if player.color=='black' %}`` can do the opposite.
+A python statement (like an "if statement") is denoted in Jinja using ``{% %}``.
+Using statements, it is possible to create dynamic templates that print different details based upon the data given to them.
+For example, in a chess game, each player would view the chess board from opposite sides of a table, so the view should display the board differently to each player.
+A logic statement like ``{% if player.color=='white' %}`` can be used to display the board in one direction to the white player, and ``{% if player.color=='black' %}`` can do the opposite.
 
 Rendering a template with Flask
 -------------------------------

@@ -13,27 +13,28 @@ When `Flask-Admin <http://flask-admin.readthedocs.org/>`_ creates a GUI, it auto
 AdminModelViewExample
 ^^^^^^^^^^^^^^^^^^^^^
 
-The following example imports a class called Person (which is described in the :doc:`Model documentation <models>`).  Then, the Person class is added to the GUI using the `add_view() <http://flask-admin.readthedocs.org/en/latest/api/mod_base/#flask_admin.base.Admin.add_view>`_ method.
+The following example imports a class called Planet (which is described in the :doc:`Model documentation <models>`).  Then, the Planet class is added to the GUI using the `add_view() <http://flask-admin.readthedocs.org/en/latest/api/mod_base/#flask_admin.base.Admin.add_view>`_ method.
 
 .. code-block:: python
 
-    from flask.ext.diamond import Diamond, db, security
-    from flask.ext.diamond.administration import AdminModelView
-    from . import models
+    from flask_diamond import Diamond
+    from flask_diamond.administration import AdminModelView
+    from .models import User, Role, Planet
 
     class my_diamond_app(Diamond):
-        def administration(self):
-            admin = super(my_diamond_app, self).administration()
+
+        def init_administration(self):
+            admin = self.super("administration", user=User, role=Role)
             admin.add_view(AdminModelView(
-                models.Person,
+                Planet,
                 db.session,
-                name="Person",
-                category="Models")
+                name="Planet",
+                category="Admin")
             )
 
-When the server is launched, it provides a GUI facility for applying CRUD operations to the Person model.  Due to the use of AdminModelView, the application will now require a password before allowing anybody to create, read, update, or delete any Person object.
+When the server is launched, it provides a GUI facility for applying CRUD operations to the Planet model.  Due to the use of AdminModelView, the application will now require a password before allowing anybody to create, read, update, or delete any Planet object.
 
-The *category* parameter causes the GUI to put this View into the menu bar beneath the heading "Models".  The *name* parameter indicates this link will be titled *Person*.  Now you can find the Person CRUD by navigating through the menu to Models and then to Person.
+The *category* parameter causes the GUI to put this View into the menu bar beneath the heading "ModelAdmin".  The *name* parameter indicates this link will be titled *Planet*.  Now you can find the Planet CRUD by navigating through the menu to Models and then to Planet.
 
 Multiple CRUD Views Inside BaseModelView
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -50,58 +51,68 @@ Create-List-Edit-Delete corresponds directly to Create-Read-Update-Delete.
 Extending the CRUD
 ------------------
 
-Flask-Admin makes it pretty easy to add custom functionality through `Python class inheritance <https://docs.python.org/2/tutorial/classes.html>`_ [#f1]_.  In the :doc:`Model documentation <models>`, the Person Model provides a birthday() method that causes the person to become one year older.  The following sections demonstrate how to expose the birthday method and create a user interface widget for calling that method.
+Flask-Admin makes it pretty easy to add custom functionality through `Python class inheritance <https://docs.python.org/2/tutorial/classes.html>`_ [#f1]_.
+In the :doc:`Model documentation <models>`, the Planet Model provides a ``bombard()`` method that sends an asteroid at a planet.
+The following sections demonstrate how to expose the ``bombard()`` method and create a user interface widget for calling that method.
 
 Exposing a new View
 ^^^^^^^^^^^^^^^^^^^
 
-In addition to the basic CRUD views, new views can be created for doing other things with Models.  Since the Person class has been extended with a birthday() method, the following example enables the method to be called through the Controller.
+In addition to the basic CRUD views, new views can be created for doing other things with Models.
+Since the Planet class has been extended with a bombard() method, let's create a URL endpoint to send an asteroid at a planet.
 
 .. code-block:: python
 
-    from flask.ext.admin import expose
+    from flask_diamond import Diamond
+    from flask_diamond.administration import AdminModelView
+    from flask_admin import expose
+    from .models import User, Role, Planet
 
-    class PersonModelView(AdminModelView):
-        @expose('/birthday/<person_id>')
-        def birthday(self, person_id):
-            the_person = models.Person.get(person_id)
-            the_person.birthday()
+    class PlanetModelView(AdminModelView):
+        @expose('/bombard/<planet_id>')
+        def bombard(self, planet_id):
+            the_planet = models.Planet.get(planet_id)
+            the_planet.bombard(mass=10.0)
             return flask.redirect(flask.url_for('.list_view'))
 
     class my_diamond_app(Diamond):
-        def administration(self):
-            admin = super(my_diamond_app, self).administration()
-            admin.add_view(PersonModelView(
-                models.Person,
+        def init_administration(self):
+            admin = self.super("administration", user=User, role=Role)
+            admin.add_view(PlanetModelView(
+                models.Planet,
                 db.session,
-                name="Person",
-                category="Models")
+                name="Planet",
+                category="Admin")
             )
 
 
 Adding a Widget
 ^^^^^^^^^^^^^^^
 
-One simple way to add functionality to the user interface is to use Flask-Admin's formatters to make a field into an interactive widget.  This basic pattern is demonstrated by formatting Person.age with a "birthday" button:
+One simple way to add functionality to the user interface is to use Flask-Admin's formatters to make a field into an interactive widget.  This basic pattern is demonstrated by formatting Planet.mass with a "bombard" button:
 
 .. code-block:: python
 
     import jinja2
+    from flask_diamond import Diamond
+    from flask_diamond.administration import AdminModelView
+    from flask_admin import expose
+    from .models import User, Role, Planet
 
-    class PersonModelView(AdminModelView):
-        def age_formatter(self, context, model, name):
-            age_widget_template = "{0} <a href='{1}'>birthday!</a>"
-            age_widget = age_widget_template.format(
+    class PlanetModelView(AdminModelView):
+        def mass_formatter(self, context, model, name):
+            mass_widget_template = "{0} <a href='{1}'>bombard!</a>"
+            mass_widget = mass_widget_template.format(
                 model.age,
-                flask.url_for(".birthday", person_id=model.id)
+                flask.url_for(".bombard", planet_id=model.id)
             )
-            return jinja2.Markup(age_widget)
+            return jinja2.Markup(mass_widget)
 
         column_formatters = {
-            "age": age_formatter,
+            "age": mass_formatter,
         }
 
-When these two *PersonModelView* examples are combined, the result is a user interface that can model a Person's birthday when a link is clicked.
+When these two *PlanetModelView* examples are combined, the result is a user interface that can bombard a planet with asteroids when clicked.
 
 ModelView Example
 ^^^^^^^^^^^^^^^^^
@@ -110,11 +121,11 @@ The following ``AuthModelView`` includes examples for overriding various fields 
 
 .. code-block:: python
 
-    class IndividualAdmin(AuthModelView):
+    class PlanetAdmin(AuthModelView):
 
-        edit_template = 'individual_view.html'
+        edit_template = 'planet_edit.html'
 
-        column_list = ("name", "friend")
+        column_list = ("name", "mass")
 
         form_overrides = {
             "upload_buffer": FileUploadField
@@ -122,7 +133,7 @@ The following ``AuthModelView`` includes examples for overriding various fields 
 
         form_args = {
             'upload_buffer': {
-                'label': 'Report PDF',
+                'label': 'Planet PDF',
                 'base_path': "/tmp",
             }
         }

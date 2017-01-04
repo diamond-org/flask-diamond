@@ -11,8 +11,10 @@ Screencast
 .. raw:: html
 
     <center>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/XqfF_du06uo" frameborder="0" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/5FOv4wN8h3c" frameborder="0" allowfullscreen></iframe>
     </center>
+
+Length: 11:03
 
 Overview
 --------
@@ -106,8 +108,8 @@ Inspect Models
 Using a text editor, inspect the files in ``planets/models``.
 
 - ``__init__.py`` proxies all model classes
-- ``Planet.py`` contains definition of Planet class
-- ``Satellite.py`` contains definition of Satellite class
+- ``planet.py`` contains definition of Planet class
+- ``satellite.py`` contains definition of Satellite class
 
 The *Planet* model enables us to capture the name and mass of a planet in the application database.
 The *Satellite* model is similar to the Planet model, but it also includes a foreign key relationship so that satellites may belong to planets.

@@ -29,7 +29,7 @@ We will work on the dev database, which should not have any important data in it
 
 ::
 
-    grep SQLALCHEMY_DATABASE_URI etc/dev.conf
+    grep SQLALCHEMY_DATABASE_URI etc/conf/dev.conf
 
 create a new migration
 ^^^^^^^^^^^^^^^^^^^^^^
