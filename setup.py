@@ -20,10 +20,11 @@ def grep(attrname):
 setup(
     version=grep('__version__'),
     name='Flask-Diamond',
-    description=("Flask-Diamond provides some opinions about "
-        "data-centric Internet applications and systems. "
+    description=(
         "Flask-Diamond is a batteries-included Flask framework, "
-        "sortof like Django but radically decomposable."
+        "sortof like Django but radically decomposable. "
+        "Flask-Diamond offers some opinions about "
+        "data-centric Internet applications and systems."
     ),
     packages=find_packages(),
     scripts=[
