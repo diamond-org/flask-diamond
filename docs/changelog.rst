@@ -3,6 +3,13 @@ Change Log
 
 This file contains a summary of major changes to Flask-Diamond.
 
+0.5.1
+-----
+
+2017-01-05
+
+- fixed flask-diamond CLI python3 compatibility bug
+
 0.5.0
 -----
 
