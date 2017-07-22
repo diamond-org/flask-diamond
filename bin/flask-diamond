@@ -30,7 +30,8 @@ def scaffold(skel):
                 f.write("[defaults]\n")
                 f.write("home_directory = {0}\n".format(os.environ["HOME"]))
                 # f.write("flask_diamond_version = {0}\n".format(__version__))
-                secret_str = repr(os.urandom(24).replace(b"\"", b"#").replace(b"%", b"#"))[1:-1]
+                chars = string.ascii_letters + string.digits + string.punctuation
+                secret_str = "".join([random.choice(chars) for _ in range(24)])
                 f.write("secret = \"{0}\"\n".format(secret_str))
                 f.write("hash_salt = {0}\n".format(
                     "".join(random.choice(string.ascii_letters+string.digits) for _ in range(16))))
