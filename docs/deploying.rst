@@ -31,4 +31,4 @@ By default, Flask-Diamond provides a ``fabfile.py`` with the scaffold with the f
 Customizing Fabric
 ------------------
 
-Because all systems are different, it is not too likely that all of the commands in ``fabfily.py`` will work.  However, this at least provides a starting point.
+Because all systems are different, it is not too likely that all of the commands in ``fabfile.py`` will work.  However, this at least provides a starting point.
