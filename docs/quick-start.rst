@@ -38,6 +38,17 @@ Enter the virtual environment and scaffold a new Flask-Diamond application.  For
     workon my-application
     flask-diamond scaffold app
 
+Windows scaffold
+^^^^^^^^^^^^^^^^
+
+Invoke `flask-diamond` with `cmd.exe`.
+
+::
+
+    workon my-application
+    %VIRTUAL_ENV%\scripts\python.exe %VIRTUAL_ENV%\scripts\flask-diamond scaffold app
+
+
 Use it!
 -------
 

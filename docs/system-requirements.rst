@@ -52,17 +52,32 @@ Flask-Diamond installs pretty easily on OSX with Homebrew.  Make sure you are us
     brew install sqlite
     pip install --upgrade pip
 
-Windows with Cygwin
--------------------
+Windows
+-------
 
-**Note**: Have you done this install successfully?  Please share your process as a comment on `Issue 8 <https://github.com/diamond-org/flask-diamond/issues/8>`_.
+First, install Python from https://www.python.org/downloads/windows/.
+Then, launch PowerShell and gain administrative privileges.
+Finally, use `pip` to perform a site-wide install of several core libraries.
 
-Here are a few resources to get you started:
+::
 
-- http://www.pdxpixel.com/blog/setting-up-python-and-virtualenv-windows-cygwin/
-- http://atbrox.com/2009/09/21/how-to-get-pipvirtualenvfabric-working-on-cygwin/
-- http://anythingsimple.blogspot.ca/2010/04/using-pip-virtualenv-and.html
-- http://stackoverflow.com/questions/2173963/how-do-i-get-virtualenvwrapper-and-cygwin-to-co-operate
+    start-process powershell –verb runAs
+    pip install virtualenvwrapper
+    pip install virtualenvwrapper-win
+    pip install pyreadline
+
+Windows installation of Flask-Diamond is similar to UNIX:
+
+::
+
+    cmd.exe
+    mkvirtualenv my-app
+    workon my-app
+    pip install Flask-Diamond
+    easy_install -U mr.bob==0.1.1
+    pip install --no-deps Flask-Diamond
+
+Discussion of Windows 10 installation is ongoing here: https://github.com/diamond-org/flask-diamond/issues/8
 
 .. _unprivileged-installation:
 
