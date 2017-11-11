@@ -27,7 +27,7 @@ def scaffold(skel):
         print(os.path.join(pathname, filename))
 
         if skel == "app":
-            with open("mrbob.ini", "w") as f:
+            with open(".mrbob.ini", "w") as f:
                 f.write("[defaults]\n")
                 home = os.path.expanduser("~")
                 f.write("home_directory = {0}\n".format(home))
@@ -47,8 +47,12 @@ def scaffold(skel):
         distutils.dir_util.copy_tree(os.path.join(pathname, filename, skel), "skel")
 
         # invoke mr.bob with the local copy of the skel
-        cmd = "mrbob -w --config mrbob.ini -O . skel"
+        cmd = "mrbob -w --config .mrbob.ini -O . skel"
         os.system(cmd)
+
+        # clean up after ourselves
+        if os.path.isdir("skel"):
+            distutils.dir_util.remove_tree("skel")
     else:
         print("unrecognized skel: {0}".format(skel))
         list_skels()
