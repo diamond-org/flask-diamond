@@ -1,3 +1,4 @@
+@ECHO OFF
 REM Flask-Diamond (c) Ian Dennis Miller
 REM This is a Windows batch file for launching flask-diamond
 REM The script assumes you are using a python virtualenv.
