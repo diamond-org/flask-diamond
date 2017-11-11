@@ -21,7 +21,7 @@ Flask-Diamond installs cleanly on Debian and Ubuntu systems released after 2011.
 ::
 
     apt-get install python python-dev python-pip build-essential
-    apt-get install sqlite-dev
+    apt-get install libsqlite3-dev
     pip install --upgrade pip
     pip install --upgrade virtualenv
     pip install virtualenvwrapper
@@ -64,7 +64,6 @@ Finally, use `pip` to perform a site-wide install of several core libraries.
     start-process powershell –verb runAs
     pip install virtualenvwrapper
     pip install virtualenvwrapper-win
-    pip install pyreadline
 
 Windows installation of Flask-Diamond is similar to UNIX:
 

@@ -29,6 +29,7 @@ setup(
     packages=find_packages(),
     scripts=[
         "bin/flask-diamond",
+        "bin/flask-diamond.cmd",
     ],
     long_description=read('Readme.rst'),
     classifiers=[

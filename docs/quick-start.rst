@@ -46,8 +46,8 @@ Invoke `flask-diamond` with `cmd.exe`.
 ::
 
     workon my-application
+    pip install pyreadline
     %VIRTUAL_ENV%\scripts\python.exe %VIRTUAL_ENV%\scripts\flask-diamond scaffold app
-
 
 Use it!
 -------
