@@ -26,18 +26,17 @@ def scaffold(skel):
         pathname = os.path.dirname(os.path.abspath(flask_diamond.__file__))
         print(os.path.join(pathname, filename))
 
-        if skel == "app":
-            with open("mrbob.ini", "w") as f:
-                f.write("[defaults]\n")
-                home = os.path.expanduser("~")
-                f.write("home_directory = {0}\n".format(home))
-                chars = string.ascii_letters + string.digits + '^!$&=?+~#-_.:,;'
-                secret_str = "".join([random.choice(chars) for _ in range(24)])
-                f.write("secret = \"{0}\"\n".format(secret_str))
-                f.write("hash_salt = {0}\n".format(
-                    "".join(random.choice(string.ascii_letters+string.digits) for _ in range(16))))
-                f.write("simple_password = {0}\n".format(
-                    "".join(random.choice(string.ascii_lowercase) for _ in range(3))))
+        with open("mrbob.ini", "w") as f:
+            f.write("[defaults]\n")
+            home = os.path.expanduser("~")
+            f.write("home_directory = {0}\n".format(home))
+            chars = string.ascii_letters + string.digits + '^!$&=?+~#-_.:,;'
+            secret_str = "".join([random.choice(chars) for _ in range(24)])
+            f.write("secret = \"{0}\"\n".format(secret_str))
+            f.write("hash_salt = {0}\n".format(
+                "".join(random.choice(string.ascii_letters+string.digits) for _ in range(16))))
+            f.write("simple_password = {0}\n".format(
+                "".join(random.choice(string.ascii_lowercase) for _ in range(3))))
 
         # if skel exists, remove it
         if os.path.isdir("skel"):
