@@ -8,6 +8,7 @@ import os
 import flask_diamond
 import string
 import random
+import distutils
 from flask_diamond.__meta__ import __version__
 
 
@@ -26,11 +27,10 @@ def scaffold(skel):
         print(os.path.join(pathname, filename))
 
         if skel == "app":
-            with open(".mrbob.ini", "w") as f:
+            with open("mrbob.ini", "w") as f:
                 f.write("[defaults]\n")
                 home = os.path.expanduser("~")
                 f.write("home_directory = {0}\n".format(home))
-                # f.write("flask_diamond_version = {0}\n".format(__version__))
                 chars = string.ascii_letters + string.digits + '^!$&=?+~#-_.:,;'
                 secret_str = "".join([random.choice(chars) for _ in range(24)])
                 f.write("secret = \"{0}\"\n".format(secret_str))
@@ -39,8 +39,15 @@ def scaffold(skel):
                 f.write("simple_password = {0}\n".format(
                     "".join(random.choice(string.ascii_lowercase) for _ in range(3))))
 
-        cmd = "mrbob -w --config .mrbob.ini -O . {0}".format(
-            os.path.join(pathname, filename, skel))
+        # if skel exists, remove it
+        if os.path.isdir("skel"):
+            distutils.dir_util.remove_tree("skel")
+
+        # create a local copy of the skel
+        distutils.dir_util.copy_tree(os.path.join(pathname, filename, skel), "skel")
+
+        # invoke mr.bob with the local copy of the skel
+        cmd = "mrbob -w --config mrbob.ini -O . skel"
         os.system(cmd)
     else:
         print("unrecognized skel: {0}".format(skel))
