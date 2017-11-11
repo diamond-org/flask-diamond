@@ -45,9 +45,6 @@ class User(db.Model, UserMixin, CRUDMixin, MarshmallowMixin):
     id = db.Column(db.Integer, primary_key=True)
     "integer -- primary key"
 
-    name = db.Column(db.String(255))
-    "string -- user's name (not necessarily unique)"
-
     email = db.Column(db.String(255), unique=True)
     "string -- email address"
 
