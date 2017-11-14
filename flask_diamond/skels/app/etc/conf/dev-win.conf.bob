@@ -2,9 +2,9 @@
 
 PROJECT_NAME = "{{{ application.name }}}"
 PORT = {{{ application.port }}}
-LOG = "C:\\Users\\{{{ application.name }}}\\Temp\\{{{ application.name }}}-dev.log"
+LOG = "C:\\Users\\{{{ application.name }}}\\{{{ application.name }}}-dev.log"
 LOG_LEVEL = "DEBUG"
-SQLALCHEMY_DATABASE_URI = "sqlite:////Users/{{{ application.name }}}/Temp/{{{ application.name }}}-dev.db"
+SQLALCHEMY_DATABASE_URI = "sqlite:///C:\\Users\\{{{ application.name }}}\\{{{ application.name }}}-dev.db"
 SECRET_KEY = {{{ secret }}}
 BASE_URL = "http://{{{ application.name }}}.com"
 
