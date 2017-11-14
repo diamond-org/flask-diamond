@@ -44,6 +44,6 @@ docs:
 	SETTINGS=$$PWD/$(MOD_NAME)/tests/testing.conf sphinx-build -b html docs build/sphinx
 
 release:
-	python setup.py sdist upload -r https://pypi.python.org/pypi
+	python setup.py sdist upload
 
 .PHONY: install requirements clean test docs release

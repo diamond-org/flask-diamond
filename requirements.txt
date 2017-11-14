@@ -32,3 +32,4 @@ WTForms==1.0.5
 alabaster==0.7.7
 future==0.15.2
 click==6.6
+pyreadline==2.1

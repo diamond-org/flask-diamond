@@ -21,6 +21,10 @@ clean:
 server:
 	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py runserver
 
+server-win:
+	set SETTINGS=%cd%\etc\conf\dev-win.conf
+	%VIRTUAL_ENV%\scripts\python.exe bin\manage.py runserver
+
 shell:
 	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py shell
 
@@ -37,6 +41,12 @@ db:
 	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py init_db
 	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py user_add --email "guest@example.com" --password "guest"
 	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py user_add --email "admin@example.com" --password "{{{ simple_password }}}" --admin
+
+db-win:
+	set SETTINGS=%cd%\etc\conf\dev-win.conf
+	bin/manage.py init_db
+	bin/manage.py user_add --email "guest@example.com" --password "guest"
+	bin/manage.py user_add --email "admin@example.com" --password "{{{ simple_password }}}" --admin
 
 newmigration:
 	SETTINGS=$$PWD/etc/conf/dev.conf bin/manage.py drop_db
@@ -61,6 +71,6 @@ notebook:
 	SETTINGS=$$PWD/etc/conf/dev.conf cd var/ipython && ipython notebook
 
 release:
-	python setup.py sdist upload -r https://pypi.python.org/pypi
+	python setup.py sdist upload
 
 .PHONY: clean install test server watch notebook db single docs shell upgradedb migratedb release requirements apidocs gh-pages
