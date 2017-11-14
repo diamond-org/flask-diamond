@@ -38,6 +38,20 @@ The following steps will create a new Flask-Diamond application.
 
 Please read the `Introduction Documentation <http://flask-diamond.readthedocs.io/en/latest/#get-started>`_ to get started.
 
+Usage on Windows
+^^^^^^^^^^^^^^^^
+
+The following steps will create a new Flask-Diamond application on a Windows machine.
+
+::
+
+    easy_install -U mr.bob==0.1.2
+    pip install Flask-Diamond
+    md my-application
+    cd my-application
+    flask-diamond scaffold app
+    make install db-win server-win
+
 Documentation
 ^^^^^^^^^^^^^
 

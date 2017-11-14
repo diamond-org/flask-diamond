@@ -24,7 +24,9 @@ Create a :doc:`virtualenv <requirements>` for your application and install Flask
     mkdir my-application
     cd my-application
     mkvirtualenv -a . my-application
+    easy_install -U mr.bob==0.1.2 # required on Windows, automatic everywhere else
     pip install Flask-Diamond
+
 
 If any of these steps do not work, review the :doc:`system-requirements` and ensure everything is installed.
 
@@ -37,17 +39,6 @@ Enter the virtual environment and scaffold a new Flask-Diamond application.  For
 
     workon my-application
     flask-diamond scaffold app
-
-Windows scaffold
-^^^^^^^^^^^^^^^^
-
-Invoke `flask-diamond` with `cmd.exe`.
-
-::
-
-    workon my-application
-    pip install pyreadline
-    %VIRTUAL_ENV%\scripts\python.exe %VIRTUAL_ENV%\scripts\flask-diamond scaffold app
 
 Use it!
 -------

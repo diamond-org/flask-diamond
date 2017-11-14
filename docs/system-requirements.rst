@@ -72,9 +72,8 @@ Windows installation of Flask-Diamond is similar to UNIX:
     cmd.exe
     mkvirtualenv my-app
     workon my-app
+    easy_install -U mr.bob==0.1.2
     pip install Flask-Diamond
-    easy_install -U mr.bob==0.1.1
-    pip install --no-deps Flask-Diamond
 
 Discussion of Windows 10 installation is ongoing here: https://github.com/diamond-org/flask-diamond/issues/8
 
