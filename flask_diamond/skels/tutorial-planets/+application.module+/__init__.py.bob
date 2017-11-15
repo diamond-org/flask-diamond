@@ -76,4 +76,4 @@ def create_app():
         # application.facet("task_queue")
 
     # print application.app.url_map
-    return application.app
+    return(application.app)
