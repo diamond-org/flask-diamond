@@ -25,7 +25,7 @@ class CRUDMixin:
         :returns: the object that was found, or else None
         """
 
-        return cls.query.filter_by(**kwargs).first()
+        return(cls.query.filter_by(**kwargs).first())
 
     @classmethod
     def find_or_create(cls, _commit=True, **kwargs):
@@ -40,7 +40,7 @@ class CRUDMixin:
         obj = cls.find(**kwargs)
         if not obj:
             obj = cls.create(_commit=_commit, **kwargs)
-        return obj
+        return(obj)
 
     @classmethod
     def get_by_id(cls, id):
@@ -56,8 +56,8 @@ class CRUDMixin:
             (isinstance(id, str) and id.isdigit(),
              isinstance(id, (int, float))),
         ):
-            return cls.query.get(int(id))
-        return None
+            return(cls.query.get(int(id)))
+        return(None)
 
     @classmethod
     def create(cls, _commit=True, **kwargs):
@@ -73,8 +73,8 @@ class CRUDMixin:
 
         instance = cls(**kwargs)
         obj = instance.save(_commit)
-        flask.current_app.logger.debug("create %s" % str(obj))
-        return obj
+        flask.current_app.logger.debug("create {0}".format(repr(obj)))
+        return(obj)
 
     def update(self, _commit=True, **kwargs):
         """
@@ -89,7 +89,7 @@ class CRUDMixin:
 
         for attr, value in kwargs.items():
             setattr(self, attr, value)
-        return _commit and self.save() or self
+        return(_commit and self.save() or self)
 
     def save(self, _commit=True):
         """
@@ -103,7 +103,7 @@ class CRUDMixin:
         db.session.add(self)
         if _commit:
             db.session.commit()
-        return self
+        return(self)
 
     def delete(self, _commit=True):
         """
@@ -115,10 +115,10 @@ class CRUDMixin:
         """
 
         db.session.delete(self)
-        return _commit and db.session.commit()
+        return(_commit and db.session.commit())
 
     def __repr__(self):
-        return "<{}(id={})>".format(self.__class__.__name__, self.id)
+        return("<{}(id={})>".format(self.__class__.__name__, self.id))
 
     def __str__(self):
-        return self.__repr__()
+        return(self.__repr__())

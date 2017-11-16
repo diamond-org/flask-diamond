@@ -12,6 +12,9 @@ install:
 requirements:
 	pip install -r requirements.txt
 
+dev:
+	pip install -r .requirements-dev.txt
+
 clean:
 	rm -rf build dist *.egg-info
 	find . -name '*.pyc' -delete
@@ -46,4 +49,4 @@ docs:
 release:
 	python setup.py sdist upload
 
-.PHONY: install requirements clean test docs release
+.PHONY: install requirements clean test docs release dev
