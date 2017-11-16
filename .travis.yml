@@ -2,10 +2,12 @@ language: python
 # cache: pip
 python:
   - 2.7
+  - 3.3
   - 3.4
   - 3.5
   - 3.6
+  - 3.7
 # command to install dependencies
-install: make install
+install: make requirements && make install
 # command to run tests
 script: make test
