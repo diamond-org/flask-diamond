@@ -2,17 +2,17 @@
 
 SHELL=/bin/bash
 MOD_NAME=flask_diamond
-WATCHMEDO_PATH=$$(which watchmedo)
-NOSETESTS_PATH=$$(which nosetests)
-TEST_CMD=SETTINGS=$$PWD/$(MOD_NAME)/tests/testing.conf $(NOSETESTS_PATH) $(MOD_NAME)
 
 install:
 	python setup.py install
 
 requirements:
+ifeq ($(OS),Windows_NT)
+	easy_install -U mr.bob==0.1.2
+endif
 	pip install -r requirements.txt
 
-dev:
+develop:
 	pip install -r .requirements-dev.txt
 
 clean:
@@ -24,10 +24,10 @@ test: test-all test-scaffold
 	@echo "OK"
 
 test-all:
-	$(TEST_CMD) -c etc/nose/test-all.cfg
+	SETTINGS=$$PWD/$(MOD_NAME)/tests/testing.conf nosetests $(MOD_NAME) -c etc/nose/test-all.cfg
 
 single:
-	$(TEST_CMD) -c etc/nose/test-single.cfg 2>&1
+	SETTINGS=$$PWD/$(MOD_NAME)/tests/testing.conf nosetests $(MOD_NAME) -c etc/nose/test-single.cfg 2>&1
 
 test-scaffold:
 	# create folder
@@ -49,4 +49,4 @@ docs:
 release:
 	python setup.py sdist upload
 
-.PHONY: install requirements clean test docs release dev
+.PHONY: install requirements clean test docs release develop

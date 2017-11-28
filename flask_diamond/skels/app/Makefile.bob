@@ -13,6 +13,9 @@ install:
 requirements:
 	pip install -r requirements.txt
 
+develop:
+	pip install -r .requirements-dev.txt
+
 clean:
 	rm -rf build dist *.egg-info
 	find . -name '*.pyc' -delete
@@ -73,4 +76,4 @@ notebook:
 release:
 	python setup.py sdist upload
 
-.PHONY: clean install test server watch notebook db single docs shell upgradedb migratedb release requirements apidocs gh-pages
+.PHONY: clean install test server watch notebook db single docs shell upgradedb migratedb release requirements apidocs gh-pages develop

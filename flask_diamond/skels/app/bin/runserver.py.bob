@@ -2,5 +2,9 @@
 # -*- coding: utf-8 -*-
 # {{{ application.name }}} (c) {{{ author.name }}}
 
+import warnings
+from flask.exthook import ExtDeprecationWarning
+warnings.simplefilter('ignore', ExtDeprecationWarning)
+
 from {{{ application.module }}}.wsgi import app
 app.run(port=app.config['PORT'])

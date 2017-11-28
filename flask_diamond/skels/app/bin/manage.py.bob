@@ -6,6 +6,10 @@ import sys
 import traceback
 sys.path.insert(0, '.')
 
+import warnings
+from flask.exthook import ExtDeprecationWarning
+warnings.simplefilter('ignore', ExtDeprecationWarning)
+
 from flask_script import Manager, Shell, Server
 from flask_migrate import Migrate, MigrateCommand, upgrade
 import alembic

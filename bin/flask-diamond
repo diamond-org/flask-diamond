@@ -8,7 +8,11 @@ import os
 import flask_diamond
 import string
 import random
-import distutils
+from distutils import copy_tree, remove_tree
+
+import warnings
+from flask.exthook import ExtDeprecationWarning
+warnings.simplefilter('ignore', ExtDeprecationWarning)
 from flask_diamond.__meta__ import __version__
 
 
@@ -41,10 +45,10 @@ def scaffold(skel):
 
         # if skel exists, remove it
         if os.path.isdir(".skel"):
-            distutils.dir_util.remove_tree(".skel")
+            remove_tree(".skel")
 
         # create a local copy of the skel
-        distutils.dir_util.copy_tree(os.path.join(pathname, filename, skel), ".skel")
+        copy_tree(os.path.join(pathname, filename, skel), ".skel")
 
         # invoke mr.bob with the local copy of the skel
         cmd = "mrbob -w --config .mrbob.ini -O . .skel"
@@ -52,7 +56,7 @@ def scaffold(skel):
 
         # clean up after ourselves
         if os.path.isdir(".skel"):
-            distutils.dir_util.remove_tree(".skel")
+            remove_tree(".skel")
     else:
         print("unrecognized skel: {0}".format(skel))
         list_skels()
