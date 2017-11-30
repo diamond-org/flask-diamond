@@ -8,7 +8,7 @@ import os
 import flask_diamond
 import string
 import random
-from distutils import copy_tree, remove_tree
+from distutils.dir_util import copy_tree, remove_tree
 
 import warnings
 from flask.exthook import ExtDeprecationWarning
