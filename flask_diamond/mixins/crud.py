@@ -24,7 +24,6 @@ class CRUDMixin:
         :type kwargs: dict
         :returns: the object that was found, or else None
         """
-
         return(cls.query.filter_by(**kwargs).first())
 
     @classmethod
@@ -36,7 +35,6 @@ class CRUDMixin:
         :type kwargs: dict
         :returns: the object that was created
         """
-
         obj = cls.find(**kwargs)
         if not obj:
             obj = cls.create(_commit=_commit, **kwargs)
@@ -51,7 +49,6 @@ class CRUDMixin:
         :type id: integer
         :returns: the object that was retrieved
         """
-
         if any(
             (isinstance(id, str) and id.isdigit(),
              isinstance(id, (int, float))),
@@ -70,7 +67,6 @@ class CRUDMixin:
         :type kwargs: dict
         :returns: the object that was created
         """
-
         instance = cls(**kwargs)
         obj = instance.save(_commit)
         flask.current_app.logger.debug("create {0}".format(repr(obj)))
@@ -86,7 +82,6 @@ class CRUDMixin:
         :type kwargs: dict
         :returns: the object that was updated
         """
-
         for attr, value in kwargs.items():
             setattr(self, attr, value)
         return(_commit and self.save() or self)
@@ -99,7 +94,6 @@ class CRUDMixin:
         :type commit: boolean
         :returns: the object that was saved
         """
-
         db.session.add(self)
         if _commit:
             db.session.commit()
@@ -113,12 +107,14 @@ class CRUDMixin:
         :type commit: boolean
         :returns: whether the delete was successful
         """
-
         db.session.delete(self)
         return(_commit and db.session.commit())
 
     def __repr__(self):
-        return("<{}(id={})>".format(self.__class__.__name__, self.id))
+        if hasattr(self, "id"):
+            return("<{}(id={})>".format(self.__class__.__name__, self.id))
+        else:
+            return("<{}>".format(self.__class__.__name__))
 
     def __str__(self):
         return(self.__repr__())
